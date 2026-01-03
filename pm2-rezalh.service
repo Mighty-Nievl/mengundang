@@ -1,0 +1,22 @@
+[Unit]
+Description=PM2 process manager for rezalh
+Documentation=https://pm2.keymetrics.io/
+After=network.target
+
+[Service]
+Type=forking
+User=rezalh
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Environment=PATH=/home/rezalh/.nvm/versions/node/v20.19.6/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=PM2_HOME=/home/rezalh/.pm2
+PIDFile=/home/rezalh/.pm2/pm2.pid
+Restart=on-failure
+
+ExecStart=/home/rezalh/.nvm/versions/node/v20.19.6/lib/node_modules/pm2/bin/pm2 resurrect
+ExecReload=/home/rezalh/.nvm/versions/node/v20.19.6/lib/node_modules/pm2/bin/pm2 reload all
+ExecStop=/home/rezalh/.nvm/versions/node/v20.19.6/lib/node_modules/pm2/bin/pm2 kill
+
+[Install]
+WantedBy=multi-user.target

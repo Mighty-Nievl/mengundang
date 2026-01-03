@@ -2,12 +2,31 @@ import pkg from 'whatsapp-web.js';
 const { Client, LocalAuth } = pkg;
 import qrcode from 'qrcode-terminal';
 import path from 'path';
+import os from 'os';
 
 let client: any = null;
 let isReady = false;
 
+// Find Chrome executable
+const getChromePath = () => {
+    const cachePath = path.join(os.homedir(), '.cache/puppeteer/chrome');
+    const fs = require('fs');
+    if (fs.existsSync(cachePath)) {
+        const versions = fs.readdirSync(cachePath);
+        if (versions.length > 0) {
+            return path.join(cachePath, versions[0], 'chrome-linux64/chrome');
+        }
+    }
+    return undefined; // Let Puppeteer find it
+};
+
 export const initWhatsAppLocal = () => {
     console.log('[WhatsAppLocal] Initializing...');
+
+    const executablePath = getChromePath();
+    if (executablePath) {
+        console.log('[WhatsAppLocal] Using Chrome at:', executablePath);
+    }
 
     client = new Client({
         authStrategy: new LocalAuth({
@@ -15,11 +34,13 @@ export const initWhatsAppLocal = () => {
         }),
         puppeteer: {
             headless: true,
+            executablePath: executablePath,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
-                '--disable-gpu'
+                '--disable-gpu',
+                '--disable-accelerated-2d-canvas'
             ]
         }
     });

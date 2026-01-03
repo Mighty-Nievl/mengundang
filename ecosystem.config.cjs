@@ -6,13 +6,14 @@ module.exports = {
             script: './casaos-worker.ts',
             interpreter: 'bun',
             env: {
-                API_BASE_URL: 'https://premium-invitation.pages.dev',
+                API_BASE_URL: 'https://undangan.zalan.web.id',
                 INTERNAL_API_SECRET: 'rahasia123',
                 TELEGRAM_BOT_TOKEN: '7901463430:AAF9zVWze1Ri7AwMZnSC2bQNeaX6YlRsGWA',
                 TELEGRAM_CHAT_ID: '848564111',
-                WHATSAPP_TOKEN: 'EAAJRvscC9icBQU1BoFDm83nlpVifBYsrgXvo1utQnLpv3Owdjggz7gJ9SKlOjwdV8ZALmIsXEkrQ7UZA63DAYcILy8RAbj3SZB7uGffZBYbAiTRrLoMRaNIcd5Vy1tqAXZBJeVkgY8fxeos1lRYdNkC5jMLbcmQMWp8kj0QSwSrtKeMSGqsQfE6Q2IiKTL9eUsEVkP3EyFZApTQYPbcV45pHMO0JfKlkLSU4Jb',
-                WHATSAPP_PHONE_ID: '1113130907380188',
-                WHATSAPP_TARGET_PHONE: '6285946001116'
+                // WhatsApp Official API (Meta Cloud) - Token expires in 24h
+                WHATSAPP_TOKEN: 'EAAJRvscC9icBQYljM5V2U2IRfhxZBKnQU6HKW07KBoRqfqOXWixfMg91IUmfYqS5vtqz8pNwuU2ZBZBQii0cMxzmaZACVtRtpN7FZC1HQVHyfZCYiFql1gjihv310MkG1fm01huUNsDSXi5felZAgxnlNXjaradEZC8Nugmm2MmchbecqZCvQvWvUJxTZAg92yfwbsdbtV8qHe6i7XiZAl96DqAZCou7sOA7pSyl8B1wnUmBxzC17Q3pP1h5a9d4Twwg8NwZD',
+                WHATSAPP_PHONE_ID: '960153967174954',
+                WHATSAPP_TARGET_PHONE: '6282265030113'
             }
         },
         {

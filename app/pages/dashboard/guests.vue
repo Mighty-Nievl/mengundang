@@ -145,16 +145,50 @@ const copyLink = (guestName: string) => {
     showAlert({ title: 'Tersalin', message: 'Link tamu berhasil disalin!', type: 'success' })
 }
 
-const shareWA = (guest: any) => {
-    if (!guest.name) return
-    let phone = guest.phoneNumber || ''
-    if (phone.startsWith('0')) {
-        phone = '62' + phone.slice(1)
+const isSendingWA = ref<Record<string, boolean>>({})
+
+const shareWA = async (guest: any) => {
+    if (!guest.name) {
+        showAlert({ title: 'Error', message: 'Nama tamu harus diisi terlebih dahulu', type: 'danger' })
+        return
     }
-    const link = getGuestLink(guest.name)
-    const message = `Halo ${guest.name}! ✨\n\nTanpa mengurangi rasa hormat, perkenankan kami mengundang bapak/ibu/saudara/i untuk hadir di acara pernikahan kami.\n\nDetail undangan dapat dilihat pada link di bawah ini:\n${link}\n\nMerupakan suatu kebahagiaan bagi kami apabila bapak/ibu/saudara/i berkenan hadir dan memberikan doa restu.\n\nTerima kasih.`
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank')
+    if (!guest.phoneNumber) {
+        showAlert({ title: 'Error', message: 'Nomor WhatsApp harus diisi terlebih dahulu', type: 'danger' })
+        return
+    }
+
+    const guestId = guest.id
+    isSendingWA.value[guestId] = true
+
+    try {
+        const res = await $fetch<any>('/api/wa/send-invitation', {
+            method: 'POST',
+            body: {
+                phone: guest.phoneNumber,
+                guestName: guest.name,
+                invitationSlug: selectedSlug.value
+            }
+        })
+
+        if (res.success) {
+            showAlert({ 
+                title: 'Terkirim! 🎉', 
+                message: `Undangan untuk ${guest.name} sedang dikirim via WhatsApp Bot`, 
+                type: 'success' 
+            })
+        }
+    } catch (e: any) {
+        console.error('Failed to send WA:', e)
+        showAlert({ 
+            title: 'Gagal', 
+            message: e.data?.statusMessage || 'Gagal mengirim undangan via WhatsApp', 
+            type: 'danger' 
+        })
+    } finally {
+        isSendingWA.value[guestId] = false
+    }
 }
+
 </script>
 
 <template>
@@ -265,8 +299,9 @@ const shareWA = (guest: any) => {
                                 <!-- Actions -->
                                 <td class="px-6 py-0 text-right">
                                     <div class="flex items-center justify-end gap-1 opacity-20 group-hover:opacity-100 transition-opacity">
-                                        <button @click="shareWA(guest)" class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition-all" title="Kirim WA">
-                                            <i class="fab fa-whatsapp"></i>
+                                        <button @click="shareWA(guest)" :disabled="isSendingWA[guest.id]" class="w-8 h-8 flex items-center justify-center rounded-lg bg-green-50 text-green-600 hover:bg-green-600 hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed" title="Kirim WA via Bot">
+                                            <i v-if="isSendingWA[guest.id]" class="fas fa-spinner fa-spin text-xs"></i>
+                                            <i v-else class="fab fa-whatsapp"></i>
                                         </button>
                                         <button @click="copyLink(guest.name)" class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all" title="Salin Link">
                                             <i class="fas fa-copy text-[10px]"></i>
