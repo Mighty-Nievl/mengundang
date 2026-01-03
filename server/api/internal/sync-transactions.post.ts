@@ -43,20 +43,14 @@ export default defineEventHandler(async (event) => {
             // Apply Plan
             await applyPlanToUser(order.userId, order.plan);
 
+            // Fetch user for phone number
+            const user = await db.select().from(users).where(eq(users.id, order.userId)).get();
+            const targetPhone = user?.phoneNumber || '';
+
             // Send WA Notification (Hybrid: Official/Local)
-            await sendWhatsAppNotification(`💰 *Pembayaran Diterima!*\nOrder #${order.id} Lunas Rp ${order.amount}.\nStatus: Approved.`, order.phoneNumber || '', order.plan);
-            // Note: order.phoneNumber might not exist in 'orders' table, we might need to fetch user?
-            // Checking schema: orders table does NOT have phoneNumber. users table does.
-            // But sendWhatsAppMessage defaults to admin if no phone provided? 
-            // In worker.ts: `notifyBot` sent to Telegram options. 
-            // Here we are sending to Admin via WA or Telegram?
-            // worker.ts sent to Telegram. 
-            // Here `sendWhatsAppMessage` sends to WA. 
-            // Let's stick to the server logic: maybe notify Admin via WA?
-            // The worker.ts used `notifyBot` (Telegram).
-            // We should ideally keep Telegram notifications?
-            // But the bot is on CasaOS. The server can't directly talk to Telegram Bot API unless we setup the bot token here too.
-            // We can setup Telegram Bot Token in Cloudflare Env Vars.
+            if (targetPhone) {
+                await sendWhatsAppNotification(`💰 *Pembayaran Diterima!*\nOrder #${order.id} Lunas Rp ${order.amount}.\nStatus: Approved.`, targetPhone, order.plan);
+            }
 
             approvedCount++;
         }

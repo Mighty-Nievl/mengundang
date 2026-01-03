@@ -27,6 +27,17 @@ const fs = require('fs');
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
 
+    // 2.5 Optimize Resource Usage
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+        const resourceType = req.resourceType();
+        if (['image', 'stylesheet', 'font', 'media'].includes(resourceType)) {
+            req.abort();
+        } else {
+            req.continue();
+        }
+    });
+
     // Helper to click visible button by text
     const clickButtonByText = async (textToMatch) => {
         return await page.evaluate(async (match) => {

@@ -1,3 +1,4 @@
+// PM2 Configuration for CasaOS Local Workers
 module.exports = {
     apps: [
         {
@@ -22,3 +23,5 @@ module.exports = {
         }
     ]
 };
+// Note: The main web application is built and served by Cloudflare Pages.
+// These local workers handle WhatsApp/Telegram bot logic and Cloudflare Tunneling.

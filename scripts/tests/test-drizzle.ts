@@ -1,5 +1,5 @@
-import { db } from "../../server/utils/db";
-import { users } from "../../server/db/schema";
+import { db } from "./server/utils/db";
+import { users } from "./server/db/schema";
 import { eq } from "drizzle-orm";
 
 async function test() {

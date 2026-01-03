@@ -29,3 +29,12 @@ sqlite.db
 # WhatsApp & Worker Local
 whatsapp-auth/
 
+# Debug screenshots (keep public assets)
+*.png
+!public/**/*.png
+
+# Binary files
+cloudflared
+
+# Wrangler artifacts
+.wrangler/
