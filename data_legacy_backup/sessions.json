@@ -1,0 +1,20 @@
+{
+  "f9eb4e8013b673a169e0c03c5ecc265fe5895752e1d686175fa77825aaffed06": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1766888290948
+  },
+  "f7387046ca85ff9ab12c64691bd8ef99fa22421fcbcc294f0501e048a1fee31c": {
+    "username": "admin",
+    "role": "admin",
+    "expires": 1766893620694
+  },
+  "10853473-33d5-40ee-9da0-3740812841b9": {
+    "email": "rezalhbramantara@gmail.com",
+    "role": "user",
+    "name": "Rezal Helwin Bramantara",
+    "plan": "free",
+    "maxInvitations": 1,
+    "expires": 1767447842300
+  }
+}

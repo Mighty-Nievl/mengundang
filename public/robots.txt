@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /editor
+Disallow: /api
+Sitemap: https://undangan.zalan.web.id/sitemap.xml

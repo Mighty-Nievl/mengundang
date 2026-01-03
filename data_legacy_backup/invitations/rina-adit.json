@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "The Wedding of Rizky & Anisa",
+    "description": "Kami mengundang anda untuk hadir di pernikahan kami."
+  },
+  "hero": {
+    "groomNickname": "Rizky",
+    "brideNickname": "Anisa",
+    "date": "SABTU, 28 DESEMBER 2025"
+  },
+  "groom": {
+    "fullName": "Rizky Pratama",
+    "parents": "Putra Bpk. Ahmad & Ibu Siti",
+    "instagram": "@rizky.pratama",
+    "image": "https://api.dicebear.com/7.x/notionists/svg?seed=Rizky"
+  },
+  "bride": {
+    "fullName": "Anisa Wijaya",
+    "parents": "Putri Bpk. Budi & Ibu Rina",
+    "instagram": "@anisa.wijaya",
+    "image": "https://api.dicebear.com/7.x/notionists/svg?seed=Anisa"
+  },
+  "events": {
+    "akad": {
+      "time": "08:00 - 10:00 WIB",
+      "date": "Sabtu, 28 Desember 2025",
+      "isoDate": "2025-12-28T08:00",
+      "location": "Masjid Besar Al-Ikhlas, Jakarta Selatan",
+      "mapUrl": "https://goo.gl/maps/placeholder"
+    },
+    "resepsi": {
+      "time": "11:00 - 13:00 WIB",
+      "date": "Sabtu, 28 Desember 2025",
+      "location": "Grand Ballroom Hotel Mulia, Jakarta",
+      "mapUrl": "https://goo.gl/maps/placeholder"
+    }
+  },
+  "gift": {
+    "bankName": "BCA",
+    "accountNumber": "1234567890",
+    "accountName": "Rizky Pratama"
+  },
+  "music": {
+    "url": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+  },
+  "rsvp": {
+    "phone": "6281234567890",
+    "comments": [
+      {
+        "id": "1766834094608",
+        "name": "Spontan",
+        "status": "Hadir",
+        "message": "Uhuy!",
+        "createdAt": "2025-12-27T11:14:54.608Z",
+        "replies": [
+          {
+            "id": "1766834411412",
+            "name": "Mempelai",
+            "status": "Mempelai",
+            "message": "Tor monitor ketuaa!!",
+            "createdAt": "2025-12-27T11:20:11.412Z",
+            "replies": []
+          },
+          {
+            "id": "1766834641429",
+            "name": "Rizky & Anisa",
+            "status": "Mempelai",
+            "message": "Yess!",
+            "createdAt": "2025-12-27T11:24:01.429Z",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  }
+}

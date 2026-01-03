@@ -1,0 +1,20 @@
+[
+  {
+    "email": "support@zalan.web.id",
+    "password": "31bee79b402406704a5487c7a051dce11fd58c130c7063c95378f4e53606867f",
+    "role": "admin",
+    "name": "Super Admin",
+    "plan": "vvip",
+    "maxInvitations": 9999,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "email": "rezalhbramantara@gmail.com",
+    "password": "3ce4fb9cb7eedfb2c0a2c6bed99610c11dd64c3d6228c41858af67e6bd069fbf",
+    "name": "Rezal Helwin Bramantara",
+    "role": "user",
+    "plan": "free",
+    "maxInvitations": 1,
+    "createdAt": "2025-12-27T13:35:08.241Z"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "title": "Undangan Pernikahan Rizky & Anisa",
+    "description": "Kami mengundang anda untuk hadir di pernikahan kami.\n📅 Sabtu, 28 Des 2025 ⏰ 08.00 WIB \n📍 Masjid Al-Ikhlas ",
+    "image": "https://www.bcalife.co.id/storage//articles/wujudkan-pernikahan-sakral-dan-anti-boros-dengan-konsep-intimate-wedding-1718346697.png",
+    "updatedAt": 1766825876584
+  },
+  "hero": {
+    "groomNickname": "Rizky",
+    "brideNickname": "Anisa",
+    "date": "SABTU, 28 DESEMBER 2025"
+  },
+  "groom": {
+    "fullName": "Rizky Pratama",
+    "parents": "Putra Bpk. Ahmad & Ibu Siti",
+    "instagram": "@rizky.pratama",
+    "image": "https://api.dicebear.com/7.x/notionists/svg?seed=Rizky"
+  },
+  "bride": {
+    "fullName": "Anisa Wijaya",
+    "parents": "Putri Bpk. Budi & Ibu Rina",
+    "instagram": "@anisa.wijaya",
+    "image": "https://api.dicebear.com/7.x/notionists/svg?seed=Anisa"
+  },
+  "events": {
+    "akad": {
+      "time": "08:00 - 10:00 WIB",
+      "date": "Sabtu, 28 Desember 2025",
+      "isoDate": "2025-12-28T08:00",
+      "location": "Masjid Besar Al-Ikhlas, Jakarta Selatan",
+      "mapUrl": "https://goo.gl/maps/placeholder"
+    },
+    "resepsi": {
+      "time": "11:00 - 13:00 WIB",
+      "date": "Sabtu, 28 Desember 2025",
+      "location": "Grand Ballroom Hotel Mulia, Jakarta",
+      "mapUrl": "https://goo.gl/maps/placeholder"
+    }
+  },
+  "gift": {
+    "bankName": "BCA",
+    "accountNumber": "1234567890",
+    "accountName": "Rizky Pratama",
+    "accounts": [
+      {
+        "bankName": "BCA",
+        "number": "0123456789",
+        "name": "Rizky Sahpora"
+      }
+    ]
+  },
+  "music": {
+    "url": "https://music.youtube.com/watch?v=B3E3Ph61cgo&list=RDAMVMB3E3Ph61cgo",
+    "fade": true
+  },
+  "rsvp": {
+    "phone": "6281234567890"
+  },
+  "gallery": []
+}
