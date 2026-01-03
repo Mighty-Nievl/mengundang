@@ -4,6 +4,7 @@ import { eq } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
     // 1. Security Check
+    console.log('[API] Poll endpoint accessed');
     const config = useRuntimeConfig();
     const secret = getHeader(event, 'x-api-secret');
 
