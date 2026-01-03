@@ -21,12 +21,26 @@ export default defineEventHandler(async (event) => {
         return
     }
 
-    const session = await auth.api.getSession({
-        headers: event.headers
-    })
+    try {
+        const session = await auth.api.getSession({
+            headers: event.headers
+        })
 
-    if (session) {
-        event.context.user = session.user
-        event.context.session = session.session
+        if (session) {
+            event.context.user = session.user
+            event.context.session = session.session
+        }
+    } catch (e: any) {
+        console.error("Auth Middleware Error:", e);
+        // Return 500 with error details for debugging
+        throw createError({
+            statusCode: 500,
+            statusMessage: "Internal Server Error (Auth)",
+            message: e.message,
+            stack: e.stack,
+            data: {
+                cause: e.cause
+            }
+        });
     }
 })
