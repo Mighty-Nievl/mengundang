@@ -1,18 +1,18 @@
 module.exports = {
     apps: [
         {
-            name: 'zalan-web',
-            script: './.output/server/index.mjs',
+            name: 'casaos-worker',
+            script: './casaos-worker.ts',
             interpreter: 'bun',
             env: {
-                PORT: 3001,
-                NITRO_PRESET: 'bun'
+                API_BASE_URL: 'https://premium-invitation.pages.dev',
+                INTERNAL_API_SECRET: 'rahasia123',
+                TELEGRAM_BOT_TOKEN: '7901463430:AAF9zVWze1Ri7AwMZnSC2bQNeaX6YlRsGWA',
+                TELEGRAM_CHAT_ID: '848564111',
+                WHATSAPP_TOKEN: 'EAAJRvscC9icBQU1BoFDm83nlpVifBYsrgXvo1utQnLpv3Owdjggz7gJ9SKlOjwdV8ZALmIsXEkrQ7UZA63DAYcILy8RAbj3SZB7uGffZBYbAiTRrLoMRaNIcd5Vy1tqAXZBJeVkgY8fxeos1lRYdNkC5jMLbcmQMWp8kj0QSwSrtKeMSGqsQfE6Q2IiKTL9eUsEVkP3EyFZApTQYPbcV45pHMO0JfKlkLSU4Jb',
+                WHATSAPP_PHONE_ID: '1113130907380188',
+                WHATSAPP_TARGET_PHONE: '6285946001116'
             }
-        },
-        {
-            name: 'zalan-worker',
-            script: './worker.ts',
-            interpreter: 'bun',
         },
         {
             name: 'zalan-tunnel',

@@ -7,7 +7,7 @@ const execAsync = promisify(exec)
 // --- CONFIGURATION ---
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID!
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000'
+const API_BASE_URL = process.env.API_BASE_URL || 'https://undangan.zalan.web.id'
 const API_SECRET = process.env.INTERNAL_API_SECRET!
 
 const POLL_INTERVAL = 1000 // 1 second
@@ -232,6 +232,34 @@ const runPaymentVerification = async () => {
     }
 }
 
+// --- 10. WhatsApp Notification Poller ---
+async function runNotificationPoller() {
+    console.log('[NotificationPoller] Checking pending notifications...')
+    try {
+        const res = await callApi('notifications/poll', 'GET')
+        if (!res.success || !res.data || res.data.length === 0) return
+
+        console.log(`[NotificationPoller] Found ${res.data.length} pending notifications.`)
+
+        const { sendLocalWhatsAppMessage } = await import('./utils-casaos/whatsapp-local')
+
+        const sentIds = []
+        for (const notif of res.data) {
+            const success = await sendLocalWhatsAppMessage(notif.phoneNumber, notif.message)
+            if (success) {
+                sentIds.push(notif.id)
+            }
+        }
+
+        if (sentIds.length > 0) {
+            await callApi('notifications/confirm', 'POST', { ids: sentIds })
+            console.log(`[NotificationPoller] Confirmed ${sentIds.length} notifications as sent.`)
+        }
+    } catch (e: any) {
+        console.error('[NotificationPoller] Error:', e.message)
+    }
+}
+
 // --- MAIN LOOPS ---
 async function pollBot() {
     try {
@@ -256,15 +284,23 @@ if (!BOT_TOKEN || !API_SECRET) {
     process.exit(1)
 }
 
+import { initWhatsAppLocal } from './utils-casaos/whatsapp-local'
+
 console.log('🚀 CasaOS Worker Starting...')
 console.log(`Target API: ${API_BASE_URL}`)
+
+// Initialize Local WhatsApp Bot (QR Scan)
+initWhatsAppLocal()
 
 pollBot()
 console.log('🤖 Telegram Bot Polling Started...')
 
 // Initial run
 runPaymentVerification()
+runNotificationPoller()
 cron.schedule(CRON_SCHEDULE, () => {
     runPaymentVerification()
 })
+setInterval(runNotificationPoller, 60000)
 console.log(`📅 Scheduler started with schedule: ${CRON_SCHEDULE}`)
+console.log(`📨 Notification Poller started (1m interval)`)

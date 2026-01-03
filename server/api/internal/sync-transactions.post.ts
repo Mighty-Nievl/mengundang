@@ -2,7 +2,7 @@ import { db } from '../../utils/db';
 import { orders, users } from '../../db/schema';
 import { eq } from 'drizzle-orm';
 import { applyPlanToUser } from '../../utils/plan';
-import { sendWhatsAppMessage } from '../../utils/whatsapp-cloud';
+import { sendWhatsAppNotification } from '../../utils/whatsapp';
 
 export default defineEventHandler(async (event) => {
     // 1. Security Check
@@ -43,8 +43,8 @@ export default defineEventHandler(async (event) => {
             // Apply Plan
             await applyPlanToUser(order.userId, order.plan);
 
-            // Send WA Notification
-            await sendWhatsAppMessage(`💰 *Pembayaran Diterima!*\nOrder #${order.id} Lunas Rp ${order.amount}.\nStatus: Approved.`, order.phoneNumber);
+            // Send WA Notification (Hybrid: Official/Local)
+            await sendWhatsAppNotification(`💰 *Pembayaran Diterima!*\nOrder #${order.id} Lunas Rp ${order.amount}.\nStatus: Approved.`, order.phoneNumber || '', order.plan);
             // Note: order.phoneNumber might not exist in 'orders' table, we might need to fetch user?
             // Checking schema: orders table does NOT have phoneNumber. users table does.
             // But sendWhatsAppMessage defaults to admin if no phone provided? 

@@ -4,52 +4,64 @@ import { db } from "./db";
 
 import * as schema from "../db/schema";
 
-export const auth = betterAuth({
-    baseURL: process.env.BETTER_AUTH_URL,
-    trustedOrigins: [process.env.BETTER_AUTH_URL || ""],
-    database: drizzleAdapter(db, {
-        provider: "sqlite",
-        schema: {
-            user: schema.users,
-            session: schema.sessions,
-            account: schema.accounts,
-            verification: schema.verifications
+const betterAuthUrl = process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || 'https://premium-invitation.pages.dev';
+
+let _auth: any;
+
+export const auth = new Proxy({} as any, {
+    get(target, prop) {
+        if (!_auth) {
+            _auth = betterAuth({
+                secret: process.env.NUXT_BETTER_AUTH_SECRET || process.env.BETTER_AUTH_SECRET,
+                baseURL: process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || betterAuthUrl,
+                database: drizzleAdapter(db, {
+                    provider: "sqlite",
+                    schema: {
+                        user: schema.users,
+                        session: schema.sessions,
+                        account: schema.accounts,
+                        verification: schema.verifications
+                    }
+                }),
+                emailAndPassword: {
+                    enabled: true,
+                    minLength: 8,
+                    maxPasswordLength: 32,
+                },
+                user: {
+                    additionalFields: {
+                        role: { type: "string", defaultValue: "user" },
+                        plan: { type: "string", defaultValue: "free" },
+                        maxInvitations: { type: "number", defaultValue: 1 },
+                        referralCode: { type: "string", required: false },
+                        referredBy: { type: "string", required: false },
+                        referralBalance: { type: "number", defaultValue: 0 },
+                        registrationIp: { type: "string", required: false },
+                        phoneNumber: { type: "string", required: false },
+                        bankName: { type: "string", required: false },
+                        bankAccountNumber: { type: "string", required: false },
+                        bankAccountName: { type: "string", required: false }
+                    }
+                },
+                advanced: {
+                    cookie: {
+                        secure: process.env.NODE_ENV === "production",
+                        sameSite: "lax",
+                        domain: (process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || betterAuthUrl) ? new URL(process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || betterAuthUrl).hostname : undefined
+                    }
+                },
+                socialProviders: {
+                    google: {
+                        clientId: process.env.NUXT_GOOGLE_CLIENT_ID || "",
+                        clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET || "",
+                    }
+                },
+                accountLinking: {
+                    enabled: true
+                }
+            });
+            console.log("✅ Better Auth Initialized via Proxy");
         }
-    }),
-    emailAndPassword: {
-        enabled: true,
-        minLength: 8,
-        maxPasswordLength: 32,
-    },
-    user: {
-        additionalFields: {
-            role: { type: "string", defaultValue: "user" },
-            plan: { type: "string", defaultValue: "free" },
-            maxInvitations: { type: "number", defaultValue: 1 },
-            referralCode: { type: "string", required: false },
-            referredBy: { type: "string", required: false },
-            referralBalance: { type: "number", defaultValue: 0 },
-            registrationIp: { type: "string", required: false },
-            phoneNumber: { type: "string", required: false },
-            bankName: { type: "string", required: false },
-            bankAccountNumber: { type: "string", required: false },
-            bankAccountName: { type: "string", required: false }
-        }
-    },
-    advanced: {
-        cookie: {
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
-            domain: process.env.BETTER_AUTH_URL ? new URL(process.env.BETTER_AUTH_URL).hostname : undefined
-        }
-    },
-    socialProviders: {
-        google: {
-            clientId: process.env.NUXT_GOOGLE_CLIENT_ID || "",
-            clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET || "",
-        }
-    },
-    accountLinking: {
-        enabled: true
+        return Reflect.get(_auth, prop);
     }
 });

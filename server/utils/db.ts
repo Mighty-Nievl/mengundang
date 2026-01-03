@@ -1,15 +1,22 @@
 import { drizzle } from 'drizzle-orm/d1';
-import { drizzle as drizzleSqlite } from 'drizzle-orm/bun-sqlite';
-import { Database } from 'bun:sqlite';
 import * as schema from '../db/schema';
 
-export let db: any;
+let _db: any;
 
-if (process.env.DB) {
-    // Cloudflare D1
-    db = drizzle(process.env.DB, { schema });
-} else {
-    // Local Dev (Bun SQLite)
-    const sqlite = new Database('sqlite.db');
-    db = drizzleSqlite(sqlite, { schema });
-}
+export const db = new Proxy({} as any, {
+    get(target, prop) {
+        if (prop === '__isProxy') return true;
+
+        if (!_db) {
+            if (process.env.DB) {
+                _db = drizzle(process.env.DB, { schema });
+                console.log("✅ D1 Database Initialized via Proxy");
+            } else {
+                console.error("❌ DB Binding not found in process.env");
+            }
+        }
+
+        const res = Reflect.get(_db || {}, prop);
+        return typeof res === 'function' ? res.bind(_db) : res;
+    }
+});

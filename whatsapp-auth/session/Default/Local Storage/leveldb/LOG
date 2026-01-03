@@ -1,2 +1,3 @@
-2025/12/29-08:23:26.140 465b Creating DB /home/nievl/premium-invitation/whatsapp-auth/session/Default/Local Storage/leveldb since it was missing.
-2025/12/29-08:23:26.189 465b Reusing MANIFEST /home/nievl/premium-invitation/whatsapp-auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2026/01/03-18:16:38.304 3ccab Reusing MANIFEST /home/rezalh/premium-invitation/whatsapp-auth/session/Default/Local Storage/leveldb/MANIFEST-000001
+2026/01/03-18:16:38.306 3ccab Recovering log #3
+2026/01/03-18:16:38.307 3ccab Reusing old log /home/rezalh/premium-invitation/whatsapp-auth/session/Default/Local Storage/leveldb/000003.log 

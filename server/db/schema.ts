@@ -111,3 +111,12 @@ export const systemSettings = sqliteTable('system_setting', {
     value: text('value').notNull(),
     updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull()
 });
+
+export const waNotifications = sqliteTable('wa_notification', {
+    id: text('id').primaryKey(),
+    phoneNumber: text('phoneNumber').notNull(),
+    message: text('message').notNull(),
+    status: text('status').default('pending'), // pending, sent, failed
+    createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
+    updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull()
+});

@@ -10,7 +10,11 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
     experimental: {
-      tasks: true
+      tasks: true,
+      webhooks: true,
+    },
+    externals: {
+      external: ['bun:sqlite']
     }
   },
 
@@ -28,8 +32,11 @@ export default defineNuxtConfig({
     cssPath: '~/assets/css/tailwind.css',
   },
   runtimeConfig: {
+    betterAuthSecret: process.env.BETTER_AUTH_SECRET,
+    betterAuthUrl: process.env.BETTER_AUTH_URL,
     googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
+    internalApiSecret: process.env.INTERNAL_API_SECRET,
     public: {
       betterAuthUrl: process.env.BETTER_AUTH_URL || 'https://undangan.zalan.web.id',
       sentry: {
@@ -125,17 +132,7 @@ export default defineNuxtConfig({
   experimental: {
     appManifest: false
   },
-  nitro: {
-    preset: 'bun',
-    compressPublicAssets: false,
-    minify: false,
-    experimental: {
-      webhooks: true,
-    },
-    externals: {
-      external: ['bun:sqlite']
-    }
-  },
+
 
   routeRules: {
     // Assets in public/ folder (like favicons) - Temporary low cache for debugging

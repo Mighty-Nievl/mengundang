@@ -26,3 +26,7 @@ logs
 # Database
 sqlite.db
 
+# WhatsApp & Worker Local
+whatsapp-auth/
+utils-casaos/
+
