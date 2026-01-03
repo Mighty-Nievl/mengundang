@@ -5,5 +5,5 @@ pages_build_output_dir = ".output/public"
 [[d1_databases]]
 binding = "DB"
 database_name = "premium-invitation-db"
-database_id = "INSERT_YOUR_D1_DATABASE_ID_HERE"
+database_id = "bb43abd1-bf7c-4119-a685-7150b358f2eb"
 migrations_dir = "server/db/migrations"
