@@ -3,20 +3,41 @@ import * as schema from '../db/schema';
 
 let _db: any;
 
-export const db = new Proxy({} as any, {
-    get(target, prop) {
-        if (prop === '__isProxy') return true;
+get(target, prop) {
+    if (prop === '__isProxy') return true;
 
-        if (!_db) {
-            if (process.env.DB) {
-                _db = drizzle(process.env.DB, { schema });
-                console.log("✅ D1 Database Initialized via Proxy");
-            } else {
-                console.error("❌ DB Binding not found in process.env");
+    let targetDb = _db;
+
+    if (!targetDb) {
+        if (process.env.DB) {
+            // Local / Dev environment
+            _db = drizzle(process.env.DB, { schema });
+            targetDb = _db;
+            console.log("✅ D1 Database Initialized via Proxy (process.env)");
+        } else {
+            // Cloudflare Pages Environment (Per-request binding)
+            try {
+                const event = useEvent();
+                const binding = event.context.cloudflare?.env?.DB;
+                if (binding) {
+                    targetDb = drizzle(binding, { schema });
+                    // console.log("✅ D1 Database Initialized via Request Context");
+                } else {
+                    // console.error("❌ DB Binding not found in context");
+                }
+            } catch (e) {
+                // Outside of request context
             }
         }
-
-        const res = Reflect.get(_db || {}, prop);
-        return typeof res === 'function' ? res.bind(_db) : res;
     }
+
+    if (!targetDb) {
+        // console.error("❌ Database instance not available");
+        // Return a dummy to prevent immediate crash on property access, but methods will fail
+        return undefined;
+    }
+
+    const res = Reflect.get(targetDb, prop);
+    return typeof res === 'function' ? res.bind(targetDb) : res;
+}
 });

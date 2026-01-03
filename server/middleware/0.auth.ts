@@ -15,7 +15,8 @@ export default defineEventHandler(async (event) => {
     if (
         path.startsWith('/_nuxt') ||
         path.startsWith('/favicon') ||
-        path.startsWith('/api/webhooks')
+        path.startsWith('/api/webhooks') ||
+        path.startsWith('/api/internal')
     ) {
         return
     }
