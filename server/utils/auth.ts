@@ -4,16 +4,24 @@ import { db } from "./db";
 
 import * as schema from "../db/schema";
 
-const betterAuthUrl = process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || 'https://premium-invitation.pages.dev';
+// ... imports
 
 let _auth: any;
 
 export const auth = new Proxy({} as any, {
     get(target, prop) {
         if (!_auth) {
+            const config = useRuntimeConfig();
+
+            // Resolve variables lazily to ensure plugins have run
+            const secret = config.betterAuthSecret || process.env.NUXT_BETTER_AUTH_SECRET || process.env.BETTER_AUTH_SECRET;
+            const baseUrl = config.betterAuthUrl || process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || 'https://premium-invitation-v2.pages.dev';
+
+            console.log(`[Auth] Initializing. Secret Length: ${secret ? secret.length : 0}, URL: ${baseUrl}`);
+
             _auth = betterAuth({
-                secret: process.env.NUXT_BETTER_AUTH_SECRET || process.env.BETTER_AUTH_SECRET,
-                baseURL: process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || betterAuthUrl,
+                secret: secret,
+                baseURL: baseUrl,
                 database: drizzleAdapter(db, {
                     provider: "sqlite",
                     schema: {
@@ -47,7 +55,7 @@ export const auth = new Proxy({} as any, {
                     cookie: {
                         secure: process.env.NODE_ENV === "production",
                         sameSite: "lax",
-                        domain: (process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || betterAuthUrl) ? new URL(process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || betterAuthUrl).hostname : undefined
+                        domain: baseUrl ? new URL(baseUrl).hostname : undefined
                     }
                 },
                 socialProviders: {
