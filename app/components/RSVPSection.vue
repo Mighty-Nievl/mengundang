@@ -176,7 +176,7 @@ const getStatusBadgeClass = (status: string) => {
             <button 
               type="submit" 
               :disabled="isSubmitting || !form.name || !form.status"
-              class="w-full py-4 bg-stone-800 text-white rounded-lg font-serif font-bold tracking-wide shadow-xl hover:bg-black hover:shadow-2xl hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2"
+              class="w-full py-4 bg-gold-600 text-white rounded-lg font-serif font-bold tracking-wide shadow-xl hover:bg-gold-700 hover:shadow-2xl hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <span v-if="isSubmitting" class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
               {{ isSubmitting ? 'Mengirim...' : 'Kirim Konfirmasi' }}

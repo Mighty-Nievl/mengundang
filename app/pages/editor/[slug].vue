@@ -799,6 +799,14 @@ watch(form, (newVal) => {
                             <label class="label-input">Lokasi (Gedung/Masjid)</label>
                             <textarea v-model="form.events.akad.location" @blur="saveData(true)" class="input-field h-20"></textarea>
                         </div>
+                        <div>
+                            <label class="label-input">Tanggal & Jam (Sistem)</label>
+                            <input type="datetime-local" v-model="form.events.akad.isoDate" @blur="saveData(true)" class="input-field cursor-pointer" />
+                            <p class="text-[10px] text-stone-400 mt-1 italic">
+                                *Wajib diisi agar <strong>Countdown Mundur</strong> berfungsi dengan benar.
+                            </p>
+                        </div>
+                        </div>
                          <div>
                             <label class="label-input">Link Google Maps</label>
                             <input v-model="form.events.akad.mapUrl" placeholder="https://maps.google.com/..." @blur="saveData(true)" class="input-field" />
