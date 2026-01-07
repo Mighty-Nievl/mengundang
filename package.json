@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start:scheduler": "bun run worker.ts",
+    "deploy": "bun run build && npx wrangler pages deploy dist --project-name kami-undang",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {

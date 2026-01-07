@@ -52,7 +52,7 @@ const approveOrder = async (orderId: string) => {
     try {
         await $fetch(`/api/admin/orders/${orderId}/approve`, { method: 'POST' })
         setFeedback(orderId, 'Berhasil Disetujui! ✅')
-        fetchOrders()
+        setTimeout(() => fetchOrders(), 3000)
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menyetujui: ' + (e.statusMessage || e.message), type: 'danger' })
     } finally {
@@ -68,7 +68,7 @@ const doRejectOrder = async (orderId: string) => {
     try {
         await $fetch(`/api/admin/orders/${orderId}/reject`, { method: 'POST' })
         setFeedback(orderId, 'Berhasil Ditolak! 🗑️')
-        fetchOrders()
+        setTimeout(() => fetchOrders(), 3000)
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menolak: ' + (e.statusMessage || e.message), type: 'danger' })
     } finally {
