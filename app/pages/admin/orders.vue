@@ -7,7 +7,7 @@ definePageMeta({
 
 const isLoading = ref(false)
 const orders = ref<any[]>([])
-const processMsg = ref('')
+
 const confirmingRejectId = ref<string | null>(null)
 
 const { showConfirm, showAlert } = usePremiumModal()
@@ -30,9 +30,11 @@ const fetchOrders = async () => {
 }
 
 
-const showInlineSuccess = (msg: string) => {
-    processMsg.value = msg
-    setTimeout(() => { processMsg.value = '' }, 3000)
+const actionFeedback = ref<Record<string, string>>({})
+
+const setFeedback = (id: string, msg: string) => {
+    actionFeedback.value[id] = msg
+    setTimeout(() => { delete actionFeedback.value[id] }, 3000)
 }
 
 const approveOrder = async (orderId: string) => {
