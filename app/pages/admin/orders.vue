@@ -49,7 +49,7 @@ const approveOrder = async (orderId: string) => {
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/approve`, { method: 'POST' })
-        showInlineSuccess('Order berhasil disetujui!')
+        setFeedback(orderId, 'Berhasil Disetujui! ✅')
         fetchOrders()
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menyetujui: ' + (e.statusMessage || e.message), type: 'danger' })
@@ -65,7 +65,7 @@ const doRejectOrder = async (orderId: string) => {
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/reject`, { method: 'POST' })
-        showInlineSuccess('Order berhasil ditolak.')
+        setFeedback(orderId, 'Berhasil Ditolak! 🗑️')
         fetchOrders()
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menolak: ' + (e.statusMessage || e.message), type: 'danger' })
@@ -103,9 +103,7 @@ onMounted(() => {
         </NuxtLink>
       </div>
 
-      <div v-if="processMsg" class="p-4 bg-green-100 text-green-700 rounded-xl font-bold text-center animate-bounce">
-          {{ processMsg }}
-      </div>
+
 
       <!-- List -->
       <div class="bg-white rounded-2xl shadow-lg border border-stone-100 overflow-hidden">
@@ -150,7 +148,10 @@ onMounted(() => {
                         <span v-else class="text-stone-300">-</span>
                     </td>
                     <td class="p-4 text-right">
-                        <div class="flex justify-end gap-2" v-if="order.status === 'pending'">
+                        <div v-if="actionFeedback[order.id]" class="text-xs font-bold text-green-600 animate-pulse flex justify-end items-center h-full">
+                            {{ actionFeedback[order.id] }}
+                        </div>
+                        <div class="flex justify-end gap-2" v-else-if="order.status === 'pending'">
                             <!-- Normal Mode -->
                             <template v-if="confirmingRejectId !== order.id">
                                 <button @click="approveOrder(order.id)" :disabled="isLoading" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50" title="Approve">
