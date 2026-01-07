@@ -15,7 +15,7 @@ export const auth = new Proxy({} as any, {
 
             // Resolve variables lazily to ensure plugins have run
             const secret = config.betterAuthSecret || process.env.NUXT_BETTER_AUTH_SECRET || process.env.BETTER_AUTH_SECRET;
-            const baseUrl = config.betterAuthUrl || process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || 'https://premium-invitation-v2.pages.dev';
+            const baseUrl = config.betterAuthUrl || process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || 'https://kamiundang.site';
 
             console.log(`[Auth] Initializing. Secret Length: ${secret ? secret.length : 0}, URL: ${baseUrl}`);
 
