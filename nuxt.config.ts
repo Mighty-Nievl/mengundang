@@ -11,7 +11,6 @@ export default defineNuxtConfig({
     preset: 'cloudflare-pages',
     experimental: {
       tasks: true,
-      webhooks: true,
     },
     externals: {
       external: ['bun:sqlite']
@@ -23,9 +22,6 @@ export default defineNuxtConfig({
     sourceMapsUploadOptions: {
       enabled: false // Disable source map upload for now (revisit if needed)
     },
-    clientIntegrations: {
-      // Integration settings here
-    }
   },
 
   tailwindcss: {
@@ -38,7 +34,7 @@ export default defineNuxtConfig({
     googleClientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
     internalApiSecret: process.env.INTERNAL_API_SECRET,
     public: {
-      betterAuthUrl: process.env.BETTER_AUTH_URL || 'https://undangan.zalan.web.id',
+      betterAuthUrl: process.env.BETTER_AUTH_URL || 'https://kamiundang.site',
       sentry: {
         dsn: process.env.NUXT_PUBLIC_SENTRY_DSN || '',
         environment: process.env.NODE_ENV || 'development',
@@ -58,7 +54,7 @@ export default defineNuxtConfig({
       script: [
         {
           type: 'application/ld+json',
-          children: JSON.stringify({
+          innerHTML: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": "Undangan.",
@@ -78,15 +74,15 @@ export default defineNuxtConfig({
         },
         {
           type: 'application/ld+json',
-          children: JSON.stringify({
+          innerHTML: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "url": "https://undangan.zalan.web.id",
+            "url": "https://kamiundang.site",
             "name": "Undangan.",
             "description": "Platform pembuatan undangan pernikahan digital premium dengan desain eksklusif dan mewah.",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://undangan.zalan.web.id/search?q={search_term_string}",
+              "target": "https://kamiundang.site/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })
@@ -105,20 +101,20 @@ export default defineNuxtConfig({
         { property: 'og:site_name', content: 'Undangan.' },
         { property: 'og:title', content: 'Undangan Digital Pernikahan Mewah & Elegan #1' },
         { property: 'og:description', content: 'Ciptakan momen tak terlupakan dengan website undangan pernikahan digital paling premium di Indonesia.' },
-        { property: 'og:image', content: 'https://undangan.zalan.web.id/cover.png' },
-        { property: 'og:url', content: 'https://undangan.zalan.web.id' },
+        { property: 'og:image', content: 'https://kamiundang.site/cover.png' },
+        { property: 'og:url', content: 'https://kamiundang.site' },
         { property: 'og:locale', content: 'id_ID' },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Undangan: Wedding Invitation Premium' },
         { name: 'twitter:description', content: 'Platform undangan pernikahan digital premium Indonesia dengan fitur terlengkap.' },
-        { name: 'twitter:image', content: 'https://undangan.zalan.web.id/cover.png' }
+        { name: 'twitter:image', content: 'https://kamiundang.site/cover.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png?v=3' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=3' },
         { rel: 'apple-touch-icon', href: '/favicon.png?v=3' },
-        { rel: 'canonical', href: 'https://undangan.zalan.web.id' },
+        { rel: 'canonical', href: 'https://kamiundang.site' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         // Premium Fonts: Playfair Display (Serif) & Lato (Sans)
