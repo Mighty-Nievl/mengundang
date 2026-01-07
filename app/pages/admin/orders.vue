@@ -8,6 +8,7 @@ definePageMeta({
 const isLoading = ref(false)
 const orders = ref<any[]>([])
 const processMsg = ref('')
+const confirmingRejectId = ref<string | null>(null)
 
 const { showConfirm, showAlert } = usePremiumModal()
 
@@ -51,14 +52,9 @@ const approveOrder = async (orderId: string) => {
     }
 }
 
-const rejectOrder = async (orderId: string) => {
-    const confirmed = await showConfirm({
-        title: 'Tolak Order',
-        message: 'Yakin ingin menolak order ini? Aksi ini tidak dapat dibatalkan.',
-        type: 'danger',
-        confirmText: 'Ya, Tolak',
-        cancelText: 'Batal'
-    })
+const doRejectOrder = async (orderId: string) => {
+    // Confirmation is handled inline
+    confirmingRejectId.value = null // Close inline confirm
 
     if (!confirmed) return
 
@@ -151,12 +147,26 @@ onMounted(() => {
                     </td>
                     <td class="p-4 text-right">
                         <div class="flex justify-end gap-2" v-if="order.status === 'pending'">
-                            <button @click="approveOrder(order.id)" :disabled="isLoading" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50" title="Approve">
-                                <i class="fas fa-check"></i>
-                            </button>
-                            <button @click="rejectOrder(order.id)" :disabled="isLoading" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50" title="Reject">
-                                <i class="fas fa-times"></i>
-                            </button>
+                            <!-- Normal Mode -->
+                            <template v-if="confirmingRejectId !== order.id">
+                                <button @click="approveOrder(order.id)" :disabled="isLoading" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50" title="Approve">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button @click="confirmingRejectId = order.id" :disabled="isLoading" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50" title="Reject">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </template>
+                            
+                            <!-- Inline Verification Mode -->
+                            <template v-else>
+                                <span class="text-[10px] font-bold text-red-600 self-center mr-1 uppercase tracking-wide">Tolak?</span>
+                                <button @click="doRejectOrder(order.id)" :disabled="isLoading" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50">
+                                    Ya
+                                </button>
+                                <button @click="confirmingRejectId = null" class="bg-stone-200 text-stone-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-stone-300 transition-colors shadow-sm">
+                                    Batal
+                                </button>
+                            </template>
                         </div>
                         <span v-else class="text-xs text-stone-400 italic">Selesai</span>
                     </td>
