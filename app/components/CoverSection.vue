@@ -23,7 +23,7 @@ const openInvitation = () => {
 
 onMounted(() => {
   if (heroText.value) {
-    animate(heroText.value as Element, { transform: ['translateY(50px)', 'translateY(0px)'], opacity: [0, 1] } as any, { duration: 1.5, delay: 0.5, easing: "ease-out" } as any)
+    animate(heroText.value as Element, { transform: ['translateY(30px)', 'translateY(0px)'], opacity: [0, 1] } as any, { duration: 0.8, delay: 0.2, easing: "ease-out" } as any)
   }
 })
 </script>
@@ -44,7 +44,7 @@ onMounted(() => {
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-rose-200/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
     <div class="z-10 text-center p-8 md:p-12 max-w-2xl border border-white/40 bg-white/40 backdrop-blur-md rounded-3xl shadow-2xl mx-4 relative" :class="{'shadow-none bg-black/30 border-white/20': backgroundImage}">
-      <div ref="heroText" class="hero-text space-y-6"> 
+    <div ref="heroText" class="hero-text space-y-6 opacity-0"> 
         <div>
           <h2 class="text-[10px] md:text-xs uppercase tracking-[0.4em] font-sans mb-4" :class="backgroundImage ? 'text-stone-300' : 'text-stone-500'">The Wedding Of</h2>
           <h1 class="text-4xl md:text-6xl font-serif mb-2 leading-tight" :class="backgroundImage ? 'text-white' : 'text-stone-800'">
