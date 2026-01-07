@@ -58,6 +58,7 @@ export const auth = new Proxy({} as any, {
                         clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET || "",
                     }
                 },
+                trustedOrigins: [baseUrl, 'https://kamiundang.site'],
                 accountLinking: {
                     enabled: true
                 }
