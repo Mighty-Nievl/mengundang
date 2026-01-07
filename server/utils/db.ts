@@ -7,6 +7,8 @@ export const db = new Proxy({} as any, {
     get(target, prop) {
         if (prop === '__isProxy') return true;
 
+        let targetDb: any;
+
         if (process.env.DB) {
             // Local / Dev environment
             if (!_db) {
