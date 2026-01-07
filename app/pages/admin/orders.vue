@@ -30,10 +30,10 @@ const fetchOrders = async () => {
 }
 
 
-const actionFeedback = ref<Record<string, string>>({})
+const actionFeedback = ref<Record<string, { text: string, type: 'success' | 'danger' }>>({})
 
-const setFeedback = (id: string, msg: string) => {
-    actionFeedback.value[id] = msg
+const setFeedback = (id: string, text: string, type: 'success' | 'danger') => {
+    actionFeedback.value[id] = { text, type }
     setTimeout(() => { delete actionFeedback.value[id] }, 3000)
 }
 
@@ -51,7 +51,7 @@ const approveOrder = async (orderId: string) => {
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/approve`, { method: 'POST' })
-        setFeedback(orderId, 'Berhasil Disetujui! ✅')
+        setFeedback(orderId, 'DISETUJUI', 'success')
         setTimeout(() => fetchOrders(), 3000)
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menyetujui: ' + (e.statusMessage || e.message), type: 'danger' })
@@ -67,7 +67,7 @@ const doRejectOrder = async (orderId: string) => {
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/reject`, { method: 'POST' })
-        setFeedback(orderId, 'Berhasil Ditolak! 🗑️')
+        setFeedback(orderId, 'DITOLAK', 'danger')
         setTimeout(() => fetchOrders(), 3000)
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menolak: ' + (e.statusMessage || e.message), type: 'danger' })
@@ -150,8 +150,13 @@ onMounted(() => {
                         <span v-else class="text-stone-300">-</span>
                     </td>
                     <td class="p-4 text-right">
-                        <div v-if="actionFeedback[order.id]" class="text-xs font-bold text-green-600 animate-pulse flex justify-end items-center h-full">
-                            {{ actionFeedback[order.id] }}
+                        <div v-if="actionFeedback[order.id]" 
+                             :class="[
+                                'px-3 py-1.5 rounded-lg text-xs font-bold text-white shadow-sm flex items-center gap-2 justify-center transition-all duration-300',
+                                actionFeedback[order.id].type === 'success' ? 'bg-green-600' : 'bg-red-600'
+                             ]">
+                             <i :class="['fas', actionFeedback[order.id].type === 'success' ? 'fa-check' : 'fa-trash-alt']"></i>
+                             {{ actionFeedback[order.id].text }}
                         </div>
                         <div class="flex justify-end gap-2" v-else-if="order.status === 'pending'">
                             <!-- Normal Mode -->
