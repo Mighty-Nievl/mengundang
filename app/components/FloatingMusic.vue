@@ -20,11 +20,7 @@ const getYouTubeId = (url: string) => {
     return (match && match[2] && match[2].length === 11) ? match[2] : null;
 }
 
-onMounted(() => {
-    if (isYouTube.value) {
-        loadYouTubeAPI()
-    }
-})
+
 
 watch(() => props.url, (newUrl) => {
     if (isYouTube.value) {
@@ -155,6 +151,18 @@ const playMusic = () => {
            ytPlayer.value.playVideo()
            fadeInYouTube()
            isPlaying.value = true
+       } else {
+           // Lazy load API on first play attempt
+           loadYouTubeAPI()
+           // Create a one-time watcher to auto-play once ready
+           const checkInterval = setInterval(() => {
+               if (ytPlayer.value?.playVideo) {
+                   clearInterval(checkInterval)
+                   ytPlayer.value.playVideo()
+                   fadeInYouTube()
+                   isPlaying.value = true
+               }
+           }, 500)
        }
   } else {
       if(audioRef.value) {
