@@ -27,11 +27,4 @@ export default defineEventHandler(async (event) => {
         }
     }
 })
-console.error('[Debug-Auth] Error:', e)
-return {
-    status: 'error',
-    message: e.message,
-    stack: e.stack
-}
-    }
-})
+
