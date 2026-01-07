@@ -33,7 +33,7 @@ export const auth = new Proxy({} as any, {
                 }),
                 emailAndPassword: {
                     enabled: true,
-                    minLength: 8,
+                    minPasswordLength: 8,
                     maxPasswordLength: 32,
                 },
                 user: {
@@ -51,13 +51,7 @@ export const auth = new Proxy({} as any, {
                         bankAccountName: { type: "string", required: false }
                     }
                 },
-                advanced: {
-                    cookie: {
-                        secure: process.env.NODE_ENV === "production",
-                        sameSite: "lax",
-                        domain: baseUrl ? new URL(baseUrl).hostname : undefined
-                    }
-                },
+
                 socialProviders: {
                     google: {
                         clientId: process.env.NUXT_GOOGLE_CLIENT_ID || "",
