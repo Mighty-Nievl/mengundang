@@ -56,8 +56,6 @@ const doRejectOrder = async (orderId: string) => {
     // Confirmation is handled inline
     confirmingRejectId.value = null // Close inline confirm
 
-    if (!confirmed) return
-
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/reject`, { method: 'POST' })
