@@ -9,6 +9,7 @@ const isLoading = ref(false)
 const orders = ref<any[]>([])
 
 const confirmingRejectId = ref<string | null>(null)
+const confirmingApproveId = ref<string | null>(null)
 
 const { showConfirm, showAlert } = usePremiumModal()
 
@@ -37,16 +38,9 @@ const setFeedback = (id: string, text: string, type: 'success' | 'danger') => {
     setTimeout(() => { delete actionFeedback.value[id] }, 3000)
 }
 
-const approveOrder = async (orderId: string) => {
-    const confirmed = await showConfirm({
-        title: 'Setujui Order',
-        message: 'Yakin ingin menyetujui order ini? User akan mendapat notifikasi.',
-        type: 'success',
-        confirmText: 'Ya, Setujui',
-        cancelText: 'Batal'
-    })
-    
-    if (!confirmed) return
+const doApproveOrder = async (orderId: string) => {
+    // Confirmation handled inline
+    confirmingApproveId.value = null
 
     isLoading.value = true
     try {
@@ -153,15 +147,15 @@ onMounted(() => {
                         <div v-if="actionFeedback[order.id]" 
                              :class="[
                                 'px-3 py-1.5 rounded-lg text-xs font-bold text-white shadow-sm flex items-center gap-2 justify-center transition-all duration-300',
-                                actionFeedback[order.id].type === 'success' ? 'bg-green-600' : 'bg-red-600'
+                                actionFeedback[order.id]?.type === 'success' ? 'bg-green-600' : 'bg-red-600'
                              ]">
-                             <i :class="['fas', actionFeedback[order.id].type === 'success' ? 'fa-check' : 'fa-trash-alt']"></i>
-                             {{ actionFeedback[order.id].text }}
+                             <i :class="['fas', actionFeedback[order.id]?.type === 'success' ? 'fa-check' : 'fa-trash-alt']"></i>
+                             {{ actionFeedback[order.id]?.text }}
                         </div>
                         <div class="flex justify-end gap-2" v-else-if="order.status === 'pending'">
                             <!-- Normal Mode -->
-                            <template v-if="confirmingRejectId !== order.id">
-                                <button @click="approveOrder(order.id)" :disabled="isLoading" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50" title="Approve">
+                            <template v-if="confirmingRejectId !== order.id && confirmingApproveId !== order.id">
+                                <button @click="confirmingApproveId = order.id" :disabled="isLoading" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50" title="Approve">
                                     <i class="fas fa-check"></i>
                                 </button>
                                 <button @click="confirmingRejectId = order.id" :disabled="isLoading" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50" title="Reject">
@@ -169,13 +163,24 @@ onMounted(() => {
                                 </button>
                             </template>
                             
-                            <!-- Inline Verification Mode -->
-                            <template v-else>
+                            <!-- Inline Reject Mode -->
+                            <template v-else-if="confirmingRejectId === order.id">
                                 <span class="text-[10px] font-bold text-red-600 self-center mr-1 uppercase tracking-wide">Tolak?</span>
                                 <button @click="doRejectOrder(order.id)" :disabled="isLoading" class="bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50">
                                     Ya
                                 </button>
                                 <button @click="confirmingRejectId = null" class="bg-stone-200 text-stone-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-stone-300 transition-colors shadow-sm">
+                                    Batal
+                                </button>
+                            </template>
+
+                            <!-- Inline Approve Mode -->
+                            <template v-else-if="confirmingApproveId === order.id">
+                                <span class="text-[10px] font-bold text-green-600 self-center mr-1 uppercase tracking-wide">Setuju?</span>
+                                <button @click="doApproveOrder(order.id)" :disabled="isLoading" class="bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-green-700 transition-colors shadow-sm disabled:opacity-50">
+                                    Ya
+                                </button>
+                                <button @click="confirmingApproveId = null" class="bg-stone-200 text-stone-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-stone-300 transition-colors shadow-sm">
                                     Batal
                                 </button>
                             </template>
