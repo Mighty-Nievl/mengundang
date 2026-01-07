@@ -17,7 +17,12 @@ const { data: content, error } = await useFetch('/api/v2-content', {
 })
 
 if (error.value) {
-    throw createError({ statusCode: 404, statusMessage: 'Undangan tidak ditemukan' })
+    console.error('API Error Details:', {
+        statusCode: error.value.statusCode,
+        message: error.value.message,
+        data: error.value.data
+    })
+    // throw createError({ statusCode: 404, statusMessage: 'Undangan tidak ditemukan' })
 }
 
 const isDataComplete = computed(() => {
