@@ -83,7 +83,7 @@ const googleSignIn = () => {
                   <a href="#" class="text-[10px] font-bold text-gold-600 hover:text-gold-500 uppercase tracking-wider">Lupa Password?</a>
               </div>
               <div class="relative">
-                  <input v-model="password" :type="showPassword ? 'text' : 'password'" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all pr-12" placeholder="••••••••" required>
+                  <input v-model="password" :type="showPassword ? 'text' : 'password'" autocomplete="current-password" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3.5 text-stone-900 placeholder-stone-400 focus:border-gold-500 focus:ring-1 focus:ring-gold-500 outline-none transition-all pr-12" placeholder="••••••••" required>
                   <button type="button" @click="showPassword = !showPassword" class="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-900 transition-colors">
                       <i class="fas" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                   </button>
