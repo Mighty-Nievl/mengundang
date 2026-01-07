@@ -29,6 +29,12 @@ const fetchOrders = async () => {
     }
 }
 
+
+const showInlineSuccess = (msg: string) => {
+    processMsg.value = msg
+    setTimeout(() => { processMsg.value = '' }, 3000)
+}
+
 const approveOrder = async (orderId: string) => {
     const confirmed = await showConfirm({
         title: 'Setujui Order',
@@ -43,7 +49,7 @@ const approveOrder = async (orderId: string) => {
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/approve`, { method: 'POST' })
-        showAlert({ title: 'Berhasil', message: 'Order berhasil disetujui!', type: 'success' })
+        showInlineSuccess('Order berhasil disetujui!')
         fetchOrders()
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menyetujui: ' + (e.statusMessage || e.message), type: 'danger' })
@@ -59,7 +65,7 @@ const doRejectOrder = async (orderId: string) => {
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/reject`, { method: 'POST' })
-        showAlert({ title: 'Berhasil', message: 'Order berhasil ditolak.', type: 'info' })
+        showInlineSuccess('Order berhasil ditolak.')
         fetchOrders()
     } catch (e: any) {
         showAlert({ title: 'Gagal', message: 'Gagal menolak: ' + (e.statusMessage || e.message), type: 'danger' })
