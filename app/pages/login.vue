@@ -40,6 +40,18 @@ const googleSignIn = () => {
     const authClient = useAuthClient()
     authClient.signIn.social({ provider: 'google', callbackURL: '/dashboard' })
 }
+
+onMounted(async () => {
+    const authClient = useAuthClient()
+    const { data } = await authClient.getSession()
+    if (data?.user) {
+        if ((data.user as any).role === 'admin') {
+            await navigateTo('/admin')
+        } else {
+            await navigateTo('/dashboard')
+        }
+    }
+})
 </script>
 
 <template>

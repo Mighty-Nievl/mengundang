@@ -1,4 +1,6 @@
 import { drizzle } from 'drizzle-orm/d1';
+import { drizzle as drizzleSqlite } from 'drizzle-orm/better-sqlite3';
+import Database from 'better-sqlite3';
 import * as schema from '../db/schema';
 
 let _db: any;
@@ -9,15 +11,20 @@ export const db = new Proxy({} as any, {
 
         let targetDb: any;
 
-        if (process.env.DB) {
-            // Local / Dev environment
+        if (process.env.NODE_ENV === 'development') {
+            // Local / Dev environment (Use better-sqlite3 with ./sqlite.db)
             if (!_db) {
-                _db = drizzle(process.env.DB, { schema });
+                try {
+                    const sqlite = new Database('./sqlite.db');
+                    _db = drizzleSqlite(sqlite, { schema });
+                    // console.log('✅ Connected to local SQLite DB (better-sqlite3)');
+                } catch (err) {
+                    console.error('❌ Failed to connect to local sqlite.db:', err);
+                }
             }
             targetDb = _db;
         } else {
-            // Cloudflare Pages Environment (Per-request binding)
-            // Do NOT cache to _db, as bindings are tied to the specific request event
+            // Cloudflare Pages Environment (D1 Binding)
             try {
                 const event = useEvent();
                 const binding = event.context.cloudflare?.env?.DB;
@@ -31,7 +38,6 @@ export const db = new Proxy({} as any, {
 
         if (!targetDb) {
             // console.error("❌ Database instance not available");
-            // Return a dummy to prevent immediate crash on property access, but methods will fail
             return undefined;
         }
 

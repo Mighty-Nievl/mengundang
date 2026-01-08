@@ -11,13 +11,12 @@ let _auth: any;
 export const auth = new Proxy({} as any, {
     get(target, prop) {
         if (!_auth) {
-            const config = useRuntimeConfig();
+            // BRUTAL HARDCODING FOR PRODUCTION
+            const secret = process.env.BETTER_AUTH_SECRET || "63705fb569617799ee08a86db306af8746678e41322dd3ade5747a19d685da82"; // Fallback just in case
+            const isDev = process.env.NODE_ENV === "development";
+            const baseUrl = isDev ? "http://localhost:3000" : "https://kamiundang.site";
 
-            // Resolve variables lazily to ensure plugins have run
-            const secret = config.betterAuthSecret || process.env.NUXT_BETTER_AUTH_SECRET || process.env.BETTER_AUTH_SECRET;
-            const baseUrl = config.betterAuthUrl || process.env.NUXT_BETTER_AUTH_URL || process.env.BETTER_AUTH_URL || 'https://kamiundang.site';
-
-            console.log(`[Auth] Initializing. Secret Length: ${secret ? secret.length : 0}, URL: ${baseUrl}`);
+            console.log(`[Auth] Initializing. URL: ${baseUrl}`);
 
             _auth = betterAuth({
                 secret: secret,
@@ -58,7 +57,14 @@ export const auth = new Proxy({} as any, {
                         clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET || "",
                     }
                 },
-                trustedOrigins: [baseUrl, 'https://kamiundang.site'],
+                trustedOrigins: isDev ? ['http://localhost:3000', 'https://kamiundang.site'] : ['https://kamiundang.site'],
+                advanced: {
+                    defaultCookieAttributes: {
+                        secure: !isDev,
+                        sameSite: "lax",
+                        httpOnly: true
+                    }
+                },
                 accountLinking: {
                     enabled: true
                 }

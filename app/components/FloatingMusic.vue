@@ -182,7 +182,7 @@ defineExpose({ playMusic })
 </script>
 
 <template>
-  <div class="fixed bottom-6 right-6 z-40">
+  <div class="fixed bottom-24 right-6 z-40">
     <!-- Hidden YT Player -->
     <div v-if="isYouTube" id="yt-player-container" class="hidden"></div>
     

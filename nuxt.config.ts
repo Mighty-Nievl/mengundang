@@ -4,17 +4,37 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@sentry/nuxt/module'
+    '@sentry/nuxt/module',
+    '@nuxt/image',
+    '@nuxt/fonts',
+    '@nuxtjs/seo',
+    '@nuxt/icon'
   ],
+
+  // Site Config for SEO
+  site: {
+    url: 'https://kamiundang.site',
+    name: 'Undangan.',
+    description: 'Undangan Pernikahan Digital Premium & Elegan',
+    defaultLocale: 'id',
+  },
+
+  // Nuxt Fonts Config
+  fonts: {
+    families: [
+      { name: 'Playfair Display', provider: 'google' },
+      { name: 'Lato', provider: 'google' }
+    ]
+  },
 
   nitro: {
     preset: 'cloudflare-pages',
     experimental: {
       tasks: true,
     },
-    externals: {
-      external: ['bun:sqlite']
-    }
+    // externals: {
+    //   external: ['bun:sqlite']
+    // }
   },
 
   // Sentry Configuration
@@ -34,7 +54,7 @@ export default defineNuxtConfig({
     googleClientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
     internalApiSecret: process.env.INTERNAL_API_SECRET,
     public: {
-      betterAuthUrl: process.env.BETTER_AUTH_URL || 'https://kamiundang.site',
+      betterAuthUrl: process.env.BETTER_AUTH_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://kamiundang.site'),
       sentry: {
         dsn: process.env.NUXT_PUBLIC_SENTRY_DSN || '',
         environment: process.env.NODE_ENV || 'development',
@@ -117,8 +137,6 @@ export default defineNuxtConfig({
         { rel: 'canonical', href: 'https://kamiundang.site' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        // Premium Fonts: Playfair Display (Serif) & Lato (Sans)
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap' },
         // Icons: Font Awesome
         { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css' }
       ]

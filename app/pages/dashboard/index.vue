@@ -51,16 +51,19 @@ const logout = async () => {
 }
 
 const fetchInvitations = async () => {
+    isLoading.value = true
     try {
         const data = await $fetch<any[]>('/api/invitations')
         invitations.value = data.map(inv => ({
             ...inv,
             stats: {
-                views: inv.stats?.views || Math.floor(Math.random() * 20) + 5,
+                views: inv.stats?.views || 0,
                 wishes: inv.stats?.wishes || 0
             }
         }))
-    } catch(e) {}
+    } catch(e) {} finally {
+        isLoading.value = false
+    }
 }
 
 const isSlotFull = computed(() => {
@@ -200,37 +203,55 @@ const copyToClipboard = (slug: string) => {
 </script>
 
 <template>
-  <div v-if="isAuthenticated" class="min-h-screen bg-[#FDFCFB] font-sans text-stone-800 p-4 md:p-8 pb-32">
-    <div class="max-w-5xl mx-auto space-y-10">
+  <div class="min-h-screen bg-[#FDFCFB] font-sans text-stone-800 p-4 md:p-8 pb-32">
+    <!-- Skeleton Loading -->
+    <DashboardSkeleton v-if="isLoading" />
+
+    <!-- Main Dashboard -->
+    <div v-if="isAuthenticated && !isLoading" class="max-w-5xl mx-auto space-y-10">
       
       <!-- Top Bar: Cleaner & More Premium -->
-      <div class="flex flex-col md:flex-row justify-between items-center bg-white p-6 rounded-[2.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100 gap-6">
-        <div class="flex items-center gap-5">
-            <div class="w-14 h-14 bg-stone-50 rounded-2xl flex items-center justify-center text-2xl shadow-inner group overflow-hidden relative">
+      <div class="flex flex-col md:flex-row justify-between items-center bg-white p-6 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-stone-100 gap-6">
+        <div class="flex items-center gap-5 w-full md:w-auto">
+            <div class="w-14 h-14 bg-stone-50 rounded-2xl flex items-center justify-center text-2xl shadow-inner group overflow-hidden relative shrink-0">
                  <div class="absolute inset-0 bg-gold-400/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                  <i class="fas fa-layer-group text-stone-300 relative z-10 transition-colors group-hover:text-gold-500"></i>
             </div>
-            <div>
+            <div class="flex-1">
                 <h1 class="text-2xl font-serif font-bold text-stone-900 leading-tight">Wedding Atelier</h1>
                 <div class="flex items-center gap-2 mt-1">
-                     <span class="text-sm text-stone-400 font-medium">Welcome, {{ currentUser?.name || currentUser?.email?.split('@')[0] }}</span>
-                     <span class="bg-stone-900 text-gold-400 px-2.5 py-0.5 rounded-lg text-[10px] uppercase font-black tracking-widest border border-gold-500/20">
+                     <span class="text-sm text-stone-400 font-medium truncate max-w-[150px]">Welcome, {{ currentUser?.name || currentUser?.email?.split('@')[0] }}</span>
+                     <span class="bg-stone-900 text-gold-400 px-2.5 py-0.5 rounded-lg text-[10px] uppercase font-black tracking-widest border border-gold-500/20 shrink-0">
                         {{ currentUser?.plan || 'Standard' }}
                     </span>
                 </div>
             </div>
+            <!-- Mobile Menu Toggle -->
+            <div class="md:hidden relative">
+                 <button @click.stop="toggleDropdown('user', $event)" class="w-10 h-10 bg-stone-50 rounded-xl flex items-center justify-center text-stone-600">
+                    <i class="fas fa-bars"></i>
+                 </button>
+                 <!-- Mobile Dropdown -->
+                 <div v-if="activeDropdown === 'user'" class="absolute right-0 top-12 bg-white rounded-2xl shadow-2xl border border-stone-100 w-48 py-2 z-50 animate-slide-up origin-top-right">
+                    <NuxtLink to="/pricing" class="block px-4 py-3 hover:bg-stone-50 text-sm font-bold text-gold-600">
+                        <i class="fas fa-crown mr-2"></i> Upgrade
+                    </NuxtLink>
+                    <NuxtLink to="/referral" class="block px-4 py-3 hover:bg-stone-50 text-sm font-bold text-emerald-600">
+                        <i class="fas fa-gift mr-2"></i> Bonus
+                    </NuxtLink>
+                    <div class="h-px bg-stone-100 my-1"></div>
+                    <button @click="logout" class="block w-full text-left px-4 py-3 hover:bg-red-50 text-sm font-bold text-red-500">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Keluar
+                    </button>
+                 </div>
+            </div>
         </div>
         
-        <div class="flex gap-3 items-center w-full md:w-auto overflow-x-auto no-scrollbar py-1">
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex gap-3 items-center">
             <NuxtLink v-if="currentUser?.plan !== 'vvip'" to="/pricing" class="bg-gold-500 text-stone-900 px-6 py-3.5 rounded-2xl text-[13px] font-bold hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20 flex items-center gap-2 whitespace-nowrap active:scale-95">
                 <i class="fas fa-crown"></i> Upgrade
             </NuxtLink>
-            
-            <NuxtLink to="/referral" class="px-5 py-3.5 bg-emerald-50 text-emerald-600 rounded-2xl hover:bg-emerald-100 transition-all border border-emerald-100 text-sm font-bold flex items-center gap-2">
-                <i class="fas fa-gift"></i> Bonus
-            </NuxtLink>
-
-            <div class="w-px h-8 bg-stone-100 mx-2"></div>
             
             <button @click="logout" class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all active:scale-90" title="Keluar">
                 <i class="fas fa-sign-out-alt"></i>
@@ -240,114 +261,112 @@ const copyToClipboard = (slug: string) => {
 
      <!-- Active Invite List -->
       <div v-if="invitations.length > 0" class="space-y-8">
-          <div v-for="inv in invitations" :key="inv.slug" class="bg-white rounded-[3rem] p-8 border border-stone-100 shadow-[0_10px_40px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgb(212,175,55,0.08)] transition-all duration-500 group">
+          <div v-for="inv in invitations" :key="inv.slug" class="bg-white rounded-3xl p-8 border border-stone-100 shadow-[0_10px_40px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_50px_rgb(212,175,55,0.08)] transition-all duration-500 group relative overflow-hidden">
                 
-                <div class="flex flex-col lg:flex-row justify-between items-start gap-8">
-                    <div class="flex-1 space-y-4 w-full">
-                        <!-- Status & Date -->
-                        <div class="flex flex-wrap items-center gap-3">
-                             <div v-if="isDataComplete(inv)" class="bg-green-50 text-green-600 px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-widest border border-green-100 flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Siyapp Sebar
-                             </div>
-                             <div v-else class="bg-amber-50 text-amber-600 px-3 py-1 rounded-full text-[10px] uppercase font-black tracking-widest border border-amber-100">
-                                Draft / Belum Lengkap
-                             </div>
-                             <span v-if="inv.date" class="text-[10px] text-stone-400 font-bold bg-stone-50 px-3 py-1 rounded-full border border-stone-100">{{ inv.date }}</span>
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-8 relative z-10">
+                    <div class="flex-1 space-y-5 w-full">
+                        <!-- Head: Status & Tools -->
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <!-- Status Badges -->
+                            <div class="flex items-center gap-3">
+                                 <div v-if="isDataComplete(inv)" class="bg-emerald-50 text-emerald-600 px-3 py-1.5 rounded-xl text-[10px] uppercase font-black tracking-widest border border-emerald-100 flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Siap Disebar
+                                 </div>
+                                 <div v-else class="bg-stone-100 text-stone-500 px-3 py-1.5 rounded-xl text-[10px] uppercase font-black tracking-widest border border-stone-200 flex items-center gap-2">
+                                    <i class="fas fa-pen-ruler"></i> Draft Mode
+                                 </div>
+                                 <span v-if="inv.date" class="hidden md:inline-block text-[10px] text-stone-400 font-bold bg-stone-50 px-3 py-1.5 rounded-xl border border-stone-100">{{ inv.date }}</span>
+                            </div>
+
+                            <!-- Mini Tools (Moved Top Right) -->
+                            <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button @click="openModal('invite', inv)" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-stone-100 text-stone-400 transition-colors" title="Kelola Partner">
+                                    <i class="fas fa-user-plus text-xs"></i>
+                                </button>
+                                <button @click="openModal('rename', inv)" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-stone-100 text-stone-400 transition-colors" title="Ganti URL">
+                                    <i class="fas fa-link text-xs"></i>
+                                </button>
+                                <button @click="openModal('delete', inv)" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-stone-300 hover:text-red-500 transition-colors" title="Hapus">
+                                    <i class="fas fa-trash-alt text-xs"></i>
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Main Info -->
                         <div>
-                            <h3 class="text-3xl font-serif font-black text-stone-900 group-hover:text-gold-600 transition-colors">
+                            <h3 class="text-4xl font-serif font-black text-stone-900 group-hover:text-gold-600 transition-colors">
                                 {{ inv.groom || 'Groom' }} & {{ inv.bride || 'Bride' }}
                             </h3>
-                            <div class="flex items-center gap-2 mt-2">
-                                <a :href="`/${inv.slug}`" target="_blank" class="text-sm text-stone-400 font-medium hover:text-gold-500 flex items-center gap-2 group/link">
+                            <div class="flex items-center gap-2 mt-3">
+                                <a :href="`/${inv.slug}`" target="_blank" class="text-sm text-stone-400 font-bold hover:text-gold-500 flex items-center gap-2 group/link bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-100 transition-colors">
+                                    <i class="fas fa-globe text-xs opacity-50"></i>
                                     <span class="truncate max-w-[200px] md:max-w-none">{{ origin.replace('https://', '') }}/{{ inv.slug }}</span>
-                                    <i class="fas fa-external-link-alt text-[10px] opacity-0 group-hover/link:opacity-100 transition-opacity"></i>
                                 </a>
-                                <button @click="copyToClipboard(inv.slug)" class="w-7 h-7 flex items-center justify-center rounded-lg bg-stone-50 text-stone-400 hover:bg-gold-500 hover:text-white transition-all text-[10px]">
+                                <button @click="copyToClipboard(inv.slug)" class="w-8 h-8 flex items-center justify-center rounded-lg bg-stone-50 text-stone-400 hover:bg-gold-500 hover:text-white transition-all text-xs border border-stone-100">
                                     <i class="fas fa-copy"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <!-- Premium Stats Grid -->
-                        <div class="flex items-center gap-6 pt-2">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-stone-50 rounded-xl flex items-center justify-center text-stone-400 border border-stone-100 group-hover:border-gold-200 transition-colors">
-                                    <i class="fas fa-users-viewfinder text-sm"></i>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-black text-stone-300 uppercase tracking-tighter">Views</p>
-                                    <p class="text-sm font-bold text-stone-700 leading-none">{{ inv.stats?.views || 0 }}</p>
-                                </div>
+                        <!-- Compact Stats -->
+                        <div class="flex items-center gap-6 pt-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-eye text-stone-300 text-xs"></i>
+                                <span class="text-xs font-bold text-stone-600">{{ inv.views || 0 }} Views</span>
                             </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center text-rose-300 border border-rose-100 group-hover:border-rose-200 transition-colors">
-                                    <i class="fas fa-heart text-sm"></i>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-black text-rose-200 uppercase tracking-tighter">Ucapan</p>
-                                    <p class="text-sm font-bold text-stone-700 leading-none">{{ inv.stats?.wishes || 0 }}</p>
-                                </div>
+                            <div class="flex items-center gap-2">
+                                <i class="fas fa-heart text-stone-300 text-xs"></i>
+                                <span class="text-xs font-bold text-stone-600">{{ inv.wishes || 0 }} Ucapan</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Primary Actions: High Hierarchy -->
-                    <div class="w-full lg:w-72 space-y-3">
-                        <NuxtLink :to="`/dashboard/guests?slug=${inv.slug}`" class="w-full bg-gold-500 text-stone-900 p-4 rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-gold-400 transition-all shadow-xl shadow-gold-500/10 flex items-center justify-center gap-3 active:scale-95">
-                            <i class="fas fa-paper-plane text-lg translate-x-0.5 -translate-y-0.5"></i> Kirim Undangan
-                        </NuxtLink>
-                        
-                        <div class="grid grid-cols-2 gap-3">
-                            <NuxtLink :to="`/editor/${inv.slug}`" class="bg-stone-900 text-white p-4 rounded-2xl text-xs font-bold hover:bg-stone-800 transition-all flex flex-col items-center gap-2 active:scale-95 border border-stone-800">
-                                <i class="fas fa-edit text-gold-400"></i> Edit Isi
+                    <!-- Right Side: Action Center -->
+                    <div class="w-full lg:w-80 space-y-3 mt-4 lg:mt-0">
+                        <!-- Dynamic Primary Action -->
+                        <div v-if="isDataComplete(inv)">
+                            <NuxtLink :to="`/dashboard/guests?slug=${inv.slug}`" class="w-full bg-gold-500 text-stone-900 p-4 rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-gold-400 transition-all shadow-xl shadow-gold-500/10 flex items-center justify-center gap-3 active:scale-95 group/btn">
+                                <i class="fas fa-paper-plane text-lg group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-transform"></i> 
+                                Kirim Undangan
                             </NuxtLink>
-                            <a :href="`/${inv.slug}`" target="_blank" class="bg-white text-stone-900 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 border border-stone-200 active:scale-95">
+                        </div>
+                        <div v-else>
+                            <NuxtLink :to="`/editor/${inv.slug}`" class="w-full bg-stone-900 text-white p-4 rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-black/10 flex items-center justify-center gap-3 active:scale-95 group/btn">
+                                <i class="fas fa-pencil-alt text-gold-500"></i> 
+                                Lanjutkan Edit
+                            </NuxtLink>
+                        </div>
+                        
+                        <!-- Secondary Grid -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <NuxtLink v-if="isDataComplete(inv)" :to="`/editor/${inv.slug}`" class="bg-white text-stone-600 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 active:scale-95 border border-stone-200">
+                                <i class="fas fa-edit text-stone-400"></i> Edit Isi
+                            </NuxtLink>
+                            <a :href="`/${inv.slug}`" target="_blank" class="bg-white text-stone-600 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 border border-stone-200 active:scale-95 col-span-full md:col-span-1" :class="!isDataComplete(inv) ? 'md:col-span-full' : ''">
                                 <i class="fas fa-eye text-stone-400"></i> Preview
                             </a>
-                        </div>
-
-                        <!-- Secondary Controls -->
-                        <div class="flex items-center justify-between px-2 pt-2">
-                             <div class="flex gap-1">
-                                <button @click="openModal('invite', inv)" class="w-9 h-9 flex items-center justify-center rounded-xl bg-stone-50 text-stone-400 hover:bg-stone-200 transition-colors" title="Kelola Partner">
-                                    <i class="fas fa-user-plus text-xs"></i>
-                                </button>
-                                <button @click="openModal('rename', inv)" class="w-9 h-9 flex items-center justify-center rounded-xl bg-stone-50 text-stone-400 hover:bg-stone-200 transition-colors" title="Ganti Alamat URL">
-                                    <i class="fas fa-link text-xs"></i>
-                                </button>
-                             </div>
-                             <button @click="openModal('delete', inv)" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-300 hover:bg-red-500 hover:text-white transition-all" title="Hapus Permanen">
-                                <i class="fas fa-trash-alt text-xs"></i>
-                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Actionable Smart Alert -->
-                <div v-if="!isDataComplete(inv)" class="mt-8 bg-[#FFF9E7] border border-amber-100 rounded-[2rem] p-6 lg:p-8 flex flex-col md:flex-row gap-6 items-center justify-between">
-                    <div class="flex gap-5 items-start text-center md:text-left">
-                        <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-amber-600 shrink-0 mx-auto md:mx-0">
-                            <i class="fas fa-triangle-exclamation text-2xl"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-black text-amber-900 uppercase tracking-widest text-[11px] mb-1">Persiapan Belum Selesai</h4>
-                            <p class="text-sm text-amber-800 font-medium leading-relaxed max-w-sm">
-                                Mempelai & Lokasi Akad belum diisi. Lengkapi dulu agar tampilan di WhatsApp terlihat cantik.
-                            </p>
-                        </div>
+                <!-- Dark System Alert (Replaces Amber Box) -->
+                <div v-if="!isDataComplete(inv)" class="mt-6 bg-stone-50 border border-stone-100 rounded-2xl p-4 flex gap-4 items-center relative z-10 group-hover:bg-amber-50/50 group-hover:border-amber-100 transition-colors">
+                    <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0 shadow-sm text-amber-500 text-lg">
+                        <i class="fas fa-triangle-exclamation"></i>
                     </div>
-                    <NuxtLink :to="`/editor/${inv.slug}`" class="bg-amber-600 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-amber-700 transition-all shadow-lg shadow-amber-600/20 active:scale-95 whitespace-nowrap">
-                        Lengkapi Data Sekarang
+                    <div class="flex-1">
+                        <p class="text-[11px] font-black text-stone-400 uppercase tracking-wider mb-0.5">Sistem Deteksi</p>
+                        <p class="text-xs font-bold text-stone-600">Data mempelai belum lengkap.</p>
+                    </div>
+                    <NuxtLink :to="`/editor/${inv.slug}`" class="text-[10px] font-black uppercase underline text-stone-900 hover:text-gold-600">
+                        Fix Now
                     </NuxtLink>
                 </div>
           </div>
       </div>
 
        <!-- Creative Creation Area -->
-       <div v-if="!isSlotFull" class="bg-stone-900 p-10 rounded-[3.5rem] shadow-2xl relative overflow-hidden group">
+       <div v-if="!isSlotFull" class="bg-stone-900 p-10 rounded-3xl shadow-2xl relative overflow-hidden group">
         <!-- Abstract Background -->
         <div class="absolute -top-24 -right-24 w-80 h-80 bg-gold-400/5 rounded-full blur-[80px] group-hover:bg-gold-500/10 transition-all duration-1000"></div>
         <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-stone-800/20 rounded-full blur-[80px]"></div>
@@ -363,7 +382,7 @@ const copyToClipboard = (slug: string) => {
                 <p class="text-stone-400 text-base max-w-md mx-auto lg:mx-0 leading-relaxed font-medium">Buat link khusus yang mudah diingat untuk hari bahagia Anda nanti.</p>
             </div>
             
-            <div class="w-full lg:w-auto bg-white/5 p-2 rounded-[2.5rem] border border-white/10 backdrop-blur-md">
+            <div class="w-full lg:w-auto bg-white/5 p-2 rounded-3xl border border-white/10 backdrop-blur-md">
                 <form @submit.prevent="createInvitation" class="flex flex-col sm:flex-row gap-2">
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-6 flex items-center pointer-events-none">
@@ -390,7 +409,7 @@ const copyToClipboard = (slug: string) => {
       
        <!-- Empty Slot Reached -->
         <div v-if="invitations.length === 0 && isSlotFull" class="text-center py-24 space-y-6">
-             <div class="w-24 h-24 bg-stone-50 rounded-[2.5rem] shadow-inner flex items-center justify-center mx-auto text-stone-200 text-4xl">
+             <div class="w-24 h-24 bg-stone-50 rounded-3xl shadow-inner flex items-center justify-center mx-auto text-stone-200 text-4xl">
                 <i class="fas fa-lock"></i>
             </div>
             <div class="space-y-2">

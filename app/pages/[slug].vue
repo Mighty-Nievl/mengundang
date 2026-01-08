@@ -7,22 +7,24 @@ import GallerySection from '~/components/GallerySection.vue'
 import GiftSection from '~/components/GiftSection.vue'
 import RSVPSection from '~/components/RSVPSection.vue'
 import CountdownSection from '~/components/CountdownSection.vue'
-import { animate, stagger } from 'motion'
+import QuoteSection from '~/components/QuoteSection.vue'
+import LoveStorySection from '~/components/LoveStorySection.vue'
+import FloatingNav from '~/components/FloatingNav.vue'
 
 const route = useRoute()
 const slug = route.params.slug as string
-
-const { data: content, error } = await useFetch('/api/v2-content', {
-    params: { slug, v: Date.now() }
+const { data: content, error, refresh: refreshNuxtData } = await useFetch('/api/v2-content', {
+    key: `invitation-${slug}`,
+    params: { slug },
+    server: false // Force Client-Side Fetch to avoid SSR loop
 })
 
 if (error.value) {
     console.error('API Error Details:', {
-        statusCode: error.value.statusCode,
-        message: error.value.message,
-        data: error.value.data
+        statusCode: error.value?.statusCode,
+        message: error.value?.message,
+        data: error.value?.data
     })
-    // throw createError({ statusCode: 404, statusMessage: 'Undangan tidak ditemukan' })
 }
 
 const isDataComplete = computed(() => {
@@ -62,155 +64,137 @@ const handleOpen = () => {
 const isOpened = ref(route.query.preview === 'true')
 const activeSection = ref(0)
 const scrollContainer = ref<HTMLElement | null>(null)
-const audioPlayer = ref(null)
+const audioPlayer = ref<any>(null)
+
+// Custom Smooth Scroll
+const smoothScrollTo = (element: HTMLElement, target: number, duration: number) => {
+    const start = element.scrollTop
+    const change = target - start
+    const startTime = performance.now()
+
+    const animateScroll = (currentTime: number) => {
+        const timeElapsed = currentTime - startTime
+        
+        if (timeElapsed < duration) {
+             // easeInOutQuad
+            let val = timeElapsed / (duration / 2)
+            if (val < 1) {
+                element.scrollTop = start + (change / 2) * val * val
+            } else {
+                val--
+                element.scrollTop = start - (change / 2) * (val * (val - 2) - 1)
+            }
+            requestAnimationFrame(animateScroll)
+        } else {
+            element.scrollTop = target
+        }
+    }
+
+    requestAnimationFrame(animateScroll)
+}
 
 // Scroll to specific section index
 const scrollToSection = (index: number) => {
-    if (scrollContainer.value) {
-        const height = window.innerHeight
-        scrollContainer.value.scrollTo({
-            top: index * height,
-            behavior: 'smooth'
-        })
-    }
-}
-
-// Handle scroll event to update active dot
-const handleScroll = (e: Event) => {
-    const target = e.target as HTMLElement
-    const height = window.innerHeight
-    const scrollTop = target.scrollTop
+    // Map index to section ID
+    const sectionIds = ['header', 'countdown', 'groom', 'bride', 'events', 'gallery', 'gift', 'rsvp']
+    const id = sectionIds[index]
     
-    // Calculate current section index based on scroll position
-    const index = Math.round(scrollTop / height)
-    if (activeSection.value !== index) {
-        activeSection.value = index
-    }
-}
-
-onMounted(() => {
-    // 1. Check for tab=galeri
-    if (route.query.tab === 'galeri') {
-        isOpened.value = true
-        // Allow time for DOM to render before scrolling
-        nextTick(() => {
-            // Gallery is at index 6 (based on 0-index in template v-for)
-            // But let's verify visual index:
-            // 0: Header, 1: Countdown, 2: Groom, 3: Bride, 4: Events, 5: Gallery
-            // Wait, template has:
-            // 1. Header (Index 0)
-            // 2. Countdown (Index 1)
-            // 3. Groom (Index 2)
-            // 4. Bride (Index 3)
-            // 5. Event Details (Index 4)
-            // 6. Gallery (Index 5)
-             scrollToSection(5)
-        })
-    }
-    
-    // 2. Real-time Preview Listener
-    window.addEventListener('message', (event) => {
-        if (event.data?.type === 'PREVIEW_UPDATE' && event.data?.data) {
-             // Deep merge or direct assignment depending on structure
-             // For simplicity in this stack, we direct assign specific keys or the whole object if compatible
-             const newData = event.data.data
-             if (content.value) {
-                 // Update known sections to trigger reactivity
-                 if(newData.hero) content.value.hero = newData.hero
-                 if(newData.cover) content.value.cover = newData.cover
-                 if(newData.groom) content.value.groom = newData.groom
-                 if(newData.bride) content.value.bride = newData.bride
-                 if(newData.events) content.value.events = newData.events
-                 if(newData.gallery) content.value.gallery = newData.gallery
-                 if(newData.gift) content.value.gift = newData.gift
-                 if(newData.rsvp) content.value.rsvp = newData.rsvp
-                 if(newData.meta) content.value.meta = newData.meta
-                 if(newData.music) content.value.music = newData.music
-             }
+    if (id) {
+        const el = document.getElementById(id)
+        if (el && scrollContainer.value) {
+           // Calculate target position relative to container
+           const top = el.offsetTop
+           smoothScrollTo(scrollContainer.value, top, 1200) // 1.2s duration for premium feel
+           activeSection.value = index
         }
-    })
+    }
+}
+
+const handleScroll = () => {
+    if (!scrollContainer.value) return
+    
+    const scrollPosition = scrollContainer.value.scrollTop + (window.innerHeight / 2)
+    const sectionIds = ['header', 'countdown', 'groom', 'bride', 'events', 'gallery', 'gift', 'rsvp']
+    
+    for (let i = 0; i < sectionIds.length; i++) {
+        const el = document.getElementById(sectionIds[i]!)
+        if (el) {
+            const { offsetTop, offsetHeight } = el
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                activeSection.value = i
+                break
+            }
+        }
+    }
+}
+
+
+
+// ... (keep existing onMounted) ...
+onMounted(() => {
+    // Initial check
+    handleScroll()
+
+    // Setup Animation Observer
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.15
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible')
+                observer.unobserve(entry.target) // Only animate once
+            }
+        })
+    }, observerOptions)
+
+    // Observe all sections with .reveal-on-scroll class
+    // Short delay to ensure sections are rendered
+    setTimeout(() => {
+        const elements = document.querySelectorAll('.reveal-on-scroll')
+        elements.forEach(el => observer.observe(el))
+    }, 100)
 })
 
 useHead({
-  title: computed(() => content.value?.meta?.title || 'Wedding Invitation'),
-  meta: [
-    { name: 'referrer', content: 'no-referrer' },
-    { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-    { name: 'description', content: computed(() => content.value?.meta?.description || '') },
-    // Open Graph
-    { property: 'og:title', content: computed(() => content.value?.meta?.title || 'Wedding Invitation') },
-    { property: 'og:description', content: computed(() => content.value?.meta?.description || '') },
-    { property: 'og:image', content: computed(() => {
-        let img = content.value?.meta?.image || content.value?.groom?.image || ''
-        const ver = content.value?.meta?.updatedAt || Date.now()
-        
-        // Ensure Absolute URL for WhatsApp/FB
-        if (img && !img.startsWith('http')) {
-             try {
-                const url = useRequestURL()
-                img = `${url.origin}${img}`
-             } catch (e) { /* Fallback if client-side/error */ }
-        }
-        
-        return img ? `${img}?v=${ver}` : ''
-    })},
-    { property: 'og:type', content: 'website' },
-    { property: 'fb:app_id', content: '966242223397117' },
-    // Twitter Card
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: computed(() => content.value?.meta?.title || '') },
-    { name: 'twitter:description', content: computed(() => content.value?.meta?.description || '') },
-    { name: 'twitter:image', content: computed(() => {
-        let img = content.value?.meta?.image || content.value?.groom?.image || ''
-        const ver = content.value?.meta?.updatedAt || Date.now()
-        
-         if (img && !img.startsWith('http')) {
-             try {
-                const url = useRequestURL()
-                img = `${url.origin}${img}`
-             } catch (e) { }
-        }
-
-        return img ? `${img}?v=${ver}` : ''
-    })},
-  ],
+    title: computed(() => `The Wedding of ${content.value?.hero?.groomNickname || 'Groom'} & ${content.value?.hero?.brideNickname || 'Bride'}`)
 })
 </script>
 
-
-
-
 <template>
   <div class="page-wrapper-root" data-theme="original"> <!-- Root Wrapper to fix Fragment/End-Tag Issues -->
-      <div v-if="content" class="min-h-screen w-full relative bg-stone-50 font-sans" :class="{ 'overflow-hidden h-screen': !isOpened }">
+      <div v-if="content" class="h-screen w-full relative bg-stone-50 font-sans overflow-hidden">
         
         <!-- 0. INCOMPLETE DATA WARNING (FULL PAGE) -->
-        <div v-if="!isDataComplete" class="fixed inset-0 z-[100] bg-stone-50 flex items-center justify-center p-6 text-center">
+        <div v-if="!isDataComplete" class="fixed inset-0 z-[100] bg-stone-950 flex items-center justify-center p-6 text-center">
             <div class="max-w-md space-y-6">
-                <div class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto text-5xl mb-6">
-                    <i class="fas fa-hammer"></i>
+                <div class="w-24 h-24 bg-stone-900 border border-stone-800 text-gold-500 rounded-2xl flex items-center justify-center mx-auto text-4xl mb-6 shadow-2xl shadow-black/50">
+                    <i class="fas fa-compass-drafting animate-pulse"></i>
                 </div>
                 
                 <!-- OWNER VIEW -->
                 <div v-if="isOwnerOrPartner">
-                   <h2 class="text-3xl font-serif font-bold text-stone-800 mb-2">Halo, Kak!</h2>
-                   <p class="text-stone-500">Undangan ini belum lengkap datanya. Tamu tidak bisa melihat undangan ini sampai kakak melengkapinya di dashboard.</p>
+                   <h2 class="text-3xl font-serif font-bold text-white mb-2">Halo, Kak!</h2>
+                   <p class="text-stone-400 text-sm leading-relaxed">Undangan ini belum lengkap datanya. Tamu tidak bisa melihat undangan ini sampai kakak melengkapinya di dashboard.</p>
                    
-                    <div class="pt-6 mt-6 border-t border-stone-200">
-                        <NuxtLink to="/dashboard" class="inline-flex items-center gap-2 bg-gold-500 text-stone-900 px-8 py-3 rounded-lg font-bold hover:bg-gold-400 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    <div class="pt-8 mt-6 border-t border-stone-800">
+                        <NuxtLink to="/dashboard" class="inline-flex items-center gap-3 bg-white text-stone-900 px-8 py-4 rounded-xl font-bold hover:bg-gold-500 transition-all shadow-lg hover:shadow-gold-500/20 active:scale-95 text-xs uppercase tracking-widest">
                             <i class="fas fa-edit"></i>
-                            Lengkapi Data Sekarang
+                            Lengkapi Data
                         </NuxtLink>
                     </div>
                 </div>
 
                 <!-- GUEST VIEW -->
                 <div v-else>
-                   <h2 class="text-3xl font-serif font-bold text-stone-800 mb-2">Undangan Belum Siap</h2>
-                   <p class="text-stone-500">Undangan ini sedang dalam proses pembuatan dan belum dipublikasikan oleh pemilik.</p>
+                   <h2 class="text-3xl font-serif font-bold text-white mb-2">Segera Hadir</h2>
+                   <p class="text-stone-400 text-sm leading-relaxed">Undangan ini sedang dalam proses sentuhan akhir untuk menampilkan momen terbaik.</p>
                    
-                   <div class="pt-6 mt-6 border-t border-stone-200 text-xs text-stone-400 italic">
-                        Silakan kunjungi halaman ini beberapa saat lagi.
+                   <div class="pt-8 mt-6 border-t border-stone-800 text-[10px] text-stone-600 uppercase tracking-widest">
+                        Check Back Soon
                    </div>
                 </div>
             </div>
@@ -222,76 +206,89 @@ useHead({
             <!-- CHECK: Removed isOpened logic wrapper from here, applied directly to CoverSection logic -->
             
             <!-- MAIN CONTENT (Full Page Scroll Container) -->
-            <!-- h-screen + overflow-y-scroll + snap-y mandatory creates the snap effect -->
+            <!-- Render always so it is visible behind the cover when it slides up -->
             <div 
-            v-if="!isOpened"
-            class="hidden"
-            ></div>
-            
-            <div 
-            v-else
             @scroll="handleScroll"
             ref="scrollContainer"
             class="h-full w-full overflow-y-auto scroll-smooth bg-stone-50 md:px-0 relative no-scrollbar"
             >
             
             <!-- 1. Header Section -->
+            <!-- 1. Header Section -->
             <section 
+                id="header"
                 class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4 relative overflow-hidden transition-all duration-700"
             >
                 <!-- Background Image Fix for Referrer Policy -->
                 <div v-if="content?.hero?.backgroundImage" class="absolute inset-0">
-                    <img :src="content.hero.backgroundImage" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                    <img :src="content.hero.backgroundImage" class="w-full h-full object-cover grayscale-[20%]" referrerpolicy="no-referrer" />
                 </div>
                 <!-- Optional Overlay for Contrast -->
                 <div v-if="content?.hero?.backgroundImage" class="absolute inset-0 bg-black/40 z-0"></div>
 
-                <div class="text-center space-y-4 relative z-10" :class="{'text-white': content?.hero?.backgroundImage}">
-                    <h3 class="font-sans text-xs tracking-[0.3em] font-bold uppercase transition-colors" :class="content?.hero?.backgroundImage ? 'text-gold-200' : 'text-gold-600'">Wedding Invitation</h3>
-                    <h2 class="font-serif text-5xl leading-tight transition-colors" :class="content?.hero?.backgroundImage ? 'text-white' : 'text-stone-800'">
+                <div class="text-center space-y-6 relative z-10" :class="{'text-white': content?.hero?.backgroundImage}">
+                    <h3 class="font-serif italic text-xl transition-colors opacity-90" :class="content?.hero?.backgroundImage ? 'text-gold-200' : 'text-gold-600'">The Wedding of</h3>
+                    <h2 class="font-serif text-6xl md:text-7xl leading-tight transition-colors" :class="content?.hero?.backgroundImage ? 'text-white' : 'text-stone-900'">
                     {{ content?.hero?.groomNickname }} <br> 
-                    <span class="text-3xl" :class="content?.hero?.backgroundImage ? 'text-stone-300' : 'text-stone-400'">&amp;</span> <br> 
+                    <span class="text-4xl" :class="content?.hero?.backgroundImage ? 'text-stone-300' : 'text-stone-300'">&amp;</span> <br> 
                     {{ content?.hero?.brideNickname }}
                     </h2>
-                    <p class="italic transition-colors" :class="content?.hero?.backgroundImage ? 'text-stone-200' : 'text-stone-500'">{{ content?.hero?.date }}</p>
+                    <div class="w-12 h-0.5 bg-gold-500 mx-auto opacity-70"></div>
+                    <p class="font-bold uppercase tracking-[0.2em] text-xs transition-colors" :class="content?.hero?.backgroundImage ? 'text-stone-200' : 'text-stone-500'">{{ content?.hero?.date }}</p>
                 </div>
                 
+                <!-- Scroll Hint -->
+                <button @click="scrollToSection(1)" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 animate-bounce cursor-pointer group">
+                    <span class="text-[9px] uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">Scroll</span>
+                    <i class="fas fa-chevron-down text-white/70 group-hover:text-white text-lg"></i>
+                </button>
+
                 <!-- UX: Elegant Gradient Overlay -->
-                <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stone-50 to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-stone-900/50 to-transparent z-10 pointer-events-none" v-if="content?.hero?.backgroundImage"></div>
             </section>
             
             <!-- 2. Countdown Section -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-100 px-4">
+            <section id="countdown" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-100 px-4">
                 <CountdownSection :target-date="content?.events?.akad?.isoDate || new Date().toISOString()"></CountdownSection>
             </section>
 
+             <!-- 2.5 Quote Section -->
+            <section id="quote" v-if="content?.quote?.content || content?.quote?.arabic" class="min-h-[50vh] w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
+                <QuoteSection :quote="content?.quote"></QuoteSection>
+            </section>
+            
+            <!-- 2.7 Love Story Section -->
+            <section id="story" v-if="content?.story?.length > 0" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-0">
+                <LoveStorySection :stories="content?.story"></LoveStorySection>
+            </section>
+
             <!-- 3. Groom Profile -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
+            <section id="groom" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
                 <SingleProfile :profile="content?.groom || {}" title="The Groom"></SingleProfile>
             </section>
 
             <!-- 4. Bride Profile -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-50 px-4">
+            <section id="bride" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-50 px-4">
                 <SingleProfile :profile="content?.bride || {}" title="The Bride"></SingleProfile>
             </section>
 
             <!-- 5. Event Details -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-100 px-4">
+            <section id="events" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-100 px-4">
                 <EventDetails :events="content?.events || {}"></EventDetails>
             </section>
             
             <!-- 6. Gallery -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
+            <section id="gallery" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll">
                 <GallerySection :images="content?.gallery"></GallerySection>
             </section>
             
             <!-- 7. Gift -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-100 px-4">
+            <section id="gift" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-100 px-4">
                 <GiftSection :gift="content?.gift || {}"></GiftSection>
             </section>
             
             <!-- 8. RSVP -->
-            <section class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
+            <section id="rsvp" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
                 <RSVPSection 
                     :rsvp="content?.rsvp || {}" 
                     :couple-name="`${content?.hero?.groomNickname} & ${content?.hero?.brideNickname}`"
@@ -328,12 +325,28 @@ useHead({
                 :start-time="content?.music?.startTime || 0"
                 :fade="content?.music?.fade || false"
                 ></FloatingMusic>
+                
+                <FloatingNav v-if="isOpened" :current="activeSection" @navigate="scrollToSection" />
             </ClientOnly>
         </template>
 
       </div>
       
       <!-- UX: Premium Loading Screen -->
+      <!-- ERROR STATE -->
+      <div v-else-if="error" class="h-screen w-full flex flex-col items-center justify-center bg-stone-950 px-6 text-center">
+          <div class="w-20 h-20 bg-red-500/10 text-red-500 rounded-2xl flex items-center justify-center mb-6 border border-red-500/20">
+              <i class="fas fa-exclamation-triangle text-3xl"></i>
+          </div>
+          <h2 class="text-2xl font-serif font-bold text-white mb-2">Terjadi Kesalahan</h2>
+          <p class="text-stone-400 max-w-md mb-8">{{ error.message || 'Gagal memuat data undangan.' }} ({{ error.statusCode }})</p>
+          
+          <button @click="() => refreshNuxtData()" class="px-6 py-3 bg-white text-stone-900 rounded-lg font-bold hover:bg-gold-500 transition-colors shadow-lg">
+              <i class="fas fa-sync-alt mr-2"></i> Coba Lagi
+          </button>
+      </div>
+
+      <!-- LOADING STATE -->
       <div v-else class="h-screen w-full flex flex-col items-center justify-center bg-stone-50 gap-4">
           <div class="relative w-16 h-16">
               <div class="absolute inset-0 border-2 border-stone-200 rounded-full"></div>

@@ -34,7 +34,14 @@ onMounted(() => {
                 
                 <!-- Center Logo -->
                 <div class="relative w-36 h-36 flex items-center justify-center">
-                    <img src="/logo_loader.png?v=3" class="w-24 h-24 object-contain relative z-10 animate-float" alt="Loading" />
+                    <NuxtImg 
+                        src="/logo_loader.png" 
+                        format="webp" 
+                        width="96" 
+                        height="96" 
+                        class="w-24 h-24 object-contain relative z-10 animate-float" 
+                        alt="Loading" 
+                    />
                     <!-- Sub-logo Glow -->
                     <div class="absolute w-12 h-12 bg-[#D4AF37]/30 rounded-full blur-2xl animate-pulse"></div>
                 </div>

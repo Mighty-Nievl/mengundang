@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthClient } from '../../utils/auth-client'
 
@@ -17,7 +17,7 @@ useSeoMeta({
 })
 
 const form = ref<any>({
-  meta: {}, hero: {}, cover: {}, groom: {}, bride: {}, events: { akad: {}, resepsi: {} }, gift: {}, rsvp: {}, music: {}, gallery: []
+  meta: {}, hero: {}, cover: {}, quote: {}, story: [], groom: {}, bride: {}, events: { akad: {}, resepsi: {} }, gift: {}, rsvp: {}, music: {}, gallery: []
 })
 
 const isLoading = ref(false)
@@ -62,6 +62,38 @@ useHead({
 })
 
 const driveMsg = ref<Record<string, string>>({})
+
+// Helper to get nested value
+const getNestedValue = (obj: any, path: string) => {
+  const parts = path.split('.')
+  let current = obj
+  for (const part of parts) {
+    if (current === null || typeof current !== 'object' || !current.hasOwnProperty(part)) {
+      return undefined
+    }
+    current = current[part]
+  }
+  return current
+}
+
+// Helper to set nested value
+const setNestedValue = (obj: any, path: string, value: any) => {
+  const parts = path.split('.')
+  let current = obj
+  for (let i = 0; i < parts.length - 1; i++) {
+    const part = parts[i]
+    if (current === null || typeof current !== 'object') {
+      return // Cannot set value if path is invalid
+    }
+    if (!current.hasOwnProperty(part) || typeof current[part] !== 'object' || current[part] === null) {
+      current[part] = {}
+    }
+    current = current[part]
+  }
+  if (current !== null && typeof current === 'object') {
+    current[parts[parts.length - 1]] = value
+  }
+}
 
 // Image Compression Helper
 const compressImage = (file: File): Promise<Blob> => {
@@ -275,6 +307,8 @@ const fetchData = async () => {
     if (!form.value.meta) form.value.meta = {}
     if (!form.value.cover) form.value.cover = {}
     if (!form.value.gift) form.value.gift = {}
+    if (!form.value.quote) form.value.quote = {}
+    if (!form.value.story) form.value.story = []
     if (!form.value.music) form.value.music = {}
     if (!form.value.gallery) form.value.gallery = []
   } catch (e: any) { 
@@ -292,6 +326,8 @@ const saveData = async (silent = false) => {
   try {
     if (!form.value.meta) form.value.meta = {}
     if (!form.value.cover) form.value.cover = {}
+    if (!form.value.quote) form.value.quote = {}
+    if (!form.value.story) form.value.story = []
     form.value.meta.updatedAt = Date.now() // Force metadata refresh
     
     await $fetch(`/api/v2-content?slug=${slug}`, { method: 'POST', body: form.value })
@@ -364,7 +400,9 @@ const tabs = [
     { id: 'hero', label: 'Hero Section', icon: 'fas fa-star' },
 
     { id: 'cover', label: 'Halaman Cover', icon: 'fas fa-book-open' },
-    { id: 'mempelai', label: 'Data Mempelai', icon: 'fas fa-heart' },
+    { id: 'quote', label: 'Ayat Suci / Quotes', icon: 'fas fa-quran' },
+    { id: 'story', label: 'Love Story', icon: 'fas fa-heart' },
+    { id: 'mempelai', label: 'Data Mempelai', icon: 'fas fa-user-friends' },
     { id: 'acara', label: 'Rangkaian Acara', icon: 'fas fa-calendar-alt' },
     { id: 'galeri', label: 'Galeri Foto', icon: 'fas fa-images' },
     { id: 'hadiah', label: 'Amplop & QRIS', icon: 'fas fa-gift' },
@@ -453,6 +491,56 @@ watch(form, (newVal) => {
         }, '*')
     }
 }, { deep: true })
+
+// --- AUTO SCALE PREVIEW ---
+const previewContainer = ref<HTMLElement | null>(null)
+const previewScale = ref(1)
+
+const updateScale = () => {
+    if (!previewContainer.value) return
+    
+    // Safety buffer
+    const paddingX = 64 // 32px left + 32px right
+    const paddingY = 64 // 32px top + 32px bottom (approx)
+
+    const containerW = previewContainer.value.offsetWidth
+    const containerH = previewContainer.value.offsetHeight
+    
+    if (containerW === 0 || containerH === 0) return
+
+    const targetW = 375
+    const targetH = 812
+
+    // Scale to fit width
+    const scaleW = (containerW - paddingX) / targetW
+    // Scale to fit height
+    const scaleH = (containerH - paddingY) / targetH
+
+    // Choose the smaller scale to ensure it fits BOTH dimensions
+    let scale = Math.min(scaleW, scaleH)
+    
+    // Clamp scale:
+    // Max 1.0 (don't zoom in larger than actual phone size)
+    // Min 0.5 (don't get too tiny)
+    scale = Math.min(Math.max(scale, 0.5), 1.0)
+    
+    previewScale.value = scale
+}
+
+onMounted(() => {
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', updateScale)
+        // Initial check with delay to ensure layout is stable
+        setTimeout(updateScale, 100)
+        setTimeout(updateScale, 500)
+    }
+})
+
+onUnmounted(() => {
+    if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateScale)
+    }
+})
 
 </script>
 
@@ -559,7 +647,7 @@ watch(form, (newVal) => {
     <div class="flex-1 flex overflow-hidden">
       
       <!-- LEFT PANEL: Editor Form (Scrollable) -->
-      <div class="w-full lg:w-[500px] xl:w-[550px] flex-shrink-0 bg-stone-50 border-r border-stone-200 flex flex-col lg:flex-row h-full overflow-hidden relative z-20 shadow-xl lg:shadow-none">
+      <div class="w-full lg:w-[60%] xl:w-[70%] flex-shrink-0 bg-stone-50 border-r border-stone-200 flex flex-col lg:flex-row h-full overflow-hidden relative z-20 shadow-xl lg:shadow-none">
           
           <!-- Tab Navigation Sidebar (Desktop Only) -->
           <div class="hidden lg:flex flex-shrink-0 flex-col bg-white border-r border-stone-100 overflow-y-auto py-3 transition-all duration-300"
@@ -582,10 +670,10 @@ watch(form, (newVal) => {
                         ]"
                     >
                         <!-- Active Indicator -->
-                        <div v-if="activeTab === tab.id" class="absolute left-0 top-0.5 bottom-0.5 w-1 bg-stone-900 rounded-r-full"></div>
-                        
-                        <div class="w-9 h-9 flex items-center justify-center rounded-xl transition-all flex-shrink-0"
-                             :class="activeTab === tab.id ? 'bg-stone-900 text-white shadow-lg shadow-stone-200' : 'group-hover:bg-stone-100'">
+                         <div v-if="activeTab === tab.id" class="absolute left-0 top-1.5 bottom-1.5 w-1.5 bg-gold-500 rounded-r-lg"></div>
+                         
+                         <div class="w-10 h-10 flex items-center justify-center rounded-xl transition-all flex-shrink-0"
+                              :class="activeTab === tab.id ? 'bg-stone-900 text-gold-500 shadow-xl shadow-stone-900/20' : 'text-stone-300 group-hover:bg-stone-100 group-hover:text-stone-600'">
                             <i :class="tab.icon" class="text-sm"></i>
                         </div>
                         
@@ -599,21 +687,21 @@ watch(form, (newVal) => {
           </div>
 
 
-          <!-- Mobile Tab Dropdown (Visible only on small screens) -->
-          <div class="lg:hidden flex-shrink-0 bg-white border-b border-stone-200 p-4">
-               <div class="relative">
-                   <select 
-                       v-model="activeTab" 
-                       class="w-full px-4 py-3 pr-10 bg-white border-2 border-stone-200 rounded-lg font-bold text-sm text-stone-800 appearance-none focus:outline-none focus:border-stone-900 focus:ring-2 focus:ring-stone-900/10 transition-all cursor-pointer"
+          <!-- Mobile Tab Navigation (Horizontal Scroll) -->
+          <div class="lg:hidden flex-shrink-0 bg-white border-b border-stone-200 z-30">
+               <div class="flex overflow-x-auto no-scrollbar py-3 px-4 gap-2">
+                   <button 
+                       v-for="tab in tabs" 
+                       :key="tab.id"
+                       @click="activeTab = tab.id"
+                       class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all border"
+                       :class="activeTab === tab.id 
+                           ? 'bg-stone-900 text-white border-stone-900 shadow-lg shadow-stone-900/20' 
+                           : 'bg-stone-50 text-stone-500 border-stone-100 hover:bg-stone-100'"
                    >
-                       <option v-for="tab in tabs" :key="tab.id" :value="tab.id" class="py-2">
-                           {{ tab.label }}
-                       </option>
-                   </select>
-                   <!-- Custom dropdown arrow -->
-                   <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                       <i class="fas fa-chevron-down text-stone-400 text-xs"></i>
-                   </div>
+                       <i :class="tab.icon"></i>
+                       {{ tab.label }}
+                   </button>
                </div>
           </div>
 
@@ -626,7 +714,7 @@ watch(form, (newVal) => {
             <div v-show="activeTab === 'hero'" class="bg-white rounded-xl shadow-sm border border-stone-200 animate-fade-in overflow-hidden">
                 <div class="p-6 bg-stone-50 border-b border-stone-100">
                      <h2 class="font-bold text-xl flex items-center gap-2 text-stone-800">
-                        <i class="fas fa-star text-gold-500"></i> Hero Section
+                        <i class="fas fa-star text-gold-500"></i> Hero Section (Tampilan Atas)
                     </h2>
                 </div>
                 <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -670,7 +758,7 @@ watch(form, (newVal) => {
             <div v-show="activeTab === 'cover'" class="bg-white rounded-xl shadow-sm border border-stone-200 animate-fade-in overflow-hidden">
                 <div class="p-6 bg-stone-50 border-b border-stone-100">
                      <h2 class="font-bold text-xl flex items-center gap-2 text-stone-800">
-                        <i class="fas fa-book-open text-gold-500"></i> Halaman Pembuka (Cover)
+                        <i class="fas fa-book-open text-gold-500"></i> Halaman Sampul (Cover Depan)
                     </h2>
                 </div>
                 <div class="p-6 space-y-4">
@@ -691,6 +779,83 @@ watch(form, (newVal) => {
                         </div>
                         <p v-if="driveMsg['cover.backgroundImage']" class="text-success mt-1"><i class="fas fa-check-circle"></i> {{ driveMsg['cover.backgroundImage'] }}</p>
                         <p v-else class="text-hint mt-1">Gambar ini muncul saat undangan pertama kali dibuka.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Quote / Ayat Suci -->
+            <div v-show="activeTab === 'quote'" class="bg-white rounded-xl shadow-sm border border-stone-200 animate-fade-in overflow-hidden">
+                <div class="p-6 bg-stone-50 border-b border-stone-100">
+                     <h2 class="font-bold text-xl flex items-center gap-2 text-stone-800">
+                        <i class="fas fa-quran text-gold-500"></i> Ayat Suci / Quotes
+                    </h2>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div>
+                        <label class="label-input">Teks Arab (Opsional)</label>
+                        <textarea v-model="form.quote.arabic" placeholder="Contoh: وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم..." @blur="saveData(true)" class="input-field h-24 font-serif text-right text-lg"></textarea>
+                        <p class="text-hint mt-1">Gunakan font Arab yang sesuai jika memungkinkan.</p>
+                    </div>
+                    <div>
+                        <label class="label-input">Terjemahan / Isi Quote</label>
+                        <textarea v-model="form.quote.content" placeholder="Contoh: Dan di antara tanda-tanda kekuasaan-Nya..." @blur="saveData(true)" class="input-field h-32"></textarea>
+                    </div>
+                     <div>
+                        <label class="label-input">Sumber / Referensi</label>
+                        <input v-model="form.quote.source" placeholder="Contoh: QS Ar-Rum: 21" @blur="saveData(true)" class="input-field" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Love Story -->
+            <div v-show="activeTab === 'story'" class="bg-white rounded-xl shadow-sm border border-stone-200 animate-fade-in overflow-hidden">
+                <div class="p-6 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
+                     <h2 class="font-bold text-xl flex items-center gap-2 text-stone-800">
+                        <i class="fas fa-heart text-gold-500"></i> Love Story
+                    </h2>
+                     <button @click="form.story.push({ year: '', title: '', content: '' }); saveData(true)" class="btn-primary text-sm py-2">
+                        <i class="fas fa-plus mr-1"></i> Tambah Cerita
+                    </button>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div v-if="form.story.length === 0" class="text-center py-12 text-stone-400 bg-stone-50 rounded-xl border border-dashed border-stone-200">
+                        <i class="fas fa-heart-broken text-4xl mb-3 opacity-20"></i>
+                        <p>Belum ada cerita cinta yang ditulis.</p>
+                    </div>
+
+                    <div v-else v-for="(item, index) in form.story" :key="index" class="bg-stone-50 p-4 rounded-xl border border-stone-200 shadow-sm relative group">
+                        <button @click="form.story.splice(index, 1); saveData(true)" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-white text-red-500 rounded-full shadow-sm hover:bg-red-50 transition-colors z-10" title="Hapus">
+                            <i class="fas fa-trash-alt text-xs"></i>
+                        </button>
+
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                             <div class="md:col-span-3">
+                                <label class="label-input text-xs">Tahun / Tanggal</label>
+                                <input v-model="item.year" placeholder="2020 / 12 Jan 2021" @blur="saveData(true)" class="input-field text-sm" />
+                            </div>
+                            <div class="md:col-span-9">
+                                <label class="label-input text-xs">Judul Momen</label>
+                                <input v-model="item.title" placeholder="Pertama Bertemu" @blur="saveData(true)" class="input-field text-sm font-bold" />
+                            </div>
+                             <div class="md:col-span-12">
+                                <label class="label-input text-xs">Cerita Singkat</label>
+                                <textarea v-model="item.content" placeholder="Ceritakan sedikit kenangan manis di sini..." @blur="saveData(true)" class="input-field text-sm h-20"></textarea>
+                            </div>
+                             <div class="md:col-span-12">
+                                 <label class="label-input text-xs mb-2 block">Foto Momen (Opsional)</label>
+                                 <div class="flex items-center gap-4">
+                                     <div v-if="item.image" class="w-16 h-16 rounded-lg overflow-hidden border border-stone-200">
+                                         <img :src="item.image" class="w-full h-full object-cover">
+                                     </div>
+                                     <div class="flex-1">
+                                         <input type="text" v-model="item.image" placeholder="URL Foto (Google Drive / Direct Link)" @blur="saveData(true)" class="input-field text-sm mb-1" />
+                                          <button type="button" @click="checkAndConvertDriveLink(`story.${index}.image`, item)" class="text-xs text-gold-600 hover:underline">
+                                            <i class="fas fa-sync mr-1"></i> Cek & Convert Link Drive
+                                        </button>
+                                     </div>
+                                 </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -800,20 +965,22 @@ watch(form, (newVal) => {
                             <textarea v-model="form.events.akad.location" @blur="saveData(true)" class="input-field h-20"></textarea>
                         </div>
                         <div>
-                            <label class="label-input">Tanggal & Jam (Sistem)</label>
-                            <input type="datetime-local" v-model="form.events.akad.isoDate" @blur="saveData(true)" class="input-field cursor-pointer" />
-                            <p class="text-[10px] text-stone-400 mt-1 italic">
-                                *Wajib diisi agar <strong>Countdown Mundur</strong> berfungsi dengan benar.
+                            <label class="label-input">Tanggal & Jam (Untuk Countdown)</label>
+                            <div class="flex items-center gap-3 bg-white border border-stone-200 p-2 rounded-lg focus-within:ring-2 ring-gold-500 transition-all">
+                                <div class="w-10 h-10 rounded-lg bg-gold-50 text-gold-600 flex items-center justify-center shrink-0">
+                                    <i class="fas fa-stopwatch"></i>
+                                </div>
+                                <input type="datetime-local" v-model="form.events.akad.isoDate" @blur="saveData(true)" class="w-full outline-none text-sm font-bold text-stone-700 bg-transparent" />
+                            </div>
+                            <p class="text-[10px] text-stone-400 mt-1.5 flex items-center gap-1.5">
+                                <i class="fas fa-info-circle text-gold-500"></i>
+                                <span>Waktu ini akan digunakan otomatis untuk <strong>Hitung Mundur (Countdown)</strong>.</span>
                             </p>
                         </div>
 
                          <div>
                             <label class="label-input">Link Google Maps</label>
                             <input v-model="form.events.akad.mapUrl" placeholder="https://maps.google.com/..." @blur="saveData(true)" class="input-field" />
-                        </div>
-                        <div class="pt-2">
-                           <label class="label-input text-gold-600">Waktu Countdown (Wajib)</label>
-                           <input v-model="form.events.akad.isoDate" type="datetime-local" @blur="saveData(true)" class="input-field border-gold-300 bg-gold-50" />
                         </div>
                     </div>
                     
@@ -867,37 +1034,50 @@ watch(form, (newVal) => {
                     </div>
                 </div>
 
-                <div class="space-y-3">
-                    <div v-for="(img, idx) in form.gallery" :key="idx" class="flex flex-col gap-2 p-4 bg-stone-50 rounded-2xl border border-stone-200 group transition-all hover:bg-white hover:shadow-md">
-                            <div class="flex gap-3 items-center">
-                                <span class="text-xs font-black text-stone-300 w-6 italic">{{ idx + 1 }}</span>
-                                <div class="flex-1">
-                                    <input v-model="form.gallery[idx]" @paste="handlePaste($event, 'gallery', Number(idx))" @change="checkAndConvertDriveLink('gallery', Number(idx))" placeholder="Paste Link Gambar..." @blur="saveData(true)" class="input-field border-none bg-transparent focus:ring-0 px-0 font-medium" />
-                                </div>
-                                <div class="flex gap-1">
-                                    <label class="w-10 h-10 flex items-center justify-center bg-white text-stone-400 rounded-full hover:bg-stone-100 hover:text-gold-600 border border-stone-200 cursor-pointer transition-all" title="Upload dari Perangkat">
-                                        <i class="fas fa-upload text-sm"></i>
-                                        <input type="file" @change="handleFileUpload($event, 'gallery', Number(idx))" class="hidden" accept="image/*" />
-                                    </label>
-                                    <button type="button" @click="removeGalleryImage(Number(idx))" class="w-10 h-10 flex items-center justify-center bg-white text-stone-400 rounded-full hover:bg-red-50 hover:text-red-500 border border-stone-200 transition-all">
-                                        <i class="fas fa-trash-alt text-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div v-if="form.gallery[idx]" class="mt-2 rounded-xl border border-stone-100 bg-white overflow-hidden shadow-sm aspect-video max-w-sm mx-auto relative group-hover:ring-2 ring-gold-200 transition-all">
-                                 <img :src="form.gallery[idx]" class="w-full h-full object-cover" referrerpolicy="no-referrer" @error="(e: any) => e.target.src = 'https://placehold.co/600x400/f5f5f4/a8a29e?text=Error+Loading+Image'">
-                                <div class="absolute inset-0 bg-stone-900/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                                    <a :href="form.gallery[idx]" target="_blank" class="bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-bold border border-white/30">View Original</a>
-                                </div>
-                            </div>
-                            <p v-if="driveMsg[`gallery.${idx}`]" class="text-success mt-1"><i class="fas fa-check-circle"></i> {{ driveMsg[`gallery.${idx}`] }}</p>
-                    </div>
-                    <div v-if="!form.gallery?.length" class="text-center py-10 bg-stone-50 rounded-xl border-2 border-dashed border-stone-200 text-stone-400">
-                        <i class="fas fa-image text-4xl mb-2 opacity-30"></i>
-                        <p>Belum ada foto.</p>
-                         <p class="text-xs">Klik tombol tambah data atau import dari drive.</p>
-                    </div>
-                </div>
+                <!-- Gallery Grid View -->
+                 <div class="space-y-4">
+                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                         <div v-for="(img, idx) in form.gallery" :key="idx" class="relative group aspect-square rounded-2xl bg-stone-100 border border-stone-200 overflow-hidden hover:shadow-lg transition-all">
+                             
+                             <!-- Image / Placeholder -->
+                             <img v-if="img" :src="img" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" referrerpolicy="no-referrer" @error="(e: any) => e.target.src = 'https://placehold.co/400x400/f5f5f4/a8a29e?text=Broken+Link'" />
+                             <div v-else class="w-full h-full flex flex-col items-center justify-center text-stone-300 p-4 text-center">
+                                 <i class="fas fa-image text-2xl mb-2 opacity-50"></i>
+                                 <span class="text-[10px] font-bold">Paste URL / Upload</span>
+                             </div>
+
+                             <!-- Overlay Actions -->
+                             <div class="absolute inset-0 bg-stone-900/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 p-4">
+                                 
+                                 <!-- Input for URL -->
+                                 <input v-model="form.gallery[idx]" @paste="handlePaste($event, 'gallery', Number(idx))" @change="checkAndConvertDriveLink('gallery', Number(idx))" placeholder="Paste Link..." @blur="saveData(true)" class="w-full bg-white/90 backdrop-blur text-xs px-3 py-2 rounded-lg outline-none text-stone-900 font-bold text-center mb-1" />
+                                 
+                                 <div class="flex gap-2">
+                                     <label class="w-8 h-8 flex items-center justify-center bg-white text-stone-600 rounded-full hover:bg-gold-500 hover:text-white cursor-pointer transition-all shadow-lg" title="Ganti Foto">
+                                         <i class="fas fa-upload text-xs"></i>
+                                         <input type="file" @change="handleFileUpload($event, 'gallery', Number(idx))" class="hidden" accept="image/*" />
+                                     </label>
+                                     <button type="button" @click="removeGalleryImage(Number(idx))" class="w-8 h-8 flex items-center justify-center bg-white text-red-500 rounded-full hover:bg-red-500 hover:text-white transition-all shadow-lg" title="Hapus">
+                                         <i class="fas fa-trash-alt text-xs"></i>
+                                     </button>
+                                 </div>
+                             </div>
+
+                             <!-- Index Badge -->
+                             <div class="absolute top-2 left-2 w-6 h-6 flex items-center justify-center bg-black/50 backdrop-blur text-white text-[10px] font-bold rounded-lg pointer-events-none">
+                                 {{ idx + 1 }}
+                             </div>
+                         </div>
+                         
+                         <!-- Add Button Block -->
+                         <button type="button" @click="addGalleryImage" class="aspect-square rounded-2xl border-2 border-dashed border-stone-200 hover:border-gold-400 hover:bg-gold-50/50 flex flex-col items-center justify-center text-stone-400 hover:text-gold-600 transition-all gap-2 group/add">
+                             <div class="w-10 h-10 rounded-full bg-stone-100 group-hover/add:bg-gold-100 flex items-center justify-center transition-colors">
+                                <i class="fas fa-plus text-sm"></i>
+                             </div>
+                             <span class="text-xs font-bold">Tambah Foto</span>
+                         </button>
+                     </div>
+                 </div>
             </div>
             </div>
 
@@ -1030,11 +1210,76 @@ watch(form, (newVal) => {
                     </h2>
                 </div>
                 <div class="p-6 space-y-6">
+    const musicPresets = [
+        { title: 'Payung Teduh - Akad', url: 'https://kamiundang.site/music/akad.mp3' },
+        { title: 'Tulus - Teman Hidup', url: 'https://kamiundang.site/music/teman-hidup.mp3' },
+        { title: 'Yura Yunita - Cinta dan Rahasia', url: 'https://kamiundang.site/music/cinta-rahasia.mp3' },
+        { title: 'Instrumental - Canon in D', url: 'https://kamiundang.site/music/canon-in-d.mp3' },
+        { title: 'Shane Filan - Beautiful In White', url: 'https://kamiundang.site/music/beautiful-in-white.mp3' },
+    ]
+    const isMusicModalOpen = ref(false)
+    
+    // ... inside the music tab ...
                     <div>
                         <label class="label-input">URL Lagu (.mp3)</label>
-                        <input v-model="form.music.url" placeholder="https://example.com/song.mp3" @blur="saveData(true)" class="input-field" />
-                        <p class="text-hint mt-1">Gunakan link langsung ke file .mp3.</p>
+                        <div class="flex gap-2">
+                            <input v-model="form.music.url" placeholder="https://example.com/song.mp3" @blur="saveData(true)" class="input-field" />
+                            <button type="button" @click="isMusicModalOpen = true" class="px-4 py-2 bg-stone-900 text-white rounded-lg font-bold text-xs hover:bg-gold-600 transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap">
+                                <i class="fas fa-list-music"></i> Pilih Lagu
+                            </button>
+                        </div>
+                        
+                        <!-- Music Helper -->
+                        <div class="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg flex gap-3">
+                             <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center shrink-0 text-xs mt-0.5">
+                                 <i class="fas fa-lightbulb"></i>
+                             </div>
+                             <div class="text-xs text-stone-600 space-y-1">
+                                 <p class="font-bold">Tips Musik:</p>
+                                 <ul class="list-disc pl-4 opacity-80 space-y-0.5">
+                                     <li>Gunakan link yang berakhiran <strong>.mp3</strong>.</li>
+                                     <li>Link Youtube / Spotify <strong>TIDAK BISA</strong> digunakan.</li>
+                                     <li>Rekomendasi: Gunakan tombol <strong>"Pilih Lagu"</strong> untuk lagu populer siap pakai.</li>
+                                 </ul>
+                             </div>
+                        </div>
                     </div>
+
+                    <!-- Music Library Modal -->
+                    <Transition name="fade">
+                        <div v-if="isMusicModalOpen" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                            <div class="absolute inset-0 bg-stone-900/50 backdrop-blur-sm" @click="isMusicModalOpen = false"></div>
+                            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md relative z-10 overflow-hidden flex flex-col max-h-[80vh]">
+                                <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
+                                    <h3 class="font-bold text-lg text-stone-800"><i class="fas fa-music text-gold-500 mr-2"></i> Pustaka Musik</h3>
+                                    <button @click="isMusicModalOpen = false" class="w-8 h-8 rounded-full bg-white text-stone-400 hover:text-red-500 hover:bg-red-50 flex items-center justify-center transition-colors">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="overflow-y-auto p-2">
+                                    <button 
+                                        v-for="(song, idx) in musicPresets" 
+                                        :key="idx" 
+                                        @click="form.music.url = song.url; isMusicModalOpen = false; saveData(true)"
+                                        class="w-full text-left p-4 hover:bg-stone-50 rounded-xl transition-all group border-b border-stone-50 last:border-0 flex items-center justify-between"
+                                    >
+                                        <div class="flex items-center gap-4">
+                                            <div class="w-10 h-10 rounded-full bg-gold-50 text-gold-600 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-white transition-colors font-bold text-xs">
+                                                {{ idx + 1 }}
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-sm text-stone-800">{{ song.title.split(' - ')[1] || song.title }}</p>
+                                                <p class="text-[11px] text-stone-400 uppercase tracking-wider">{{ song.title.split(' - ')[0] || 'Unknown Artist' }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="w-8 h-8 rounded-full border border-stone-200 text-stone-300 flex items-center justify-center group-hover:border-gold-500 group-hover:text-gold-500">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </Transition>
                 
                     <div class="bg-stone-50 p-4 rounded-xl border border-stone-100 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                         <div>
@@ -1121,22 +1366,34 @@ watch(form, (newVal) => {
       </div>
 
       <!-- RIGHT PANEL: Live Preview (Hidden on Mobile) -->
-      <div class="hidden lg:flex flex-1 bg-stone-200 items-center justify-center relative p-8">
-           <!-- Device Frame -->
-           <div class="relative w-[375px] h-[812px] bg-white rounded-[3rem] shadow-2xl border-[8px] border-stone-900 overflow-hidden ring-4 ring-stone-900/10">
-               <!-- Notch -->
-               <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-6 bg-stone-900 rounded-b-2xl z-50"></div>
+      <div class="hidden lg:flex flex-1 bg-stone-900 items-center justify-center relative overflow-hidden" ref="previewContainer">
+           
+           <!-- Dynamic Ambient Background -->
+           <div class="absolute inset-0 bg-cover bg-center transition-all duration-1000 opacity-50 blur-3xl scale-125 origin-center pointer-events-none"
+                :style="{ backgroundImage: `url(${form.cover?.backgroundImage || form.hero?.backgroundImage || 'https://www.transparenttextures.com/patterns/cubes.png'})` }">
+           </div>
+           
+           <div class="absolute inset-0 bg-stone-900/20 backdrop-blur-sm pointer-events-none"></div>
+
+           <!-- Device Frame Wrapper for Centering and Scaling -->
+           <div class="relative z-10 transition-transform duration-200 ease-out origin-center custom-shadow" 
+                :style="{ transform: `scale(${previewScale})` }">
                
-               <iframe 
-                ref="previewIframe"
-                :src="`/${slug}?preview=true`" 
-                class="w-full h-full bg-white"
-                frameborder="0"
-               ></iframe>
+               <div class="w-[375px] h-[812px] bg-white rounded-[3rem] shadow-2xl border-[8px] border-stone-900 overflow-hidden ring-4 ring-white/10 relative">
+                   <!-- Notch -->
+                   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-6 bg-stone-900 rounded-b-2xl z-50 pointer-events-none"></div>
+                   
+                   <iframe 
+                    ref="previewIframe"
+                    :src="`/${slug}?preview=true`" 
+                    class="w-full h-full bg-white"
+                    frameborder="0"
+                   ></iframe>
+               </div>
            </div>
 
-           <div class="absolute bottom-8 text-stone-400 text-xs font-bold uppercase tracking-widest opacity-50">
-               Real-time Preview
+           <div class="absolute bottom-6 text-white/50 text-xs font-bold uppercase tracking-[0.2em] z-10 text-shadow cursor-default select-none pointer-events-none">
+               Live Preview
            </div>
       </div>
 
