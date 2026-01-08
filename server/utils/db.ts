@@ -1,6 +1,4 @@
 import { drizzle } from 'drizzle-orm/d1';
-import { drizzle as drizzleSqlite } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
 import * as schema from '../db/schema';
 
 let _db: any;
@@ -15,9 +13,12 @@ export const db = new Proxy({} as any, {
             // Local / Dev environment (Use better-sqlite3 with ./sqlite.db)
             if (!_db) {
                 try {
+                    // Dynamic import to prevent Cloudflare build failure
+                    const Database = require('better-sqlite3');
+                    const { drizzle: drizzleSqlite } = require('drizzle-orm/better-sqlite3');
+
                     const sqlite = new Database('./sqlite.db');
                     _db = drizzleSqlite(sqlite, { schema });
-                    // console.log('✅ Connected to local SQLite DB (better-sqlite3)');
                 } catch (err) {
                     console.error('❌ Failed to connect to local sqlite.db:', err);
                 }
@@ -37,7 +38,6 @@ export const db = new Proxy({} as any, {
         }
 
         if (!targetDb) {
-            // console.error("❌ Database instance not available");
             return undefined;
         }
 
