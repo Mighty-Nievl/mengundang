@@ -153,16 +153,15 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'cloudflare-pages',
-    minify: true,
+    minify: false,
     sourceMap: false,
     experimental: {
       tasks: true,
     },
-    esbuild: {
-      options: {
-        target: 'es2015'
-      }
-    }
+    alias: {
+      'node:process': new URL('./scripts/safe-process.mjs', import.meta.url).pathname,
+      'process': new URL('./scripts/safe-process.mjs', import.meta.url).pathname
+    },
     // externals: {
     //   external: ['bun:sqlite']
     // }
