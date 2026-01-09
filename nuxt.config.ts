@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     googleClientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
     internalApiSecret: process.env.INTERNAL_API_SECRET,
     public: {
-      betterAuthUrl: (process.env.BETTER_AUTH_URL?.replace(/^BETTER_AUTH_URL=/, '') || process.env.BETTER_AUTH_URL) || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://mengundang.site'),
+      betterAuthUrl: (process.env.BETTER_AUTH_URL?.replace(/^BETTER_AUTH_URL=/, '') || process.env.BETTER_AUTH_URL) || 'https://mengundang.site',
       sentry: {
         dsn: process.env.NUXT_PUBLIC_SENTRY_DSN || '',
         environment: process.env.NODE_ENV || 'development',
