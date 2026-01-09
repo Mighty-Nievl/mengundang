@@ -147,6 +147,29 @@ export default defineNuxtConfig({
     appManifest: false
   },
 
+  // Build Optimizations
+  sourcemap: {
+    server: false,
+    client: false
+  },
+
+  sitemap: {
+    sources: ['/api/__sitemap__/urls'],
+    // Pre-generate sitemap during build time (Zero Runtime)
+    xsl: false,
+  },
+
+  nitro: {
+    preset: 'cloudflare-pages',
+    minify: true,
+    sourceMap: false,
+    experimental: {
+      tasks: true,
+    },
+    // externals: {
+    //   external: ['bun:sqlite']
+    // }
+  },
 
   routeRules: {
     // Assets in public/ folder (like favicons) - Temporary low cache for debugging
