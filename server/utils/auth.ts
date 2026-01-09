@@ -20,7 +20,7 @@ export const auth = new Proxy({} as any, {
 
             const secret = process.env.BETTER_AUTH_SECRET || "63705fb569617799ee08a86db306af8746678e41322dd3ade5747a19d685da82";
             const isDev = process.env.NODE_ENV === "development";
-            const baseUrl = isDev ? "http://localhost:3000" : "https://mengundang.site";
+            const baseUrl = "https://mengundang.site";
 
             try {
                 _auth = betterAuth({
