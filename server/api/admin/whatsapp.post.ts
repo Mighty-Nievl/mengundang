@@ -68,12 +68,28 @@ export default defineEventHandler(async (event) => {
             let formattedPhone = phone.replace(/\D/g, '')
             if (formattedPhone.startsWith('0')) formattedPhone = '62' + formattedPhone.slice(1)
 
-            const success = await sendWhatsAppMessage(value || 'Test message from WhatsApp Cloud API! 🚀', formattedPhone)
+            const msgText = value || 'Test message from WhatsApp Cloud API! 🚀'
 
-            if (success) {
+            // Log try to DB
+            const logId = nanoid()
+            await db.insert(waNotifications).values({
+                id: logId,
+                phoneNumber: formattedPhone,
+                message: `[Cloud API] ${msgText}`,
+                status: 'pending',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            })
+
+            const result = await sendWhatsAppMessage(msgText, formattedPhone)
+
+            if (result === true) {
+                await db.update(waNotifications).set({ status: 'sent', updatedAt: new Date() }).where(eq(waNotifications.id, logId))
                 return { success: true, message: 'Test message sent via Cloud API' }
             } else {
-                throw createError({ statusCode: 500, statusMessage: 'Cloud API failed. Check logs/credentials.' })
+                const errorMsg = typeof result === 'string' ? result : 'Cloud API failed. Check credentials.'
+                await db.update(waNotifications).set({ status: 'failed', updatedAt: new Date() }).where(eq(waNotifications.id, logId))
+                throw createError({ statusCode: 500, statusMessage: errorMsg })
             }
         }
 

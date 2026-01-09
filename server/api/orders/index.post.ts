@@ -4,6 +4,8 @@ import { eq } from 'drizzle-orm'
 import { auth } from '../../utils/auth'
 import { nanoid } from 'nanoid'
 import { sendTelegramMessage } from '../../utils/telegram'
+import { sendWhatsAppNotification } from '../../utils/whatsapp'
+import { systemSettings } from '../../db/schema'
 
 export default defineEventHandler(async (event) => {
     const session = await auth.api.getSession({
@@ -99,8 +101,22 @@ export default defineEventHandler(async (event) => {
     }
 })
 
-// Async Telegram Notification
+// Async Admin Notification (Telegram & WA)
 async function notifyAdmin(user: any, plan: string, amount: number) {
     const formattedAmount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount)
-    await sendTelegramMessage(`🛒 *New Order Created*\n\nUser: ${user.name} (${user.email})\nPlan: ${plan}\nAmount: ${formattedAmount}\n\n_Please check iPayMu dashboard/Admin Panel to verify._`)
+    const text = `🛒 *New Order Created*\n\nUser: ${user.name} (${user.email})\nPlan: ${plan}\nAmount: ${formattedAmount}\n\n_Please check Admin Panel to verify._`
+
+    // 1. Telegram
+    await sendTelegramMessage(text)
+
+    // 2. WhatsApp Admin (Cloud API)
+    try {
+        const [setting] = await db.select().from(systemSettings).where(eq(systemSettings.key, 'wa_target_phone')).limit(1)
+        const adminPhone = setting?.value
+        if (adminPhone) {
+            await sendWhatsAppNotification(text, adminPhone, 'official')
+        }
+    } catch (e) {
+        console.error('[OrderNotify] WhatsApp Admin failed:', e)
+    }
 }

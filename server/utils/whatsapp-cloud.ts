@@ -48,15 +48,16 @@ export const sendWhatsAppMessage = async (message: string, toPhone?: string) => 
         const data = await response.json();
 
         if (!response.ok) {
-            console.error("[WhatsAppCloud] API Error:", JSON.stringify(data));
-            return false;
+            const errJson = JSON.stringify(data);
+            console.error("[WhatsAppCloud] API Error:", errJson);
+            return data?.error?.message || `API Error ${response.status}: ${errJson}`;
         }
 
         console.log(`[WhatsAppCloud] Message sent to ${target}`);
         return true;
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("[WhatsAppCloud] Network Error:", error);
-        return false;
+        return `Network Error: ${error.message}`;
     }
 };

@@ -2,6 +2,7 @@ import { db } from '../utils/db'
 import { invitations, guests, systemSettings, users } from '../db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { sendEmail } from '../utils/email'
+import { sendWhatsAppNotification } from '../utils/whatsapp'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
@@ -141,8 +142,22 @@ export default defineEventHandler(async (event) => {
                 subject,
                 html
             }).catch((e: any) => console.error('[RSVP-Email] Background sending failed:', e));
-        } catch (emailErr) {
-            console.error('[RSVP-Email] Failed to prepare email:', emailErr);
+
+            // WA NOTIFICATION
+            const waMessage = `💌 *RSVP Baru: ${name}*\n\nUndangan: ${slug}\nStatus: ${status}\nPesan: ${message || '-'}\n\n_Cek detailnya di panel admin._`;
+
+            // 1. Notify Admin (Always via Cloud API if configured)
+            const adminPhone = settingsMap.wa_target_phone;
+            if (adminPhone) {
+                await sendWhatsAppNotification(waMessage, adminPhone, 'official');
+            }
+
+            // 2. Notify Owner/Mempelai (Jalur Hybrid)
+            if (ownerDetails?.phoneNumber) {
+                await sendWhatsAppNotification(waMessage, ownerDetails.phoneNumber, ownerDetails.plan || 'regular');
+            }
+        } catch (emailOrWaErr) {
+            console.error('[RSVP-Email/WA] Failed to prepare notifications:', emailOrWaErr);
         }
     }
 
