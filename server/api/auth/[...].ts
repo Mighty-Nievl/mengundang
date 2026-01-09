@@ -7,8 +7,10 @@ export default defineEventHandler(async (event) => {
         console.error("❌ Auth Handler Crash:", e);
         throw createError({
             statusCode: 500,
-            statusMessage: "Authentication Service Error",
-            message: "Sedang terjadi gangguan pada layanan autentikasi. Silakan coba sesaat lagi.",
+            statusMessage: "Auth Handler Error",
+            message: e.message || "Unknown error",
+            stack: e.stack,
+            data: { cause: e.cause?.message || null }
         });
     }
 });

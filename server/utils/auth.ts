@@ -61,12 +61,13 @@ export const auth = new Proxy({} as any, {
                         }
                     },
 
-                    socialProviders: {
+                    // Only enable Google OAuth if credentials are available
+                    socialProviders: (process.env.NUXT_GOOGLE_CLIENT_ID && process.env.NUXT_GOOGLE_CLIENT_SECRET) ? {
                         google: {
-                            clientId: process.env.NUXT_GOOGLE_CLIENT_ID || "",
-                            clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET || "",
+                            clientId: process.env.NUXT_GOOGLE_CLIENT_ID,
+                            clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
                         }
-                    },
+                    } : undefined,
                     trustedOrigins: ['https://mengundang.site'],
                     advanced: {
                         defaultCookieAttributes: {
