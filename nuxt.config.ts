@@ -157,6 +157,7 @@ export default defineNuxtConfig({
     sourceMap: false,
     experimental: {
       tasks: true,
+      asyncContext: true,
     },
     alias: {
       'node:process': new URL('./scripts/safe-process.mjs', import.meta.url).pathname,
