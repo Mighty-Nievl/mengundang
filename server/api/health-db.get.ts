@@ -10,11 +10,17 @@ export default defineEventHandler(async (event) => {
         // Try to check tables
         const tables = await db.run(sql`SELECT name FROM sqlite_master WHERE type='table'`);
 
+        // Sample users to check data
+        const users = await db.run(sql`SELECT * FROM user LIMIT 2`);
+        const sessions = await db.run(sql`SELECT * FROM session LIMIT 2`);
+
         return {
             status: "ok",
             message: "Database connected",
             result,
-            tables: tables,
+            tables,
+            users,
+            sessions,
             cloudflare: !!event.context.cloudflare,
             envKeys: event.context.cloudflare ? Object.keys(event.context.cloudflare.env) : []
         };
