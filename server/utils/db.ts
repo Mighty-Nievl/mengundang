@@ -49,7 +49,8 @@ export const db = new Proxy({} as any, {
                 const val = Reflect.get(instance, prop);
                 return typeof val === 'function' ? val.bind(instance) : val;
             } else {
-                console.error('❌ Cloudflare DB binding (DB) not found in event context.');
+                const keys = event.context.cloudflare?.env ? Object.keys(event.context.cloudflare.env) : [];
+                console.error(`❌ Cloudflare DB binding (DB) not found. Available env keys: ${keys.join(', ')}`);
             }
         } catch (e) {
             // Context not available (build time, etc.)
