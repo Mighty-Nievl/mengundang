@@ -48,6 +48,8 @@ export const db = new Proxy({} as any, {
                 const instance = drizzle(binding, { schema });
                 const val = Reflect.get(instance, prop);
                 return typeof val === 'function' ? val.bind(instance) : val;
+            } else {
+                console.error('❌ Cloudflare DB binding (DB) not found in event context.');
             }
         } catch (e) {
             // Context not available (build time, etc.)
