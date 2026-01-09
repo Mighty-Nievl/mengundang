@@ -1,12 +1,13 @@
 import { sendTelegramMessage } from '../../utils/telegram'
 import { db } from '../../utils/db'
 import { users, orders, referralTransactions } from '../../db/schema'
-import { gt, eq, desc, count, sum, sql } from 'drizzle-orm'
+import { gt, eq, desc, count, sum, sql, and, isNotNull } from 'drizzle-orm'
 import { v4 as uuidv4 } from 'uuid'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
-    const config = useRuntimeConfig()
+    const ADMIN_CHAT_ID = "848564111"
+    const BOT_TOKEN = "8516625514:AAHMZtRCVqba6cpiblzb0b3Lr12LS_zXjnE"
 
     // --- HELPER: Send Menu ---
     const sendMainMenu = async (chatId: number, messageId?: number) => {
@@ -22,14 +23,14 @@ export default defineEventHandler(async (event) => {
                     { text: '💰 Payout Request', callback_data: 'menu:payouts' }
                 ],
                 [
-                    { text: '🔗 Admin Panel Web', url: 'https://undangan.zalan.web.id/admin' }
+                    { text: '🔗 Admin Panel Web', url: 'https://mengundang.site/admin' }
                 ]
             ]
         }
 
         if (messageId) {
             // Edit existing message
-            await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -44,7 +45,8 @@ export default defineEventHandler(async (event) => {
             // Send new message
             await sendTelegramMessage(text, {
                 chat_id: chatId,
-                reply_markup: keyboard
+                reply_markup: keyboard,
+                token: BOT_TOKEN // Pass token to helper
             })
         }
     }
@@ -58,7 +60,7 @@ export default defineEventHandler(async (event) => {
             totalRevenueResult
         ] = await Promise.all([
             db.select({ count: count() }).from(users),
-            db.select({ count: count() }).from(orders).where(eq(orders.status, 'pending')),
+            db.select({ count: count() }).from(orders).where(and(eq(orders.status, 'pending'), isNotNull(orders.proofUrl))),
             db.select({ count: count() }).from(users).where(gt(users.referralBalance, 0)),
             db.select({ total: sum(orders.amount) }).from(orders).where(eq(orders.status, 'paid'))
         ])
@@ -76,7 +78,7 @@ export default defineEventHandler(async (event) => {
             `🛒 Order Pending: *${pendingOrders}*\n` +
             `💸 Payout Pending: *${pendingPayouts}*`
 
-        await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -96,14 +98,26 @@ export default defineEventHandler(async (event) => {
 
     // --- HELPER: Browse Orders ---
     const browseOrders = async (chatId: number, messageId: number) => {
-        const pendingOrders = await db.select().from(orders)
-            .where(eq(orders.status, 'pending'))
+        const pendingOrders = await db.select({
+            id: orders.id,
+            userId: orders.userId,
+            plan: orders.plan,
+            amount: orders.amount,
+            proofUrl: orders.proofUrl,
+            createdAt: orders.createdAt,
+            userName: users.name,
+            userEmail: users.email
+        })
+            .from(orders)
+            .leftJoin(users, eq(orders.userId, users.id))
+            .where(and(eq(orders.status, 'pending'), isNotNull(orders.proofUrl)))
+
             .orderBy(desc(orders.createdAt))
             .limit(5)
             .all()
 
         if (pendingOrders.length === 0) {
-            await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -120,7 +134,7 @@ export default defineEventHandler(async (event) => {
         }
 
         // Send Header (Edit)
-        await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -137,14 +151,17 @@ export default defineEventHandler(async (event) => {
             let planBadge = '🆕'
             if (o.plan === 'vip') planBadge = '👑'
             if (o.plan === 'vvip') planBadge = '💎'
-            const amount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(o.amount)
+            if (o.plan === 'premium') planBadge = '⭐'
+            const amount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(o.amount)
 
             await sendTelegramMessage(
-                `${planBadge} *ORDER #${o.id.slice(0, 6)}*\n\n` +
-                `👤 User: ${o.userId.slice(0, 6)}...\n` +
-                `📦 Paket: ${o.plan.toUpperCase()}\n` +
-                `💰 Total: ${amount}\n` +
-                `🗓️ ${new Date(o.createdAt).toLocaleString('id-ID')}`,
+                `${planBadge} *ORDER #${o.id.slice(0, 8)}*\n\n` +
+                `👤 *${o.userName || 'Unknown'}*\n` +
+                `📧 ${o.userEmail || 'N/A'}\n` +
+                `📦 Paket: *${o.plan.toUpperCase()}*\n` +
+                `💰 Total: *${amount}*\n` +
+                `🗓️ ${new Date(o.createdAt).toLocaleString('id-ID')}\n\n` +
+                `📎 [Lihat Bukti Transfer](${o.proofUrl})`,
                 {
                     chat_id: chatId,
                     reply_markup: {
@@ -152,12 +169,16 @@ export default defineEventHandler(async (event) => {
                             [
                                 { text: '✅ Approve', callback_data: `action:approve_order:${o.id}` },
                                 { text: '❌ Reject', callback_data: `action:reject_order:${o.id}` }
+                            ],
+                            [
+                                { text: '🔍 Lihat Bukti', url: o.proofUrl || 'https://mengundang.site' }
                             ]
                         ]
                     }
                 }
             )
         }
+
 
         // Send Footer Navigation
         await sendTelegramMessage(`_Gunakan menu di bawah untuk navigasi:_`, {
@@ -173,7 +194,7 @@ export default defineEventHandler(async (event) => {
         const pendingUsers = await db.select().from(users).where(gt(users.referralBalance, 0)).limit(5).all()
 
         if (pendingUsers.length === 0) {
-            await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -190,7 +211,7 @@ export default defineEventHandler(async (event) => {
         }
 
         // Header
-        await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -239,7 +260,11 @@ export default defineEventHandler(async (event) => {
         const cbChatId = callback.message.chat.id
         const msgId = callback.message.message_id
 
-        if (String(cbChatId) !== String(config.telegramChatId)) return { status: 'unauthorized' }
+
+        if (String(cbChatId).trim() !== ADMIN_CHAT_ID) {
+            console.warn(`Unauthorized callback from ${cbChatId}, expected ${ADMIN_CHAT_ID}`)
+            return { status: 'unauthorized' }
+        }
 
         // Navigation
         if (data === 'menu:start') {
@@ -303,7 +328,7 @@ export default defineEventHandler(async (event) => {
                     }
                 })
 
-                await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -319,7 +344,7 @@ export default defineEventHandler(async (event) => {
         }
         else if (data.startsWith('action:reject_order:')) {
             const orderId = data.split(':')[2]
-            await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -348,7 +373,7 @@ export default defineEventHandler(async (event) => {
                     }).run()
                 })
 
-                await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -361,7 +386,7 @@ export default defineEventHandler(async (event) => {
             } catch (e) { }
         }
         else if (data.startsWith('reject_payout:')) {
-            await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/editMessageText`, {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -374,7 +399,7 @@ export default defineEventHandler(async (event) => {
         }
 
         // Always answer callback to stop loading animation
-        await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/answerCallbackQuery`, {
+        await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ callback_query_id: callback.id })
@@ -388,8 +413,10 @@ export default defineEventHandler(async (event) => {
     if (!message) return { status: 'ignored' }
     const chatId = message.chat.id
 
-    if (String(chatId) !== String(config.telegramChatId)) {
-        await sendTelegramMessage(`⚠️ Unauthorized Access.`, { chat_id: chatId })
+
+    if (String(chatId).trim() !== ADMIN_CHAT_ID) {
+        console.warn(`Unauthorized message from ${chatId}, expected ${ADMIN_CHAT_ID}`)
+        await sendTelegramMessage(`⚠️ Unauthorized Access (ID: ${chatId}).`, { chat_id: chatId })
         return { status: 'unauthorized' }
     }
 

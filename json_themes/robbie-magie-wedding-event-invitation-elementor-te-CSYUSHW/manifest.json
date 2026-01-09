@@ -1,0 +1,1381 @@
+{
+    "manifest_version": "1.0.14",
+    "title": "Robbie&Maggie - Wedding Event Invitation Elementor Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home 1",
+            "screenshot": "screenshots\/home-1.jpg",
+            "source": "templates\/home-1.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/home-1\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home 2",
+            "screenshot": "screenshots\/home-2.jpg",
+            "source": "templates\/home-2.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/home-2\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Story",
+            "screenshot": "screenshots\/our-story.jpg",
+            "source": "templates\/our-story.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/our-story\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Bridesmaids & Groomsmen",
+            "screenshot": "screenshots\/bridesmaids-groomsmen.jpg",
+            "source": "templates\/bridesmaids-groomsmen.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/bridesmaids-groomsmen\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Gallery \u2013 Justified",
+            "screenshot": "screenshots\/gallery-justified.jpg",
+            "source": "templates\/gallery-justified.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/gallery-justified\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Gallery \u2013 Masonry",
+            "screenshot": "screenshots\/gallery-masonry.jpg",
+            "source": "templates\/gallery-masonry.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/gallery-masonry\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Blog",
+            "screenshot": "screenshots\/blog.jpg",
+            "source": "templates\/blog.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/blog\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-blog",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Contact 1",
+            "screenshot": "screenshots\/contact-1.jpg",
+            "source": "templates\/contact-1.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/contact-1\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Contact 2",
+            "screenshot": "screenshots\/contact-2.jpg",
+            "source": "templates\/contact-2.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/contact-2\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "RSVP",
+            "screenshot": "screenshots\/rsvp.jpg",
+            "source": "templates\/rsvp.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/rsvp\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header - Overlay",
+            "screenshot": "screenshots\/header-overlay.jpg",
+            "source": "templates\/header-overlay.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/template-kit\/header-overlay\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/?elementor_library=header",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/?elementor_library=footer-2",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "2.8.3",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "2.9.13",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "ElementsKit Lite",
+            "version": "1.5.7",
+            "file": "elementskit-lite\/elementskit-lite.php",
+            "author": "Wpmet"
+        }
+    ],
+    "images": [
+        {
+            "filename": "beautiful-bride-and-groom-on-a-meadow-in-the-eveni-P8TUGS9-gallery.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-on-a-meadow-in-the-eveni-P8TUGS9-gallery-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                },
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                }
+            ],
+            "filesize": 436889,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8TUGS9"
+        },
+        {
+            "filename": "handsome-young-groom-P8PKW7A-square-e1595735390776.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/handsome-young-groom-P8PKW7A-square-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 235316,
+            "dimensions": [
+                1200,
+                1200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-"
+        },
+        {
+            "filename": "logo-white@2x.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/logo-white@2x.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                },
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                },
+                {
+                    "source": "templates\/contact-2.json",
+                    "name": "Contact 2"
+                },
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                },
+                {
+                    "source": "templates\/header-overlay.json",
+                    "name": "Header - Overlay"
+                }
+            ],
+            "filesize": 4135,
+            "dimensions": [
+                512,
+                122
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-PSP7T5E.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-PSP7T5E-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                }
+            ],
+            "filesize": 480014,
+            "dimensions": [
+                1920,
+                1279
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PSP7T5E"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-PMW9WMM.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-PMW9WMM-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                }
+            ],
+            "filesize": 447005,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PMW9WMM"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-PM8YVNS.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-PM8YVNS-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 468293,
+            "dimensions": [
+                1920,
+                1279
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PM8YVNS"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-nature-1-2-e1595734082570.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-nature-1-2-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 353539,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PPNBY7E"
+        },
+        {
+            "filename": "wedding-bouquet-e1595735241990.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/wedding-bouquet-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 366623,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-9SXRT28"
+        },
+        {
+            "filename": "ornamen-18.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/ornamen-18-600x89.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 5269,
+            "dimensions": [
+                1024,
+                152
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-ASYGQEU"
+        },
+        {
+            "filename": "ornament.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/ornament-600x89.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                },
+                {
+                    "source": "templates\/contact-1.json",
+                    "name": "Contact 1"
+                },
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                }
+            ],
+            "filesize": 5676,
+            "dimensions": [
+                1024,
+                152
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-ASYGQEU"
+        },
+        {
+            "filename": "handsome-young-groom-P8PKW7A-1-e1595735354199.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/handsome-young-groom-P8PKW7A-1-600x840.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 237583,
+            "dimensions": [
+                1024,
+                1434
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8PKW7A"
+        },
+        {
+            "filename": "beautiful-young-bride-at-sunset-in-green-nature-PDXVRCK-1-e1595822326692.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-young-bride-at-sunset-in-green-nature-PDXVRCK-1-600x840.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 306886,
+            "dimensions": [
+                1024,
+                1434
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PDXVRCK"
+        },
+        {
+            "filename": "leaf-ornament.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/leaf-ornament-600x140.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 47691,
+            "dimensions": [
+                1920,
+                447
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-J9WXXL6"
+        },
+        {
+            "filename": "handsome-young-groom-P8PKW7A-gallery.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/handsome-young-groom-P8PKW7A-gallery-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 377282,
+            "dimensions": [
+                1280,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8PKW7A"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-PG3HH65-gallery.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-PG3HH65-gallery-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 387220,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8PKW7A"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-P8VNZSM-gallery-e1595735454324.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-P8VNZSM-gallery-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 307197,
+            "dimensions": [
+                1024,
+                1536
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8VNZSM"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-in-green-nature-PZEK3PS-gallery.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-in-green-nature-PZEK3PS-gallery-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 389378,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PZEK3PS"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-in-green-nature-PAC7T89-gallery-e1595735562506.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-in-green-nature-PAC7T89-gallery-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 280674,
+            "dimensions": [
+                1024,
+                1536
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PAC7T89"
+        },
+        {
+            "filename": "beautiful-young-bride-at-sunset-in-green-nature-PGX3LES-galery.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-young-bride-at-sunset-in-green-nature-PGX3LES-galery-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 387619,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PGX3LES"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-PS3WDVS-e1595735646274.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-PS3WDVS-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 242895,
+            "dimensions": [
+                1601,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PS3WDVS"
+        },
+        {
+            "filename": "bride-groom-guests-posing-for-the-photo-at-wedding-reception-outside-in-the-backyard--e1595815396577.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/bride-groom-guests-posing-for-the-photo-at-wedding-reception-outside-in-the-backyard--600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 402979,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-RQNWYUG"
+        },
+        {
+            "filename": "beautiful-young-bride-at-sunset-in-green-nature-PDXVRCK-e1595822394591.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-young-bride-at-sunset-in-green-nature-PDXVRCK-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 164630,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PDXVRCK"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-P8PLWCQ-e1595822449537.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-P8PLWCQ-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 235260,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8PLWCQ"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-natur-PZ6Q2F6-e1595822476276.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-natur-PZ6Q2F6-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 155093,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PZ6Q2F6"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-nature-1-1-e1595822522213.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-nature-1-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 318301,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P9U54M3"
+        },
+        {
+            "filename": "beautiful-bride-and-groom-at-sunset-in-green-nature--e1595822567545.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-and-groom-at-sunset-in-green-nature--600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/gallery-justified.json",
+                    "name": "Gallery \u2013 Justified"
+                },
+                {
+                    "source": "templates\/gallery-masonry.json",
+                    "name": "Gallery \u2013 Masonry"
+                }
+            ],
+            "filesize": 163269,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PKUP2X5"
+        },
+        {
+            "filename": "wedding-rings-e1595822595697.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/06\/wedding-rings-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                }
+            ],
+            "filesize": 247042,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P2Q6C2X"
+        },
+        {
+            "filename": "3d-rendering-luxury-modern-bedroom-suite-in-hotel-2-e1595822635358.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/3d-rendering-luxury-modern-bedroom-suite-in-hotel-2-600x450.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 178708,
+            "dimensions": [
+                1280,
+                961
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-RJABJVG"
+        },
+        {
+            "filename": "3d-rendering-beautiful-luxury-bedroom-suite-in-hotel-with-tv-1-e1595822674235.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/3d-rendering-beautiful-luxury-bedroom-suite-in-hotel-with-tv-1-600x500.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 140029,
+            "dimensions": [
+                1280,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-E9DVZZE"
+        },
+        {
+            "filename": "3d-rendering-luxury-modern-bedroom-suite-in-hotel-e1595822766166.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/3d-rendering-luxury-modern-bedroom-suite-in-hotel-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 177660,
+            "dimensions": [
+                1280,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-Y7S9KXV"
+        },
+        {
+            "filename": "bg-brush-scaled.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/bg-brush-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                }
+            ],
+            "filesize": 282549,
+            "dimensions": [
+                2560,
+                1383
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-J9WXXL6"
+        },
+        {
+            "filename": "logo@2x.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/logo@2x.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1.json",
+                    "name": "Home 1"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                },
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                },
+                {
+                    "source": "templates\/contact-2.json",
+                    "name": "Contact 2"
+                },
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                },
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 4135,
+            "dimensions": [
+                512,
+                122
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "turkish-wedding-3.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/06\/turkish-wedding-3-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 204679,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-T5P2FWZ"
+        },
+        {
+            "filename": "beautiful-young-bride-at-sunset-in-green-nature-PDXVRCK-square.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-young-bride-at-sunset-in-green-nature-PDXVRCK-square-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 582153,
+            "dimensions": [
+                1600,
+                1600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-"
+        },
+        {
+            "filename": "small-white-gypsophila-flowers-on-pastel-yellow-background-women-39-s-day-mother-39-s-day-e1595815432476.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/small-white-gypsophila-flowers-on-pastel-yellow-background-women-39-s-day-mother-39-s-day-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/contact-2.json",
+                    "name": "Contact 2"
+                }
+            ],
+            "filesize": 306395,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-DELPBMN"
+        },
+        {
+            "filename": "turkish-wedding-1.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/06\/turkish-wedding-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 410558,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-SYQG5TK"
+        },
+        {
+            "filename": "couple-with-bridesmaids-4DMK96U.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/couple-with-bridesmaids-4DMK96U-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 505432,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-4DMK96U"
+        },
+        {
+            "filename": "brunette-bride-in-fashion-white-wedding-dress-with-PA5QKFF-scaled-e1595815789485.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/brunette-bride-in-fashion-white-wedding-dress-with-PA5QKFF-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 109911,
+            "dimensions": [
+                1401,
+                935
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PA5QKFF"
+        },
+        {
+            "filename": "beautiful-smiling-bride-woman-with-long-curly-hair-3P6FGVW-scaled-e1595815841498.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-smiling-bride-woman-with-long-curly-hair-3P6FGVW-600x491.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 132322,
+            "dimensions": [
+                1400,
+                1146
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3P6FGVW"
+        },
+        {
+            "filename": "beautiful-bride-in-white-wedding-dress-puts-on-ear-PZCF8HN-1-scaled-e1595815884223.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/beautiful-bride-in-white-wedding-dress-puts-on-ear-PZCF8HN-1-600x467.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 123258,
+            "dimensions": [
+                1400,
+                1089
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PZCF8HN"
+        },
+        {
+            "filename": "young-handsome-latin-man-with-glass-of-wine-dreamily-holding-wedding-ring-in-restaurant-outdoor-e1595815518325.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/06\/young-handsome-latin-man-with-glass-of-wine-dreamily-holding-wedding-ring-in-restaurant-outdoor-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 197892,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-8WJEPRL"
+        },
+        {
+            "filename": "groom-waiting-for-the-bride-PJKKGHS-scaled-e1595815559834.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/groom-waiting-for-the-bride-PJKKGHS-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 112892,
+            "dimensions": [
+                1400,
+                934
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PJKKGHS"
+        },
+        {
+            "filename": "groom-in-a-park-BV9JK4L-scaled-e1595815595138.jpg",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/groom-in-a-park-BV9JK4L-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen.json",
+                    "name": "Bridesmaids & Groomsmen"
+                }
+            ],
+            "filesize": 85906,
+            "dimensions": [
+                1400,
+                934
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-BV9JK4L"
+        },
+        {
+            "filename": "bg-contact-2.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/bg-contact-2-600x472.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-1.json",
+                    "name": "Contact 1"
+                }
+            ],
+            "filesize": 329032,
+            "dimensions": [
+                1920,
+                1509
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-J9WXXL6"
+        },
+        {
+            "filename": "watercolor_twig_13.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/watercolor_twig_13-600x489.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-1.json",
+                    "name": "Contact 1"
+                }
+            ],
+            "filesize": 489161,
+            "dimensions": [
+                1471,
+                1200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-J9WXXL6"
+        },
+        {
+            "filename": "leaf-ornament-2.png",
+            "thumbnail_url": "https:\/\/templatekit.jegtheme.com\/robbie-and-magie\/wp-content\/uploads\/sites\/5\/2020\/07\/leaf-ornament-2-600x294.png",
+            "templates": [
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                }
+            ],
+            "filesize": 57473,
+            "dimensions": [
+                1920,
+                940
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-J9WXXL6"
+        }
+    ]
+}

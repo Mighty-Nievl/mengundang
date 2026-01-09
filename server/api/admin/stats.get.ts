@@ -1,6 +1,6 @@
 import { db } from '../../utils/db'
-import { users, orders } from '../../db/schema'
-import { eq, count, sum, gt } from 'drizzle-orm'
+import { users, orders, waNotifications } from '../../db/schema'
+import { eq, count, sum, gt, and, isNotNull } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
     // 1. Verify Admin
@@ -16,13 +16,19 @@ export default defineEventHandler(async (event) => {
             totalUsersResult,
             pendingOrdersResult,
             pendingPayoutsResult,
-            totalRevenueResult
+            totalRevenueResult,
+            pendingWAResult
         ] = await Promise.all([
             // Total Users
             db.select({ count: count() }).from(users),
 
-            // Pending Orders
-            db.select({ count: count() }).from(orders).where(eq(orders.status, 'pending')),
+            // Pending Orders (Only those with proof)
+            db.select({ count: count() }).from(orders).where(
+                and(
+                    eq(orders.status, 'pending'),
+                    isNotNull(orders.proofUrl)
+                )
+            ),
 
             // Pending Payouts (Users with balance > 0)
             db.select({
@@ -33,7 +39,10 @@ export default defineEventHandler(async (event) => {
             // Total Revenue (Paid orders)
             db.select({
                 total: sum(orders.amount)
-            }).from(orders).where(eq(orders.status, 'paid'))
+            }).from(orders).where(eq(orders.status, 'paid')),
+
+            // Pending WA Messages
+            db.select({ count: count() }).from(waNotifications).where(eq(waNotifications.status, 'pending'))
         ])
 
         return {
@@ -43,7 +52,8 @@ export default defineEventHandler(async (event) => {
                 count: pendingPayoutsResult[0]?.count || 0,
                 amount: Number(pendingPayoutsResult[0]?.totalAmount) || 0
             },
-            totalRevenue: Number(totalRevenueResult[0]?.total) || 0
+            totalRevenue: Number(totalRevenueResult[0]?.total) || 0,
+            pendingWA: pendingWAResult[0]?.count || 0
         }
 
     } catch (e: any) {

@@ -25,7 +25,8 @@ const login = async () => {
     if (error) throw error
 
     if (data) {
-        if ((data.user as any).role === 'admin') {
+        const user = data.user as any
+        if (user.role === 'admin' || user.role === 'superuser') {
             await navigateTo('/admin')
         } else {
             await navigateTo('/dashboard')

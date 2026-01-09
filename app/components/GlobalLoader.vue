@@ -5,10 +5,10 @@ const isMainLoading = ref(true)
 const nuxtApp = useNuxtApp()
 
 onMounted(() => {
-    // Initial splash for branding (min 1.5s for better feel)
+    // Initial splash for branding (reduced for speed)
     setTimeout(() => {
         isMainLoading.value = false
-    }, 1500)
+    }, 800)
     
     // Page transition integration
     nuxtApp.hook('page:start', () => {
@@ -17,7 +17,7 @@ onMounted(() => {
     nuxtApp.hook('page:finish', () => {
         setTimeout(() => {
             isMainLoading.value = false
-        }, 500)
+        }, 300)
     })
 })
 </script>
@@ -34,9 +34,8 @@ onMounted(() => {
                 
                 <!-- Center Logo -->
                 <div class="relative w-36 h-36 flex items-center justify-center">
-                    <NuxtImg 
-                        src="/logo_loader.png" 
-                        format="webp" 
+                    <img 
+                        src="/logo_loader.webp" 
                         width="96" 
                         height="96" 
                         class="w-24 h-24 object-contain relative z-10 animate-float" 

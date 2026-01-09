@@ -3,7 +3,14 @@ import { resolve, join } from 'path'
 import { randomUUID } from 'crypto'
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
 
+import { auth } from '../utils/auth'
+
 export default defineEventHandler(async (event) => {
+    const session = await auth.api.getSession({ headers: event.headers })
+    if (!session) {
+        throw createError({ statusCode: 401, statusMessage: 'Unauthorized - Please login to upload' })
+    }
+
     const files = await readMultipartFormData(event)
     if (!files || files.length === 0) {
         throw createError({ statusCode: 400, statusMessage: 'No file uploaded' })

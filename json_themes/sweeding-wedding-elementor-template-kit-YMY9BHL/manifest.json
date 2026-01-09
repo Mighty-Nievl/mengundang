@@ -1,0 +1,1785 @@
+{
+    "manifest_version": "1.0.9",
+    "title": "Sweeding",
+    "page_builder": "elementor",
+    "kit_version": "1.0.1",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/default-kit.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Homepage",
+            "screenshot": "screenshots\/homepage.jpg",
+            "source": "templates\/homepage.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/homepage\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 01 - Portfolio List",
+            "screenshot": "screenshots\/page-01-portfolio-list.jpg",
+            "source": "templates\/page-01-portfolio-list.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-01-portfolio-list\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 02 - Portfolio Detail",
+            "screenshot": "screenshots\/page-02-portfolio-detail.jpg",
+            "source": "templates\/page-02-portfolio-detail.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-02-portfolio-detail\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 03 - Menu List",
+            "screenshot": "screenshots\/page-03-menu-list.jpg",
+            "source": "templates\/page-03-menu-list.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-03-menu-list\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 04 - Menu Detail",
+            "screenshot": "screenshots\/page-04-menu-detail.jpg",
+            "source": "templates\/page-04-menu-detail.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-04-menu-detail\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 05 - Venue List",
+            "screenshot": "screenshots\/page-05-venue-list.jpg",
+            "source": "templates\/page-05-venue-list.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-05-venue-list\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 06 - Venue Detail",
+            "screenshot": "screenshots\/page-06-venue-detail.jpg",
+            "source": "templates\/page-06-venue-detail.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-06-venue-detail\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 07 - Contact (Elementor Pro)",
+            "screenshot": "screenshots\/page-07-contact-elementor-pro-.jpg",
+            "source": "templates\/page-07-contact-elementor-pro-.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-07-contact-elementor-pro\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Page 08 - About Us",
+            "screenshot": "screenshots\/page-08-about-us.jpg",
+            "source": "templates\/page-08-about-us.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-08-about-us\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Page 09 - Service",
+            "screenshot": "screenshots\/page-09-service.jpg",
+            "source": "templates\/page-09-service.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/template-kit\/page-09-service\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Theme Builder \u2013 Footer (Elementor Pro)",
+            "screenshot": "screenshots\/theme-builder-footer-elementor-pro-.jpg",
+            "source": "templates\/theme-builder-footer-elementor-pro-.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/?elementor_library=theme-builder-footer-elementor-pro",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Theme Builder \u2013 Header (Elementor Pro)",
+            "screenshot": "screenshots\/theme-builder-header-elementor-pro-.jpg",
+            "source": "templates\/theme-builder-header-elementor-pro-.json",
+            "preview_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/?elementor_library=theme-builder-header-elementor-pro",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor",
+            "version": "2.9.7",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor Pro",
+            "version": "2.9.1",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "wedding-couple-946RYLS-cp-03.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-couple-946RYLS-cp-03-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                },
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                },
+                {
+                    "source": "templates\/page-04-menu-detail.json",
+                    "name": "Page 04 - Menu Detail"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                },
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                },
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 197064,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-946RYLS"
+        },
+        {
+            "filename": "wedding-rings-NM87YR6_30.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/wedding-rings-NM87YR6_30-600x382.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                },
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                },
+                {
+                    "source": "templates\/page-04-menu-detail.json",
+                    "name": "Page 04 - Menu Detail"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                },
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                },
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 153947,
+            "dimensions": [
+                1920,
+                1223
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-rings-NM87YR6"
+        },
+        {
+            "filename": "edding-champagne-glasses-on-white-tablecloth-with-SJBPDRF_30.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/edding-champagne-glasses-on-white-tablecloth-with-SJBPDRF_30-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                },
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                },
+                {
+                    "source": "templates\/page-04-menu-detail.json",
+                    "name": "Page 04 - Menu Detail"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                },
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                },
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 120361,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/edding-champagne-glasses-on-white-tablecloth-with--SJBPDRF"
+        },
+        {
+            "filename": "SWIEJKO_flora_2_18_left_tiny.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/SWIEJKO_flora_2_18_left_tiny.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 42838,
+            "dimensions": [
+                600,
+                453
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/simple-leaves-and-seamles-leafy-patterns-X84MSUR"
+        },
+        {
+            "filename": "SWIEJKO_flora_2_18_tiny.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/SWIEJKO_flora_2_18_tiny.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 42870,
+            "dimensions": [
+                600,
+                453
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/simple-leaves-and-seamles-leafy-patterns-X84MSUR"
+        },
+        {
+            "filename": "elegant-wedding-couple-LNWV6XR.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/elegant-wedding-couple-LNWV6XR-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 132374,
+            "dimensions": [
+                1200,
+                675
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-LNWV6XR"
+        },
+        {
+            "filename": "icon-01-2.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/icon-01-2.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 5524,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "icon-02-2.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/icon-02-2.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 3904,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "icon-03-2.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/icon-03-2.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 3856,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "elegant-wedding-couple-KGXNTAD.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/elegant-wedding-couple-KGXNTAD-600x597.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 70841,
+            "dimensions": [
+                700,
+                696
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-KGXNTAD"
+        },
+        {
+            "filename": "gold-wedding-rings-with-a-wedding-decor-PRFYV2A.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/gold-wedding-rings-with-a-wedding-decor-PRFYV2A-600x663.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 83567,
+            "dimensions": [
+                700,
+                773
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PRFYV2A"
+        },
+        {
+            "filename": "luxury-food-on-wedding-table-PX3DWW5_2.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/luxury-food-on-wedding-table-PX3DWW5_2-600x548.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 82510,
+            "dimensions": [
+                800,
+                730
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/luxury-food-on-wedding-table-PX3DWW5"
+        },
+        {
+            "filename": "wedding-ceremony-area-RGU6DQB.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/wedding-ceremony-area-RGU6DQB-600x750.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 186257,
+            "dimensions": [
+                800,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-RGU6DQB"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-X2NU6MQ-400.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-X2NU6MQ-400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 30516,
+            "dimensions": [
+                400,
+                400
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-X2NU6MQ"
+        },
+        {
+            "filename": "SWIEJKO_flora_2_15_02_tiny.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/SWIEJKO_flora_2_15_02_tiny-600x437.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 117832,
+            "dimensions": [
+                800,
+                583
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/simple-leaves-and-seamles-leafy-patterns-X84MSUR"
+        },
+        {
+            "filename": "wedding-ceremony-area-7J88SFW.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/wedding-ceremony-area-7J88SFW-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 85850,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-7J88SFW"
+        },
+        {
+            "filename": "wedding-ceremony-area-CMC9RPC.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/wedding-ceremony-area-CMC9RPC-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 89896,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-CMC9RPC"
+        },
+        {
+            "filename": "wedding-ceremony-area-W5RTVC5.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/wedding-ceremony-area-W5RTVC5-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 124729,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-W5RTVC5"
+        },
+        {
+            "filename": "banquet-hall-for-weddings-with-decorative-elements-NVXP7AV.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/banquet-hall-for-weddings-with-decorative-elements-NVXP7AV-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 103598,
+            "dimensions": [
+                800,
+                534
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-NVXP7AV"
+        },
+        {
+            "filename": "luxury-food-PBX44UE.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/luxury-food-PBX44UE-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 82164,
+            "dimensions": [
+                800,
+                533
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PBX44UE"
+        },
+        {
+            "filename": "delicious-sweet-buffet-PRM4AKL.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/delicious-sweet-buffet-PRM4AKL-600x750.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 134681,
+            "dimensions": [
+                800,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PRM4AKL"
+        },
+        {
+            "filename": "champagne-wine-in-glass-background-autumn-still-li-DCH4GMZ.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/champagne-wine-in-glass-background-autumn-still-li-DCH4GMZ-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 187384,
+            "dimensions": [
+                800,
+                1200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-DCH4GMZ"
+        },
+        {
+            "filename": "logo-2-03.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/logo-2-03.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 8583,
+            "dimensions": [
+                245,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/modern-natural-logo-collection-W6MS4M"
+        },
+        {
+            "filename": "logo-2-02.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/logo-2-02.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 8919,
+            "dimensions": [
+                345,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/modern-natural-logo-collection-W6MS4M"
+        },
+        {
+            "filename": "logo-2-05.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/logo-2-05.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 7185,
+            "dimensions": [
+                152,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/modern-natural-logo-collection-W6MS4M"
+        },
+        {
+            "filename": "logo-2-04.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/logo-2-04.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 13204,
+            "dimensions": [
+                236,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/modern-natural-logo-collection-W6MS4M"
+        },
+        {
+            "filename": "logo-2-01.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/logo-2-01.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 11998,
+            "dimensions": [
+                200,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/modern-natural-logo-collection-W6MS4M"
+        },
+        {
+            "filename": "rose-wine-in-glass-pink-ribbon-peony-flowers-copy-WN9TSG8.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/03\/rose-wine-in-glass-pink-ribbon-peony-flowers-copy-WN9TSG8-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 74246,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-WN9TSG8"
+        },
+        {
+            "filename": "wedding-bouquet-P7T2QTY.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-bouquet-P7T2QTY-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 172995,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P7T2QTY"
+        },
+        {
+            "filename": "wedding-couple-on-the-ocean-with-a-priest-QN6H4DC-2.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-couple-on-the-ocean-with-a-priest-QN6H4DC-2-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 75295,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-QN6H4DC"
+        },
+        {
+            "filename": "abundance-of-confetti-and-new-year-party-Q7FBDMP.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/abundance-of-confetti-and-new-year-party-Q7FBDMP-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 116393,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-Q7FBDMP"
+        },
+        {
+            "filename": "lot-of-appetizer-plates-PDV3LRG.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/lot-of-appetizer-plates-PDV3LRG-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 86011,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PDV3LRG"
+        },
+        {
+            "filename": "wedding-ceremony-area-64ZYEA9.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-ceremony-area-64ZYEA9-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 104434,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-64ZYEA9"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-KDWNA85.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/young-couple-in-a-wedding-ceremony-at-the-beach-KDWNA85-600x480.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 97781,
+            "dimensions": [
+                800,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-KDWNA85"
+        },
+        {
+            "filename": "wedding-details-PCQTSRE.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-details-PCQTSRE-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-01-portfolio-list.json",
+                    "name": "Page 01 - Portfolio List"
+                }
+            ],
+            "filesize": 243924,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PCQTSRE"
+        },
+        {
+            "filename": "bride-throwing-the-bouquet-at-wedding-SKDJA6U.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/bride-throwing-the-bouquet-at-wedding-SKDJA6U-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                }
+            ],
+            "filesize": 126886,
+            "dimensions": [
+                1600,
+                900
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-SKDJA6U"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-53HX94B.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/young-couple-in-a-wedding-ceremony-at-the-beach-53HX94B-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                }
+            ],
+            "filesize": 195641,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-53HX94B"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-CPF57WM.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/young-couple-in-a-wedding-ceremony-at-the-beach-CPF57WM-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                }
+            ],
+            "filesize": 51775,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-CPF57WM"
+        },
+        {
+            "filename": "happy-bride-and-guests-at-her-wedding-T2K6YRX.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/happy-bride-and-guests-at-her-wedding-T2K6YRX-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                }
+            ],
+            "filesize": 67349,
+            "dimensions": [
+                1024,
+                684
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-T2K6YRX"
+        },
+        {
+            "filename": "cheerful-newlyweds-at-beach-wedding-ceremnoy-ESM2NKX.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/cheerful-newlyweds-at-beach-wedding-ceremnoy-ESM2NKX-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                }
+            ],
+            "filesize": 44701,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-ESM2NKX"
+        },
+        {
+            "filename": "young-caucasian-couple-39-s-wedding-day-X3DSQME.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/young-caucasian-couple-39-s-wedding-day-X3DSQME-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-02-portfolio-detail.json",
+                    "name": "Page 02 - Portfolio Detail"
+                }
+            ],
+            "filesize": 69460,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-X3DSQME"
+        },
+        {
+            "filename": "photo-of-beautiful-table-setting-at-decorated-wedd-FQBL6E6.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/photo-of-beautiful-table-setting-at-decorated-wedd-FQBL6E6-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 152420,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-FQBL6E6"
+        },
+        {
+            "filename": "cranberry-beverage-with-ice-and-berries-7FLKWKJ.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/cranberry-beverage-with-ice-and-berries-7FLKWKJ-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 86222,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-7FLKWKJ"
+        },
+        {
+            "filename": "bbq-lunch-assortment-PE2HNQM.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/bbq-lunch-assortment-PE2HNQM-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 98048,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PE2HNQM"
+        },
+        {
+            "filename": "table-with-loads-of-cakes-cupcakes-cookies-and-cak-P5MB5N5.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/table-with-loads-of-cakes-cupcakes-cookies-and-cak-P5MB5N5-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 77236,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P5MB5N5"
+        },
+        {
+            "filename": "grilled-beef-steaks-QBKYE9B.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/grilled-beef-steaks-QBKYE9B-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 96836,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-QBKYE9B"
+        },
+        {
+            "filename": "canapes-in-plate-on-festive-table-F42M3LY.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/canapes-in-plate-on-festive-table-F42M3LY-600x840.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 79197,
+            "dimensions": [
+                800,
+                1120
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-F42M3LY"
+        },
+        {
+            "filename": "traditional-japanese-food-sushi-rolls-chopsticks-s-KPJ2BNU.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/traditional-japanese-food-sushi-rolls-chopsticks-s-KPJ2BNU-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-03-menu-list.json",
+                    "name": "Page 03 - Menu List"
+                }
+            ],
+            "filesize": 72679,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-KPJ2BNU"
+        },
+        {
+            "filename": "breakfast-with-catering-buffet-in-restaurant-WKFXY2Z.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/breakfast-with-catering-buffet-in-restaurant-WKFXY2Z-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-04-menu-detail.json",
+                    "name": "Page 04 - Menu Detail"
+                }
+            ],
+            "filesize": 200326,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-WKFXY2Z"
+        },
+        {
+            "filename": "wedding-setting-beautiful-and-romantic-ceremony-de-PA285NR-fl.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-setting-beautiful-and-romantic-ceremony-de-PA285NR-fl-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 188458,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PA285NR"
+        },
+        {
+            "filename": "wedding-decor-8B2DT65.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-decor-8B2DT65-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 78901,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-8B2DT65"
+        },
+        {
+            "filename": "wedding-ceremony-area-9BW8T4D.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-ceremony-area-9BW8T4D-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-05-venue-list.json",
+                    "name": "Page 05 - Venue List"
+                }
+            ],
+            "filesize": 77452,
+            "dimensions": [
+                800,
+                571
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-9BW8T4D"
+        },
+        {
+            "filename": "beautiful-wedding-couple-UWR5LJX.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/beautiful-wedding-couple-UWR5LJX-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 414519,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-UWR5LJX"
+        },
+        {
+            "filename": "wedding-ceremony-area-CMC9RPC.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-ceremony-area-CMC9RPC-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 90636,
+            "dimensions": [
+                1400,
+                935
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-CMC9RPC"
+        },
+        {
+            "filename": "wedding-ceremony-area-KN4AFRV.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-ceremony-area-KN4AFRV-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 85433,
+            "dimensions": [
+                1400,
+                935
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-KN4AFRV"
+        },
+        {
+            "filename": "wedding-ceremony-area-S4DH99R.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-ceremony-area-S4DH99R-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 164330,
+            "dimensions": [
+                1400,
+                933
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-S4DH99R"
+        },
+        {
+            "filename": "Video-icon.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/Video-icon.png",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 4474,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Group-19.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/Group-19.png",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 4933,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Group-23.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/Group-23.png",
+            "templates": [
+                {
+                    "source": "templates\/page-06-venue-detail.json",
+                    "name": "Page 06 - Venue Detail"
+                }
+            ],
+            "filesize": 4031,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "pink-roses-over-white-background-copy-space-the-co-K9M75UG.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/pink-roses-over-white-background-copy-space-the-co-K9M75UG-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                }
+            ],
+            "filesize": 86284,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-K9M75UG"
+        },
+        {
+            "filename": "successful-salesman-posing-in-machine-shop-DBVJ562.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/successful-salesman-posing-in-machine-shop-DBVJ562.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 9891,
+            "dimensions": [
+                200,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-DBVJ562"
+        },
+        {
+            "filename": "ambitious-confident-hipster-startupper-S8ZCQEX.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/ambitious-confident-hipster-startupper-S8ZCQEX.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 8229,
+            "dimensions": [
+                200,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-S8ZCQEX"
+        },
+        {
+            "filename": "young-pretty-smiling-businesswoman-in-coat-with-la-6MKTU7Q.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/young-pretty-smiling-businesswoman-in-coat-with-la-6MKTU7Q.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 9228,
+            "dimensions": [
+                200,
+                200
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-6MKTU7Q"
+        },
+        {
+            "filename": "young-wedding-couple-PC485WY.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/young-wedding-couple-PC485WY-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-07-contact-elementor-pro-.json",
+                    "name": "Page 07 - Contact (Elementor Pro)"
+                }
+            ],
+            "filesize": 170464,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PC485WY"
+        },
+        {
+            "filename": "wedding-rings-Y6DRXKM.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-rings-Y6DRXKM-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 62045,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-Y6DRXKM"
+        },
+        {
+            "filename": "Group-30.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/Group-30.png",
+            "templates": [
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                },
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 5239,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Group-31.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/Group-31.png",
+            "templates": [
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 4722,
+            "dimensions": [
+                256,
+                256
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "beautiful-wedding-couple-PHPKV39.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/beautiful-wedding-couple-PHPKV39-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 57591,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PHPKV39"
+        },
+        {
+            "filename": "wedding-ceremony-area-VQMDZRM.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-ceremony-area-VQMDZRM-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-08-about-us.json",
+                    "name": "Page 08 - About Us"
+                }
+            ],
+            "filesize": 48118,
+            "dimensions": [
+                1024,
+                684
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-VQMDZRM"
+        },
+        {
+            "filename": "wedding-bouquet-PHA65YR.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/wedding-bouquet-PHA65YR-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 138538,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PHA65YR"
+        },
+        {
+            "filename": "hands-holding-wedding-planner-checklist-information-preparation.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/hands-holding-wedding-planner-checklist-information-preparation-600x410.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 83308,
+            "dimensions": [
+                1024,
+                699
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PSGQEUR"
+        },
+        {
+            "filename": "elegant-wedding-decorations-made-of-natural-flowers.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/elegant-wedding-decorations-made-of-natural-flowers-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 83964,
+            "dimensions": [
+                1024,
+                684
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-NV3QRQY"
+        },
+        {
+            "filename": "crop-photo-of-bride-young-woman-with-the-boho-style-bouquet-with-groom-on-wedding.jpg",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/crop-photo-of-bride-young-woman-with-the-boho-style-bouquet-with-groom-on-wedding-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/page-09-service.json",
+                    "name": "Page 09 - Service"
+                }
+            ],
+            "filesize": 88098,
+            "dimensions": [
+                1024,
+                682
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-5F9HSMH"
+        },
+        {
+            "filename": "logo.png",
+            "thumbnail_url": "https:\/\/templatekit.tokopress.com\/weddingkit\/wp-content\/uploads\/sites\/13\/2020\/04\/logo.png",
+            "templates": [
+                {
+                    "source": "templates\/theme-builder-footer-elementor-pro-.json",
+                    "name": "Theme Builder \u2013 Footer (Elementor Pro)"
+                },
+                {
+                    "source": "templates\/theme-builder-header-elementor-pro-.json",
+                    "name": "Theme Builder \u2013 Header (Elementor Pro)"
+                }
+            ],
+            "filesize": 2469,
+            "dimensions": [
+                98,
+                107
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/the-logos-60-SYXSJF"
+        }
+    ]
+}

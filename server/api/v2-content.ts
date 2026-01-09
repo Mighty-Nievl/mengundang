@@ -35,14 +35,16 @@ export default defineEventHandler(async (event) => {
 
         const isAdmin = (user as any)?.role === 'admin'
         const isStaff = (user as any)?.role === 'staff'
+        const isSuperuser = (user as any)?.role === 'superuser'
         const isOwner = user && invitation.owner === user.email
         const isPartner = user && invitation.partnerEmail === user.email
-        const isAuthorized = isAdmin || isStaff || isOwner || isPartner
+        const isAuthorized = isAdmin || isStaff || isSuperuser || isOwner || isPartner
         console.log('[v2-content] Auth Check:', { isAuthorized, owner: invitation.owner })
 
         // EXPIRE CHECK
-        if (!isAuthorized && ownerDetails?.planExpiresAt) {
-            if (new Date() > new Date(ownerDetails.planExpiresAt)) {
+        if (!isAuthorized) {
+            const expiresAt = ownerDetails?.planExpiresAt
+            if (expiresAt && new Date() > new Date(expiresAt)) {
                 throw createError({
                     statusCode: 403,
                     statusMessage: 'Masa aktif undangan ini telah berakhir. Silakan hubungi admin untuk aktivasi kembali.'

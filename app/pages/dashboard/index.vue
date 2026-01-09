@@ -233,6 +233,9 @@ const copyToClipboard = (slug: string) => {
                  </button>
                  <!-- Mobile Dropdown -->
                  <div v-if="activeDropdown === 'user'" class="absolute right-0 top-12 bg-white rounded-2xl shadow-2xl border border-stone-100 w-48 py-2 z-50 animate-slide-up origin-top-right">
+                    <NuxtLink v-if="['admin', 'superuser', 'staff'].includes(currentUser?.role)" to="/admin" class="block px-4 py-3 hover:bg-stone-50 text-sm font-bold text-stone-900 border-b border-stone-50">
+                        <i class="fas fa-shield-halved mr-2 text-stone-400"></i> Admin Panel
+                    </NuxtLink>
                     <NuxtLink to="/pricing" class="block px-4 py-3 hover:bg-stone-50 text-sm font-bold text-gold-600">
                         <i class="fas fa-crown mr-2"></i> Upgrade
                     </NuxtLink>
@@ -248,12 +251,23 @@ const copyToClipboard = (slug: string) => {
         </div>
         
         <!-- Desktop Nav -->
-        <div class="hidden md:flex gap-3 items-center">
-            <NuxtLink v-if="currentUser?.plan !== 'vvip'" to="/pricing" class="bg-gold-500 text-stone-900 px-6 py-3.5 rounded-2xl text-[13px] font-bold hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20 flex items-center gap-2 whitespace-nowrap active:scale-95">
+        <div class="hidden md:flex gap-4 items-center">
+            <!-- Admin Link -->
+            <NuxtLink v-if="['admin', 'superuser', 'staff'].includes(currentUser?.role)" to="/admin" class="bg-stone-900 text-white px-5 py-3 rounded-2xl text-[13px] font-bold hover:bg-black transition-all flex items-center gap-2 shadow-xl shadow-black/10">
+                <i class="fas fa-shield-halved text-gold-500"></i> Admin Panel
+            </NuxtLink>
+
+            <!-- Referral Link (CRITICAL) -->
+            <NuxtLink to="/referral" class="bg-emerald-600 text-white px-5 py-3 rounded-2xl text-[13px] font-bold hover:bg-emerald-700 transition-all flex items-center gap-2 shadow-lg shadow-emerald-600/20">
+                <i class="fas fa-gift"></i> Bonus & Referral
+            </NuxtLink>
+
+            <!-- Upgrade Link -->
+            <NuxtLink v-if="currentUser?.plan !== 'vvip'" to="/pricing" class="bg-gold-500 text-stone-900 px-5 py-3 rounded-2xl text-[13px] font-bold hover:bg-gold-400 transition-all shadow-lg shadow-gold-500/20 flex items-center gap-2">
                 <i class="fas fa-crown"></i> Upgrade
             </NuxtLink>
             
-            <button @click="logout" class="w-12 h-12 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all active:scale-90" title="Keluar">
+            <button @click="logout" class="w-11 h-11 flex items-center justify-center bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all" title="Keluar">
                 <i class="fas fa-sign-out-alt"></i>
             </button>
         </div>
@@ -278,15 +292,15 @@ const copyToClipboard = (slug: string) => {
                                  <span v-if="inv.date" class="hidden md:inline-block text-[10px] text-stone-400 font-bold bg-stone-50 px-3 py-1.5 rounded-xl border border-stone-100">{{ inv.date }}</span>
                             </div>
 
-                            <!-- Mini Tools (Moved Top Right) -->
-                            <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <button @click="openModal('invite', inv)" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-stone-100 text-stone-400 transition-colors" title="Kelola Partner">
+                            <!-- Mini Tools (Always Visible) -->
+                            <div class="flex items-center gap-2">
+                                <button @click="openModal('invite', inv)" class="w-9 h-9 flex items-center justify-center rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 transition-all" title="Kelola Partner">
                                     <i class="fas fa-user-plus text-xs"></i>
                                 </button>
-                                <button @click="openModal('rename', inv)" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-stone-100 text-stone-400 transition-colors" title="Ganti URL">
+                                <button @click="openModal('rename', inv)" class="w-9 h-9 flex items-center justify-center rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 transition-all" title="Ganti URL">
                                     <i class="fas fa-link text-xs"></i>
                                 </button>
-                                <button @click="openModal('delete', inv)" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-stone-300 hover:text-red-500 transition-colors" title="Hapus">
+                                <button @click="openModal('delete', inv)" class="w-9 h-9 flex items-center justify-center rounded-xl bg-red-50 text-red-400 hover:bg-red-500 hover:text-white transition-all" title="Hapus">
                                     <i class="fas fa-trash-alt text-xs"></i>
                                 </button>
                             </div>
@@ -323,28 +337,23 @@ const copyToClipboard = (slug: string) => {
 
                     <!-- Right Side: Action Center -->
                     <div class="w-full lg:w-80 space-y-3 mt-4 lg:mt-0">
-                        <!-- Dynamic Primary Action -->
-                        <div v-if="isDataComplete(inv)">
-                            <NuxtLink :to="`/dashboard/guests?slug=${inv.slug}`" class="w-full bg-gold-500 text-stone-900 p-4 rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-gold-400 transition-all shadow-xl shadow-gold-500/10 flex items-center justify-center gap-3 active:scale-95 group/btn">
-                                <i class="fas fa-paper-plane text-lg group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-transform"></i> 
-                                Kirim Undangan
-                            </NuxtLink>
-                        </div>
-                        <div v-else>
-                            <NuxtLink :to="`/editor/${inv.slug}`" class="w-full bg-stone-900 text-white p-4 rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-black/10 flex items-center justify-center gap-3 active:scale-95 group/btn">
-                                <i class="fas fa-pencil-alt text-gold-500"></i> 
-                                Lanjutkan Edit
-                            </NuxtLink>
-                        </div>
+                        <!-- Primary Action: Always Guests & Share -->
+                        <NuxtLink :to="`/dashboard/guests?slug=${inv.slug}`" class="w-full bg-gold-500 text-stone-900 p-4 rounded-2xl text-[13px] font-black uppercase tracking-widest hover:bg-gold-400 transition-all shadow-xl shadow-gold-500/10 flex items-center justify-center gap-3 active:scale-95 group/btn">
+                            <i class="fas fa-paper-plane text-lg group-hover/btn:-translate-y-1 group-hover/btn:translate-x-1 transition-transform"></i> 
+                            Kelola Tamu & Kirim
+                        </NuxtLink>
                         
-                        <!-- Secondary Grid -->
-                        <div class="grid grid-cols-2 gap-3">
-                            <NuxtLink v-if="isDataComplete(inv)" :to="`/editor/${inv.slug}`" class="bg-white text-stone-600 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 active:scale-95 border border-stone-200">
+                        <!-- Secondary Grid: Edit, Preview, WA -->
+                        <div class="grid grid-cols-3 gap-3">
+                            <NuxtLink :to="`/editor/${inv.slug}`" class="bg-white text-stone-600 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 active:scale-95 border border-stone-200">
                                 <i class="fas fa-edit text-stone-400"></i> Edit Isi
                             </NuxtLink>
-                            <a :href="`/${inv.slug}`" target="_blank" class="bg-white text-stone-600 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 border border-stone-200 active:scale-95 col-span-full md:col-span-1" :class="!isDataComplete(inv) ? 'md:col-span-full' : ''">
+                            <a :href="`/${inv.slug}`" target="_blank" class="bg-white text-stone-600 p-4 rounded-2xl text-xs font-bold hover:bg-stone-50 transition-all flex flex-col items-center gap-2 border border-stone-200 active:scale-95">
                                 <i class="fas fa-eye text-stone-400"></i> Preview
                             </a>
+                            <NuxtLink :to="`/dashboard/whatsapp?slug=${inv.slug}`" class="bg-emerald-50 text-emerald-600 p-4 rounded-2xl text-xs font-bold hover:bg-emerald-100 transition-all flex flex-col items-center gap-2 border border-emerald-100 active:scale-95">
+                                <i class="fab fa-whatsapp"></i> Broadcast
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>

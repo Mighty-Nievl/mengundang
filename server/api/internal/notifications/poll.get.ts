@@ -1,5 +1,5 @@
 import { db } from '../../../utils/db';
-import { waNotifications } from '../../../db/schema';
+import { waNotifications, systemSettings } from '../../../db/schema';
 import { eq } from 'drizzle-orm';
 
 export default defineEventHandler(async (event) => {
@@ -10,6 +10,20 @@ export default defineEventHandler(async (event) => {
 
     if (secret !== config.internalApiSecret) {
         throw createError({ statusCode: 401, statusMessage: 'Unauthorized' });
+    }
+
+    // Update Heartbeat
+    try {
+        await db.insert(systemSettings).values({
+            key: 'wa_bot_last_seen',
+            value: new Date().toISOString(),
+            updatedAt: new Date()
+        }).onConflictDoUpdate({
+            target: systemSettings.key,
+            set: { value: new Date().toISOString(), updatedAt: new Date() }
+        });
+    } catch (e) {
+        console.error('[API] Heartbeat update failed:', e);
     }
 
     // 2. Fetch Pending Notifications

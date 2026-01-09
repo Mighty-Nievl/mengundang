@@ -23,7 +23,9 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       { name: 'Playfair Display', provider: 'google' },
-      { name: 'Lato', provider: 'google' }
+      { name: 'Lato', provider: 'google' },
+      { name: 'Alex Brush', provider: 'google' },
+      { name: 'Roboto', provider: 'google' }
     ]
   },
 
@@ -55,7 +57,9 @@ export default defineNuxtConfig({
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN,
     telegramChatId: process.env.TELEGRAM_CHAT_ID,
     flipSecretKey: process.env.FLIP_SECRET_KEY,
-    flipValidationToken: process.env.FLIP_VALIDATION_TOKEN
+    flipValidationToken: process.env.FLIP_VALIDATION_TOKEN,
+    resendApiKey: process.env.RESEND_API_KEY,
+    emailFrom: process.env.NUXT_PUBLIC_EMAIL_FROM || 'Mengundang <admin@mengundang.site>'
   },
   app: {
     head: {
@@ -111,16 +115,16 @@ export default defineNuxtConfig({
         // Open Graph
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Mengundang' },
-        { property: 'og:title', content: 'Mengundang: Platform Undangan Digital Premium' },
-        { property: 'og:description', content: 'Buat undangan pernikahan digital berkelas dengan Mengundang.' },
-        { property: 'og:image', content: 'https://mengundang.site/cover.png' },
+        { property: 'og:title', content: 'Mengundang: Bikin Web Undangan Digital Premium' },
+        { property: 'og:description', content: 'Platform undangan masa kini. Fitur lengkap: RSVP, Audio, Galeri, & Kirim WA Otomatis.' },
+        { property: 'og:image', content: 'https://mengundang.site/banner.webp' },
         { property: 'og:url', content: 'https://mengundang.site' },
         { property: 'og:locale', content: 'id_ID' },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Mengundang: Wedding Invitation Premium' },
-        { name: 'twitter:description', content: 'Platform undangan pernikahan digital premium Indonesia.' },
-        { name: 'twitter:image', content: 'https://mengundang.site/cover.png' }
+        { name: 'twitter:title', content: 'Mengundang: Web Undangan Digital Premium' },
+        { name: 'twitter:description', content: 'Bikin undangan pernikahan digital mewah sekarang.' },
+        { name: 'twitter:image', content: 'https://mengundang.site/banner.webp' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png?v=3' },
@@ -153,7 +157,7 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'cloudflare-pages',
-    minify: false,
+    minify: true,
     sourceMap: false,
     experimental: {
       tasks: true,
@@ -163,9 +167,9 @@ export default defineNuxtConfig({
       'node:process': new URL('./scripts/safe-process.mjs', import.meta.url).pathname,
       'process': new URL('./scripts/safe-process.mjs', import.meta.url).pathname
     },
-    // externals: {
-    //   external: ['bun:sqlite']
-    // }
+    externals: {
+      external: ['bun:sqlite']
+    }
   },
 
   routeRules: {

@@ -1,6 +1,6 @@
 import { db } from '../../utils/db'
 import { orders, users } from '../../db/schema'
-import { eq, desc } from 'drizzle-orm'
+import { eq, desc, and, isNotNull } from 'drizzle-orm'
 import { auth } from '../../utils/auth'
 
 export default defineEventHandler(async (event) => {
@@ -26,7 +26,12 @@ export default defineEventHandler(async (event) => {
     })
         .from(orders)
         .leftJoin(users, eq(orders.userId, users.id))
-        .where(eq(orders.status, 'pending'))
+        .where(
+            and(
+                eq(orders.status, 'pending'),
+                isNotNull(orders.proofUrl)
+            )
+        )
         .orderBy(desc(orders.createdAt))
 
     return pendingOrders

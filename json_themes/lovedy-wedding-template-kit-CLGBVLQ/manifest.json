@@ -1,0 +1,1902 @@
+{
+    "manifest_version": "1.0.14",
+    "title": "Lovedy",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.png",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/elipso.site",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Invitation Section",
+            "screenshot": "screenshots\/invitation-section.png",
+            "source": "templates\/invitation-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/invitation-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-cta",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Lovestory Section",
+            "screenshot": "screenshots\/lovestory-section.png",
+            "source": "templates\/lovestory-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/lovestory-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-about",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.png",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/?elementor_library=footer",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Blog",
+            "screenshot": "screenshots\/blog.png",
+            "source": "templates\/blog.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/?elementor_library=blog",
+            "type": "archive",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-blog",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "archive",
+                "elementor_pro_conditions": [
+                    "include\/archive",
+                    "include\/archive\/author",
+                    "include\/archive\/date",
+                    "include\/archive\/search"
+                ],
+                "additional_template_information": [
+                    "This is a \"Archive\" template for Elementor Pro.",
+                    "This template will display on: All Archives &amp; Author Archive &amp; Date Archive &amp; Search Results."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Post",
+            "screenshot": "screenshots\/single-post.png",
+            "source": "templates\/single-post.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/?elementor_library=single-post",
+            "type": "single",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-post",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single",
+                "elementor_pro_conditions": [
+                    "include\/singular\/post"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single\" template for Elementor Pro.",
+                    "This template will display on: Posts."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Error Page",
+            "screenshot": "screenshots\/error-page.png",
+            "source": "templates\/error-page.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/?elementor_library=error-page",
+            "type": "single",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single",
+                "elementor_pro_conditions": [
+                    "include\/singular\/not_found404"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single\" template for Elementor Pro.",
+                    "This template will display on: 404 Page."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home Page",
+            "screenshot": "screenshots\/home-page.png",
+            "source": "templates\/home-page.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/home-page\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Wedding Day Location Section",
+            "screenshot": "screenshots\/wedding-day-location-section.png",
+            "source": "templates\/wedding-day-location-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/wedding-day-location-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Gallery Section",
+            "screenshot": "screenshots\/gallery-section.png",
+            "source": "templates\/gallery-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/gallery-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-gallery",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Bridesmades & Groomsmen Section",
+            "screenshot": "screenshots\/bridesmades-groomsmen-section.png",
+            "source": "templates\/bridesmades-groomsmen-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/bridesmades-groomsmen-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-team",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "About Us Hero Section",
+            "screenshot": "screenshots\/about-us-hero-section.png",
+            "source": "templates\/about-us-hero-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/about-us-hero-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-hero",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Team Section",
+            "screenshot": "screenshots\/our-team-section.png",
+            "source": "templates\/our-team-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/our-team-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-team",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "About Couple Gallery Section",
+            "screenshot": "screenshots\/about-couple-gallery-section.png",
+            "source": "templates\/about-couple-gallery-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/about-couple-gallery-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-gallery",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Hero Section",
+            "screenshot": "screenshots\/hero-section.png",
+            "source": "templates\/hero-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/hero-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-hero",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Ceremony Location Right Section",
+            "screenshot": "screenshots\/ceremony-location-right-section.png",
+            "source": "templates\/ceremony-location-right-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/ceremony-location-right-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "About Couple Section",
+            "screenshot": "screenshots\/about-couple-section.png",
+            "source": "templates\/about-couple-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/about-couple-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-about",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Wedding Day Planning Section",
+            "screenshot": "screenshots\/wedding-day-planning-section.png",
+            "source": "templates\/wedding-day-planning-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/wedding-day-planning-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Invitation Form Section",
+            "screenshot": "screenshots\/invitation-form-section.png",
+            "source": "templates\/invitation-form-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/invitation-form-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-cta",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Ceremony Location Left Section",
+            "screenshot": "screenshots\/ceremony-location-left-section.png",
+            "source": "templates\/ceremony-location-left-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/ceremony-location-left-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-map",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Couple Lovestory Section",
+            "screenshot": "screenshots\/couple-lovestory-section.png",
+            "source": "templates\/couple-lovestory-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/couple-lovestory-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-about",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Wedding Day Countdown Section",
+            "screenshot": "screenshots\/wedding-day-countdown-section.png",
+            "source": "templates\/wedding-day-countdown-section.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/wedding-day-countdown-section\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-countdown",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Coming Soon",
+            "screenshot": "screenshots\/coming-soon.png",
+            "source": "templates\/coming-soon.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/coming-soon\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "RSVP",
+            "screenshot": "screenshots\/rsvp.png",
+            "source": "templates\/rsvp.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/rsvp\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Location",
+            "screenshot": "screenshots\/our-location.png",
+            "source": "templates\/our-location.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/our-location\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Gallery",
+            "screenshot": "screenshots\/our-gallery.png",
+            "source": "templates\/our-gallery.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/our-gallery\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Friends",
+            "screenshot": "screenshots\/our-friends.png",
+            "source": "templates\/our-friends.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/our-friends\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Story",
+            "screenshot": "screenshots\/our-story.png",
+            "source": "templates\/our-story.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/template-kit\/our-story\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.png",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/lovedy.elipso.site\/?elementor_library=header",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Envato Elements",
+            "version": "2.0.5",
+            "file": "envato-elements\/envato-elements.php",
+            "author": "Envato"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.0.1",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor Pro",
+            "version": "3.0.0",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "ricardo-moura-skQTL_S7-NE-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/ricardo-moura-skQTL_S7-NE-unsplash-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/invitation-section.json",
+                    "name": "Invitation Section"
+                },
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                },
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 153655,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/"
+        },
+        {
+            "filename": "image-of-smiling-multicultural-couple-hugging-and-ZUBZAGZ-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/image-of-smiling-multicultural-couple-hugging-and-ZUBZAGZ-1-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/lovestory-section.json",
+                    "name": "Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 169386,
+            "dimensions": [
+                330,
+                450
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "view-from-below-high-trees-beautiful-young-couple-4D8JY2X-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/view-from-below-high-trees-beautiful-young-couple-4D8JY2X-1-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/lovestory-section.json",
+                    "name": "Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 238648,
+            "dimensions": [
+                330,
+                450
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "in-love-CE728GQ-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/in-love-CE728GQ-1-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/lovestory-section.json",
+                    "name": "Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 200848,
+            "dimensions": [
+                330,
+                450
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-CE728GQ"
+        },
+        {
+            "filename": "497448-PHDC2Y-390.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/497448-PHDC2Y-390-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 100565,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/"
+        },
+        {
+            "filename": "renata-adrienn-ebvCsRypmxM-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/renata-adrienn-ebvCsRypmxM-unsplash-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                }
+            ],
+            "filesize": 222979,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "same-couple-with-a-bride-in-a-blue-dress-walk-QALSASL-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-QALSASL-1-600x685.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 801314,
+            "dimensions": [
+                950,
+                1084
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-QALSASL"
+        },
+        {
+            "filename": "11406.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/11406-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/about-couple-gallery-section.json",
+                    "name": "About Couple Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 364266,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/"
+        },
+        {
+            "filename": "11398.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/11398-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/invitation-form-section.json",
+                    "name": "Invitation Form Section"
+                },
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 278184,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/"
+        },
+        {
+            "filename": "gold-wedding-rings-as-an-attribute-of-a-young-couple-s-wedding.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/gold-wedding-rings-as-an-attribute-of-a-young-couple-s-wedding-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 379126,
+            "dimensions": [
+                2000,
+                1335
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-U7VU2GF"
+        },
+        {
+            "filename": "attractive-beautiful-bride-showing-engagement-wedd-PL4RYXH-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/attractive-beautiful-bride-showing-engagement-wedd-PL4RYXH-1-1-600x681.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 239403,
+            "dimensions": [
+                1920,
+                2180
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "young-woman-wearing-white-clothes-holding-flowers-P9GVBBU-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/young-woman-wearing-white-clothes-holding-flowers-P9GVBBU-1-600x897.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 348860,
+            "dimensions": [
+                1713,
+                2560
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "wedding-table-decoration.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-table-decoration-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 341053,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-4LXFKDL"
+        },
+        {
+            "filename": "modern-wedding-bouquet-wedding-rings-stylish-invitation-perfume-bottle-delicious-macarons.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/modern-wedding-bouquet-wedding-rings-stylish-invitation-perfume-bottle-delicious-macarons-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 400102,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-CM3MY5K"
+        },
+        {
+            "filename": "alexandra-gorn-VbD6KaNCIdw-unsplash-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/alexandra-gorn-VbD6KaNCIdw-unsplash-1-1-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/error-page.json",
+                    "name": "Error Page"
+                },
+                {
+                    "source": "templates\/about-us-hero-section.json",
+                    "name": "About Us Hero Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 172134,
+            "dimensions": [
+                1920,
+                1920
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "wedding-couple-on-the-ocean-with-a-priest.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-couple-on-the-ocean-with-a-priest-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/hero-section.json",
+                    "name": "Hero Section"
+                }
+            ],
+            "filesize": 314037,
+            "dimensions": [
+                2000,
+                1335
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-G77RSZS"
+        },
+        {
+            "filename": "wedding-couple-on-the-ocean-with-a-priest-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-couple-on-the-ocean-with-a-priest-1-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/hero-section.json",
+                    "name": "Hero Section"
+                }
+            ],
+            "filesize": 224199,
+            "dimensions": [
+                2000,
+                1335
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-QN6H4DC"
+        },
+        {
+            "filename": "same-couple-with-a-bride-in-a-blue-dress-walk-LTC6ZDQ-1.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-LTC6ZDQ-1-600x763.png",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/hero-section.json",
+                    "name": "Hero Section"
+                },
+                {
+                    "source": "templates\/about-couple-section.json",
+                    "name": "About Couple Section"
+                }
+            ],
+            "filesize": 701963,
+            "dimensions": [
+                666,
+                847
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-LTC6ZDQ"
+        },
+        {
+            "filename": "wedding-couple-on-the-ocean-with-a-priest-L2DTSXD-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-couple-on-the-ocean-with-a-priest-L2DTSXD-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/about-couple-section.json",
+                    "name": "About Couple Section"
+                }
+            ],
+            "filesize": 217131,
+            "dimensions": [
+                480,
+                570
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-L2DTSXD"
+        },
+        {
+            "filename": "same-couple-with-a-bride-in-a-blue-dress-walk-RBBL2G9-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-RBBL2G9-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/about-couple-section.json",
+                    "name": "About Couple Section"
+                }
+            ],
+            "filesize": 269834,
+            "dimensions": [
+                580,
+                482
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-RBBL2G9"
+        },
+        {
+            "filename": "bride-in-a-blue-light-dress-walking-along-the-ocea-3NA4FCW-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/bride-in-a-blue-light-dress-walking-along-the-ocea-3NA4FCW-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/about-couple-section.json",
+                    "name": "About Couple Section"
+                }
+            ],
+            "filesize": 226285,
+            "dimensions": [
+                480,
+                570
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3NA4FCW"
+        },
+        {
+            "filename": "helena-hertz-K0FidtcDQik-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/helena-hertz-K0FidtcDQik-unsplash-1-600x450.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/wedding-day-countdown-section.json",
+                    "name": "Wedding Day Countdown Section"
+                }
+            ],
+            "filesize": 142480,
+            "dimensions": [
+                1920,
+                1440
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/"
+        },
+        {
+            "filename": "happy-couple-drinking-beer-and-toasting-at-home-UWT3974-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/happy-couple-drinking-beer-and-toasting-at-home-UWT3974-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/couple-lovestory-section.json",
+                    "name": "Couple Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 164683,
+            "dimensions": [
+                380,
+                400
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-UWT3974"
+        },
+        {
+            "filename": "view-from-below-high-trees-beautiful-young-couple-4D8JY2X-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/view-from-below-high-trees-beautiful-young-couple-4D8JY2X-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/couple-lovestory-section.json",
+                    "name": "Couple Lovestory Section"
+                }
+            ],
+            "filesize": 204574,
+            "dimensions": [
+                380,
+                320
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-4D8JY2X"
+        },
+        {
+            "filename": "image-of-smiling-multicultural-couple-hugging-and-ZUBZAGZ-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/image-of-smiling-multicultural-couple-hugging-and-ZUBZAGZ-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/couple-lovestory-section.json",
+                    "name": "Couple Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 187302,
+            "dimensions": [
+                380,
+                450
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-ZUBZAGZ"
+        },
+        {
+            "filename": "mature-couple-running-on-the-beach-P9CC9KL-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/mature-couple-running-on-the-beach-P9CC9KL-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/couple-lovestory-section.json",
+                    "name": "Couple Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 99913,
+            "dimensions": [
+                380,
+                250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P9CC9KL"
+        },
+        {
+            "filename": "man-and-woman-dancing-in-a-modern-interior-TU6VDEU-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/man-and-woman-dancing-in-a-modern-interior-TU6VDEU-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/couple-lovestory-section.json",
+                    "name": "Couple Lovestory Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 159516,
+            "dimensions": [
+                380,
+                350
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-TU6VDEU"
+        },
+        {
+            "filename": "in-love-CE728GQ-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/in-love-CE728GQ-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/couple-lovestory-section.json",
+                    "name": "Couple Lovestory Section"
+                }
+            ],
+            "filesize": 152031,
+            "dimensions": [
+                380,
+                300
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-CE728GQ"
+        },
+        {
+            "filename": "love-birds.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/love-birds.png",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/ceremony-location-right-section.json",
+                    "name": "Ceremony Location Right Section"
+                }
+            ],
+            "filesize": 5167,
+            "dimensions": [
+                74,
+                62
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/"
+        },
+        {
+            "filename": "rocket.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/rocket.png",
+            "templates": [
+                {
+                    "source": "templates\/home-page.json",
+                    "name": "Home Page"
+                },
+                {
+                    "source": "templates\/ceremony-location-right-section.json",
+                    "name": "Ceremony Location Right Section"
+                }
+            ],
+            "filesize": 3344,
+            "dimensions": [
+                61,
+                62
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/"
+        },
+        {
+            "filename": "same-couple-with-a-bride-in-a-blue-dress-walk-AM3QHGD-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-AM3QHGD-1-1-600x754.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 202137,
+            "dimensions": [
+                1920,
+                2414
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "nikki-gibson-UQl_-yabQiA-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/nikki-gibson-UQl_-yabQiA-unsplash-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/about-couple-gallery-section.json",
+                    "name": "About Couple Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 215684,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "pexels-iamngakan-eka-3474501-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pexels-iamngakan-eka-3474501-1-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 330650,
+            "dimensions": [
+                1707,
+                2560
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.pexels.com\/"
+        },
+        {
+            "filename": "austin-prock-MuadWRKE86Y-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/austin-prock-MuadWRKE86Y-unsplash-1-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 381491,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "pexels-maria-gloss-4197861-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pexels-maria-gloss-4197861-1-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 183361,
+            "dimensions": [
+                1707,
+                2560
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.pexels.com\/"
+        },
+        {
+            "filename": "a-girl-in-a-light-pink-dress-against-the-backgroun-AKYVBF9-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/a-girl-in-a-light-pink-dress-against-the-backgroun-AKYVBF9-1-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 187408,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-AKYVBF9"
+        },
+        {
+            "filename": "olivia-bauso-30UOqDM5QW0-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/olivia-bauso-30UOqDM5QW0-unsplash-1-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 144613,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "pablo-heimplatz-OSboZGvoEz4-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pablo-heimplatz-OSboZGvoEz4-unsplash-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 124463,
+            "dimensions": [
+                1920,
+                1281
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "pexels-trung-nguyen-2959192-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pexels-trung-nguyen-2959192-1-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 218608,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-2959192"
+        },
+        {
+            "filename": "happy-bride-and-groom-hugging-on-green-mountain-me-4CKEK44-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/happy-bride-and-groom-hugging-on-green-mountain-me-4CKEK44-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-section.json",
+                    "name": "Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 318318,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-4CKEK44"
+        },
+        {
+            "filename": "beautiful-woman-in-hair-salon-7VE5RMS-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/beautiful-woman-in-hair-salon-7VE5RMS-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmades-groomsmen-section.json",
+                    "name": "Bridesmades & Groomsmen Section"
+                },
+                {
+                    "source": "templates\/our-team-section.json",
+                    "name": "Our Team Section"
+                },
+                {
+                    "source": "templates\/our-friends.json",
+                    "name": "Our Friends"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 54406,
+            "dimensions": [
+                500,
+                749
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-7VE5RMS"
+        },
+        {
+            "filename": "young-teacher-of-professional-photography-showing-7XFGUES.jpeg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/young-teacher-of-professional-photography-showing-7XFGUES.jpeg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmades-groomsmen-section.json",
+                    "name": "Bridesmades & Groomsmen Section"
+                },
+                {
+                    "source": "templates\/our-team-section.json",
+                    "name": "Our Team Section"
+                },
+                {
+                    "source": "templates\/our-friends.json",
+                    "name": "Our Friends"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 59209,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "same-couple-with-a-bride-in-a-blue-dress-walk-3.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-3-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about-us-hero-section.json",
+                    "name": "About Us Hero Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 190129,
+            "dimensions": [
+                2000,
+                1335
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-AM3QHGD"
+        },
+        {
+            "filename": "love-1.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/love-1.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us-hero-section.json",
+                    "name": "About Us Hero Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 3773,
+            "dimensions": [
+                60,
+                56
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/"
+        },
+        {
+            "filename": "party.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/party.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us-hero-section.json",
+                    "name": "About Us Hero Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 3716,
+            "dimensions": [
+                45,
+                56
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/"
+        },
+        {
+            "filename": "car.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/car.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us-hero-section.json",
+                    "name": "About Us Hero Section"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 3399,
+            "dimensions": [
+                58,
+                58
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/"
+        },
+        {
+            "filename": "successful-businesswoman-outdoors-D9PWLE6-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/successful-businesswoman-outdoors-D9PWLE6-1-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team-section.json",
+                    "name": "Our Team Section"
+                },
+                {
+                    "source": "templates\/our-friends.json",
+                    "name": "Our Friends"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 64519,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "businessman-busy-with-his-work-2ELY6TN-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/businessman-busy-with-his-work-2ELY6TN-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team-section.json",
+                    "name": "Our Team Section"
+                },
+                {
+                    "source": "templates\/our-friends.json",
+                    "name": "Our Friends"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 70538,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-2ELY6TN"
+        },
+        {
+            "filename": "man-and-woman-dancing-in-a-modern-interior-TU6VDEU-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/man-and-woman-dancing-in-a-modern-interior-TU6VDEU-1-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about-couple-gallery-section.json",
+                    "name": "About Couple Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 214669,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "happy-couple-drinking-beer-and-toasting-at-home-UWT3974-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/happy-couple-drinking-beer-and-toasting-at-home-UWT3974-1-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about-couple-gallery-section.json",
+                    "name": "About Couple Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 159783,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "mature-couple-running-on-the-beach-P9CC9KL-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/mature-couple-running-on-the-beach-P9CC9KL-1-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about-couple-gallery-section.json",
+                    "name": "About Couple Gallery Section"
+                },
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 186801,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/"
+        },
+        {
+            "filename": "helena-hertz-K0FidtcDQik-unsplash-1-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/helena-hertz-K0FidtcDQik-unsplash-1-1-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/coming-soon.json",
+                    "name": "Coming Soon"
+                }
+            ],
+            "filesize": 94172,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/lovedy.elipso.site\/wp-admin\/upload.php?item=279"
+        },
+        {
+            "filename": "closeup-of-white-wedding-cake-with-bride-and-groom-PCKWW8F-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/closeup-of-white-wedding-cake-with-bride-and-groom-PCKWW8F-1-600x419.jpg",
+            "templates": [
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                }
+            ],
+            "filesize": 74531,
+            "dimensions": [
+                1920,
+                1341
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PCKWW8F"
+        },
+        {
+            "filename": "jonathan-j-castellon-26T6EAsQCiA-unsplash-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/jonathan-j-castellon-26T6EAsQCiA-unsplash-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 345036,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/unsplash.com\/"
+        },
+        {
+            "filename": "wedding-decoration-chairs-in-rustic-green-style-PT5FF7J-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-decoration-chairs-in-rustic-green-style-PT5FF7J-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 242270,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PT5FF7J"
+        },
+        {
+            "filename": "elegant-wedding-arch-in-olive-trees-park-EBK6U54-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/elegant-wedding-arch-in-olive-trees-park-EBK6U54-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 468287,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-EBK6U54"
+        },
+        {
+            "filename": "wedding-chairs-with-flowers-decoration-GLF5NX2-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-chairs-with-flowers-decoration-GLF5NX2-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 156746,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-GLF5NX2"
+        },
+        {
+            "filename": "banquet-hall-for-weddings-with-decorative-elements-9AKM7G5-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/banquet-hall-for-weddings-with-decorative-elements-9AKM7G5-1-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 313812,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-9AKM7G5"
+        },
+        {
+            "filename": "wedding-chairs-with-flowers-decoration-BQGUCK5-2.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-chairs-with-flowers-decoration-BQGUCK5-2-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-location.json",
+                    "name": "Our Location"
+                }
+            ],
+            "filesize": 286499,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-BQGUCK5"
+        },
+        {
+            "filename": "11397-1.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/11397-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-gallery.json",
+                    "name": "Our Gallery"
+                }
+            ],
+            "filesize": 529391,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.freepik.com\/"
+        },
+        {
+            "filename": "portrait-of-pretty-three-women-20s-celebrating-bachelorette-part.jpg",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/portrait-of-pretty-three-women-20s-celebrating-bachelorette-part-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-friends.json",
+                    "name": "Our Friends"
+                }
+            ],
+            "filesize": 262726,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-BEK8S5Y"
+        },
+        {
+            "filename": "love.png",
+            "thumbnail_url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/love.png",
+            "templates": [
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 2522,
+            "dimensions": [
+                42,
+                42
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/"
+        }
+    ]
+}

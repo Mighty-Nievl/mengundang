@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, statusMessage: 'Invitation not found' })
     }
 
-    const isAdmin = (user as any).role === 'admin'
+    const isAdmin = (user as any).role === 'admin' || (user as any).role === 'superuser'
     const isOwner = inv.owner === user.email || inv.partnerEmail === user.email
 
     if (!isAdmin && !isOwner) {

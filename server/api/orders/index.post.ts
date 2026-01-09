@@ -49,6 +49,8 @@ export default defineEventHandler(async (event) => {
     // 2. Create Flip Bill
     let flipBillId = null
     let paymentUrl = null
+    /* FLIP DISABLED TEMPORARILY - FALLBACK TO MANUAL */
+    /*
     try {
         const flipBill = await createFlipBill(
             orderId,
@@ -57,9 +59,19 @@ export default defineEventHandler(async (event) => {
         )
         flipBillId = flipBill.bill_id.toString()
         paymentUrl = flipBill.payment_url
-    } catch (e) {
-        throw createError({ statusCode: 500, statusMessage: 'Gagal membuat tagihan Flip. Silakan coba lagi.' })
+    } catch (e: any) {
+        console.error('[CreateOrder] Flip Error:', e)
+        throw createError({ 
+            statusCode: 500, 
+            statusMessage: e.message || 'Gagal membuat tagihan Flip.',
+            data: e.data 
+        })
     }
+    */
+
+    // Manual Mode
+    flipBillId = `MANUAL-${orderId}`
+    paymentUrl = null // Signals frontend to show QRIS
 
     await db.insert(orders).values({
         id: orderId,

@@ -1,0 +1,151 @@
+{
+    "version": "0.4",
+    "title": "Gallery Section",
+    "type": "section",
+    "metadata": {
+        "template_type": "section-gallery",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "wp_page_template": "elementor_canvas"
+    },
+    "content": [
+        {
+            "id": "3a80e403",
+            "settings": {
+                "margin": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "120",
+                    "left": 0,
+                    "isLinked": false
+                },
+                "margin_tablet": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "70",
+                    "left": 0,
+                    "isLinked": false
+                },
+                "margin_mobile": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "50",
+                    "left": 0,
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "343238ad",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null
+                    },
+                    "elements": [
+                        {
+                            "id": "297c0966",
+                            "settings": {
+                                "gallery": [
+                                    {
+                                        "id": 235,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-AM3QHGD-1-1.jpg"
+                                    },
+                                    {
+                                        "id": 165,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/attractive-beautiful-bride-showing-engagement-wedd-PL4RYXH-1-1.jpg"
+                                    },
+                                    {
+                                        "id": 170,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/11406.jpg"
+                                    },
+                                    {
+                                        "id": 164,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/young-woman-wearing-white-clothes-holding-flowers-P9GVBBU-1-scaled.jpg"
+                                    },
+                                    {
+                                        "id": 172,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/nikki-gibson-UQl_-yabQiA-unsplash-1.jpg"
+                                    },
+                                    {
+                                        "id": 238,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pexels-iamngakan-eka-3474501-1-scaled.jpg"
+                                    },
+                                    {
+                                        "id": 171,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/austin-prock-MuadWRKE86Y-unsplash-1.jpg"
+                                    },
+                                    {
+                                        "id": 239,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pexels-maria-gloss-4197861-1-scaled.jpg"
+                                    },
+                                    {
+                                        "id": 123,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/a-girl-in-a-light-pink-dress-against-the-backgroun-AKYVBF9-1.jpg"
+                                    },
+                                    {
+                                        "id": 236,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/olivia-bauso-30UOqDM5QW0-unsplash-1.jpg"
+                                    },
+                                    {
+                                        "id": 120,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pablo-heimplatz-OSboZGvoEz4-unsplash-1.jpg"
+                                    },
+                                    {
+                                        "id": 241,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/11398.jpg"
+                                    },
+                                    {
+                                        "id": 119,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/pexels-trung-nguyen-2959192-1.jpg"
+                                    },
+                                    {
+                                        "id": 128,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/man-and-woman-dancing-in-a-modern-interior-TU6VDEU-1.jpg"
+                                    },
+                                    {
+                                        "id": 122,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/happy-bride-and-groom-hugging-on-green-mountain-me-4CKEK44-1.jpg"
+                                    },
+                                    {
+                                        "id": 124,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/happy-couple-drinking-beer-and-toasting-at-home-UWT3974-1.jpg"
+                                    },
+                                    {
+                                        "id": 127,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/mature-couple-running-on-the-beach-P9CC9KL-1.jpg"
+                                    },
+                                    {
+                                        "id": 126,
+                                        "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/image-of-smiling-multicultural-couple-hugging-and-ZUBZAGZ-1.jpg"
+                                    }
+                                ],
+                                "galleries": [
+                                    {
+                                        "gallery_title": "New Gallery",
+                                        "_id": "e917f67",
+                                        "multiple_gallery": []
+                                    }
+                                ],
+                                "gallery_layout": "masonry",
+                                "columns": 3,
+                                "thumbnail_image_size": "large",
+                                "show_all_galleries_label": "All"
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "gallery",
+                            "elType": "widget"
+                        }
+                    ],
+                    "isInner": false,
+                    "elType": "column"
+                }
+            ],
+            "isInner": false,
+            "elType": "section"
+        }
+    ]
+}

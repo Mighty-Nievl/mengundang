@@ -1,77 +1,80 @@
-export const sendPremiumEmail = async (to: string, subject: string, content: { title: string, message: string, ctaText?: string, ctaUrl?: string }) => {
-    const config = useRuntimeConfig()
-    const apiKey = config.resendApiKey // We will need to add this to nuxt.config.ts later or use env
+import { db } from './db';
+import { emailNotifications } from '../db/schema';
+import { nanoid } from 'nanoid';
 
-    // Premium HTML Template "Atelier Theme"
-    const html = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-            body { font-family: 'Georgia', serif; background-color: #f5f5f4; margin: 0; padding: 0; }
-            .container { max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-            .header { background-color: #1c1917; padding: 30px; text-align: center; }
-            .logo { color: #d6b656; font-size: 24px; font-weight: bold; letter-spacing: 1px; text-decoration: none; }
-            .content { padding: 40px 30px; color: #44403c; line-height: 1.6; }
-            .title { font-size: 22px; color: #1c1917; margin-bottom: 20px; font-weight: normal; }
-            .btn { display: inline-block; background-color: #1c1917; color: #d6b656; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 20px; font-family: sans-serif; font-size: 14px; }
-            .footer { background-color: #fafaf9; padding: 20px; text-align: center; color: #a8a29e; font-size: 12px; font-family: sans-serif; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <a href="https://mengundang.site" class="logo">Mengundang.</a>
-            </div>
-            <div class="content">
-                <h1 class="title">${content.title}</h1>
-                <p>${content.message}</p>
-                ${content.ctaText && content.ctaUrl ? `<a href="${content.ctaUrl}" class="btn">${content.ctaText}</a>` : ''}
-            </div>
-            <div class="footer">
-                &copy; ${new Date().getFullYear()} Undangan Premium Platform.<br>
-                Dibuat dengan penuh cinta untuk momen spesial Anda.
-            </div>
-        </div>
-    </body>
-    </html>
-    `
+export interface SendEmailOptions {
+    to: string | string[];
+    subject: string;
+    html: string;
+    from?: string;
+    replyTo?: string;
+}
 
-    // Log Logic (Development / No API Key)
+/**
+ * Sends an email using the Resend API via fetch (Cloudflare Compatible)
+ */
+export const sendEmail = async (options: SendEmailOptions) => {
+    const config = useRuntimeConfig();
+    const apiKey = config.resendApiKey;
+    const from = options.from || config.emailFrom;
+
     if (!apiKey) {
-        console.log('---------------------------------------------------')
-        console.log(`[📧 Mock Email] To: ${to}`)
-        console.log(`[📧 Subject] ${subject}`)
-        console.log(`[📧 Content] ${content.message}`)
-        console.log('---------------------------------------------------')
-        return { success: true, type: 'mock' }
+        console.warn('⚠️ [Email] RESEND_API_KEY is not set. Email will not be sent.');
+        return { success: false, error: 'API Key missing' };
     }
 
-    // Real Send Logic (Resend API)
+    const recipients = Array.isArray(options.to) ? options.to : [options.to];
+    console.log(`[Email] Sending email to ${recipients.join(', ')}: ${options.subject}`);
+
     try {
         const response = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                from: 'Mengundang <system@mengundang.site>', // Needs domain verification
-                to: [to],
-                subject: subject,
-                html: html
-            })
-        })
+                from: from,
+                to: recipients,
+                subject: options.subject,
+                html: options.html,
+                reply_to: options.replyTo,
+            }),
+        });
+
+        const data = await response.json();
 
         if (!response.ok) {
-            const error = await response.json()
-            console.error('[Email Error]', error)
-            return { success: false, error }
+            console.error('[Email] Resend API Error:', data);
+            // Log failure
+            await db.insert(emailNotifications).values({
+                id: nanoid(),
+                recipient: recipients.join(', '),
+                subject: options.subject,
+                content: options.html,
+                status: 'failed',
+                error: JSON.stringify(data),
+                createdAt: new Date()
+            }).catch(err => console.error('[Email-Log] Failed to log failure:', err));
+
+            return { success: false, error: data };
         }
 
-        return { success: true, type: 'sent' }
-    } catch (e) {
-        console.error('[Email Network Error]', e)
-        return { success: false, error: e }
+        console.log(`✅ [Email] Sent successfully: ${data.id}`);
+
+        // Log success
+        await db.insert(emailNotifications).values({
+            id: nanoid(),
+            recipient: recipients.join(', '),
+            subject: options.subject,
+            content: options.html,
+            status: 'sent',
+            createdAt: new Date()
+        }).catch(err => console.error('[Email-Log] Failed to log success:', err));
+
+        return { success: true, id: data.id };
+    } catch (e: any) {
+        console.error('[Email] Network Error:', e);
+        return { success: false, error: e.message };
     }
-}
+};

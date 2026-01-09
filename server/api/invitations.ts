@@ -14,17 +14,18 @@ export default defineEventHandler(async (event) => {
 
     const isAdmin = (user as any).role === 'admin'
     const isStaff = (user as any).role === 'staff'
+    const isSuperuser = (user as any).role === 'superuser'
 
     // Helper to check ownership or staff/admin bypass
     const isManagerOrOwner = (inv: any) => {
-        return isAdmin || isStaff || inv.owner === user.email || inv.partnerEmail === user.email
+        return isAdmin || isStaff || isSuperuser || inv.owner === user.email || inv.partnerEmail === user.email
     }
 
     if (event.method === 'GET') {
         const queryBuilder = db.select().from(invitations)
 
         let allInvitations: any[] = []
-        if (isAdmin || isStaff) {
+        if (isAdmin || isStaff || isSuperuser) {
             allInvitations = await queryBuilder
         } else {
             allInvitations = await queryBuilder.where(
@@ -97,7 +98,7 @@ export default defineEventHandler(async (event) => {
         }
 
         // CHECK LIMITS (Only for non-admin/staff)
-        if (!isAdmin && !isStaff) {
+        if (!isAdmin && !isStaff && !isSuperuser) {
             // Get user's current limit
             const [userDetails] = await db.select().from(users).where(eq(users.email, user.email))
             const maxInv = userDetails?.maxInvitations || 1

@@ -1,0 +1,1407 @@
+{
+    "manifest_version": "1.0.14",
+    "title": "Menica - Wedding Elementor Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "2.9.13",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "http:\/\/theme.attype.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home",
+            "screenshot": "screenshots\/home.jpg",
+            "source": "templates\/home.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/home\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Package",
+            "screenshot": "screenshots\/package.jpg",
+            "source": "templates\/package.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/package\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-product",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Gallery",
+            "screenshot": "screenshots\/gallery.jpg",
+            "source": "templates\/gallery.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/gallery\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-gallery",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Gallery",
+            "screenshot": "screenshots\/single-gallery.jpg",
+            "source": "templates\/single-gallery.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/single-gallery\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-gallery",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Venue",
+            "screenshot": "screenshots\/venue.jpg",
+            "source": "templates\/venue.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/venue\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-product",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Venue",
+            "screenshot": "screenshots\/single-venue.jpg",
+            "source": "templates\/single-venue.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/single-venue\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-product",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "About Us",
+            "screenshot": "screenshots\/about-us.jpg",
+            "source": "templates\/about-us.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/about-us\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-about",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Our Team",
+            "screenshot": "screenshots\/our-team.jpg",
+            "source": "templates\/our-team.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/our-team\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-team",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact Us",
+            "screenshot": "screenshots\/contact-us.jpg",
+            "source": "templates\/contact-us.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/contact-us\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/footer\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "http:\/\/theme.attype.com\/template-kit\/header\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "http:\/\/theme.attype.com\/?elementor_library=footer",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "http:\/\/theme.attype.com\/?elementor_library=header",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "2.10.3",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "2.9.14",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "2-3.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/2-3-600x337.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 331346,
+            "dimensions": [
+                1366,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-on-the-nature-is-hugging-each-other-PBAXA97"
+        },
+        {
+            "filename": "divider.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/divider.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                },
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                },
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                },
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 2458,
+            "dimensions": [
+                400,
+                200
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "About-Us-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/About-Us-2-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 307907,
+            "dimensions": [
+                1152,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/a-young-bride-groom-and-guests-posing-for-a-photog-GZ7ETXA"
+        },
+        {
+            "filename": "divider2.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/divider2.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                },
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 1271,
+            "dimensions": [
+                400,
+                200
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Venue-800-3.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-3-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 247836,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beach-wedding-P3P2YUZ"
+        },
+        {
+            "filename": "Gallery-3.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Gallery-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                }
+            ],
+            "filesize": 74445,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/elegant-wedding-couple-KGXNTAD"
+        },
+        {
+            "filename": "Venue-800-8.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-8-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                }
+            ],
+            "filesize": 96311,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-ceremony-area-TCLT9GW"
+        },
+        {
+            "filename": "Gallery-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Gallery-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                }
+            ],
+            "filesize": 60733,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-8X75QDV"
+        },
+        {
+            "filename": "Venue-800.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 187346,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/amazing-floral-decorated-white-wedding-hall-with-t-W4VF2SD"
+        },
+        {
+            "filename": "Gallery-4.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Gallery-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 96098,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-together-73TPJLQ"
+        },
+        {
+            "filename": "dress-88.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/dress-88.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 874,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "ring-88.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/ring-88.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 1042,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Buffet-88.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Buffet-88.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 731,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "photo-88.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/photo-88.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 853,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "decoration-88.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/decoration-88.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 943,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "cake-88.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/cake-88.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 715,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Our-team-new-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 60025,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/pensive-business-man-with-newspaper-PXLLH5X"
+        },
+        {
+            "filename": "Our-team-new-6.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-6.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 47544,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/smiling-young-designer-using-his-cellphone-after-a-MBE827T"
+        },
+        {
+            "filename": "Our-team-new-3.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 79296,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/smiling-and-cute-woman-sitting-in-a-make-up-studio-JNUL822"
+        },
+        {
+            "filename": "Single-Gallery-1.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                },
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                },
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 82911,
+            "dimensions": [
+                600,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/turkish-wedding-K26XJ8S"
+        },
+        {
+            "filename": "Gallery-5.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Gallery-5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                }
+            ],
+            "filesize": 121914,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-love-romantic-weekend-wedding-trip-K76JK4S"
+        },
+        {
+            "filename": "Headline.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Headline-600x338.jpg",
+            "templates": [
+                {
+                    "source": "templates\/package.json",
+                    "name": "Package"
+                },
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                },
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                },
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                },
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                },
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                },
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 218587,
+            "dimensions": [
+                1920,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/brunette-bride-in-fashion-white-wedding-dress-with-P7P539T"
+        },
+        {
+            "filename": "Gallery-1.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Gallery-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                }
+            ],
+            "filesize": 49536,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/turkish-wedding-T5P2FWZ"
+        },
+        {
+            "filename": "Gallery-6.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Gallery-6.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                }
+            ],
+            "filesize": 123918,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-celebrating-wedding-with-party-in-bac-P7ERHNS"
+        },
+        {
+            "filename": "Book-appointment-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Book-appointment-2-600x337.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                }
+            ],
+            "filesize": 245285,
+            "dimensions": [
+                1366,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/festive-wedding-table-setting-in-pink-8M5QNR3"
+        },
+        {
+            "filename": "Single-Gallery-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 89202,
+            "dimensions": [
+                600,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/turkish-wedding-GRPZJ4M"
+        },
+        {
+            "filename": "Date-88-white.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Date-88-white.png",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 445,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "building-88-white.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/building-88-white.png",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 369,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "mail-88-white.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/mail-88-white.png",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 591,
+            "dimensions": [
+                88,
+                88
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Single-Gallery-4.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-4-600x360.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 192177,
+            "dimensions": [
+                1000,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/turkish-wedding-H93JFPA"
+        },
+        {
+            "filename": "Single-Gallery-8.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-8.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 107522,
+            "dimensions": [
+                600,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/banquet-hall-for-weddings-with-decorative-elements-ZSPZPX6"
+        },
+        {
+            "filename": "Single-Gallery-3.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-3-600x360.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 91736,
+            "dimensions": [
+                1000,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/turkish-wedding-T5P2FWZ"
+        },
+        {
+            "filename": "Single-Gallery-7.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-7.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 145518,
+            "dimensions": [
+                600,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/elegant-wedding-decorations-made-of-natural-flower-FCE88KR"
+        },
+        {
+            "filename": "Single-Gallery-6.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-6.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 115592,
+            "dimensions": [
+                600,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/close-up-mid-section-of-a-newlywed-couple-with-wed-PSL2EBK"
+        },
+        {
+            "filename": "Single-Gallery-5.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Single-Gallery-5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-gallery.json",
+                    "name": "Single Gallery"
+                }
+            ],
+            "filesize": 89412,
+            "dimensions": [
+                600,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/turkish-wedding-ST7EAVJ"
+        },
+        {
+            "filename": "Venue-800-4.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-4-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 201370,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/banquet-hall-for-weddings-with-decorative-elements-NVXP7AV"
+        },
+        {
+            "filename": "Venue-800-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-2-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 231627,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/banquet-hall-for-weddings-with-decorative-elements-GE6RZKW"
+        },
+        {
+            "filename": "Venue-800-7.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-7-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 194584,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-ceremony-area-AG6E4G5"
+        },
+        {
+            "filename": "Venue-800-9.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-9-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 160067,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-ceremony-area-CMC9RPC"
+        },
+        {
+            "filename": "Venue-800-5.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-5-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 223500,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-reception-venue-in-a-large-marquis-VK8P6JQ"
+        },
+        {
+            "filename": "Venue-800-6.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Venue-800-6-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue.json",
+                    "name": "Venue"
+                }
+            ],
+            "filesize": 216894,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/chic-wedding-venue-in-tuscany-italy-9NP5H6B"
+        },
+        {
+            "filename": "single-venue-4.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/single-venue-4-600x337.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                }
+            ],
+            "filesize": 146819,
+            "dimensions": [
+                1366,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/photo-of-beautiful-table-setting-at-decorated-wedd-FQBL6E6"
+        },
+        {
+            "filename": "single-venue-1.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/single-venue-1-600x337.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                }
+            ],
+            "filesize": 251522,
+            "dimensions": [
+                1366,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/amazing-floral-decorated-white-wedding-hall-with-t-W4VF2SD"
+        },
+        {
+            "filename": "single-venue-2.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/single-venue-2-600x337.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                }
+            ],
+            "filesize": 182154,
+            "dimensions": [
+                1366,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/photo-of-beautiful-original-wedding-ceremony-flora-CDMEX99"
+        },
+        {
+            "filename": "single-venue-3.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/single-venue-3-600x337.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-venue.json",
+                    "name": "Single Venue"
+                }
+            ],
+            "filesize": 129568,
+            "dimensions": [
+                1366,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/close-up-photo-of-beautiful-white-wedding-chairs-a-3A4PPS3"
+        },
+        {
+            "filename": "Dress.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Dress.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 510,
+            "dimensions": [
+                44,
+                44
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "buffet.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/buffet.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 447,
+            "dimensions": [
+                44,
+                44
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "boquet.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/boquet.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 513,
+            "dimensions": [
+                44,
+                44
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "ring-1.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/ring-1.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 600,
+            "dimensions": [
+                44,
+                44
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "photo.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/photo.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 498,
+            "dimensions": [
+                44,
+                44
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "cake.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/cake.png",
+            "templates": [
+                {
+                    "source": "templates\/about-us.json",
+                    "name": "About Us"
+                }
+            ],
+            "filesize": 435,
+            "dimensions": [
+                44,
+                44
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/24-love-and-wedding-icons-3WPJKW"
+        },
+        {
+            "filename": "Our-team-new-1.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 100136,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-charming-girl-photographer-stands-in-a-room--KLK573T"
+        },
+        {
+            "filename": "Our-team-new-4.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 63272,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/smiling-professional-woman-designer-leaning-at-her-PF9DXV5"
+        },
+        {
+            "filename": "Our-team-new-7.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-7.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 51840,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/asian-mature-chef-in-the-kitchen-PXSH4U5"
+        },
+        {
+            "filename": "Our-team-new-5.jpg",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/Our-team-new-5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-team.json",
+                    "name": "Our Team"
+                }
+            ],
+            "filesize": 36835,
+            "dimensions": [
+                500,
+                500
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-smiling-male-chef-posing-PDEM7CR"
+        },
+        {
+            "filename": "logo-2-1.png",
+            "thumbnail_url": "http:\/\/theme.attype.com\/wp-content\/uploads\/2020\/07\/logo-2-1.png",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                },
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                },
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 2981,
+            "dimensions": [
+                300,
+                200
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        }
+    ]
+}

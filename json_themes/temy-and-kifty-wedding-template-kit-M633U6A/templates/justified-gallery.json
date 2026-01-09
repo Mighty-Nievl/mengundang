@@ -1,0 +1,248 @@
+{
+    "version": "0.4",
+    "title": "Justified Gallery",
+    "type": "page",
+    "metadata": {
+        "template_type": "single-page",
+        "include_in_zip": "1",
+        "elementor_pro_required": null,
+        "wp_page_template": "elementor_header_footer"
+    },
+    "content": [
+        {
+            "id": "2579a667",
+            "settings": {
+                "padding": {
+                    "unit": "px",
+                    "top": "100",
+                    "right": "0",
+                    "bottom": "100",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "margin_tablet": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "0",
+                    "left": 0,
+                    "isLinked": false
+                },
+                "margin_mobile": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "0",
+                    "left": 0,
+                    "isLinked": false
+                },
+                "padding_tablet": {
+                    "unit": "px",
+                    "top": "50",
+                    "right": "30",
+                    "bottom": "100",
+                    "left": "30",
+                    "isLinked": false
+                },
+                "padding_mobile": {
+                    "unit": "px",
+                    "top": "50",
+                    "right": "20",
+                    "bottom": "100",
+                    "left": "20",
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "697833b4",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null,
+                        "margin": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": false
+                        },
+                        "padding": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "0",
+                            "left": "0",
+                            "isLinked": false
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "1bc8067a",
+                            "settings": {
+                                "title": "Justified Gallery\n",
+                                "align": "center",
+                                "__globals__": {
+                                    "title_color": "globals\/colors?id=c5e329c",
+                                    "typography_typography": "globals\/typography?id=text"
+                                }
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "heading",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "23df0a48",
+                            "settings": {
+                                "image": {
+                                    "id": "16",
+                                    "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/ornamen.png"
+                                },
+                                "width": {
+                                    "unit": "%",
+                                    "size": 10,
+                                    "sizes": []
+                                },
+                                "width_mobile": {
+                                    "unit": "%",
+                                    "size": 50,
+                                    "sizes": []
+                                }
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "image",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "2bb64c1c",
+                            "settings": {
+                                "editor": "<p>A civil wedding is a ceremony presided over by a local civil authority<\/p>",
+                                "align": "center",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "_padding": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "__globals__": {
+                                    "text_color": "globals\/colors?id=text",
+                                    "typography_typography": "globals\/typography?id=5e9d143"
+                                }
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "text-editor",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "408f7743",
+                            "settings": {
+                                "layout_type": "justify",
+                                "image_list": [
+                                    {
+                                        "item_image": {
+                                            "id": "17",
+                                            "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-WY5TFN9-low-res-portrait.jpg"
+                                        },
+                                        "item_title": "",
+                                        "item_desc": "",
+                                        "item_url": "#",
+                                        "item_target": "",
+                                        "item_icon": "",
+                                        "item_link_type": "lightbox",
+                                        "_id": "af5c81f"
+                                    },
+                                    {
+                                        "item_image": {
+                                            "id": "18",
+                                            "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-9K7TA6Y-low-res.jpg"
+                                        },
+                                        "item_title": "",
+                                        "item_desc": "",
+                                        "item_url": "#",
+                                        "item_target": "",
+                                        "item_icon": "",
+                                        "item_link_type": "lightbox",
+                                        "_id": "80becd9"
+                                    },
+                                    {
+                                        "item_image": {
+                                            "id": "19",
+                                            "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-4RJUVNA-low-res.jpg"
+                                        },
+                                        "item_title": "",
+                                        "item_desc": "",
+                                        "item_url": "#",
+                                        "item_target": "",
+                                        "item_icon": "",
+                                        "item_link_type": "lightbox",
+                                        "_id": "d39df54"
+                                    },
+                                    {
+                                        "item_image": {
+                                            "id": "20",
+                                            "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-P9EJTAS-low-res.jpg"
+                                        },
+                                        "item_title": "",
+                                        "item_desc": "",
+                                        "item_url": "#",
+                                        "item_target": "",
+                                        "item_icon": "",
+                                        "item_link_type": "lightbox",
+                                        "_id": "5f46ead"
+                                    },
+                                    {
+                                        "item_image": {
+                                            "id": "21",
+                                            "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-VJYAB49-low-res.jpg"
+                                        },
+                                        "item_title": "",
+                                        "item_desc": "",
+                                        "item_url": "#",
+                                        "item_target": "",
+                                        "item_icon": "",
+                                        "item_link_type": "lightbox",
+                                        "_id": "e10426a"
+                                    },
+                                    {
+                                        "item_image": {
+                                            "id": "22",
+                                            "url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-8BP7RV5-low-res.jpg"
+                                        },
+                                        "item_title": "",
+                                        "item_desc": "",
+                                        "item_url": "#",
+                                        "item_target": "",
+                                        "item_icon": "",
+                                        "item_link_type": "lightbox",
+                                        "_id": "42c0c6b"
+                                    }
+                                ]
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "jw-images-layout",
+                            "elType": "widget"
+                        }
+                    ],
+                    "isInner": false,
+                    "elType": "column"
+                }
+            ],
+            "isInner": false,
+            "elType": "section"
+        }
+    ]
+}

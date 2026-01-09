@@ -13,8 +13,6 @@ const props = defineProps<{
   current?: number
 }>()
 
-
-
 const activeIndex = ref(0)
 const isManual = ref(false)
 

@@ -13,8 +13,9 @@ export default defineEventHandler(async (event) => {
     const sessionUser = user as any
     const isAdmin = sessionUser.role === 'admin'
     const isStaff = sessionUser.role === 'staff'
+    const isSuperuser = sessionUser.role === 'superuser'
 
-    if (!isAdmin && !isStaff) {
+    if (!isAdmin && !isStaff && !isSuperuser) {
         throw createError({ statusCode: 403, statusMessage: 'Forbidden: Access required' })
     }
 
@@ -36,7 +37,7 @@ export default defineEventHandler(async (event) => {
 
     // POST: Manage Users (Update Plan / Max Invitations / Delete) - ONLY ADMIN
     if (event.method === 'POST') {
-        if (!isAdmin) {
+        if (!isAdmin && !isSuperuser) {
             throw createError({ statusCode: 403, statusMessage: 'Forbidden: Admin only' })
         }
         const body = await readBody(event)

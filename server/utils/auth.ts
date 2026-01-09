@@ -39,6 +39,10 @@ export const auth = new Proxy({} as any, {
             const isDev = process.env.NODE_ENV === "development";
             const baseUrl = "https://mengundang.site";
 
+            console.log("🔑 [Auth-Init] Hashing Password Method:", !!hashPassword);
+            console.log("🔑 [Auth-Init] Base URL:", baseUrl);
+            console.log("🔑 [Auth-Init] Secret Length:", secret?.length);
+
             try {
                 _auth = betterAuth({
                     secret: secret,

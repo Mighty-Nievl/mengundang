@@ -212,6 +212,25 @@ const toggleUpgrade = async () => {
                     <p class="text-sm text-stone-500">See all registered users and their status.</p>
                 </NuxtLink>
 
+                <!-- NEW: Email CMS -->
+                <NuxtLink to="/admin/emails" class="group bg-white p-6 rounded-2xl border border-stone-200 hover:border-purple-400 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-900 mb-1">Email CMS & Logs</h3>
+                    <p class="text-sm text-stone-500">Log pengiriman email & manajemen template.</p>
+                </NuxtLink>
+
+
+                <!-- WhatsApp CMS -->
+                <NuxtLink to="/admin/whatsapp" class="group bg-white p-6 rounded-2xl border border-stone-200 hover:border-green-400 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-stone-900 mb-1">WhatsApp CMS</h3>
+                    <p class="text-sm text-stone-500">Manage Cloud API & Local Bot settings.</p>
+                </NuxtLink>
+
                 <!-- 4. Telegram Bot Test -->
                 <button @click="testTelegram" :disabled="telegramLoading" class="group text-left bg-white p-6 rounded-2xl border border-stone-200 hover:border-sky-400 hover:shadow-md transition-all relative">
                     <div class="w-12 h-12 bg-sky-50 text-sky-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">

@@ -27,7 +27,8 @@ export default defineEventHandler(async (event) => {
     if (!inv) {
         // If invitation is gone, allow deletion if admin
         const isAdmin = (user as any).role === 'admin'
-        if (isAdmin) {
+        const isSuperuser = (user as any).role === 'superuser'
+        if (isAdmin || isSuperuser) {
             await db.delete(guests).where(eq(guests.id, id))
             return { success: true }
         }
@@ -35,9 +36,10 @@ export default defineEventHandler(async (event) => {
     }
 
     const isAdmin = (user as any).role === 'admin'
+    const isSuperuser = (user as any).role === 'superuser'
     const isOwner = inv.owner === user.email || inv.partnerEmail === user.email
 
-    if (!isAdmin && !isOwner) {
+    if (!isAdmin && !isSuperuser && !isOwner) {
         throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
     }
 

@@ -120,3 +120,13 @@ export const waNotifications = sqliteTable('wa_notification', {
     createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
     updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull()
 });
+
+export const emailNotifications = sqliteTable('email_notification', {
+    id: text('id').primaryKey(),
+    recipient: text('recipient').notNull(),
+    subject: text('subject').notNull(),
+    content: text('content').notNull(),
+    status: text('status').default('sent'), // sent, failed
+    error: text('error'),
+    createdAt: integer('createdAt', { mode: 'timestamp' }).notNull()
+});

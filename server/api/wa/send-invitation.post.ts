@@ -1,5 +1,6 @@
 import { db } from '../../utils/db'
-import { waNotifications } from '../../db/schema'
+import { waNotifications, invitations } from '../../db/schema'
+import { eq } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
 
 export default defineEventHandler(async (event) => {
@@ -26,17 +27,26 @@ export default defineEventHandler(async (event) => {
     const baseUrl = process.env.BETTER_AUTH_URL || 'https://mengundang.site'
     const link = `${baseUrl}/${invitationSlug}?to=${encodeURIComponent(guestName)}`
 
-    // Build message
-    const message = `Halo ${guestName}! ✨
+    // Fetch Template from Invitation content
+    const [invitation] = await db.select().from(invitations).where(eq(invitations.slug, invitationSlug)).limit(1)
+    const content = (invitation?.content as any) || {}
+
+    const defaultTemplate = `Halo {{name}}! ✨
 
 Tanpa mengurangi rasa hormat, perkenankan kami mengundang bapak/ibu/saudara/i untuk hadir di acara pernikahan kami.
 
 Detail undangan dapat dilihat pada link di bawah ini:
-${link}
+{{link}}
 
 Merupakan suatu kebahagiaan bagi kami apabila bapak/ibu/saudara/i berkenan hadir dan memberikan doa restu.
 
 Terima kasih. 🙏`
+
+    let message = content.waTemplate || defaultTemplate
+
+    // Replace Placeholders
+    message = message.replace(/\{\{name\}\}/g, guestName)
+    message = message.replace(/\{\{link\}\}/g, link)
 
     try {
         // Queue to waNotifications table

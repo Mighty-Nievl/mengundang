@@ -27,13 +27,13 @@ useSeoMeta({
   title: 'Mengundang: Platform Undangan Digital Premium #1',
   description: 'Buat website undangan pernikahan digital premium dengan desain eksklusif, fitur RSVP cinematic, dan real-time editor bersama Mengundang.',
   keywords: 'undangan pernikahan digital, website undangan nikah, undangan digital mewah, jasa undangan online, undangan digital jakarta, wedding invitation indonesia',
-  ogTitle: 'Mengundang: Platform Undangan Digital Premium',
-  ogDescription: 'Ciptakan momen tak terlupakan dengan website undangan pernikahan digital berkelas dari Mengundang.',
-  ogImage: 'https://mengundang.site/cover.png',
+  ogTitle: 'Mengundang: Bikin Web Undangan Digital Premium (Cuma 5 Menit)',
+  ogDescription: 'Platform undangan masa kini. Fitur lengkap: RSVP, Audio, Galeri, & Kirim WA Otomatis. Desain mewah, harga kawan.',
+  ogImage: 'https://mengundang.site/banner.webp',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Mengundang: Wedding Invitation Premium',
-  twitterDescription: 'Platform undangan pernikahan digital premium Indonesia dengan fitur terlengkap.',
-  twitterImage: 'https://mengundang.site/cover.png'
+  twitterTitle: 'Mengundang: Web Undangan Digital Premium',
+  twitterDescription: 'Bikin undangan pernikahan digital mewah, cepat, dan murah. Coba gratis sekarang!',
+  twitterImage: 'https://mengundang.site/banner.webp'
 })
 </script>
 

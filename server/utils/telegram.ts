@@ -1,6 +1,6 @@
 export const sendTelegramMessage = async (text: string, options: any = {}) => {
     const config = useRuntimeConfig()
-    const token = config.telegramBotToken
+    const token = options.token || config.telegramBotToken
     // Allow overriding chatId (useful for replying to different users if needed later)
     const chatId = options.chat_id || config.telegramChatId
 

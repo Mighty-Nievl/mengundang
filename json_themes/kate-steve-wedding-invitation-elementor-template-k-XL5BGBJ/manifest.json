@@ -1,0 +1,1373 @@
+{
+    "manifest_version": "1.0.17",
+    "title": "Kate & Steve - Wedding Invitation Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.1.1",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Gallery Page",
+            "screenshot": "screenshots\/gallery-page.jpg",
+            "source": "templates\/gallery-page.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/template-kit\/gallery\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Dress Code Page",
+            "screenshot": "screenshots\/dress-code-page.jpg",
+            "source": "templates\/dress-code-page.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/template-kit\/dress-code-page\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Venue Page",
+            "screenshot": "screenshots\/venue-page.jpg",
+            "source": "templates\/venue-page.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/template-kit\/about-page\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Homepage",
+            "screenshot": "screenshots\/homepage.jpg",
+            "source": "templates\/homepage.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/template-kit\/homepage\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header Page Style 2",
+            "screenshot": "screenshots\/header-page-style-2.jpg",
+            "source": "templates\/header-page-style-2.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=header-page-style-2",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Archive Post",
+            "screenshot": "screenshots\/archive-post.jpg",
+            "source": "templates\/archive-post.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=archive-post",
+            "type": "archive",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-blog",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "archive",
+                "elementor_pro_conditions": [
+                    "include\/archive\/post_archive"
+                ],
+                "additional_template_information": [
+                    "This is a \"Archive\" template for Elementor Pro.",
+                    "This template will display on: Posts Archive."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Post",
+            "screenshot": "screenshots\/single-post.jpg",
+            "source": "templates\/single-post.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=single-post",
+            "type": "single-post",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-post",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "single-post",
+                "elementor_pro_conditions": [
+                    "include\/singular\/post"
+                ],
+                "additional_template_information": [
+                    "This is a \"Single Post\" template for Elementor Pro.",
+                    "This template will display on: Posts."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Search Result",
+            "screenshot": "screenshots\/search-result.jpg",
+            "source": "templates\/search-result.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=search-result",
+            "type": "search-results",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-search",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "search-results",
+                "elementor_pro_conditions": [
+                    "include\/archive\/search"
+                ],
+                "additional_template_information": [
+                    "This is a \"Search Results\" template for Elementor Pro.",
+                    "This template will display on: Search Results."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Error 404",
+            "screenshot": "screenshots\/error-404.jpg",
+            "source": "templates\/error-404.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=error-404",
+            "type": "error-404",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "error-404",
+                "elementor_pro_conditions": [
+                    "include\/singular\/not_found404"
+                ],
+                "additional_template_information": [
+                    "This is a \"Error 404\" template for Elementor Pro.",
+                    "This template will display on: 404 Page."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Main Menu",
+            "screenshot": "screenshots\/main-menu.jpg",
+            "source": "templates\/main-menu.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=main-menu",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/singular\/front_page"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Front Page."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=footer",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "RSVP",
+            "screenshot": "screenshots\/rsvp.jpg",
+            "source": "templates\/rsvp.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=rsvp",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Off Canvas Menu",
+            "screenshot": "screenshots\/off-canvas-menu.jpg",
+            "source": "templates\/off-canvas-menu.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=off-canvas-menu",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Guide Pop Up",
+            "screenshot": "screenshots\/guide-pop-up.jpg",
+            "source": "templates\/guide-pop-up.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=guide-pop-up",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Timeline Story",
+            "screenshot": "screenshots\/timeline-story.jpg",
+            "source": "templates\/timeline-story.json",
+            "preview_url": "https:\/\/demo.puriwp.com\/katesteve\/?elementor_library=timeline-story",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "3.0.8",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.0.14",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "ElementsKit Lite",
+            "version": "2.0.11",
+            "file": "elementskit-lite\/elementskit-lite.php",
+            "author": "Wpmet"
+        },
+        {
+            "name": "Happy Elementor Addons",
+            "version": "2.16.0",
+            "file": "happy-elementor-addons\/plugin.php",
+            "author": "weDevs"
+        },
+        {
+            "name": "Sticky Header Effects for Elementor",
+            "version": "1.4.3",
+            "file": "sticky-header-effects-for-elementor\/sticky-header-effects-for-elementor.php",
+            "author": "Rwattner"
+        }
+    ],
+    "images": [
+        {
+            "filename": "header-banner-3-rev.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/12\/header-banner-3-rev-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 189560,
+            "dimensions": [
+                1920,
+                1281
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-PZKFL2W"
+        },
+        {
+            "filename": "gal-1-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-1-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 109878,
+            "dimensions": [
+                1300,
+                1732
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-M6QYTU7"
+        },
+        {
+            "filename": "gal-2-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-2-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 109328,
+            "dimensions": [
+                1300,
+                871
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-VXA2J5Y"
+        },
+        {
+            "filename": "gal-3-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-3-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 92578,
+            "dimensions": [
+                1300,
+                1737
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-in-doorway-CRP5DZA"
+        },
+        {
+            "filename": "gal-4-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-4-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 96373,
+            "dimensions": [
+                1300,
+                1300
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-in-doorway-HU8WS76"
+        },
+        {
+            "filename": "gal-5-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-5-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 69837,
+            "dimensions": [
+                1300,
+                872
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-N48V5A7"
+        },
+        {
+            "filename": "gal-6-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-6-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 189335,
+            "dimensions": [
+                1295,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-walkin-UDMRA95"
+        },
+        {
+            "filename": "gal-7-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-7-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 79165,
+            "dimensions": [
+                1300,
+                874
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-PZKFL2W"
+        },
+        {
+            "filename": "gal08.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal08.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                }
+            ],
+            "filesize": 195024,
+            "dimensions": [
+                1300,
+                871
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-8UF82XA"
+        },
+        {
+            "filename": "gal-9-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-9-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 165675,
+            "dimensions": [
+                1300,
+                1300
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-kiss-JC7UHXX"
+        },
+        {
+            "filename": "gal-14-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-14-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 79657,
+            "dimensions": [
+                1300,
+                874
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/elegant-string-quartet-playing-in-luxury-room-JNZ3AWK"
+        },
+        {
+            "filename": "gal-10.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/12\/gal-10.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 160879,
+            "dimensions": [
+                365,
+                739
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-beautiful-bride-posing-outdoors-QRX6S3D"
+        },
+        {
+            "filename": "gal-11.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/12\/gal-11-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 152065,
+            "dimensions": [
+                1300,
+                1300
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-young-wedding-couple-stands-near-house-NUTA8Q9"
+        },
+        {
+            "filename": "gal-12-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-12-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 85860,
+            "dimensions": [
+                1300,
+                1737
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-watch-N2H296W"
+        },
+        {
+            "filename": "gal-16.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-16.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 13774,
+            "dimensions": [
+                370,
+                335
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-bouquet-PAVKVHT"
+        },
+        {
+            "filename": "gal-15-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-15-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-page.json",
+                    "name": "Gallery Page"
+                }
+            ],
+            "filesize": 120379,
+            "dimensions": [
+                1920,
+                1100
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-ceremony-PGULTZ7"
+        },
+        {
+            "filename": "slide-1-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/slide-1-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 128031,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-PZKFL2W"
+        },
+        {
+            "filename": "groom-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/groom-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 20870,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/stylish-groom-in-black-suit-and-bow-tie-sitting-in-ZAVL358"
+        },
+        {
+            "filename": "Christina-Evan.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/Christina-Evan.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 32057,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/brunette-bride-in-fashion-white-wedding-dress-with-PL7WRSC"
+        },
+        {
+            "filename": "tailor-1-scaled-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/tailor-1-scaled-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                }
+            ],
+            "filesize": 71303,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/mature-tailor-PA4K2N3"
+        },
+        {
+            "filename": "tailor-2-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/tailor-2-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                }
+            ],
+            "filesize": 55274,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-tailor-UK8ADG7"
+        },
+        {
+            "filename": "tailor-4-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/tailor-4-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                }
+            ],
+            "filesize": 63628,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-tailor-3TYGW78"
+        },
+        {
+            "filename": "tailor-3-2.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/tailor-3-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/dress-code-page.json",
+                    "name": "Dress Code Page"
+                }
+            ],
+            "filesize": 37411,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/tailoring-PXZM866"
+        },
+        {
+            "filename": "heading-page.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/12\/heading-page-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue-page.json",
+                    "name": "Venue Page"
+                },
+                {
+                    "source": "templates\/search-result.json",
+                    "name": "Search Result"
+                },
+                {
+                    "source": "templates\/error-404.json",
+                    "name": "Error 404"
+                }
+            ],
+            "filesize": 106554,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-M6QYTU7"
+        },
+        {
+            "filename": "taxi-1-scaled-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/taxi-1-scaled-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue-page.json",
+                    "name": "Venue Page"
+                }
+            ],
+            "filesize": 110116,
+            "dimensions": [
+                1024,
+                613
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/new-york-streets-high-buildings-colorful-signs-car-E4BD6W9"
+        },
+        {
+            "filename": "taxi-4.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/taxi-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue-page.json",
+                    "name": "Venue Page"
+                }
+            ],
+            "filesize": 66061,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/taxi-P9T8GKB"
+        },
+        {
+            "filename": "taxi-2.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/taxi-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue-page.json",
+                    "name": "Venue Page"
+                }
+            ],
+            "filesize": 58258,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.twenty20.com\/photos\/01327769-93cb-47e0-ba54-3d85e35b1cb6"
+        },
+        {
+            "filename": "taxi-3.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/taxi-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue-page.json",
+                    "name": "Venue Page"
+                }
+            ],
+            "filesize": 19019,
+            "dimensions": [
+                500,
+                333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.twenty20.com\/photos\/3d1a3b26-78d4-45a6-9feb-cf24399d04c5"
+        },
+        {
+            "filename": "gal-7-center.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-7-center.jpg",
+            "templates": [
+                {
+                    "source": "templates\/venue-page.json",
+                    "name": "Venue Page"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 27355,
+            "dimensions": [
+                371,
+                616
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-walkin-UDMRA95"
+        },
+        {
+            "filename": "slide-2-scaled-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/slide-2-scaled-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/timeline-story.json",
+                    "name": "Timeline Story"
+                }
+            ],
+            "filesize": 172119,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-VXA2J5Y"
+        },
+        {
+            "filename": "slide-3.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/slide-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 89471,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-in-doorway-CRP5DZA"
+        },
+        {
+            "filename": "kate-spade-rep.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/kate-spade-rep.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 6574,
+            "dimensions": [
+                231,
+                225
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-in-doorway-HU8WS76"
+        },
+        {
+            "filename": "script-2.png",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/script-2.png",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 3605,
+            "dimensions": [
+                512,
+                512
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/www.flaticon.com\/free-icon\/script_708739?term=script&page=1&position=1&related_item_id=708739"
+        },
+        {
+            "filename": "steve-rep.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/steve-rep.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 6651,
+            "dimensions": [
+                231,
+                225
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-in-doorway-HU8WS76"
+        },
+        {
+            "filename": "accord-2-scaled-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/accord-2-scaled-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 111864,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-8UF82XA"
+        },
+        {
+            "filename": "accord-1-scaled-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/accord-1-scaled-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 51108,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/formal-table-settings-at-a-wedding-venue-RG76XAZ"
+        },
+        {
+            "filename": "accord-3.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/accord-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 53470,
+            "dimensions": [
+                1024,
+                724
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-ceremony-PGULTZ7"
+        },
+        {
+            "filename": "accord-5.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/accord-5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 84825,
+            "dimensions": [
+                1024,
+                683
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-table-setting-at-an-outdoor-wedding-venu-BDVRDLM"
+        },
+        {
+            "filename": "groom-2.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/groom-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 20381,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/stylish-groom-in-black-suit-getting-ready-in-the-m-YVN3LTQ"
+        },
+        {
+            "filename": "groom-3.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/groom-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 24620,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/groom-in-blue-suit-with-bow-tie-and-boutonniere-wi-9T4XQ6K"
+        },
+        {
+            "filename": "groom-4.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/groom-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 19241,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/stylish-groom-portrait-at-the-window-while-getting-49DEXZL"
+        },
+        {
+            "filename": "natalie-wayne.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/natalie-wayne.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 31694,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-day-portrait-of-beautiful-bride-with-bouqu-YA2VPW6"
+        },
+        {
+            "filename": "Robin-Stark.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/Robin-Stark.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 28966,
+            "dimensions": [
+                500,
+                750
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-bride-indoors-YWHRBAN"
+        },
+        {
+            "filename": "Mellisa-Pedro.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/12\/Mellisa-Pedro.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 161344,
+            "dimensions": [
+                500,
+                749
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-trying-on-wedding-dress-47HLUBD"
+        },
+        {
+            "filename": "Bali-Orchestra.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/Bali-Orchestra.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 22891,
+            "dimensions": [
+                500,
+                333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/elegant-string-quartet-playing-in-luxury-room-JNZ3AWK"
+        },
+        {
+            "filename": "gal-1-center.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-1-center.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 23924,
+            "dimensions": [
+                371,
+                616
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-PZKFL2W"
+        },
+        {
+            "filename": "gal-2-center.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-2-center.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 24181,
+            "dimensions": [
+                371,
+                616
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-VXA2J5Y"
+        },
+        {
+            "filename": "gal-3-center.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-3-center.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 17547,
+            "dimensions": [
+                371,
+                616
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-PZKFL2W"
+        },
+        {
+            "filename": "gal-5-center.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-5-center.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 24275,
+            "dimensions": [
+                371,
+                616
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-M6QYTU7"
+        },
+        {
+            "filename": "gal-4-center.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/gal-4-center.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 21045,
+            "dimensions": [
+                371,
+                616
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-in-doorway-HU8WS76"
+        },
+        {
+            "filename": "slide-3-1.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/slide-3-1-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/archive-post.json",
+                    "name": "Archive Post"
+                }
+            ],
+            "filesize": 89471,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-posing-PZKFL2W"
+        },
+        {
+            "filename": "first-met.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/first-met.jpg",
+            "templates": [
+                {
+                    "source": "templates\/timeline-story.json",
+                    "name": "Timeline Story"
+                }
+            ],
+            "filesize": 13734,
+            "dimensions": [
+                500,
+                333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/hot-date-V3AKEPT"
+        },
+        {
+            "filename": "first-date.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/first-date.jpg",
+            "templates": [
+                {
+                    "source": "templates\/timeline-story.json",
+                    "name": "Timeline Story"
+                }
+            ],
+            "filesize": 29043,
+            "dimensions": [
+                500,
+                333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/date-of-fun-UGA8FMJ"
+        },
+        {
+            "filename": "married.jpg",
+            "thumbnail_url": "https:\/\/demo.puriwp.com\/katesteve\/wp-content\/uploads\/2020\/11\/married.jpg",
+            "templates": [
+                {
+                    "source": "templates\/timeline-story.json",
+                    "name": "Timeline Story"
+                }
+            ],
+            "filesize": 17670,
+            "dimensions": [
+                500,
+                333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-couple-hugging-in-the-park-M6QYTU7"
+        }
+    ]
+}

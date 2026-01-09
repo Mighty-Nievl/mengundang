@@ -21,7 +21,15 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        // 2. Run the Scraper Script
+        // 2. Runtime Check - child_process won't work on Cloudflare Pages
+        if (process.env.NODE_ENV !== 'development' && !process.env.LOCAL_SCRAPER_ALLOWED) {
+            throw createError({
+                statusCode: 400,
+                statusMessage: 'Fitur Auto-Scraper tidak didukung di environment Cloudflare. Silakan jalankan secara lokal atau hubungi dev.'
+            })
+        }
+
+        // 3. Run the Scraper Script
         const scriptPath = path.resolve(process.cwd(), 'gofood-scraper.cjs');
         console.log(`[VerifyPayment] Running scraper: ${scriptPath}`);
 
@@ -105,7 +113,7 @@ export default defineEventHandler(async (event) => {
             logs: logs
         };
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("[VerifyPayment] Error:", error);
         return {
             success: false,

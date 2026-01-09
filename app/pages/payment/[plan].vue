@@ -2,6 +2,9 @@
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+const QR_DATA = "00020101021126610014COM.GO-JEK.WWW01189360091436402799980210G6402799980303UMI51440014ID.CO.QRIS.WWW0215ID10243526728190303UMI5204581653033605802ID5920Zalan Store, NGRAMBE6005NGAWI61056326362070703A016304DB57"
+const qrisImageUrl = computed(() => `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(QR_DATA)}`)
+
 const route = useRoute()
 const router = useRouter()
 const planId = route.params.plan as string
@@ -48,6 +51,12 @@ const plan = plans[planId]
 const isLoading = ref(false)
 const orderDetails = ref<any>(null)
 const currentStep = ref(1)
+
+// Manual Payment States
+const isManualMode = computed(() => orderDetails.value && !orderDetails.value.paymentUrl)
+const proofFile = ref<File | null>(null)
+const isUploading = ref(false)
+const uploadProgress = ref(0)
 
 useSeoMeta({
   title: `Pembayaran Paket ${plan?.name || 'Premium'} - Undangan`,
@@ -99,6 +108,43 @@ const goToFlip = () => {
     if (orderDetails.value?.paymentUrl) {
         window.open(orderDetails.value.paymentUrl, '_blank')
         currentStep.value = 2 // Move to waiting step
+    }
+}
+
+const handleFileChange = (e: any) => {
+    proofFile.value = e.target.files[0] || null
+}
+
+const submitProof = async () => {
+    if (!proofFile.value) return
+    isUploading.value = true
+    
+    try {
+        // 1. Upload File
+        const formData = new FormData()
+        formData.append('file', proofFile.value)
+        
+        const uploadRes = await $fetch<any>('/api/upload', {
+            method: 'POST',
+            body: formData
+        })
+        
+        // 2. Confirm Order
+        await $fetch('/api/orders/confirm-payment', {
+            method: 'POST',
+            body: {
+                orderId: orderDetails.value.orderId,
+                proofUrl: uploadRes.url
+            }
+        })
+
+        alert('Bukti pembayaran berhasil dikirim! Admin akan segera memverifikasi.')
+        router.push('/dashboard')
+    } catch (e) {
+        alert('Gagal mengupload bukti pembayaran. Silakan coba lagi.')
+        console.error(e)
+    } finally {
+        isUploading.value = false
     }
 }
 
@@ -217,22 +263,52 @@ onUnmounted(() => {
                                 <i class="fas fa-credit-card text-[#D4AF37] text-3xl"></i>
                             </div>
                             
-                            <h3 class="text-2xl font-serif font-bold text-stone-800 mb-4">Satu Langkah Lagi!</h3>
-                            <p class="text-stone-500 mb-10 max-w-md">Klik tombol di bawah untuk melanjutkan pembayaran melalui berbagai metode (QRIS, Bank Transfer, E-Wallet) via Flip.</p>
+                            <h3 v-if="!isManualMode" class="text-2xl font-serif font-bold text-stone-800 mb-4">Satu Langkah Lagi!</h3>
+                            <h3 v-else class="text-2xl font-serif font-bold text-stone-800 mb-4">Scan QRIS & Bayar</h3>
+                            
+                            <!-- FLIP MODE -->
+                            <div v-if="!isManualMode">
+                                <p class="text-stone-500 mb-10 max-w-md">Klik tombol di bawah untuk melanjutkan pembayaran melalui berbagai metode (QRIS, Bank Transfer, E-Wallet) via Flip.</p>
 
-                            <button 
-                                v-if="orderDetails?.paymentUrl"
-                                @click="goToFlip" 
-                                class="w-full max-w-sm bg-stone-900 text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-2xl hover:bg-stone-800 transition-all transform hover:-translate-y-1 active:translate-y-0"
-                            >
-                                Bayar Sekarang
-                            </button>
-                            <div v-else class="w-full max-w-sm h-14 bg-stone-100 animate-pulse rounded-2xl"></div>
+                                <button 
+                                    v-if="orderDetails?.paymentUrl"
+                                    @click="goToFlip" 
+                                    class="w-full max-w-sm bg-stone-900 text-white py-5 rounded-2xl font-black text-sm uppercase tracking-widest shadow-2xl hover:bg-stone-800 transition-all transform hover:-translate-y-1 active:translate-y-0"
+                                >
+                                    Bayar Sekarang
+                                </button>
+                                <div v-else class="w-full max-w-sm h-14 bg-stone-100 animate-pulse rounded-2xl"></div>
 
-                            <div class="mt-12 flex items-center justify-center gap-8 opacity-40">
-                                <i class="fab fa-cc-visa text-2xl"></i>
-                                <i class="fab fa-cc-mastercard text-2xl"></i>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" class="h-4 grayscale" alt="QRIS" />
+                                <div class="mt-12 flex items-center justify-center gap-8 opacity-40">
+                                    <i class="fab fa-cc-visa text-2xl"></i>
+                                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" class="h-4 grayscale" alt="QRIS" />
+                                </div>
+                            </div>
+
+                            <!-- MANUAL MODE -->
+                            <div v-else class="w-full max-w-sm">
+                                <div class="bg-white p-4 rounded-2xl shadow-lg border border-stone-200 mb-6 mx-auto w-64 h-64 flex items-center justify-center">
+                                    <img :src="qrisImageUrl" class="w-full h-full object-contain" alt="QRIS Code" />
+                                </div>
+                                <p class="text-xs text-stone-500 mb-6">Scan QRIS di atas menggunakan aplikasi e-wallet apa saja (Gopay, OVO, Dana, BCA, dll).</p>
+
+                                <div class="space-y-4">
+                                    <input 
+                                        type="file" 
+                                        accept="image/*"
+                                        @change="handleFileChange"
+                                        class="block w-full text-sm text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-[#D4AF37]/10 file:text-[#D4AF37] hover:file:bg-[#D4AF37]/20"
+                                    />
+                                    
+                                    <button 
+                                        @click="submitProof" 
+                                        :disabled="!proofFile || isUploading"
+                                        class="w-full bg-[#D4AF37] text-white py-4 rounded-xl font-bold uppercase tracking-widest shadow-lg hover:bg-[#b5952f] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {{ isUploading ? 'Mengirim...' : 'Kirim Bukti Bayar' }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

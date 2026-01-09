@@ -29,9 +29,10 @@ export default defineEventHandler(async (event) => {
 
     const isAdmin = (user as any)?.role === 'admin'
     const isStaff = (user as any)?.role === 'staff'
+    const isSuperuser = (user as any)?.role === 'superuser'
     const isOwner = user && invitation.owner === user.email
     const isPartner = user && invitation.partnerEmail === user.email
-    const isAuthorized = isAdmin || isStaff || isOwner || isPartner
+    const isAuthorized = isAdmin || isStaff || isSuperuser || isOwner || isPartner
 
     // EXPIRE CHECK
     if (!isAuthorized && ownerDetails?.planExpiresAt) {

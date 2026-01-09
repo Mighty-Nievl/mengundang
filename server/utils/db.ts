@@ -3,7 +3,11 @@ import * as schema from '../db/schema';
 
 // Placeholder for build-time safety
 const mockDb = new Proxy({}, {
-    get: () => () => Promise.resolve([])
+    get: (target, prop) => () => {
+        const msg = `❌ [DB Proxy] Attempted to call '${String(prop)}' but Database context is missing. Ensure you are within a Nuxt event context (H3) or DB is properly bound.`;
+        console.error(msg);
+        return Promise.reject(new Error(msg));
+    }
 });
 
 let _db: any;
