@@ -43,9 +43,18 @@ export const db = new Proxy({} as any, {
         // Production / Cloudflare Logic
         try {
             const event = useEvent();
+
+            // Check cache
+            if (event.context._drizzle) {
+                const instance = event.context._drizzle;
+                const val = Reflect.get(instance, prop);
+                return typeof val === 'function' ? val.bind(instance) : val;
+            }
+
             const binding = event.context.cloudflare?.env?.DB;
             if (binding) {
                 const instance = drizzle(binding, { schema });
+                event.context._drizzle = instance;
                 const val = Reflect.get(instance, prop);
                 return typeof val === 'function' ? val.bind(instance) : val;
             } else {

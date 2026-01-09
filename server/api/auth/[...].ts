@@ -5,11 +5,12 @@ export default defineEventHandler(async (event) => {
         return await auth.handler(toWebRequest(event));
     } catch (e: any) {
         console.error("❌ Auth Handler Crash:", e);
-        return {
-            status: "error",
-            message: "Authentication Service Crashed",
-            details: e.message,
-            stack: e.stack
-        }
+        throw createError({
+            statusCode: 500,
+            statusMessage: "Auth Handler Error",
+            message: e.message,
+            stack: e.stack,
+            data: e
+        });
     }
 });
