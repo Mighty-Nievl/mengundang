@@ -11,6 +11,17 @@ let _db: any;
 export const db = new Proxy({} as any, {
     get(target, prop) {
         if (prop === '__isProxy') return true;
+        if (prop === '__branch') {
+            if (process.dev) return 'development';
+            try {
+                const event = useEvent();
+                if (event.context._drizzle) return 'production-cached';
+                if (event.context.cloudflare?.env?.DB) return 'production-binding';
+                return 'production-no-binding';
+            } catch (e) {
+                return 'production-no-event';
+            }
+        }
 
         // process.dev is replaced by false/true at build time by Nuxt/Vite.
         // This ensures the local DB logic is stripped from the production bundle.
@@ -61,9 +72,13 @@ export const db = new Proxy({} as any, {
                 const keys = event.context.cloudflare?.env ? Object.keys(event.context.cloudflare.env) : [];
                 console.error(`❌ Cloudflare DB binding (DB) not found. Available env keys: ${keys.join(', ')}`);
             }
-        } catch (e) {
+        } catch (e: any) {
             // Context not available (build time, etc.)
+            if (prop === '__error') return e.message;
+            console.error('DB Proxy catch inner:', e);
         }
+
+        if (prop === '__error') return 'no-error';
 
         // Fallback to mock
         return Reflect.get(mockDb, prop);

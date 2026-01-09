@@ -17,6 +17,11 @@ export default defineEventHandler(async (event) => {
         return {
             status: "ok",
             message: "Database connected",
+            dbInfo: {
+                branch: (db as any).__branch,
+                error: (db as any).__error,
+                hasRun: typeof db.run === 'function',
+            },
             result,
             tables,
             users,
