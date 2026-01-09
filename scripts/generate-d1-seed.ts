@@ -4,10 +4,10 @@ import * as schema from '../server/db/schema';
 import fs from 'fs';
 
 // Init Local DB
-const sqlite = new Database('sqlite.db');
+const sqlite = new Database('./database/sqlite.db');
 const db = drizzle(sqlite, { schema });
 
-const OUTPUT_FILE = 'seed-d1.sql';
+const OUTPUT_FILE = './database/seed-d1.sql';
 
 async function generateSeed() {
     console.log('📦 Generating D1 Seed file...');

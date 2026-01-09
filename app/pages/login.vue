@@ -8,7 +8,7 @@ const isLoading = ref(false)
 const errorMsg = ref('')
 
 useSeoMeta({
-  title: 'Masuk - Undangan Premium',
+  title: 'Masuk - Mengundang Premium',
   description: 'Akses dashboard undangan pernikahan digital anda.',
 })
 
@@ -77,7 +77,7 @@ onMounted(async () => {
         
         <!-- Header -->
         <div class="text-center lg:text-left">
-            <NuxtLink to="/" class="inline-block text-2xl font-serif font-bold text-stone-900 mb-8">Undangan<span class="text-gold-500">.</span></NuxtLink>
+            <NuxtLink to="/" class="inline-block text-2xl font-serif font-bold text-stone-900 mb-8">Mengundang<span class="text-gold-500">.</span></NuxtLink>
             <h1 class="text-3xl font-bold text-stone-900 mb-2">Masuk Akun</h1>
             <p class="text-stone-500">Silakan masuk untuk mengelola undangan Anda.</p>
         </div>

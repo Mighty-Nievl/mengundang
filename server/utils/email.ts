@@ -21,7 +21,7 @@ export const sendPremiumEmail = async (to: string, subject: string, content: { t
     <body>
         <div class="container">
             <div class="header">
-                <a href="https://undangan.zalan.web.id" class="logo">Undangan.</a>
+                <a href="https://mengundang.site" class="logo">Mengundang.</a>
             </div>
             <div class="content">
                 <h1 class="title">${content.title}</h1>
@@ -56,7 +56,7 @@ export const sendPremiumEmail = async (to: string, subject: string, content: { t
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                from: 'Undangan <system@undangan.zalan.web.id>', // Needs domain verification
+                from: 'Mengundang <system@mengundang.site>', // Needs domain verification
                 to: [to],
                 subject: subject,
                 html: html

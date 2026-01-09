@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-const PROJECT_NAME = 'premium-invitation';
+const PROJECT_NAME = 'mengundang';
 const envPath = path.join(process.cwd(), '.env');
 
 if (!fs.existsSync(envPath)) {
@@ -15,7 +15,7 @@ const lines = envContent.split('\n');
 
 const secrets = {
     'NUXT_BETTER_AUTH_SECRET': null,
-    'NUXT_BETTER_AUTH_URL': 'https://premium-invitation.pages.dev',
+    'NUXT_BETTER_AUTH_URL': 'https://mengundang.site',
     'NUXT_GOOGLE_CLIENT_ID': null,
     'NUXT_GOOGLE_CLIENT_SECRET': null,
     'INTERNAL_API_SECRET': 'rahasia123',

@@ -1,5 +1,5 @@
 import { Database } from 'bun:sqlite';
-const db = new Database('sqlite.db');
+const db = new Database('./database/sqlite.db');
 
 const slug = 'wulanrezal';
 const newOwner = 'rezalhbramantara@gmail.com';

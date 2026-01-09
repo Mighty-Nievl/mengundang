@@ -12,7 +12,7 @@ envContent.split('\n').forEach(line => {
 
 const token = env.TELEGRAM_BOT_TOKEN
 const chatId = env.TELEGRAM_CHAT_ID
-const baseUrl = env.BETTER_AUTH_URL || 'https://undangan.zalan.web.id' // Fallback to current prod
+const baseUrl = env.BETTER_AUTH_URL || 'https://mengundang.site' // Fallback to current prod
 
 if (!token) {
     console.error('❌ TELEGRAM_BOT_TOKEN not found in .env')
@@ -44,7 +44,7 @@ async function setWebhook() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     chat_id: chatId,
-                    text: '🚀 *Premium Invitation Bot is Online!*\n\nSystem is ready to notify you.',
+                    text: '🚀 *Mengundang Bot is Online!*\n\nSystem is ready to notify you.',
                     parse_mode: 'Markdown'
                 })
             })

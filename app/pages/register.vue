@@ -17,7 +17,7 @@ onMounted(() => {
 })
 
 useSeoMeta({
-  title: 'Daftar - Undangan Premium',
+  title: 'Daftar - Mengundang Premium',
   description: 'Mulai perjalanan pernikahan impian anda dengan undangan digital eksklusif.',
 })
 
@@ -79,7 +79,7 @@ const googleSignIn = () => {
         
         <!-- Header -->
         <div class="text-center lg:text-left">
-            <NuxtLink to="/" class="inline-block text-2xl font-serif font-bold text-stone-900 mb-8">Undangan<span class="text-gold-500">.</span></NuxtLink>
+            <NuxtLink to="/" class="inline-block text-2xl font-serif font-bold text-stone-900 mb-8">Mengundang<span class="text-gold-500">.</span></NuxtLink>
             <h1 class="text-3xl font-bold text-stone-900 mb-2">Buat Akun Baru</h1>
             <p class="text-stone-500">Hanya butuh 30 detik untuk memulai.</p>
         </div>

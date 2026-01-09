@@ -191,7 +191,7 @@ const runPaymentVerification = async () => {
     try {
         // Run scraper
         // Note: gofood-scraper.cjs must be in the same folder or path must be correct
-        const { stdout, stderr } = await execAsync('node gofood-scraper.cjs', {
+        const { stdout, stderr } = await execAsync('node scripts/gofood/gofood-scraper.cjs', {
             cwd: process.cwd(),
             timeout: 120000
         })
@@ -241,7 +241,7 @@ async function runNotificationPoller() {
 
         console.log(`[NotificationPoller] Found ${res.data.length} pending notifications.`)
 
-        const { sendLocalWhatsAppMessage } = await import('./utils-casaos/whatsapp-local')
+        const { sendLocalWhatsAppMessage } = await import('../utils-casaos/whatsapp-local')
 
         const sentIds = []
         for (const notif of res.data) {
@@ -284,7 +284,7 @@ if (!BOT_TOKEN || !API_SECRET) {
     process.exit(1)
 }
 
-import { initWhatsAppLocal } from './utils-casaos/whatsapp-local'
+import { initWhatsAppLocal } from '../utils-casaos/whatsapp-local'
 
 console.log('🚀 CasaOS Worker Starting...')
 console.log(`Target API: ${API_BASE_URL}`)

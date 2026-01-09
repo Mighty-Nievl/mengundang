@@ -2,12 +2,15 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 (async () => {
+    const path = require('path');
+    const SESSION_PATH = path.join(__dirname, 'gofood-session.json');
+
     // 1. Load Session
-    if (!fs.existsSync('gofood-session.json')) {
-        console.error("Session file not found! Run auth script first.");
+    if (!fs.existsSync(SESSION_PATH)) {
+        console.error(`Session file not found at ${SESSION_PATH}! Run auth script first.`);
         process.exit(1);
     }
-    const session = JSON.parse(fs.readFileSync('gofood-session.json', 'utf8'));
+    const session = JSON.parse(fs.readFileSync(SESSION_PATH, 'utf8'));
 
     // 2. Launch Browser
     const browser = await puppeteer.launch({
@@ -348,7 +351,7 @@ const fs = require('fs');
             }
             return json;
         });
-        fs.writeFileSync('gofood-session.json', JSON.stringify({ cookies, localStorage: localStorageData }, null, 2));
+        fs.writeFileSync(SESSION_PATH, JSON.stringify({ cookies, localStorage: localStorageData }, null, 2));
 
     } catch (e) {
         console.error("Error:", e);

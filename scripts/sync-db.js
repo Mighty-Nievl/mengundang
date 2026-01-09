@@ -3,8 +3,8 @@ import fs from 'fs';
 import { Database } from 'bun:sqlite';
 
 const DB_NAME = 'kami-undang-db';
-const LOCAL_DB_PATH = './sqlite.db';
-const DUMP_FILE = './prod-dump.sql';
+const LOCAL_DB_PATH = './database/sqlite.db';
+const DUMP_FILE = './database/prod-dump.sql';
 
 console.log(`🚀 Starting Database Sync: ${DB_NAME} -> ${LOCAL_DB_PATH}`);
 

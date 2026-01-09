@@ -13,9 +13,9 @@ export default defineNuxtConfig({
 
   // Site Config for SEO
   site: {
-    url: 'https://kamiundang.site',
-    name: 'Undangan.',
-    description: 'Undangan Pernikahan Digital Premium & Elegan',
+    url: 'https://mengundang.site',
+    name: 'Mengundang',
+    description: 'Platform Undangan Pernikahan Digital Premium',
     defaultLocale: 'id',
   },
 
@@ -54,7 +54,7 @@ export default defineNuxtConfig({
     googleClientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
     internalApiSecret: process.env.INTERNAL_API_SECRET,
     public: {
-      betterAuthUrl: process.env.BETTER_AUTH_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://kamiundang.site'),
+      betterAuthUrl: process.env.BETTER_AUTH_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://mengundang.site'),
       sentry: {
         dsn: process.env.NUXT_PUBLIC_SENTRY_DSN || '',
         environment: process.env.NODE_ENV || 'development',
@@ -67,7 +67,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Undangan Digital Pernikahan Mewah & Elegan #1 | Undangan.',
+      title: 'Mengundang: Platform Undangan Digital Premium #1',
       htmlAttrs: {
         lang: 'id'
       },
@@ -77,7 +77,7 @@ export default defineNuxtConfig({
           innerHTML: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "Undangan.",
+            "name": "Mengundang",
             "operatingSystem": "Web",
             "applicationCategory": "WeddingApplication",
             "offers": {
@@ -97,12 +97,12 @@ export default defineNuxtConfig({
           innerHTML: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "url": "https://kamiundang.site",
-            "name": "Undangan.",
+            "url": "https://mengundang.site",
+            "name": "Mengundang",
             "description": "Platform pembuatan undangan pernikahan digital premium dengan desain eksklusif dan mewah.",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://kamiundang.site/search?q={search_term_string}",
+              "target": "https://mengundang.site/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })
@@ -114,27 +114,27 @@ export default defineNuxtConfig({
         { name: 'referrer', content: 'no-referrer' },
         { name: 'description', content: 'Buat website undangan pernikahan digital premium dengan desain eksklusif, fitur RSVP cinematic, dan real-time editor. Murah, cepat, dan mewah di Indonesia.' },
         { name: 'keywords', content: 'undangan pernikahan digital mewah, website undangan pernikahan premium, undangan digital elegan jakarta, jasa undangan online eksklusif' },
-        { name: 'author', content: 'Undangan.' },
+        { name: 'author', content: 'Mengundang' },
         { name: 'theme-color', content: '#1C1917' },
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'Undangan.' },
-        { property: 'og:title', content: 'Undangan Digital Pernikahan Mewah & Elegan #1' },
-        { property: 'og:description', content: 'Ciptakan momen tak terlupakan dengan website undangan pernikahan digital paling premium di Indonesia.' },
-        { property: 'og:image', content: 'https://kamiundang.site/cover.png' },
-        { property: 'og:url', content: 'https://kamiundang.site' },
+        { property: 'og:site_name', content: 'Mengundang' },
+        { property: 'og:title', content: 'Mengundang: Platform Undangan Digital Premium' },
+        { property: 'og:description', content: 'Buat undangan pernikahan digital berkelas dengan Mengundang.' },
+        { property: 'og:image', content: 'https://mengundang.site/cover.png' },
+        { property: 'og:url', content: 'https://mengundang.site' },
         { property: 'og:locale', content: 'id_ID' },
         // Twitter Card
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Undangan: Wedding Invitation Premium' },
-        { name: 'twitter:description', content: 'Platform undangan pernikahan digital premium Indonesia dengan fitur terlengkap.' },
-        { name: 'twitter:image', content: 'https://kamiundang.site/cover.png' }
+        { name: 'twitter:title', content: 'Mengundang: Wedding Invitation Premium' },
+        { name: 'twitter:description', content: 'Platform undangan pernikahan digital premium Indonesia.' },
+        { name: 'twitter:image', content: 'https://mengundang.site/cover.png' }
       ],
       link: [
         { rel: 'icon', type: 'image/png', href: '/favicon.png?v=3' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=3' },
         { rel: 'apple-touch-icon', href: '/favicon.png?v=3' },
-        { rel: 'canonical', href: 'https://kamiundang.site' },
+        { rel: 'canonical', href: 'https://mengundang.site' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         // Icons: Font Awesome

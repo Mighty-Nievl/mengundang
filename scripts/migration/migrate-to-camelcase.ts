@@ -1,6 +1,6 @@
 import { Database } from "bun:sqlite";
 
-const db = new Database("sqlite.db");
+const db = new Database("./database/sqlite.db");
 
 // Function to rename column if exists
 function renameColumn(table: string, oldName: string, newName: string) {

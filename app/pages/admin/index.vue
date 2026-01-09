@@ -14,7 +14,7 @@ const telegramLoading = ref(false)
 import { useAuthClient } from '../../utils/auth-client'
 
 useSeoMeta({
-  title: 'Admin Panel - Undangan Premium',
+  title: 'Admin Panel - Mengundang Premium',
   robots: 'noindex, nofollow'
 })
 
@@ -236,7 +236,7 @@ const toggleUpgrade = async () => {
             </div>
             
             <div class="text-center text-xs text-stone-300 mt-12">
-                Premium Invitation Admin v1.0 • <span v-if="stats">{{ stats.totalUsers }} Users Strong</span>
+                Mengundang Admin v1.0 • <span v-if="stats">{{ stats.totalUsers }} Users Strong</span>
             </div>
 
         </div>

@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Build invitation link
-    const baseUrl = process.env.BETTER_AUTH_URL || 'https://undangan.zalan.web.id'
+    const baseUrl = process.env.BETTER_AUTH_URL || 'https://mengundang.site'
     const link = `${baseUrl}/${invitationSlug}?to=${encodeURIComponent(guestName)}`
 
     // Build message

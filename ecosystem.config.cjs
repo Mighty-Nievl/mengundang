@@ -6,7 +6,7 @@ module.exports = {
             script: './casaos-worker.ts',
             interpreter: 'bun',
             env: {
-                API_BASE_URL: 'https://premium-invitation-v2.pages.dev',
+                API_BASE_URL: 'https://mengundang.site',
                 INTERNAL_API_SECRET: 'rahasia123',
                 TELEGRAM_BOT_TOKEN: '7901463430:AAF9zVWze1Ri7AwMZnSC2bQNeaX6YlRsGWA',
                 TELEGRAM_CHAT_ID: '848564111',

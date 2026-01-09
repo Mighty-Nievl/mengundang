@@ -485,7 +485,7 @@ const copyToClipboard = (slug: string) => {
     <!-- Support Floating -->
     <a href="https://wa.me/6282265030113" target="_blank" class="fixed bottom-8 right-8 w-16 h-16 bg-[#25D366] text-white rounded-[1.5rem] shadow-2xl flex items-center justify-center text-3xl hover:scale-110 active:scale-90 transition-all z-50 group">
         <i class="fab fa-whatsapp"></i>
-        <div class="absolute right-full mr-6 bg-stone-900 text-white px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 shadow-2xl border border-stone-800 whitespace-nowrap">Tanya Minzalan</div>
+        <div class="absolute right-full mr-6 bg-stone-900 text-white px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-300 shadow-2xl border border-stone-800 whitespace-nowrap">Tanya Admin</div>
     </a>
 
     <!-- Toast Notification -->

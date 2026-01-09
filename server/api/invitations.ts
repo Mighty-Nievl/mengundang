@@ -68,7 +68,7 @@ export default defineEventHandler(async (event) => {
                 title: 'Anda Diundang Berkolaborasi! 💍',
                 message: `Pasangan Anda mengundang Anda untuk mengelola undangan pernikahan digital bersama-sama di platform Undangan. Silakan login untuk mulai mengedit.`,
                 ctaText: 'Terima Undangan',
-                ctaUrl: 'https://undangan.zalan.web.id/login'
+                ctaUrl: 'https://mengundang.site/login'
             })
 
             return { success: true, message: 'Partner invited' }

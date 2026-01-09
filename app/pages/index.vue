@@ -24,16 +24,16 @@ onMounted(async () => {
 })
 
 useSeoMeta({
-  title: 'Undangan Digital Pernikahan Mewah & Elegan #1 | Undangan.',
-  description: 'Buat website undangan pernikahan digital premium dengan desain eksklusif, fitur RSVP cinematic, dan real-time editor. Murah, cepat, dan mewah di Indonesia.',
+  title: 'Mengundang: Platform Undangan Digital Premium #1',
+  description: 'Buat website undangan pernikahan digital premium dengan desain eksklusif, fitur RSVP cinematic, dan real-time editor bersama Mengundang.',
   keywords: 'undangan pernikahan digital, website undangan nikah, undangan digital mewah, jasa undangan online, undangan digital jakarta, wedding invitation indonesia',
-  ogTitle: 'Undangan Digital Pernikahan Mewah & Elegan #1',
-  ogDescription: 'Ciptakan momen tak terlupakan dengan website undangan pernikahan digital paling premium di Indonesia.',
-  ogImage: 'https://undangan.zalan.web.id/cover.png',
+  ogTitle: 'Mengundang: Platform Undangan Digital Premium',
+  ogDescription: 'Ciptakan momen tak terlupakan dengan website undangan pernikahan digital berkelas dari Mengundang.',
+  ogImage: 'https://mengundang.site/cover.png',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'Undangan: Wedding Invitation Premium',
+  twitterTitle: 'Mengundang: Wedding Invitation Premium',
   twitterDescription: 'Platform undangan pernikahan digital premium Indonesia dengan fitur terlengkap.',
-  twitterImage: 'https://undangan.zalan.web.id/cover.png'
+  twitterImage: 'https://mengundang.site/cover.png'
 })
 </script>
 
@@ -52,9 +52,9 @@ useSeoMeta({
                 <!-- Logo -->
                 <div class="flex items-center gap-3 group cursor-pointer">
                     <div class="w-10 h-10 bg-gradient-to-br from-gold-400 to-gold-600 rounded-xl flex items-center justify-center text-white font-bold font-serif text-2xl shadow-lg shadow-gold-500/20 group-hover:scale-110 transition-transform">
-                        U
+                        M
                     </div>
-                    <span class="text-2xl font-serif font-bold text-stone-900 tracking-tight">Undangan<span class="text-gold-500">.</span></span>
+                    <span class="text-2xl font-serif font-bold text-stone-900 tracking-tight">Mengundang<span class="text-gold-500">.</span></span>
                 </div>
                 
                 <!-- Desktop Menu -->
@@ -257,13 +257,13 @@ useSeoMeta({
         <!-- Footer -->
         <footer class="bg-stone-50 border-t border-stone-200 py-12 px-4 text-center">
             <div class="max-w-4xl mx-auto">
-                <h4 class="font-serif text-2xl text-stone-900 mb-6">Undangan<span class="text-gold-500">.</span></h4>
+                <h4 class="font-serif text-2xl text-stone-900 mb-6">Mengundang<span class="text-gold-500">.</span></h4>
                 <div class="flex justify-center gap-6 mb-8 text-stone-400">
                     <a href="#" class="hover:text-gold-600 transition-colors">Instagram</a>
                     <a href="#" class="hover:text-gold-600 transition-colors">Twitter</a>
                     <a href="#" class="hover:text-gold-600 transition-colors">TikTok</a>
                 </div>
-                <p class="text-stone-400 text-sm">&copy; 2025 Undangan. All Rights Reserved.</p>
+                <p class="text-stone-400 text-sm">&copy; 2025 Mengundang. All Rights Reserved.</p>
             </div>
         </footer>
     </div>

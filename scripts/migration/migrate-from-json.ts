@@ -1,5 +1,5 @@
-import { db } from '../server/utils/db';
-import { users, invitations } from '../server/db/schema';
+import { db } from '../../server/utils/db';
+import { users, invitations } from '../../server/db/schema';
 import fs from 'node:fs';
 import path from 'node:path';
 

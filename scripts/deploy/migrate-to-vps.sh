@@ -38,7 +38,7 @@ sshpass -p "$VPS_PASS" rsync -avz -e "ssh -p $VPS_PORT -o StrictHostKeyChecking=
     --exclude '.git' \
     --exclude '.nuxt' \
     --exclude '.env' \
-    --exclude 'sqlite.db' \
+    --exclude 'database/sqlite.db' \
     ./ $VPS_USER@$VPS_IP:$REMOTE_DIR/
 
 # 5. Setup Remote .env
