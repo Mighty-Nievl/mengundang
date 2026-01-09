@@ -1,79 +1,59 @@
 import { drizzle } from 'drizzle-orm/d1';
 import * as schema from '../db/schema';
 
-let _db: any;
-
-// Mock DB for build time / when D1 is missing
+// Placeholder for build-time safety
 const mockDb = new Proxy({}, {
-    get: () => {
-        // Return a no-op function that returns a promise (for async queries)
-        return () => Promise.resolve([]);
-    }
+    get: () => () => Promise.resolve([])
 });
+
+let _db: any;
 
 export const db = new Proxy({} as any, {
     get(target, prop) {
         if (prop === '__isProxy') return true;
 
-        let targetDb: any;
-
-        // Use import.meta.dev if available in Nuxt/Vite, otherwise process.env.NODE_ENV
-        const isDev = import.meta.dev || process.env.NODE_ENV === 'development';
-
-        if (isDev) {
-            // Local / Dev environment (Use better-sqlite3 with ./sqlite.db)
+        // process.dev is replaced by false/true at build time by Nuxt/Vite.
+        // This ensures the local DB logic is stripped from the production bundle.
+        if (process.dev) {
             if (!_db) {
                 try {
-                    // Try Bun Native SQLite first (if running with Bun)
-                    // We use explicit strict checks to avoid bundler trying to resolve these in production
                     if (typeof Bun !== 'undefined') {
+                        const { Database } = require('bun:sqlite');
                         // @ts-ignore
-                        const { Database } = import.meta.require('bun:sqlite');
-                        // @ts-ignore
-                        const { drizzle: drizzleBun } = import.meta.require('drizzle-orm/bun-sqlite');
+                        const { drizzle: drizzleBun } = require('drizzle-orm/bun-sqlite');
                         const sqlite = new Database('./database/sqlite.db');
                         _db = drizzleBun(sqlite, { schema });
                     } else {
-                        throw new Error('Not Bun');
-                    }
-                } catch (e) {
-                    try {
-                        // Fallback to better-sqlite3 (Node env)
-                        // Using module.require or similar to hide from bundler if possible, 
-                        // but normally conditional import is enough if isDev is static.
-                        // However, to be safe, we wrap in try-catch and simple require.
                         const Database = require('better-sqlite3');
                         const { drizzle: drizzleSqlite } = require('drizzle-orm/better-sqlite3');
-
                         const sqlite = new Database('./database/sqlite.db');
                         _db = drizzleSqlite(sqlite, { schema });
-                    } catch (err) {
-                        console.error('❌ Failed to connect to local sqlite.db (Bun/Node):', err);
                     }
+                } catch (e) {
+                    console.error('Local DB init failed:', e);
                 }
             }
-            targetDb = _db;
-        } else {
-            // Cloudflare Pages Environment (D1 Binding)
-            try {
-                // Check if we are in a request context
-                const event = useEvent();
-                const binding = event.context.cloudflare?.env?.DB;
-                if (binding) {
-                    targetDb = drizzle(binding, { schema });
-                }
-            } catch (e) {
-                // Not in a request context (e.g. build time, or outside event handler)
+            // Return directly from the local instance
+            if (_db) {
+                const val = Reflect.get(_db, prop);
+                return typeof val === 'function' ? val.bind(_db) : val;
             }
         }
 
-        // Fallback to mock DB if no targetDb is available (prevent crash)
-        if (!targetDb) {
-            // Only return mockDb if we are NOT accessing specialized properties that imply existence
-            return Reflect.get(mockDb, prop);
+        // Production / Cloudflare Logic
+        try {
+            const event = useEvent();
+            const binding = event.context.cloudflare?.env?.DB;
+            if (binding) {
+                const instance = drizzle(binding, { schema });
+                const val = Reflect.get(instance, prop);
+                return typeof val === 'function' ? val.bind(instance) : val;
+            }
+        } catch (e) {
+            // Context not available (build time, etc.)
         }
 
-        const res = Reflect.get(targetDb, prop);
-        return typeof res === 'function' ? res.bind(targetDb) : res;
+        // Fallback to mock
+        return Reflect.get(mockDb, prop);
     }
 });
