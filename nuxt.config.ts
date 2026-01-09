@@ -27,15 +27,7 @@ export default defineNuxtConfig({
     ]
   },
 
-  nitro: {
-    preset: 'cloudflare-pages',
-    experimental: {
-      tasks: true,
-    },
-    // externals: {
-    //   external: ['bun:sqlite']
-    // }
-  },
+
 
   // Sentry Configuration
   sentry: {
@@ -161,7 +153,7 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'cloudflare-pages',
-    minify: true,
+    minify: false,
     sourceMap: false,
     experimental: {
       tasks: true,
