@@ -71,7 +71,7 @@ const upgradeEnabled = ref(true)
 
 onMounted(async () => {
     try {
-        const settings = await $fetch<Record<string, string>>('/api/admin/settings')
+        const settings = await $fetch<Record<string, string>>('/api/public/settings')
         upgradeEnabled.value = settings.upgrade_enabled !== 'false'
     } catch (e) {
         console.error('Failed to fetch settings', e)
