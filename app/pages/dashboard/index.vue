@@ -218,7 +218,7 @@ const copyToClipboard = (slug: string) => {
                  <i class="fas fa-layer-group text-stone-300 relative z-10 transition-colors group-hover:text-gold-500"></i>
             </div>
             <div class="flex-1">
-                <h1 class="text-2xl font-serif font-bold text-stone-900 leading-tight">Wedding Atelier</h1>
+                <h1 class="text-2xl font-serif font-bold text-stone-900 leading-tight">Mengundang</h1>
                 <div class="flex items-center gap-2 mt-1">
                      <span class="text-sm text-stone-400 font-medium truncate max-w-[150px]">Welcome, {{ currentUser?.name || currentUser?.email?.split('@')[0] }}</span>
                      <span class="bg-stone-900 text-gold-400 px-2.5 py-0.5 rounded-lg text-[10px] uppercase font-black tracking-widest border border-gold-500/20 shrink-0">
