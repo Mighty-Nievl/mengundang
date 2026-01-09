@@ -6,11 +6,9 @@ export default defineEventHandler(async (event) => {
     } catch (e: any) {
         console.error("❌ Auth Handler Crash:", e);
         throw createError({
-            statusCode: 503,
-            statusMessage: "Auth Handler Error",
-            message: e.message || "Unknown error",
-            stack: e.stack,
-            data: { cause: e.cause?.message || null }
+            statusCode: 500,
+            statusMessage: "Authentication Service Error",
+            message: "Sedang terjadi gangguan pada layanan autentikasi. Silakan coba sesaat lagi.",
         });
     }
 });
