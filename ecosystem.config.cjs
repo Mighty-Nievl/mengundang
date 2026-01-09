@@ -3,7 +3,7 @@ module.exports = {
     apps: [
         {
             name: 'casaos-worker',
-            script: './casaos-worker.ts',
+            script: './scripts/worker.ts',
             interpreter: 'bun',
             env: {
                 API_BASE_URL: 'https://mengundang.site',

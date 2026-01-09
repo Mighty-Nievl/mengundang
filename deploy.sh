@@ -12,7 +12,7 @@ bun install
 
 # 3. Start/Restart all services (WhatsApp/Telegram Worker & Tunnel)
 echo "🔄 Starting Services..."
-pm2 start ecosystem.config.cjs
-pm2 save
+npx pm2 start ecosystem.config.cjs
+npx pm2 save
 
 echo "✅ Deployment Success! App is running on Port 3001."
