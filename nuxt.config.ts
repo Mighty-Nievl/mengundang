@@ -41,7 +41,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     betterAuthSecret: process.env.BETTER_AUTH_SECRET,
-    betterAuthUrl: process.env.BETTER_AUTH_URL,
+    betterAuthUrl: 'https://mengundang.site',
     googleClientId: process.env.NUXT_GOOGLE_CLIENT_ID,
     googleClientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
     internalApiSecret: process.env.INTERNAL_API_SECRET,

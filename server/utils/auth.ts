@@ -62,7 +62,7 @@ export const auth = new Proxy({} as any, {
                             clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET || "",
                         }
                     },
-                    trustedOrigins: isDev ? ['http://localhost:3000', 'https://mengundang.site'] : ['https://mengundang.site'],
+                    trustedOrigins: ['https://mengundang.site'],
                     advanced: {
                         defaultCookieAttributes: {
                             secure: !isDev,
