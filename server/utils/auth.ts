@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "./db";
+import { hashPassword, verifyPassword } from "./password";
 
 import * as schema from "../db/schema";
 
@@ -39,6 +40,10 @@ export const auth = new Proxy({} as any, {
                         enabled: true,
                         minPasswordLength: 8,
                         maxPasswordLength: 32,
+                        password: {
+                            hash: hashPassword,
+                            verify: verifyPassword,
+                        },
                     },
                     user: {
                         additionalFields: {
