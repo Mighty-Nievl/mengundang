@@ -153,11 +153,16 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'cloudflare-pages',
-    minify: false,
+    minify: true,
     sourceMap: false,
     experimental: {
       tasks: true,
     },
+    esbuild: {
+      options: {
+        target: 'es2015'
+      }
+    }
     // externals: {
     //   external: ['bun:sqlite']
     // }
