@@ -4,7 +4,8 @@ export default defineEventHandler(async (event) => {
     // 1. Verify Admin
     // @ts-ignore
     const user = event.context.user
-    if (!user || user.role !== 'admin') {
+    const allowedRoles = ['admin', 'superuser']
+    if (!user || !allowedRoles.includes(user.role)) {
         throw createError({ statusCode: 403, statusMessage: 'Unauthorized' })
     }
 

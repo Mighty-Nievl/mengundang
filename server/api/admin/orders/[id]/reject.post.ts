@@ -8,7 +8,8 @@ export default defineEventHandler(async (event) => {
         headers: event.headers
     })
 
-    if (!session || (session.user.role !== 'admin' && session.user.role !== 'staff')) {
+    const allowedRoles = ['admin', 'superuser', 'staff']
+    if (!session || !allowedRoles.includes(session.user.role)) {
         throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
     }
 

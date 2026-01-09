@@ -5,7 +5,8 @@ import { eq, count, sum, gt } from 'drizzle-orm'
 export default defineEventHandler(async (event) => {
     // 1. Verify Admin
     const user = event.context.user
-    if (!user || ((user as any).role !== 'admin' && (user as any).role !== 'staff')) {
+    const allowedRoles = ['admin', 'superuser', 'staff']
+    if (!user || !allowedRoles.includes((user as any).role)) {
         throw createError({ statusCode: 403, statusMessage: 'Unauthorized' })
     }
 

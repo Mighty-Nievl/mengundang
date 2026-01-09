@@ -15,7 +15,8 @@ export default defineEventHandler(async (event) => {
     // 1. Security Check
     // @ts-ignore
     const user = event.context.user
-    if (!user || (user.role !== 'admin' && user.role !== 'staff')) {
+    const allowedRoles = ['admin', 'superuser', 'staff']
+    if (!user || !allowedRoles.includes(user.role)) {
         throw createError({ statusCode: 403, statusMessage: 'Unauthorized' })
     }
 

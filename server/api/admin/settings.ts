@@ -5,7 +5,8 @@ import { eq } from 'drizzle-orm'
 export default defineEventHandler(async (event) => {
     // 1. Auth Check (Admin Only)
     const session = await getSession(event)
-    if (!session || session.user.role !== 'admin') {
+    const allowedRoles = ['admin', 'superuser']
+    if (!session || !allowedRoles.includes(session.user.role)) {
         throw createError({ statusCode: 403, statusMessage: 'Admin access required' })
     }
 
