@@ -11,10 +11,14 @@ let _auth: any;
 export const auth = new Proxy({} as any, {
     get(target, prop) {
         if (!_auth) {
-            // Sanitize secret just like we did with URL
-            const rawSecret = process.env.BETTER_AUTH_SECRET || "63705fb569617799ee08a86db306af8746678e41322dd3ade5747a19d685da82";
-            const secret = rawSecret.replace(/^BETTER_AUTH_SECRET=/, '');
+            // Sanitize all potentially corrupted env vars from Cloudflare
+            for (const key of ['BETTER_AUTH_SECRET', 'BETTER_AUTH_URL', 'NUXT_GOOGLE_CLIENT_ID', 'NUXT_GOOGLE_CLIENT_SECRET']) {
+                if (process.env[key]?.startsWith(key + '=')) {
+                    process.env[key] = process.env[key]!.replace(key + '=', '');
+                }
+            }
 
+            const secret = process.env.BETTER_AUTH_SECRET || "63705fb569617799ee08a86db306af8746678e41322dd3ade5747a19d685da82";
             const isDev = process.env.NODE_ENV === "development";
             const baseUrl = isDev ? "http://localhost:3000" : "https://mengundang.site";
 

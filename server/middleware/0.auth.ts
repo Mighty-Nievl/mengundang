@@ -12,11 +12,15 @@ export default defineEventHandler(async (event) => {
     }
 
     // 2. Specific Public Paths
+    const cleanPath = path.split('?')[0]
     if (
-        path.startsWith('/_nuxt') ||
-        path.startsWith('/favicon') ||
-        path.startsWith('/api/webhooks') ||
-        path.startsWith('/api/internal')
+        cleanPath === '/' ||
+        cleanPath.startsWith('/_nuxt') ||
+        cleanPath.startsWith('/favicon') ||
+        cleanPath.startsWith('/api/webhooks') ||
+        cleanPath.startsWith('/api/internal') ||
+        cleanPath.startsWith('/login') ||
+        cleanPath.startsWith('/register')
     ) {
         return
     }
