@@ -8,3 +8,7 @@ binding = "DB"
 database_name = "kami-undang-db"
 database_id = "ce8276de-ad0c-4c1d-b9a9-4efe04d982df"
 migrations_dir = "server/db/migrations"
+
+[vars]
+NUXT_GOOGLE_CLIENT_ID = "274967317868-n69e50q36u85kmu8afp9nln7vohsrf8r.apps.googleusercontent.com"
+NUXT_GOOGLE_CLIENT_SECRET = "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"

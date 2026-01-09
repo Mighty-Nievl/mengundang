@@ -1,0 +1,14 @@
+HTTP/2 200 
+date: Fri, 09 Jan 2026 07:28:16 GMT
+content-type: application/json
+content-length: 524
+set-cookie: __Secure-better-auth.session_token=9o0RE4zaUYnAZfu5eZwTYLERkj173Qow.6P29%2FR3uaOFhLo4ZVERfTSohTQ7dIizD8Wv7cMvqBSU%3D; Max-Age=604800; Path=/; HttpOnly; Secure; SameSite=Lax
+vary: accept-encoding
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=VsVZcCFg%2BuQ4aRSePGWbnUHuHr4t6MEOSHrtYzFMBLtTGsOvse6d4TsfAfwkNL25GYcJibtiL%2FW98KwCryc%2FkWsqcwSFFgVuuGUwwJcIKA%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-cache-status: DYNAMIC
+cf-ray: 9bb237816b67402f-SIN
+alt-svc: h3=":443"; ma=86400
+
+{"redirect":false,"token":"9o0RE4zaUYnAZfu5eZwTYLERkj173Qow","user":{"name":"Rezal Helwin Bramantara","email":"rezalhbramantara@gmail.com","emailVerified":true,"image":null,"createdAt":"+057959-01-21T19:30:00.000Z","updatedAt":"+057960-10-25T13:20:00.000Z","role":"superuser","plan":"vvip","maxInvitations":9999,"referralCode":"8888EB","referredBy":null,"referralBalance":0,"registrationIp":null,"phoneNumber":null,"bankName":null,"bankAccountNumber":null,"bankAccountName":null,"id":"b092b757-7fed-46cf-a01a-4e0b57d9c1d2"}}

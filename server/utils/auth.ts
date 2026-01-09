@@ -12,14 +12,30 @@ let _auth: any;
 export const auth = new Proxy({} as any, {
     get(target, prop) {
         if (!_auth) {
-            // Sanitize all potentially corrupted env vars from Cloudflare
-            for (const key of ['BETTER_AUTH_SECRET', 'BETTER_AUTH_URL', 'NUXT_GOOGLE_CLIENT_ID', 'NUXT_GOOGLE_CLIENT_SECRET']) {
-                if (process.env[key]?.startsWith(key + '=')) {
-                    process.env[key] = process.env[key]!.replace(key + '=', '');
-                }
-            }
+            const config = useRuntimeConfig();
 
-            const secret = process.env.BETTER_AUTH_SECRET || "63705fb569617799ee08a86db306af8746678e41322dd3ade5747a19d685da82";
+            // Try to get secrets from Nitro config or direct event context (Cloudflare bindings)
+            const getEnv = (key: string) => {
+                // 1. Try runtimeConfig (pre-mapped NUXT_* vars)
+                const configKey = key.toLowerCase().replace(/_([a-z])/g, (g) => g[1].toUpperCase()).replace(/^nuxt/, '');
+                // Handle case where it might be e.g. googleClientId
+                const camelKey = configKey.charAt(0).toLowerCase() + configKey.slice(1);
+                if (config[camelKey]) return config[camelKey];
+
+                // 2. Try process.env
+                if (process.env[key]) return process.env[key];
+
+                // 3. Try Cloudflare context bindings
+                try {
+                    const event = useEvent();
+                    const env = event?.context?.cloudflare?.env;
+                    if (env && env[key]) return env[key];
+                } catch (e) { }
+
+                return "";
+            };
+
+            const secret = getEnv('BETTER_AUTH_SECRET') || "63705fb569617799ee08a86db306af8746678e41322dd3ade5747a19d685da82";
             const isDev = process.env.NODE_ENV === "development";
             const baseUrl = "https://mengundang.site";
 
@@ -61,13 +77,13 @@ export const auth = new Proxy({} as any, {
                         }
                     },
 
-                    // Only enable Google OAuth if credentials are available
-                    socialProviders: (process.env.NUXT_GOOGLE_CLIENT_ID && process.env.NUXT_GOOGLE_CLIENT_SECRET) ? {
+                    // Google OAuth - credentials from runtime environment
+                    socialProviders: {
                         google: {
-                            clientId: process.env.NUXT_GOOGLE_CLIENT_ID,
-                            clientSecret: process.env.NUXT_GOOGLE_CLIENT_SECRET,
+                            clientId: getEnv('NUXT_GOOGLE_CLIENT_ID'),
+                            clientSecret: getEnv('NUXT_GOOGLE_CLIENT_SECRET'),
                         }
-                    } : undefined,
+                    },
                     trustedOrigins: ['https://mengundang.site'],
                     advanced: {
                         defaultCookieAttributes: {
