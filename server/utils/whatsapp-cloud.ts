@@ -55,14 +55,24 @@ export const sendWhatsAppMessage = async (message: string, toPhone?: string): Pr
 
         const data = await response.json() as any
 
+        // Log full response for debugging
+        console.log(`[WhatsAppCloud] Response status: ${response.status}`)
+        console.log(`[WhatsAppCloud] Response data:`, JSON.stringify(data))
+
         if (!response.ok) {
             const errMsg = data?.error?.message || `API Error ${response.status}`
             console.error("[WhatsAppCloud] API Error:", errMsg, data)
             return errMsg
         }
 
-        console.log(`[WhatsAppCloud] Message sent to ${target}`)
-        return true
+        // Check if message ID exists (indicates successful send)
+        if (data?.messages?.[0]?.id) {
+            console.log(`[WhatsAppCloud] ✅ Message sent to ${target}, ID: ${data.messages[0].id}`)
+            return true
+        } else {
+            console.warn(`[WhatsAppCloud] ⚠️ Unexpected response:`, data)
+            return 'Unexpected API response - no message ID'
+        }
 
     } catch (error: any) {
         console.error("[WhatsAppCloud] Network Error:", error)
