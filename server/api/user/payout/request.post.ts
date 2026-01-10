@@ -1,7 +1,8 @@
 import { db } from '../../../utils/db'
-import { users } from '../../../db/schema'
+import { users, systemSettings } from '../../../db/schema'
 import { eq } from 'drizzle-orm'
 import { sendTelegramMessage } from '../../../utils/telegram'
+import { sendWhatsAppNotification } from '../../../utils/whatsapp'
 
 export default defineEventHandler(async (event) => {
     // 1. Verify User Session
@@ -40,38 +41,43 @@ export default defineEventHandler(async (event) => {
         bankAccountNumber,
         bankAccountName,
         phoneNumber,
-        payoutPending: true,  // LOCK: Prevent duplicate requests
+        payoutPending: true,
         updatedAt: new Date()
     }).where(eq(users.id, user.id))
 
-    // 7. Send Telegram Notification to Admin
+    // 7. Prepare notification message
     const formattedAmount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(balance)
+    const notifText = `💸 *New Payout Request*\n\n` +
+        `👤 User: *${freshUser.name}*\n` +
+        `📧 Email: ${freshUser.email}\n` +
+        `💰 Amount: *${formattedAmount}*\n\n` +
+        `🏦 *Rekening Tujuan:*\n` +
+        `- Bank: ${bankName}\n` +
+        `- No: ${bankAccountNumber}\n` +
+        `- An: ${bankAccountName}\n` +
+        `- WA: ${phoneNumber}\n\n` +
+        `_Cek Admin Panel untuk proses._`
 
+    // 8. Send Telegram Notification
+    sendTelegramMessage(notifText, {
+        reply_markup: {
+            inline_keyboard: [
+                [
+                    { text: '✅ Approve', callback_data: `approve_payout:${freshUser.id}:${balance}` },
+                    { text: '❌ Reject', callback_data: `reject_payout:${freshUser.id}` }
+                ]
+            ]
+        }
+    }).catch(e => console.error('[Payout] TG failed:', e))
+
+    // 9. Send WhatsApp Notification (Cloud API)
     try {
-        await sendTelegramMessage(
-            `💸 *New Payout Request*\n\n` +
-            `👤 User: *${freshUser.name}*\n` +
-            `📧 Email: ${freshUser.email}\n` +
-            `💰 Amount: *${formattedAmount}*\n\n` +
-            `🏦 *Rekening Tujuan:*\n` +
-            `- Bank: ${bankName}\n` +
-            `- No: ${bankAccountNumber}\n` +
-            `- An: ${bankAccountName}\n` +
-            `- WA: ${phoneNumber}\n\n` +
-            `_Please check Admin Panel to process._`,
-            {
-                reply_markup: {
-                    inline_keyboard: [
-                        [
-                            { text: '✅ Approve', callback_data: `approve_payout:${freshUser.id}:${balance}` },
-                            { text: '❌ Reject', callback_data: `reject_payout:${freshUser.id}` }
-                        ]
-                    ]
-                }
-            }
-        )
+        const [setting] = await db.select().from(systemSettings).where(eq(systemSettings.key, 'wa_target_phone')).limit(1)
+        if (setting?.value) {
+            await sendWhatsAppNotification(notifText, setting.value, 'official')
+        }
     } catch (e) {
-        console.error('Failed to send TG notification', e)
+        console.error('[Payout] WA failed:', e)
     }
 
     return {
@@ -80,3 +86,4 @@ export default defineEventHandler(async (event) => {
         amount: balance
     }
 })
+
