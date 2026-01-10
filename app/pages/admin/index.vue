@@ -5,11 +5,21 @@ definePageMeta({
     middleware: ['admin']
 })
 
-const isAuthorized = ref(false)
-const currentUser = ref<any>(null)
-const stats = ref<any>(null)
+interface AdminStats {
+    totalUsers: number
+    pendingOrders: number
+    pendingPayouts: { count: number; amount: number }
+    totalRevenue: number
+    pendingWA: number
+}
+
+const currentUser = ref<{ name?: string; role?: string } | null>(null)
+const stats = ref<AdminStats | null>(null)
 const isLoadingStats = ref(true)
 const telegramLoading = ref(false)
+const upgradeEnabled = ref(true)
+const toggleLoading = ref(false)
+const toast = ref({ show: false, message: '', type: 'success' as 'success' | 'error' })
 
 import { useAuthClient } from '../../utils/auth-client'
 
@@ -18,16 +28,21 @@ useSeoMeta({
   robots: 'noindex, nofollow'
 })
 
+const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    toast.value = { show: true, message, type }
+    setTimeout(() => { toast.value.show = false }, 4000)
+}
+
 onMounted(async () => {
     const authClient = useAuthClient()
     const { data } = await authClient.getSession()
-    currentUser.value = data?.user
-    isAuthorized.value = !!data?.user
+    currentUser.value = data?.user || null
     fetchStats()
     fetchSettings()
 })
 
 const fetchStats = async () => {
+    isLoadingStats.value = true
     try {
         stats.value = await $fetch('/api/admin/stats')
     } catch (e) {
@@ -41,9 +56,9 @@ const testTelegram = async () => {
     telegramLoading.value = true
     try {
         await $fetch('/api/admin/telegram/test', { method: 'POST' })
-        alert('✅ Pesan test terkirim ke Telegram!')
+        showToast('✅ Pesan test terkirim ke Telegram!')
     } catch (e: any) {
-        alert('❌ Gagal: ' + (e.statusMessage || e.message))
+        showToast('❌ Gagal: ' + (e.statusMessage || e.message), 'error')
     } finally {
         telegramLoading.value = false
     }
@@ -56,13 +71,10 @@ const formatDate = () => {
 const formatCurrency = (val: number) => {
     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(val)
 }
-const upgradeEnabled = ref(true) // Default true
-const toggleLoading = ref(false)
 
 const fetchSettings = async () => {
     try {
         const settings = await $fetch<Record<string, string>>('/api/admin/settings')
-        // If key doesn't exist yet, default to 'true'
         upgradeEnabled.value = settings.upgrade_enabled !== 'false'
     } catch (e) {
         console.error('Failed to fetch settings', e)
@@ -78,9 +90,9 @@ const toggleUpgrade = async () => {
             body: { key: 'upgrade_enabled', value: String(newValue) }
         })
         upgradeEnabled.value = newValue
-        alert(`✅ Fitur Upgrade berhasil ${newValue ? 'DIAKTIFKAN' : 'DIMATIKAN'}`)
+        showToast(`✅ Fitur Upgrade berhasil ${newValue ? 'DIAKTIFKAN' : 'DIMATIKAN'}`)
     } catch (e: any) {
-        alert('❌ Gagal: ' + (e.statusMessage || e.message))
+        showToast('❌ Gagal: ' + (e.statusMessage || e.message), 'error')
     } finally {
         toggleLoading.value = false
     }
@@ -88,13 +100,22 @@ const toggleUpgrade = async () => {
 </script>
 
 <template>
-    <div v-if="isAuthorized" class="min-h-screen bg-stone-50 text-stone-800 p-6 md:p-8 font-sans">
+    <div v-if="currentUser" class="min-h-screen bg-stone-50 text-stone-800 p-6 md:p-8 font-sans">
         <div class="max-w-7xl mx-auto space-y-8">
+            
+            <!-- Toast Notification -->
+            <Transition name="toast">
+                <div v-if="toast.show" 
+                    class="fixed top-6 right-6 z-50 px-6 py-4 rounded-2xl shadow-xl font-medium max-w-md"
+                    :class="toast.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'">
+                    {{ toast.message }}
+                </div>
+            </Transition>
             
             <!-- Header -->
             <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-3xl shadow-sm border border-stone-200">
                 <div>
-                    <div class="text-xs font-bold text-gold-600 uppercase tracking-widest mb-1">{{ formatDate() }}</div>
+                    <div class="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">{{ formatDate() }}</div>
                     <h1 class="text-3xl font-serif font-bold text-stone-900">
                         Hello, {{ currentUser?.name?.split(' ')[0] }}! 👋
                     </h1>
@@ -140,7 +161,7 @@ const toggleUpgrade = async () => {
                         <div class="text-stone-400 text-xs font-bold uppercase tracking-wider mb-1">Pending Orders</div>
                         <div class="flex items-center gap-3">
                             <span class="text-3xl font-bold text-stone-900">{{ stats?.pendingOrders || 0 }}</span>
-                            <span v-if="stats?.pendingOrders > 0" class="bg-red-100 text-red-600 px-2 py-1 rounded-md text-xs font-bold animate-pulse">Action</span>
+                            <span v-if="stats?.pendingOrders && stats.pendingOrders > 0" class="bg-red-100 text-red-600 px-2 py-1 rounded-md text-xs font-bold animate-pulse">Action</span>
                         </div>
                     </div>
                 </div>
@@ -151,7 +172,7 @@ const toggleUpgrade = async () => {
                         <div class="text-stone-400 text-xs font-bold uppercase tracking-wider mb-1">Payout Requests</div>
                         <div class="flex items-center gap-3">
                             <span class="text-3xl font-bold text-stone-900">{{ stats?.pendingPayouts?.count || 0 }}</span>
-                            <span v-if="stats?.pendingPayouts?.amount > 0" class="text-xs font-mono text-stone-400">
+                            <span v-if="stats?.pendingPayouts?.amount && stats.pendingPayouts.amount > 0" class="text-xs font-mono text-stone-400">
                                 ({{ formatCurrency(stats?.pendingPayouts?.amount) }})
                             </span>
                         </div>
@@ -170,12 +191,12 @@ const toggleUpgrade = async () => {
                     </div>
                     <h3 class="font-bold text-lg text-stone-900 mb-1">Verify Orders</h3>
                     <p class="text-sm text-stone-500">Check payment proofs & activate plans.</p>
-                    <div v-if="stats?.pendingOrders > 0" class="absolute top-4 right-4 bg-red-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shadow-lg animate-bounce">
+                    <div v-if="stats?.pendingOrders && stats.pendingOrders > 0" class="absolute top-4 right-4 bg-red-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shadow-lg animate-bounce">
                         {{ stats.pendingOrders }}
                     </div>
                 </NuxtLink>
 
-                <!-- NEW: Upgrade Feature Toggle -->
+                <!-- Upgrade Feature Toggle -->
                 <button @click="toggleUpgrade" :disabled="toggleLoading" class="group text-left bg-white p-6 rounded-2xl border transition-all relative overflow-hidden" :class="upgradeEnabled ? 'border-green-200 hover:border-green-400' : 'border-red-200 hover:border-red-400 bg-red-50'">
                     <div class="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-4 transition-colors" :class="upgradeEnabled ? 'bg-green-50 text-green-600' : 'bg-red-100 text-red-600'">
                         <i class="fas" :class="upgradeEnabled ? 'fa-toggle-on' : 'fa-toggle-off'"></i>
@@ -198,21 +219,21 @@ const toggleUpgrade = async () => {
                     </div>
                     <h3 class="font-bold text-lg text-stone-900 mb-1">Process Payouts</h3>
                     <p class="text-sm text-stone-500">Transfer referral bonuses & clear queue.</p>
-                    <div v-if="stats?.pendingPayouts?.count > 0" class="absolute top-4 right-4 bg-red-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shadow-lg animate-bounce">
+                    <div v-if="stats?.pendingPayouts?.count && stats.pendingPayouts.count > 0" class="absolute top-4 right-4 bg-red-500 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shadow-lg animate-bounce">
                         {{ stats.pendingPayouts.count }}
                     </div>
                 </NuxtLink>
 
                 <!-- 3. User Management -->
-                <NuxtLink to="/admin/users" class="group bg-white p-6 rounded-2xl border border-stone-200 hover:border-gold-400 hover:shadow-md transition-all">
-                    <div class="w-12 h-12 bg-gold-50 text-gold-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
+                <NuxtLink to="/admin/users" class="group bg-white p-6 rounded-2xl border border-stone-200 hover:border-amber-400 hover:shadow-md transition-all">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3 class="font-bold text-lg text-stone-900 mb-1">Manage Users</h3>
                     <p class="text-sm text-stone-500">See all registered users and their status.</p>
                 </NuxtLink>
 
-                <!-- NEW: Email CMS -->
+                <!-- Email CMS -->
                 <NuxtLink to="/admin/emails" class="group bg-white p-6 rounded-2xl border border-stone-200 hover:border-purple-400 hover:shadow-md transition-all">
                     <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope"></i>
@@ -261,3 +282,15 @@ const toggleUpgrade = async () => {
         </div>
     </div>
 </template>
+
+<style scoped>
+.toast-enter-active,
+.toast-leave-active {
+    transition: all 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
+}
+</style>

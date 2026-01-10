@@ -1,27 +1,34 @@
 import { db } from '../../utils/db'
 import { systemSettings } from '../../db/schema'
 import { eq } from 'drizzle-orm'
+import { isValidSettingKey } from '../../utils/admin-helpers'
 
 export default defineEventHandler(async (event) => {
-    // 1. Auth Check (Admin Only)
-    const session = await getSession(event)
+    // Auth Check (Admin Only) - using consistent pattern
+    const user = event.context.user
     const allowedRoles = ['admin', 'superuser']
-    if (!session || !allowedRoles.includes(session.user.role)) {
+
+    if (!user || !allowedRoles.includes((user as any).role)) {
         throw createError({ statusCode: 403, statusMessage: 'Admin access required' })
     }
 
     const method = event.method
 
+    // GET: Fetch all settings as key-value object
     if (method === 'GET') {
-        const settings = await db.select().from(systemSettings)
-        // Convert array to object for easier frontend consumption
-        const settingsMap = settings.reduce((acc, curr) => {
-            acc[curr.key] = curr.value
-            return acc
-        }, {} as Record<string, string>)
-        return settingsMap
+        try {
+            const settings = await db.select().from(systemSettings)
+            const settingsMap = settings.reduce((acc, curr) => {
+                acc[curr.key] = curr.value
+                return acc
+            }, {} as Record<string, string>)
+            return settingsMap
+        } catch (e: any) {
+            throw createError({ statusCode: 500, statusMessage: 'Failed to fetch settings' })
+        }
     }
 
+    // POST: Update a setting
     if (method === 'POST') {
         const body = await readBody(event)
         const { key, value } = body
@@ -30,32 +37,27 @@ export default defineEventHandler(async (event) => {
             throw createError({ statusCode: 400, statusMessage: 'Key and Value required' })
         }
 
-        // Upsert logic
-        const existing = await db.select().from(systemSettings).where(eq(systemSettings.key, key)).get()
+        // SECURITY: Whitelist validation
+        if (!isValidSettingKey(key)) {
+            throw createError({ statusCode: 400, statusMessage: `Invalid setting key: ${key}` })
+        }
 
-        if (existing) {
-            await db.update(systemSettings)
-                .set({ value: String(value), updatedAt: new Date() })
-                .where(eq(systemSettings.key, key))
-        } else {
+        try {
+            // Upsert using onConflictDoUpdate
             await db.insert(systemSettings).values({
                 key,
                 value: String(value),
                 updatedAt: new Date()
+            }).onConflictDoUpdate({
+                target: systemSettings.key,
+                set: { value: String(value), updatedAt: new Date() }
             })
+
+            return { success: true }
+        } catch (e: any) {
+            throw createError({ statusCode: 500, statusMessage: 'Failed to save setting' })
         }
-
-        return { success: true }
     }
+
+    throw createError({ statusCode: 405, statusMessage: 'Method not allowed' })
 })
-
-// Helper to get session (since we removed context.session reliance for standard middleware? 
-// No, context.user is set by auth middleware for standard routes, but better safe with getSession check here or context)
-async function getSession(event: any) {
-    // Re-use logic or rely on context if middleware is robust. 
-    // Given previous context cleanup, we can check event.context.user
-    if (event.context.user) return { user: event.context.user }
-
-    // Fallback to internal better auth check if needed, but context is preferred now
-    return null
-}

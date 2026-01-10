@@ -1,9 +1,10 @@
 import { db } from '../../utils/db'
 import { waNotifications, systemSettings } from '../../db/schema'
-import { desc, eq, count, and } from 'drizzle-orm'
+import { desc, eq, sql } from 'drizzle-orm'
+import { maskSensitiveData, type WAAdminResponse, type WAMetrics } from '../../utils/wa-helpers'
 
-export default defineEventHandler(async (event) => {
-    // 1. Auth Check (Admin Only)
+export default defineEventHandler(async (event): Promise<WAAdminResponse> => {
+    // Auth Check (Admin Only)
     const user = event.context.user
     const allowedRoles = ['admin', 'superuser']
 
@@ -12,8 +13,8 @@ export default defineEventHandler(async (event) => {
     }
 
     try {
-        // 2. Fetch Logs safely
-        let logs = []
+        // 1. Fetch recent logs
+        let logs: any[] = []
         try {
             logs = await db.select()
                 .from(waNotifications)
@@ -23,35 +24,37 @@ export default defineEventHandler(async (event) => {
             console.error('[WhatsAppAdmin] Logs fetch failed:', dbErr)
         }
 
-        // 3. Fetch Metrics safely
-        let metrics = { pending: 0, sent: 0, failed: 0 }
+        // 2. Fetch metrics with single optimized query (GROUP BY)
+        let metrics: WAMetrics = { pending: 0, sent: 0, failed: 0 }
         try {
-            const [p] = await db.select({ val: count() }).from(waNotifications).where(eq(waNotifications.status, 'pending'))
-            const [s] = await db.select({ val: count() }).from(waNotifications).where(eq(waNotifications.status, 'sent'))
-            const [f] = await db.select({ val: count() }).from(waNotifications).where(eq(waNotifications.status, 'failed'))
-            metrics = {
-                pending: p?.val || 0,
-                sent: s?.val || 0,
-                failed: f?.val || 0
+            const metricsResult = await db.select({
+                status: waNotifications.status,
+                count: sql<number>`count(*)`
+            })
+                .from(waNotifications)
+                .groupBy(waNotifications.status)
+
+            for (const row of metricsResult) {
+                if (row.status === 'pending') metrics.pending = row.count
+                else if (row.status === 'sent') metrics.sent = row.count
+                else if (row.status === 'failed') metrics.failed = row.count
             }
         } catch (dbErr) {
             console.error('[WhatsAppAdmin] Metrics fetch failed:', dbErr)
         }
 
-        // 4. Fetch Bot Status & Settings
-        let settings: any[] = []
+        // 3. Fetch Settings
+        let allSettings: any[] = []
         try {
-            settings = await db.select().from(systemSettings)
+            allSettings = await db.select().from(systemSettings)
         } catch (dbErr) {
             console.error('[WhatsAppAdmin] Settings fetch failed:', dbErr)
         }
 
-        const findSetting = (key: string) => settings.find((s: any) => s.key === key)?.value || ''
+        const findSetting = (key: string) => allSettings.find((s: any) => s.key === key)?.value || ''
 
         const lastSeen = findSetting('wa_bot_last_seen')
         const template = findSetting('wa_invitation_template')
-
-        // Cloud API Settings
         const cloudToken = findSetting('wa_cloud_token')
         const cloudPhoneId = findSetting('wa_cloud_phone_id')
         const cloudWabaId = findSetting('wa_cloud_waba_id')
@@ -62,18 +65,20 @@ export default defineEventHandler(async (event) => {
             metrics,
             status: {
                 lastSeen,
-                isOnline: lastSeen ? (new Date().getTime() - new Date(lastSeen).getTime() < 120000) : false
+                isOnline: lastSeen ? (Date.now() - new Date(lastSeen).getTime() < 120000) : false
             },
             settings: {
                 template,
-                cloudToken,
+                // SECURITY: Never expose full token - only masked version
+                cloudToken: maskSensitiveData(cloudToken, 8),
                 cloudPhoneId,
                 cloudWabaId,
-                targetPhone
+                targetPhone,
+                hasToken: !!cloudToken
             }
         }
     } catch (e: any) {
         console.error('[WhatsAppAdmin] Fatal Error:', e)
-        throw createError({ statusCode: 500, statusMessage: 'Internal Server Error: ' + e.message })
+        throw createError({ statusCode: 500, statusMessage: 'Internal Server Error' })
     }
 })

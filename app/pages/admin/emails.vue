@@ -3,13 +3,22 @@ definePageMeta({
   middleware: ['admin']
 })
 
-const isAuthorized = ref(false)
-const currentUser = ref<any>(null)
-const emailLogs = ref<any[]>([])
+interface EmailLog {
+    id: string
+    recipient: string
+    subject: string
+    content: string
+    status: 'sent' | 'failed'
+    error?: string
+    createdAt: string
+}
+
+const emailLogs = ref<EmailLog[]>([])
 const activeTab = ref<'logs' | 'template'>('logs')
 const isLoading = ref(false)
 const isSaving = ref(false)
-const selectedEmail = ref<any>(null)
+const selectedEmail = ref<EmailLog | null>(null)
+const toast = ref({ show: false, message: '', type: 'success' as 'success' | 'error' })
 
 // Template Editor State
 const rsvpTemplate = ref('')
@@ -26,20 +35,17 @@ const defaultTemplate = `
 </div>
 `
 
-import { useAuthClient } from '../../utils/auth-client'
-
 useSeoMeta({
   title: 'Log Email - Admin Undangan',
   robots: 'noindex, nofollow'
 })
 
-onMounted(async () => {
-    const authClient = useAuthClient()
-    const { data } = await authClient.getSession()
-    currentUser.value = data?.user
-    isAuthorized.value = !!data?.user
-    fetchData()
-})
+const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    toast.value = { show: true, message, type }
+    setTimeout(() => { toast.value.show = false }, 4000)
+}
+
+onMounted(() => fetchData())
 
 const fetchData = async () => {
     isLoading.value = true
@@ -69,9 +75,9 @@ const saveTemplate = async () => {
             method: 'POST',
             body: { key: 'email_rsvp_template', value: rsvpTemplate.value }
         })
-        alert('✅ Template berhasil disimpan!')
+        showToast('✅ Template berhasil disimpan!')
     } catch (e: any) {
-        alert('❌ Gagal: ' + (e.statusMessage || e.message))
+        showToast('❌ Gagal: ' + (e.statusMessage || e.message), 'error')
     } finally {
         isSaving.value = false
     }
@@ -87,14 +93,41 @@ const formatDate = (date: string) => {
     })
 }
 
-const openModal = (email: any) => {
+const openModal = (email: EmailLog) => {
     selectedEmail.value = email
 }
+
+// SECURITY: Sanitize HTML for preview (basic - strips script tags)
+const sanitizeHtml = (html: string): string => {
+    return html
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/on\w+="[^"]*"/gi, '')
+        .replace(/javascript:/gi, '')
+}
+
+const getPreviewHtml = computed(() => {
+    const sanitized = sanitizeHtml(rsvpTemplate.value)
+    return sanitized
+        .replace(/\{\{name\}\}/g, 'Budi Santoso')
+        .replace(/\{\{status\}\}/g, 'Hadir')
+        .replace(/\{\{message\}\}/g, 'Selamat ya!')
+        .replace(/\{\{slug\}\}/g, 'happy-wedding')
+})
 </script>
 
 <template>
-    <div v-if="isAuthorized" class="min-h-screen bg-stone-50 text-stone-800 p-6 font-sans">
+    <div class="min-h-screen bg-stone-50 text-stone-800 p-6 font-sans">
         <div class="max-w-6xl mx-auto">
+            
+            <!-- Toast -->
+            <Transition name="toast">
+                <div v-if="toast.show" 
+                    class="fixed top-6 right-6 z-50 px-6 py-4 rounded-2xl shadow-xl font-medium max-w-md"
+                    :class="toast.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'">
+                    {{ toast.message }}
+                </div>
+            </Transition>
+            
             <header class="flex flex-col md:flex-row justify-between items-center mb-10 bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
                 <div>
                     <h1 class="text-3xl font-bold text-stone-900">Email CMS & Logs</h1>
@@ -170,10 +203,10 @@ const openModal = (email: any) => {
                 <div class="mb-8 p-4 bg-purple-50 border border-purple-100 rounded-xl text-purple-800 text-sm">
                     <div class="font-bold mb-1"><i class="fas fa-info-circle mr-1"></i> Tips Variabel:</div>
                     Gunakan placeholder berikut untuk data dinamis: 
-                    <code v-pre class="bg-white px-1 rounded border">{{name}}</code>, 
-                    <code v-pre class="bg-white px-1 rounded border">{{status}}</code>, 
-                    <code v-pre class="bg-white px-1 rounded border">{{slug}}</code>, 
-                    <code v-pre class="bg-white px-1 rounded border">{{message}}</code>.
+                    <code class="bg-white px-1 rounded border">&#123;&#123;name&#125;&#125;</code>, 
+                    <code class="bg-white px-1 rounded border">&#123;&#123;status&#125;&#125;</code>, 
+                    <code class="bg-white px-1 rounded border">&#123;&#123;slug&#125;&#125;</code>, 
+                    <code class="bg-white px-1 rounded border">&#123;&#123;message&#125;&#125;</code>.
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -189,7 +222,8 @@ const openModal = (email: any) => {
                     <div class="space-y-4">
                         <label class="block font-bold text-stone-700">Live Preview (Desktop)</label>
                         <div class="h-[400px] border border-stone-100 rounded-2xl overflow-y-auto bg-stone-200 p-6 flex justify-center">
-                            <div class="bg-white w-full max-w-[500px] h-fit p-6 rounded shadow-sm scale-90 origin-top" v-html="rsvpTemplate.replace(/\{\{name\}\}/g, 'Budi Santoso').replace(/\{\{status\}\}/g, 'Hadir').replace(/\{\{message\}\}/g, 'Selamat ya!').replace(/\{\{slug\}\}/g, 'happy-wedding')"></div>
+                            <!-- SECURITY: Using sanitized HTML -->
+                            <div class="bg-white w-full max-w-[500px] h-fit p-6 rounded shadow-sm scale-90 origin-top" v-html="getPreviewHtml"></div>
                         </div>
                     </div>
                 </div>
@@ -221,7 +255,8 @@ const openModal = (email: any) => {
                     </div>
                     <div class="p-8 max-h-[70vh] overflow-y-auto">
                         <div class="space-y-4">
-                            <div class="bg-white p-4 rounded-xl border border-stone-100 shadow-sm" v-html="selectedEmail.content"></div>
+                            <!-- SECURITY: Sanitized content display -->
+                            <div class="bg-white p-4 rounded-xl border border-stone-100 shadow-sm" v-html="sanitizeHtml(selectedEmail.content)"></div>
                             <div v-if="selectedEmail.error" class="bg-red-50 p-4 rounded-xl border border-red-100 text-red-600 text-sm font-mono overflow-x-auto">
                                 <div class="font-bold mb-1">Error Logs:</div>
                                 {{ selectedEmail.error }}
@@ -247,4 +282,6 @@ const openModal = (email: any) => {
 }
 .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }
+.toast-enter-active, .toast-leave-active { transition: all 0.3s ease; }
+.toast-enter-from, .toast-leave-to { opacity: 0; transform: translateX(100px); }
 </style>

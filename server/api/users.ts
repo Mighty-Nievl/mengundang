@@ -1,103 +1,108 @@
 import { db } from '../utils/db'
-import { users, invitations } from '../db/schema'
+import { users, invitations, orders } from '../db/schema'
 import { eq, sql } from 'drizzle-orm'
-import { auth } from '../utils/auth'
+import { isProtectedEmail, getPlanLimits, type AdminUser } from '../utils/admin-helpers'
 
 export default defineEventHandler(async (event) => {
-    const user = event.context.user
+    // Consistent auth pattern
+    const user = event.context.user as any
     if (!user) {
         throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
     }
 
-    // Role Check
-    const sessionUser = user as any
-    const isAdmin = sessionUser.role === 'admin'
-    const isStaff = sessionUser.role === 'staff'
-    const isSuperuser = sessionUser.role === 'superuser'
+    const isAdmin = user.role === 'admin'
+    const isSuperuser = user.role === 'superuser'
+    const isStaff = user.role === 'staff'
 
     if (!isAdmin && !isStaff && !isSuperuser) {
-        throw createError({ statusCode: 403, statusMessage: 'Forbidden: Access required' })
+        throw createError({ statusCode: 403, statusMessage: 'Admin access required' })
     }
 
     // GET: List all users with their invitation usage
     if (event.method === 'GET') {
-        const usersList = await db.select({
-            id: users.id,
-            email: users.email,
-            name: users.name,
-            role: users.role,
-            plan: users.plan,
-            maxInvitations: users.maxInvitations,
-            maxGuests: users.maxGuests,
-            usage: sql<number>`(SELECT COUNT(*) FROM invitation WHERE owner = ${users.email})`
-        }).from(users)
+        try {
+            const usersList = await db.select({
+                id: users.id,
+                email: users.email,
+                name: users.name,
+                role: users.role,
+                plan: users.plan,
+                maxInvitations: users.maxInvitations,
+                maxGuests: users.maxGuests,
+                referralBalance: users.referralBalance,
+                usage: sql<number>`(SELECT COUNT(*) FROM invitation WHERE owner = ${users.email})`
+            }).from(users)
 
-        return usersList
+            return usersList
+        } catch (e: any) {
+            throw createError({ statusCode: 500, statusMessage: 'Failed to fetch users' })
+        }
     }
 
-    // POST: Manage Users (Update Plan / Max Invitations / Delete) - ONLY ADMIN
+    // POST: Manage Users - ADMIN/SUPERUSER only
     if (event.method === 'POST') {
         if (!isAdmin && !isSuperuser) {
-            throw createError({ statusCode: 403, statusMessage: 'Forbidden: Admin only' })
+            throw createError({ statusCode: 403, statusMessage: 'Admin only' })
         }
+
         const body = await readBody(event)
         const { action, email } = body
 
-        if (!email) throw createError({ statusCode: 400, statusMessage: 'Email is required' })
-
-        if (action === 'edit') {
-            await db.update(users).set({
-                plan: body.plan,
-                maxInvitations: parseInt(body.maxInvitations) || 1,
-                maxGuests: parseInt(body.maxGuests) || 25,
-                updatedAt: new Date()
-            }).where(eq(users.email, email))
-
-            return { success: true }
+        if (!email) {
+            throw createError({ statusCode: 400, statusMessage: 'Email is required' })
         }
 
-        if (action === 'add') {
-            const { name, password } = body
-            if (!name || !password) throw createError({ statusCode: 400, statusMessage: 'Name and Password required' })
+        // EDIT USER
+        if (action === 'edit') {
+            const plan = body.plan || 'free'
+            const limits = getPlanLimits(plan)
 
             try {
-                // Check if user exists
-                const existing = await db.select().from(users).where(eq(users.email, email))
-                if (existing.length > 0) {
-                    throw createError({ statusCode: 400, statusMessage: 'Email already registered' })
-                }
-
-                await auth.api.signUpEmail({
-                    body: {
-                        email,
-                        password,
-                        name,
-                        role: 'user',
-                        plan: 'free',
-                        maxInvitations: 1
-                    }
-                })
+                await db.update(users).set({
+                    plan: plan,
+                    maxInvitations: body.maxInvitations ?? limits.maxInvitations,
+                    maxGuests: body.maxGuests ?? limits.maxGuests,
+                    updatedAt: new Date()
+                }).where(eq(users.email, email))
 
                 return { success: true }
             } catch (e: any) {
-                throw createError({ statusCode: 400, statusMessage: e.message || 'Failed to create user' })
+                throw createError({ statusCode: 500, statusMessage: 'Failed to update user' })
             }
         }
 
+        // DELETE USER
         if (action === 'delete') {
-            // Safety check: Cannot delete super admin
-            const protectedEmails = ['support@zalan.web.id', 'rezalhbramantara@gmail.com']
-            if (protectedEmails.includes(email)) {
-                throw createError({ statusCode: 400, statusMessage: 'Cannot delete Super Admin' })
+            // Safety: Cannot delete protected emails
+            if (isProtectedEmail(email)) {
+                throw createError({ statusCode: 400, statusMessage: 'Cannot delete protected admin account' })
             }
 
-            // In Better-Auth, deleting a user usually requires deleting their sessions/accounts too
-            // Drizzle schema has references, depends on cascade setup. 
-            // For now, let's just delete from user table.
-            await db.delete(users).where(eq(users.email, email))
-            return { success: true }
+            // Safety: Cannot delete self
+            if (email === user.email) {
+                throw createError({ statusCode: 400, statusMessage: 'Cannot delete your own account' })
+            }
+
+            try {
+                // Get user ID first
+                const [targetUser] = await db.select().from(users).where(eq(users.email, email))
+                if (!targetUser) {
+                    throw createError({ statusCode: 404, statusMessage: 'User not found' })
+                }
+
+                // Note: Ideally should cascade delete invitations, orders, etc.
+                // For now, just delete user - foreign keys should be set to CASCADE or SET NULL in schema
+                await db.delete(users).where(eq(users.email, email))
+
+                return { success: true }
+            } catch (e: any) {
+                if (e.statusCode) throw e
+                throw createError({ statusCode: 500, statusMessage: 'Failed to delete user' })
+            }
         }
 
-        throw createError({ statusCode: 400, statusMessage: 'Invalid Action' })
+        throw createError({ statusCode: 400, statusMessage: 'Invalid action' })
     }
+
+    throw createError({ statusCode: 405, statusMessage: 'Method not allowed' })
 })

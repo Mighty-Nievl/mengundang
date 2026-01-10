@@ -1,70 +1,80 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-
 definePageMeta({
-  layout: 'default'
+  layout: 'default',
+  middleware: ['admin']  // SECURITY: Added missing middleware
 })
 
-const isLoading = ref(false)
-const orders = ref<any[]>([])
+interface AdminOrder {
+    id: string
+    userId: string
+    userName: string
+    userEmail: string
+    plan: string
+    amount: number
+    status: 'pending' | 'approved' | 'rejected'
+    proofUrl: string | null
+    createdAt: string
+}
 
+const isLoading = ref(false)
+const orders = ref<AdminOrder[]>([])
 const confirmingRejectId = ref<string | null>(null)
 const confirmingApproveId = ref<string | null>(null)
-
-const { showConfirm, showAlert } = usePremiumModal()
+const toast = ref({ show: false, message: '', type: 'success' as 'success' | 'error' })
+const actionFeedback = ref<Record<string, { text: string, type: 'success' | 'danger' }>>({})
 
 useSeoMeta({
   title: 'Kelola Order - Admin Undangan',
   robots: 'noindex, nofollow'
 })
 
-const fetchOrders = async () => {
-    isLoading.value = true
-    try {
-        const data = await $fetch<any[]>('/api/admin/orders')
-        orders.value = data
-    } catch (e) {
-        showAlert({ title: 'Error', message: 'Gagal mengambil data order', type: 'danger' })
-    } finally {
-        isLoading.value = false
-    }
+const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    toast.value = { show: true, message, type }
+    setTimeout(() => { toast.value.show = false }, 4000)
 }
-
-
-const actionFeedback = ref<Record<string, { text: string, type: 'success' | 'danger' }>>({})
 
 const setFeedback = (id: string, text: string, type: 'success' | 'danger') => {
     actionFeedback.value[id] = { text, type }
     setTimeout(() => { delete actionFeedback.value[id] }, 3000)
 }
 
-const doApproveOrder = async (orderId: string) => {
-    // Confirmation handled inline
-    confirmingApproveId.value = null
+const fetchOrders = async () => {
+    isLoading.value = true
+    try {
+        const data = await $fetch<AdminOrder[]>('/api/admin/orders')
+        orders.value = data
+    } catch (e: any) {
+        showToast('Gagal mengambil data order: ' + (e.message || 'Unknown error'), 'error')
+    } finally {
+        isLoading.value = false
+    }
+}
 
+const doApproveOrder = async (orderId: string) => {
+    confirmingApproveId.value = null
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/approve`, { method: 'POST' })
         setFeedback(orderId, 'DISETUJUI', 'success')
-        setTimeout(() => fetchOrders(), 3000)
+        showToast('✅ Order berhasil disetujui!')
+        setTimeout(() => fetchOrders(), 2000)
     } catch (e: any) {
-        showAlert({ title: 'Gagal', message: 'Gagal menyetujui: ' + (e.statusMessage || e.message), type: 'danger' })
+        showToast('❌ Gagal menyetujui: ' + (e.statusMessage || e.message), 'error')
     } finally {
         isLoading.value = false
     }
 }
 
 const doRejectOrder = async (orderId: string) => {
-    // Confirmation is handled inline
-    confirmingRejectId.value = null // Close inline confirm
-
+    confirmingRejectId.value = null
     isLoading.value = true
     try {
         await $fetch(`/api/admin/orders/${orderId}/reject`, { method: 'POST' })
         setFeedback(orderId, 'DITOLAK', 'danger')
-        setTimeout(() => fetchOrders(), 3000)
+        showToast('Order berhasil ditolak')
+        setTimeout(() => fetchOrders(), 2000)
     } catch (e: any) {
-        showAlert({ title: 'Gagal', message: 'Gagal menolak: ' + (e.statusMessage || e.message), type: 'danger' })
+        showToast('❌ Gagal menolak: ' + (e.statusMessage || e.message), 'error')
     } finally {
         isLoading.value = false
     }
@@ -79,14 +89,25 @@ const getStatusColor = (status: string) => {
     }
 }
 
-onMounted(() => {
-    fetchOrders()
-})
+const formatCurrency = (val: number) => {
+    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(val)
+}
+
+onMounted(() => fetchOrders())
 </script>
 
 <template>
   <div class="min-h-screen bg-stone-50 font-sans text-stone-800 p-6">
     <div class="max-w-6xl mx-auto space-y-8">
+      
+      <!-- Toast -->
+      <Transition name="toast">
+          <div v-if="toast.show" 
+              class="fixed top-6 right-6 z-50 px-6 py-4 rounded-2xl shadow-xl font-medium max-w-md"
+              :class="toast.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'">
+              {{ toast.message }}
+          </div>
+      </Transition>
       
       <!-- Header -->
       <div class="flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
@@ -94,12 +115,15 @@ onMounted(() => {
             <h1 class="text-2xl font-serif font-bold text-stone-900">Kelola Order</h1>
             <p class="text-sm text-stone-500">Daftar pesanan paket undangan baru.</p>
         </div>
-        <NuxtLink to="/admin" class="px-4 py-2 bg-stone-100 rounded-lg text-stone-600 font-bold text-sm hover:bg-stone-200 transition-colors">
-            <i class="fas fa-arrow-left mr-2"></i> Kembali
-        </NuxtLink>
+        <div class="flex gap-2">
+            <button @click="fetchOrders" class="p-2.5 rounded-xl bg-stone-100 text-stone-600 hover:bg-stone-200" :disabled="isLoading">
+                <i class="fas fa-sync-alt" :class="{ 'animate-spin': isLoading }"></i>
+            </button>
+            <NuxtLink to="/admin" class="px-4 py-2 bg-stone-100 rounded-lg text-stone-600 font-bold text-sm hover:bg-stone-200 transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i> Kembali
+            </NuxtLink>
+        </div>
       </div>
-
-
 
       <!-- List -->
       <div class="bg-white rounded-2xl shadow-lg border border-stone-100 overflow-hidden">
@@ -130,7 +154,7 @@ onMounted(() => {
                         <span class="capitalize font-medium px-2 py-1 rounded bg-stone-100 text-stone-600 text-xs">{{ order.plan }}</span>
                     </td>
                     <td class="p-4 text-right font-mono font-bold text-stone-900">
-                        {{ new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(order.amount) }}
+                        {{ formatCurrency(order.amount) }}
                     </td>
                     <td class="p-4 text-center">
                         <span :class="['px-2 py-1 rounded-full text-xs font-bold uppercase', getStatusColor(order.status)]">
@@ -190,6 +214,7 @@ onMounted(() => {
                 </tr>
                 <tr v-if="orders.length === 0">
                     <td colspan="7" class="p-10 text-center text-stone-400 italic">
+                        <i class="fas fa-check-circle text-4xl mb-3 block text-green-200"></i>
                         Belum ada order masuk.
                     </td>
                 </tr>
@@ -201,3 +226,15 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.toast-enter-active,
+.toast-leave-active {
+    transition: all 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
+}
+</style>
