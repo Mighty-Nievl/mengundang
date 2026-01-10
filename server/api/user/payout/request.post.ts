@@ -5,8 +5,7 @@ import { sendTelegramMessage } from '../../../utils/telegram'
 
 export default defineEventHandler(async (event) => {
     // 1. Verify User Session
-    // @ts-ignore
-    const user = event.context.user
+    const user = event.context.user as any
     if (!user) {
         throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
     }
@@ -17,7 +16,12 @@ export default defineEventHandler(async (event) => {
 
     const balance = freshUser.referralBalance || 0
 
-    // NEW: Get Bank Details from Body
+    // 3. Check if already has pending request (prevent duplicate requests)
+    if (freshUser.payoutPending) {
+        throw createError({ statusCode: 400, statusMessage: 'Anda sudah memiliki permintaan payout yang sedang diproses.' })
+    }
+
+    // 4. Get Bank Details from Body
     const body = await readBody(event)
     const { bankName, bankAccountNumber, bankAccountName, phoneNumber } = body
 
@@ -25,21 +29,22 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 400, statusMessage: 'Mohon lengkapi info rekening & nomor WhatsApp' })
     }
 
-    // Update User Record with latest info
+    // 5. Validate Balance
+    if (balance < 30000) {
+        throw createError({ statusCode: 400, statusMessage: 'Saldo belum cukup (Min. Rp 30.000)' })
+    }
+
+    // 6. Update User Record with bank info AND set pending flag
     await db.update(users).set({
         bankName,
         bankAccountNumber,
         bankAccountName,
         phoneNumber,
+        payoutPending: true,  // LOCK: Prevent duplicate requests
         updatedAt: new Date()
     }).where(eq(users.id, user.id))
 
-    // 3. Validate Balance
-    if (balance < 30000) {
-        throw createError({ statusCode: 400, statusMessage: 'Saldo belum cukup (Min. Rp 30.000)' })
-    }
-
-    // 4. Send Telegram Notification to Admin
+    // 7. Send Telegram Notification to Admin
     const formattedAmount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(balance)
 
     try {
@@ -66,7 +71,6 @@ export default defineEventHandler(async (event) => {
             }
         )
     } catch (e) {
-        // Log but don't fail the request if TG fails, just warn
         console.error('Failed to send TG notification', e)
     }
 

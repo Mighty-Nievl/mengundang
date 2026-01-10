@@ -6,8 +6,7 @@ import { sendTelegramMessage } from '../../../utils/telegram'
 
 export default defineEventHandler(async (event) => {
     // 1. Verify Admin
-    // @ts-ignore
-    const user = event.context.user
+    const user = event.context.user as any
     const allowedRoles = ['admin', 'superuser']
     if (!user || !allowedRoles.includes(user.role)) {
         throw createError({ statusCode: 403, statusMessage: 'Unauthorized' })
@@ -30,11 +29,12 @@ export default defineEventHandler(async (event) => {
 
     // 3. Process Transaction
     try {
-        await db.transaction(async (tx) => {
-            // Deduct Balance
+        await db.transaction(async (tx: any) => {
+            // Deduct Balance AND reset pending flag
             await tx.update(users)
                 .set({
                     referralBalance: sql`${users.referralBalance} - ${amount}`,
+                    payoutPending: false,  // UNLOCK: Reset pending flag
                     updatedAt: new Date()
                 })
                 .where(eq(users.id, userId))

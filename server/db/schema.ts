@@ -23,6 +23,7 @@ export const users = sqliteTable('user', {
     bankName: text('bankName'),
     bankAccountNumber: text('bankAccountNumber'),
     bankAccountName: text('bankAccountName'),
+    payoutPending: integer('payoutPending', { mode: 'boolean' }).default(false),
     registrationIp: text('registrationIp')
 });
 

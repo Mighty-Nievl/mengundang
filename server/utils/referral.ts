@@ -1,13 +1,33 @@
 import { db } from './db';
 import { users, referralTransactions } from '../db/schema';
-import { eq, sql } from 'drizzle-orm';
+import { eq, sql, and } from 'drizzle-orm';
 import crypto from 'crypto';
+
+// ============================================
+// REFERRAL CONFIG
+// ============================================
+export const REFERRAL_BONUS = {
+    regular: 5000,
+    vip: 10000,
+    vvip: 15000,
+    official: 15000,  // Same as VVIP
+} as const;
+
+export type PlanWithBonus = keyof typeof REFERRAL_BONUS;
+
+export function getBonusAmount(plan: string): number {
+    const normalized = plan.toLowerCase() as PlanWithBonus;
+    return REFERRAL_BONUS[normalized] || REFERRAL_BONUS.regular;
+}
 
 export function generateReferralCode(): string {
     return crypto.randomBytes(3).toString('hex').toUpperCase();
 }
 
-export async function processReferralBonus(userId: string, plan: string) {
+// ============================================
+// PROCESS REFERRAL BONUS
+// ============================================
+export async function processReferralBonus(userId: string, plan: string): Promise<boolean> {
     console.log(`[Referral] Processing bonus for user ${userId} (Plan: ${plan})`);
 
     // 1. Check if user was referred
@@ -15,7 +35,7 @@ export async function processReferralBonus(userId: string, plan: string) {
 
     if (!user || !user.referredBy) {
         console.log(`[Referral] User ${userId} has no referrer. Skipping.`);
-        return;
+        return false;
     }
 
     // 2. Find Referrer
@@ -23,33 +43,54 @@ export async function processReferralBonus(userId: string, plan: string) {
 
     if (!referrer) {
         console.log(`[Referral] Referrer with code ${user.referredBy} not found.`);
-        return;
+        return false;
     }
 
-    // 3. Check if bonus already given for this user (prevent duplicate bonuses)
-    // Optional: We might want to allow bonuses for renewals, but for now let's assume one-time bonus per upgrade?
-    // Or just simple logic: every paid upgrade gives 10k.
+    // SECURITY: Prevent self-referral (double check)
+    if (referrer.id === userId) {
+        console.warn(`[Referral] BLOCKED: User ${userId} tried to self-refer!`);
+        return false;
+    }
 
-    // Let's stick to the plan: 10k bonus per successful upgrade.
-    const BONUS_AMOUNT = 10000;
+    // 3. SECURITY: Check if bonus already given for this user
+    // Only one bonus per referred user (first upgrade only)
+    const existingBonus = await db.select()
+        .from(referralTransactions)
+        .where(
+            and(
+                eq(referralTransactions.referrerId, referrer.id),
+                eq(referralTransactions.refereeId, userId),
+                eq(referralTransactions.type, 'bonus')
+            )
+        )
+        .get();
 
-    // 4. Update Referrer Balance
+    if (existingBonus) {
+        console.log(`[Referral] Bonus already given for user ${userId}. Skipping duplicate.`);
+        return false;
+    }
+
+    // 4. Get dynamic bonus based on plan
+    const bonusAmount = getBonusAmount(plan);
+
+    // 5. Update Referrer Balance
     await db.update(users)
         .set({
-            referralBalance: sql`${users.referralBalance} + ${BONUS_AMOUNT}`,
+            referralBalance: sql`${users.referralBalance} + ${bonusAmount}`,
             updatedAt: new Date()
         })
         .where(eq(users.id, referrer.id));
 
-    // 5. Record Transaction
+    // 6. Record Transaction
     await db.insert(referralTransactions).values({
         id: crypto.randomUUID(),
         referrerId: referrer.id,
         refereeId: userId,
-        amount: BONUS_AMOUNT,
+        amount: bonusAmount,
         type: 'bonus',
         createdAt: new Date()
     });
 
-    console.log(`[Referral] Bonus of ${BONUS_AMOUNT} awarded to ${referrer.name} (${referrer.id}) for referring ${user.name}`);
+    console.log(`[Referral] Bonus of ${bonusAmount} awarded to ${referrer.name} (${referrer.id}) for referring ${user.name}`);
+    return true;
 }

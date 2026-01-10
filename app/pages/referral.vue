@@ -10,6 +10,7 @@ const host = ref('')
 // UI States
 const showPayoutModal = ref(false)
 const copyFeedback = ref(false)
+const toast = ref({ show: false, message: '', type: 'success' as 'success' | 'error' })
 
 // Payout Form
 const payoutForm = reactive({
@@ -17,7 +18,7 @@ const payoutForm = reactive({
     bankAccountNumber: '',
     bankAccountName: '',
     phoneNumber: '',
-    agreement: false // New: Agreement Checkbox
+    agreement: false
 })
 
 definePageMeta({
@@ -29,6 +30,11 @@ useSeoMeta({
   description: 'Dapatkan komisi Rp5.000-15.000 per undangan. Ajak teman, dapatkan cuan!',
   robots: 'noindex, nofollow'
 })
+
+const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    toast.value = { show: true, message, type }
+    setTimeout(() => { toast.value.show = false }, 4000)
+}
 
 onMounted(async () => {
     host.value = window.location.host
@@ -48,10 +54,10 @@ const fetchReferral = async () => {
         
         // Pre-fill form if data exists
         if (data) {
-            payoutForm.bankName = data.bankName || ''
-            payoutForm.bankAccountNumber = data.bankAccountNumber || ''
-            payoutForm.bankAccountName = data.bankAccountName || ''
-            payoutForm.phoneNumber = data.phoneNumber || ''
+            payoutForm.bankName = (data as any).bankName || ''
+            payoutForm.bankAccountNumber = (data as any).bankAccountNumber || ''
+            payoutForm.bankAccountName = (data as any).bankAccountName || ''
+            payoutForm.phoneNumber = (data as any).phoneNumber || ''
         }
     } catch (e) {}
 }
@@ -62,17 +68,17 @@ const openPayoutModal = () => {
 
 const closePayoutModal = () => {
     showPayoutModal.value = false
-    payoutForm.agreement = false // Reset agreement
+    payoutForm.agreement = false
 }
 
 const submitPayout = async () => {
     if (!payoutForm.agreement) {
-        alert('Mohon setujui Syarat & Ketentuan pencairan dana.')
+        showToast('Mohon setujui Syarat & Ketentuan pencairan dana.', 'error')
         return
     }
 
     if (!payoutForm.bankName || !payoutForm.bankAccountNumber || !payoutForm.bankAccountName || !payoutForm.phoneNumber) {
-        alert('Mohon lengkapi semua data pembayaran.') 
+        showToast('Mohon lengkapi semua data pembayaran.', 'error')
         return
     }
 
@@ -90,10 +96,10 @@ const submitPayout = async () => {
         
         closePayoutModal()
         await fetchReferral() 
-        alert('✅ Permintaan terkirim! Admin akan segera memproses dalam 1x24 jam.')
+        showToast('✅ Permintaan terkirim! Admin akan segera memproses dalam 1x24 jam.')
         
     } catch (e: any) {
-        alert('❌ Gagal: ' + (e.data?.statusMessage || e.message))
+        showToast('❌ ' + (e.data?.statusMessage || e.message), 'error')
     } finally {
         isPayoutLoading.value = false
     }
@@ -125,6 +131,15 @@ const payoutProgress = computed(() => {
 <template>
   <div v-if="isAuthenticated" class="min-h-screen bg-stone-50 font-sans text-stone-800 p-6 pb-20">
     <div class="max-w-5xl mx-auto space-y-8">
+      
+      <!-- Toast Notification -->
+      <Transition name="toast">
+          <div v-if="toast.show" 
+              class="fixed top-6 right-6 z-50 px-6 py-4 rounded-2xl shadow-xl font-medium max-w-md"
+              :class="toast.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'">
+              {{ toast.message }}
+          </div>
+      </Transition>
       
       <!-- Header -->
       <div class="flex items-center gap-4">
@@ -458,5 +473,14 @@ const payoutProgress = computed(() => {
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #a8a29e;
+}
+.toast-enter-active,
+.toast-leave-active {
+    transition: all 0.3s ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
 }
 </style>

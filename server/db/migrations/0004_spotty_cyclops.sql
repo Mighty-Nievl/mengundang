@@ -1,0 +1,1 @@
+ALTER TABLE `user` ADD `payoutPending` integer DEFAULT false;
