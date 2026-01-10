@@ -65,7 +65,10 @@ export default defineEventHandler(async (event): Promise<WAAdminResponse> => {
             metrics,
             status: {
                 lastSeen,
-                isOnline: lastSeen ? (Date.now() - new Date(lastSeen).getTime() < 120000) : false
+                isOnline: lastSeen ? (Date.now() - new Date(lastSeen).getTime() < 120000) : false,
+                cloudApiOk: !!cloudToken && !!cloudPhoneId,
+                botOnline: lastSeen ? (Date.now() - new Date(lastSeen).getTime() < 120000) : false,
+                botLastSeen: lastSeen || null
             },
             settings: {
                 template,

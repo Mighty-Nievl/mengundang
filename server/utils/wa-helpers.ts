@@ -71,6 +71,9 @@ export interface WAMetrics {
 export interface WABotStatus {
     lastSeen: string | null
     isOnline: boolean
+    cloudApiOk?: boolean
+    botOnline?: boolean
+    botLastSeen?: string | null
 }
 
 export interface WALog {
