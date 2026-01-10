@@ -24,6 +24,10 @@ const confirmAction = ref<{ type: string; id: string; data?: any } | null>(null)
 // Settings
 const upgradeEnabled = ref(true)
 
+// Stats
+interface Stats { totalUsers: number; pendingOrders: number; pendingPayouts: { count: number; amount: number }; totalRevenue: number }
+const stats = ref<Stats | null>(null)
+
 useSeoMeta({ title: 'Admin Panel', robots: 'noindex, nofollow' })
 
 const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
@@ -49,6 +53,9 @@ const fetchSettings = async () => {
         upgradeEnabled.value = s.upgrade_enabled !== 'false'
     } catch (e) { console.error(e) }
 }
+const fetchStats = async () => {
+    try { stats.value = await $fetch('/api/admin/stats') } catch (e) { console.error(e) }
+}
 
 const loadTab = async () => {
     isLoading.value = true
@@ -60,7 +67,7 @@ const loadTab = async () => {
 }
 
 watch(activeTab, loadTab)
-onMounted(loadTab)
+onMounted(() => { fetchStats(); loadTab() })
 
 // Actions - Orders
 const approveOrder = async (id: string) => {
@@ -156,6 +163,26 @@ const filteredUsers = computed(() => {
             <NuxtLink to="/dashboard" class="px-3 py-1.5 text-xs bg-gray-900 text-white rounded">Exit</NuxtLink>
         </div>
     </header>
+
+    <!-- Stats Row -->
+    <div v-if="stats" class="grid grid-cols-4 border-b text-center text-xs">
+        <div class="py-3 border-r">
+            <div class="text-lg font-bold">{{ stats.totalUsers }}</div>
+            <div class="text-gray-500">Users</div>
+        </div>
+        <div class="py-3 border-r">
+            <div class="text-lg font-bold" :class="stats.pendingOrders > 0 ? 'text-red-600' : ''">{{ stats.pendingOrders }}</div>
+            <div class="text-gray-500">Orders</div>
+        </div>
+        <div class="py-3 border-r">
+            <div class="text-lg font-bold" :class="stats.pendingPayouts.count > 0 ? 'text-amber-600' : ''">{{ stats.pendingPayouts.count }}</div>
+            <div class="text-gray-500">Payouts</div>
+        </div>
+        <div class="py-3">
+            <div class="text-lg font-bold text-green-600">{{ formatCurrency(stats.totalRevenue).replace('Rp', '') }}</div>
+            <div class="text-gray-500">Revenue</div>
+        </div>
+    </div>
 
     <!-- Tabs -->
     <nav class="border-b px-4 flex gap-1 overflow-x-auto">
