@@ -71,7 +71,10 @@ const saveTemplate = async () => {
 const testCloudApi = async () => {
     isLoading.value = true
     try {
-        await $fetch('/api/admin/whatsapp', { method: 'POST', body: { action: 'test_cloud_api' } })
+        await $fetch('/api/admin/whatsapp', { 
+            method: 'POST', 
+            body: { action: 'test_cloud_api', phone: targetPhone.value } 
+        })
         showToast('Test message sent!')
     } catch (e: any) { showToast(e.statusMessage || 'Failed', 'error') }
     finally { isLoading.value = false }
