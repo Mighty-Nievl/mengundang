@@ -1,8 +1,9 @@
 import { db } from '../../../utils/db'
-import { users, referralTransactions } from '../../../db/schema'
+import { users, referralTransactions, systemSettings } from '../../../db/schema'
 import { eq, sql } from 'drizzle-orm'
 import { v4 as uuidv4 } from 'uuid'
 import { sendTelegramMessage } from '../../../utils/telegram'
+import { sendWhatsAppNotification } from '../../../utils/whatsapp'
 
 export default defineEventHandler(async (event) => {
     // 1. Verify Admin
@@ -34,7 +35,7 @@ export default defineEventHandler(async (event) => {
             await tx.update(users)
                 .set({
                     referralBalance: sql`${users.referralBalance} - ${amount}`,
-                    payoutPending: false,  // UNLOCK: Reset pending flag
+                    payoutPending: false,
                     updatedAt: new Date()
                 })
                 .where(eq(users.id, userId))
@@ -44,16 +45,34 @@ export default defineEventHandler(async (event) => {
             await tx.insert(referralTransactions).values({
                 id: uuidv4(),
                 referrerId: userId,
-                refereeId: user.id, // Admin as executor
+                refereeId: user.id,
                 amount: amount,
                 type: 'withdrawal',
                 createdAt: new Date()
             }).run()
         })
 
-        // 4. Notify (Async)
+        // 4. Send notifications
         const formattedAmount = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount)
-        sendTelegramMessage(`💸 *Payout Successful*\n\nUser: ${targetUser.name} (${targetUser.email})\nAmount: ${formattedAmount}\nAdmin: ${user.name}`)
+        const notifText = `💸 *Payout Processed*\n\n` +
+            `👤 User: ${targetUser.name}\n` +
+            `📧 Email: ${targetUser.email}\n` +
+            `💰 Amount: ${formattedAmount}\n` +
+            `🏦 Bank: ${targetUser.bankName || 'N/A'} - ${targetUser.bankAccountNumber || 'N/A'}\n` +
+            `👮 Admin: ${user.name}`
+
+        // Telegram
+        sendTelegramMessage(notifText).catch(e => console.error('[PayoutProcess] TG failed:', e))
+
+        // WhatsApp Cloud API
+        try {
+            const [setting] = await db.select().from(systemSettings).where(eq(systemSettings.key, 'wa_target_phone')).limit(1)
+            if (setting?.value) {
+                await sendWhatsAppNotification(notifText, setting.value, 'official')
+            }
+        } catch (e) {
+            console.error('[PayoutProcess] WA failed:', e)
+        }
 
         return { success: true }
     } catch (e: any) {
