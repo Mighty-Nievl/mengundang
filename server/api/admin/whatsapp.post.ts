@@ -179,6 +179,56 @@ export default defineEventHandler(async (event) => {
             }
         }
 
+        // ============================================
+        // ACTION: Test Template (Send sample notification)
+        // ============================================
+        if (action === 'test_template') {
+            const { type, phone } = body
+
+            if (!phone) {
+                throw createError({ statusCode: 400, statusMessage: 'Phone number required' })
+            }
+            if (!type || !['order_new', 'order_approved', 'payout_request', 'payout_processed'].includes(type)) {
+                throw createError({ statusCode: 400, statusMessage: 'Invalid template type' })
+            }
+
+            const formattedPhone = formatPhoneNumber(phone)
+            if (!isValidPhoneNumber(formattedPhone)) {
+                throw createError({ statusCode: 400, statusMessage: 'Invalid phone number' })
+            }
+
+            // Import helpers
+            const { DEFAULT_TEMPLATES, renderTemplate } = await import('../../utils/wa-helpers')
+
+            // Fetch custom template from DB
+            const templateKey = `wa_tpl_${type}`
+            const [customTpl] = await db.select().from(systemSettings).where(eq(systemSettings.key, templateKey)).limit(1)
+            const templateStr = customTpl?.value || DEFAULT_TEMPLATES[type as keyof typeof DEFAULT_TEMPLATES]
+
+            // Sample data for testing
+            const sampleData: Record<string, string> = {
+                name: 'John Doe',
+                email: 'john@example.com',
+                plan: 'VIP',
+                amount: 'Rp 99.000',
+                admin: user?.name || 'Admin',
+                bank: 'BCA',
+                account: '1234567890',
+                account_name: 'John Doe',
+                phone: '08123456789'
+            }
+
+            const renderedMsg = renderTemplate(templateStr, sampleData)
+
+            // Send via Cloud API
+            const result = await sendWhatsAppMessage(formattedPhone, renderedMsg)
+            if (result === true) {
+                return { success: true, message: `Test ${type} sent!` }
+            } else {
+                throw createError({ statusCode: 502, statusMessage: result || 'Failed to send' })
+            }
+        }
+
         // Unknown action
         throw createError({ statusCode: 400, statusMessage: `Invalid action: ${action}` })
 

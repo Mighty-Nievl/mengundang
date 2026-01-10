@@ -77,7 +77,12 @@ export default defineEventHandler(async (event): Promise<WAAdminResponse> => {
                 cloudPhoneId,
                 cloudWabaId,
                 targetPhone,
-                hasToken: !!cloudToken
+                hasToken: !!cloudToken,
+                // Admin notification templates
+                tplOrderNew: findSetting('wa_tpl_order_new'),
+                tplOrderApproved: findSetting('wa_tpl_order_approved'),
+                tplPayoutRequest: findSetting('wa_tpl_payout_request'),
+                tplPayoutProcessed: findSetting('wa_tpl_payout_processed')
             }
         }
     } catch (e: any) {

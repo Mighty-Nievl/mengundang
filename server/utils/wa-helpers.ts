@@ -10,10 +10,68 @@ export const ALLOWED_WA_SETTINGS = [
     'wa_cloud_waba_id',
     'wa_target_phone',
     'wa_invitation_template',
-    'wa_bot_last_seen'
+    'wa_bot_last_seen',
+    // Admin notification templates
+    'wa_tpl_order_new',
+    'wa_tpl_order_approved',
+    'wa_tpl_payout_request',
+    'wa_tpl_payout_processed'
 ] as const
 
 export type WASettingKey = typeof ALLOWED_WA_SETTINGS[number]
+
+// Default templates
+export const DEFAULT_TEMPLATES = {
+    order_new: `🛒 *Order Baru*
+
+👤 User: {name}
+📧 Email: {email}
+📦 Plan: {plan}
+💰 Amount: {amount}
+
+_Cek Admin Panel untuk verifikasi._`,
+
+    order_approved: `✅ *Order Approved*
+
+👤 User: {name}
+📧 Email: {email}
+📦 Plan: {plan}
+💰 Amount: {amount}
+👮 Admin: {admin}`,
+
+    payout_request: `💸 *Payout Request*
+
+👤 User: {name}
+📧 Email: {email}
+💰 Amount: {amount}
+
+🏦 *Rekening:*
+- Bank: {bank}
+- No: {account}
+- An: {account_name}
+- WA: {phone}
+
+_Cek Admin Panel untuk proses._`,
+
+    payout_processed: `💸 *Payout Processed*
+
+👤 User: {name}
+📧 Email: {email}
+💰 Amount: {amount}
+🏦 Bank: {bank} - {account}
+👮 Admin: {admin}`
+}
+
+/**
+ * Render template with variables
+ */
+export function renderTemplate(template: string, vars: Record<string, string>): string {
+    let result = template
+    for (const [key, value] of Object.entries(vars)) {
+        result = result.replace(new RegExp(`\\{${key}\\}`, 'g'), value || '')
+    }
+    return result
+}
 
 /**
  * Format phone number to Indonesian international format (62xxx)
@@ -59,7 +117,11 @@ export interface WASettings {
     cloudWabaId: string
     targetPhone: string
     template: string
-    hasToken?: boolean  // Flag to indicate if token exists (without exposing it)
+    hasToken?: boolean
+    tplOrderNew?: string
+    tplOrderApproved?: string
+    tplPayoutRequest?: string
+    tplPayoutProcessed?: string
 }
 
 export interface WAMetrics {

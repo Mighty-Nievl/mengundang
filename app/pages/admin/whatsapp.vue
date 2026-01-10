@@ -1,14 +1,14 @@
 <script setup lang="ts">
 definePageMeta({ middleware: ['admin'] })
 
-interface WASettings { cloudToken: string; cloudPhoneId: string; cloudWabaId: string; targetPhone: string; template: string; hasToken?: boolean }
+interface WASettings { cloudToken: string; cloudPhoneId: string; cloudWabaId: string; targetPhone: string; template: string; hasToken?: boolean; tplOrderNew?: string; tplOrderApproved?: string; tplPayoutRequest?: string; tplPayoutProcessed?: string }
 interface WAMetrics { pending: number; sent: number; failed: number }
 interface WAStatus { cloudApiOk: boolean; cloudApiError?: string; botOnline: boolean; botLastSeen: string | null }
 
 const stats = ref<{ settings: WASettings; metrics: WAMetrics; status: WAStatus } | null>(null)
 const isLoading = ref(false)
 const isSaving = ref(false)
-const activeTab = ref<'status' | 'settings' | 'template'>('status')
+const activeTab = ref<'status' | 'settings' | 'templates'>('status')
 const toast = ref({ show: false, message: '', type: 'success' as 'success' | 'error' })
 
 // Editable fields
@@ -17,7 +17,13 @@ const updateToken = ref(false)
 const phoneId = ref('')
 const wabaId = ref('')
 const targetPhone = ref('')
-const template = ref('')
+const invitationTemplate = ref('')
+
+// Admin notification templates
+const tplOrderNew = ref('')
+const tplOrderApproved = ref('')
+const tplPayoutRequest = ref('')
+const tplPayoutProcessed = ref('')
 
 useSeoMeta({ title: 'WhatsApp Settings - Admin', robots: 'noindex, nofollow' })
 
@@ -34,7 +40,11 @@ const fetchStats = async () => {
         phoneId.value = data.settings.cloudPhoneId || ''
         wabaId.value = data.settings.cloudWabaId || ''
         targetPhone.value = data.settings.targetPhone || ''
-        template.value = data.settings.template || ''
+        invitationTemplate.value = data.settings.template || ''
+        tplOrderNew.value = data.settings.tplOrderNew || ''
+        tplOrderApproved.value = data.settings.tplOrderApproved || ''
+        tplPayoutRequest.value = data.settings.tplPayoutRequest || ''
+        tplPayoutProcessed.value = data.settings.tplPayoutProcessed || ''
     } catch (e) { console.error(e) }
     finally { isLoading.value = false }
 }
@@ -59,11 +69,23 @@ const saveSettings = async () => {
     finally { isSaving.value = false }
 }
 
-const saveTemplate = async () => {
+const saveTemplates = async () => {
     isSaving.value = true
     try {
-        await $fetch('/api/admin/whatsapp', { method: 'POST', body: { action: 'batch_update_settings', settings: { wa_invitation_template: template.value } } })
-        showToast('Template saved')
+        await $fetch('/api/admin/whatsapp', { 
+            method: 'POST', 
+            body: { 
+                action: 'batch_update_settings', 
+                settings: { 
+                    wa_invitation_template: invitationTemplate.value,
+                    wa_tpl_order_new: tplOrderNew.value,
+                    wa_tpl_order_approved: tplOrderApproved.value,
+                    wa_tpl_payout_request: tplPayoutRequest.value,
+                    wa_tpl_payout_processed: tplPayoutProcessed.value
+                } 
+            } 
+        })
+        showToast('Templates saved')
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
     finally { isSaving.value = false }
 }
@@ -76,6 +98,18 @@ const testCloudApi = async () => {
             body: { action: 'test_cloud_api', phone: targetPhone.value } 
         })
         showToast('Test message sent!')
+    } catch (e: any) { showToast(e.statusMessage || 'Failed', 'error') }
+    finally { isLoading.value = false }
+}
+
+const testTemplate = async (type: string) => {
+    isLoading.value = true
+    try {
+        await $fetch('/api/admin/whatsapp', { 
+            method: 'POST', 
+            body: { action: 'test_template', type, phone: targetPhone.value } 
+        })
+        showToast(`Test ${type} sent!`)
     } catch (e: any) { showToast(e.statusMessage || 'Failed', 'error') }
     finally { isLoading.value = false }
 }
@@ -101,7 +135,7 @@ onMounted(fetchStats)
 
     <!-- Tabs -->
     <nav class="border-b px-4 flex gap-1">
-        <button v-for="tab in ['status', 'settings', 'template']" :key="tab" @click="activeTab = tab as any"
+        <button v-for="tab in ['status', 'settings', 'templates']" :key="tab" @click="activeTab = tab as any"
                 class="px-4 py-2 text-xs font-medium border-b-2 capitalize"
                 :class="activeTab === tab ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-500'">{{ tab }}</button>
     </nav>
@@ -175,14 +209,59 @@ onMounted(fetchStats)
             </button>
         </div>
 
-        <!-- TEMPLATE TAB -->
-        <div v-if="activeTab === 'template'" class="space-y-4">
-            <div>
-                <label class="text-xs text-gray-500 uppercase block mb-1">Invitation Template</label>
-                <textarea v-model="template" rows="8" class="w-full px-3 py-2 border rounded font-mono text-xs" placeholder="Variables: {nama}, {link}, {slug}"></textarea>
+        <!-- TEMPLATES TAB -->
+        <div v-if="activeTab === 'templates'" class="space-y-6">
+            <!-- Invitation Template -->
+            <div class="border rounded p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-xs text-gray-500 uppercase font-bold">Invitation Template</label>
+                </div>
+                <p class="text-xs text-gray-400 mb-2">Variables: {nama}, {link}, {slug}</p>
+                <textarea v-model="invitationTemplate" rows="4" class="w-full px-3 py-2 border rounded font-mono text-xs"></textarea>
             </div>
-            <button @click="saveTemplate" :disabled="isSaving" class="w-full py-2 bg-gray-900 text-white rounded text-xs font-medium">
-                {{ isSaving ? 'Saving...' : 'Save Template' }}
+
+            <!-- Order New -->
+            <div class="border rounded p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-xs text-gray-500 uppercase font-bold">Order Baru</label>
+                    <button @click="testTemplate('order_new')" :disabled="isLoading" class="text-xs px-3 py-1 border rounded hover:bg-gray-50">Test</button>
+                </div>
+                <p class="text-xs text-gray-400 mb-2">Variables: {name}, {email}, {plan}, {amount}</p>
+                <textarea v-model="tplOrderNew" rows="5" class="w-full px-3 py-2 border rounded font-mono text-xs" placeholder="🛒 *Order Baru*..."></textarea>
+            </div>
+
+            <!-- Order Approved -->
+            <div class="border rounded p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-xs text-gray-500 uppercase font-bold">Order Approved</label>
+                    <button @click="testTemplate('order_approved')" :disabled="isLoading" class="text-xs px-3 py-1 border rounded hover:bg-gray-50">Test</button>
+                </div>
+                <p class="text-xs text-gray-400 mb-2">Variables: {name}, {email}, {plan}, {amount}, {admin}</p>
+                <textarea v-model="tplOrderApproved" rows="5" class="w-full px-3 py-2 border rounded font-mono text-xs" placeholder="✅ *Order Approved*..."></textarea>
+            </div>
+
+            <!-- Payout Request -->
+            <div class="border rounded p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-xs text-gray-500 uppercase font-bold">Payout Request</label>
+                    <button @click="testTemplate('payout_request')" :disabled="isLoading" class="text-xs px-3 py-1 border rounded hover:bg-gray-50">Test</button>
+                </div>
+                <p class="text-xs text-gray-400 mb-2">Variables: {name}, {email}, {amount}, {bank}, {account}, {account_name}, {phone}</p>
+                <textarea v-model="tplPayoutRequest" rows="6" class="w-full px-3 py-2 border rounded font-mono text-xs" placeholder="💸 *Payout Request*..."></textarea>
+            </div>
+
+            <!-- Payout Processed -->
+            <div class="border rounded p-4">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-xs text-gray-500 uppercase font-bold">Payout Processed</label>
+                    <button @click="testTemplate('payout_processed')" :disabled="isLoading" class="text-xs px-3 py-1 border rounded hover:bg-gray-50">Test</button>
+                </div>
+                <p class="text-xs text-gray-400 mb-2">Variables: {name}, {email}, {amount}, {bank}, {account}, {admin}</p>
+                <textarea v-model="tplPayoutProcessed" rows="5" class="w-full px-3 py-2 border rounded font-mono text-xs" placeholder="💸 *Payout Processed*..."></textarea>
+            </div>
+
+            <button @click="saveTemplates" :disabled="isSaving" class="w-full py-2 bg-gray-900 text-white rounded text-xs font-medium">
+                {{ isSaving ? 'Saving...' : 'Save All Templates' }}
             </button>
         </div>
     </main>
