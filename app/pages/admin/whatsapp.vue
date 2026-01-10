@@ -1,374 +1,187 @@
 <script setup lang="ts">
-// WhatsApp CMS - Cloud API & Bot Management
-definePageMeta({
-    layout: 'default',
-    middleware: ['admin']
-})
+definePageMeta({ middleware: ['admin'] })
 
-interface WAMetrics {
-    pending: number
-    sent: number
-    failed: number
-}
+interface WASettings { cloudToken: string; cloudPhoneId: string; cloudWabaId: string; targetPhone: string; template: string; hasToken?: boolean }
+interface WAMetrics { pending: number; sent: number; failed: number }
+interface WAStatus { cloudApiOk: boolean; cloudApiError?: string; botOnline: boolean; botLastSeen: string | null }
 
-interface WALog {
-    id: string
-    phoneNumber: string
-    message: string
-    status: 'pending' | 'sent' | 'failed'
-    createdAt: string
-}
-
-interface WAStats {
-    logs: WALog[]
-    metrics: WAMetrics
-    status: { lastSeen: string | null; isOnline: boolean }
-    settings: {
-        cloudToken: string
-        cloudPhoneId: string
-        cloudWabaId: string
-        targetPhone: string
-        template: string
-        hasToken?: boolean
-    }
-}
-
-const stats = ref<WAStats | null>(null)
-const loading = ref(true)
-const saving = ref(false)
-const testing = ref(false)
-const testPhone = ref('')
-const testMessage = ref('')
+const stats = ref<{ settings: WASettings; metrics: WAMetrics; status: WAStatus } | null>(null)
+const isLoading = ref(false)
+const isSaving = ref(false)
+const activeTab = ref<'status' | 'settings' | 'template'>('status')
 const toast = ref({ show: false, message: '', type: 'success' as 'success' | 'error' })
 
-// Track if user wants to update token (since masked, we need explicit intent)
-const updateToken = ref(false)
+// Editable fields
 const newToken = ref('')
+const updateToken = ref(false)
+const phoneId = ref('')
+const wabaId = ref('')
+const targetPhone = ref('')
+const template = ref('')
 
-const settings = ref({
-    cloudPhoneId: '',
-    cloudWabaId: '',
-    targetPhone: '',
-    template: ''
-})
+useSeoMeta({ title: 'WhatsApp Settings - Admin', robots: 'noindex, nofollow' })
 
-// Toast notification helper
-const showToast = (message: string, type: 'success' | 'error' = 'success') => {
-    toast.value = { show: true, message, type }
-    setTimeout(() => { toast.value.show = false }, 4000)
+const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
+    toast.value = { show: true, message: msg, type }
+    setTimeout(() => toast.value.show = false, 3000)
 }
 
-onMounted(() => fetchData())
-
-const fetchData = async () => {
-    loading.value = true
+const fetchStats = async () => {
+    isLoading.value = true
     try {
-        const data = await $fetch<WAStats>('/api/admin/whatsapp')
+        const data = await $fetch<any>('/api/admin/whatsapp')
         stats.value = data
-        settings.value = {
-            cloudPhoneId: data.settings.cloudPhoneId,
-            cloudWabaId: data.settings.cloudWabaId,
-            targetPhone: data.settings.targetPhone,
-            template: data.settings.template
+        phoneId.value = data.settings.cloudPhoneId || ''
+        wabaId.value = data.settings.cloudWabaId || ''
+        targetPhone.value = data.settings.targetPhone || ''
+        template.value = data.settings.template || ''
+    } catch (e) { console.error(e) }
+    finally { isLoading.value = false }
+}
+
+const saveSettings = async () => {
+    isSaving.value = true
+    try {
+        const settings: Record<string, string> = {
+            wa_cloud_phone_id: phoneId.value,
+            wa_cloud_waba_id: wabaId.value,
+            wa_target_phone: targetPhone.value,
         }
-        // Reset token update state
+        if (updateToken.value && newToken.value.trim()) {
+            settings.wa_cloud_token = newToken.value.trim()
+        }
+        await $fetch('/api/admin/whatsapp', { method: 'POST', body: { action: 'batch_update_settings', settings } })
+        showToast('Settings saved')
         updateToken.value = false
         newToken.value = ''
-    } catch (e: any) {
-        showToast('Gagal mengambil data: ' + e.message, 'error')
-    } finally {
-        loading.value = false
-    }
+        await fetchStats()
+    } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
+    finally { isSaving.value = false }
 }
 
-// Batch save all settings in single API call
-const saveAllSettings = async () => {
-    saving.value = true
+const saveTemplate = async () => {
+    isSaving.value = true
     try {
-        const settingsToSave: Record<string, string> = {
-            wa_cloud_phone_id: settings.value.cloudPhoneId,
-            wa_cloud_waba_id: settings.value.cloudWabaId,
-            wa_target_phone: settings.value.targetPhone,
-            wa_invitation_template: settings.value.template
-        }
-
-        // Only include token if user explicitly wants to update it
-        if (updateToken.value && newToken.value.trim()) {
-            settingsToSave.wa_cloud_token = newToken.value.trim()
-        }
-
-        await $fetch('/api/admin/whatsapp', {
-            method: 'POST',
-            body: { action: 'batch_update_settings', settings: settingsToSave }
-        })
-        
-        showToast('✅ Semua pengaturan berhasil disimpan!')
-        
-        // Refresh to get updated data
-        await fetchData()
-    } catch (e: any) {
-        showToast('Gagal menyimpan: ' + (e.data?.message || e.message), 'error')
-    } finally {
-        saving.value = false
-    }
+        await $fetch('/api/admin/whatsapp', { method: 'POST', body: { action: 'batch_update_settings', settings: { wa_invitation_template: template.value } } })
+        showToast('Template saved')
+    } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
+    finally { isSaving.value = false }
 }
 
-const saveSetting = async (key: string, value: string) => {
-    saving.value = true
+const testCloudApi = async () => {
+    isLoading.value = true
     try {
-        await $fetch('/api/admin/whatsapp', {
-            method: 'POST',
-            body: { action: 'update_setting', key, value }
-        })
-        showToast('✅ Setting berhasil disimpan!')
-    } catch (e: any) {
-        showToast(`Gagal menyimpan: ` + (e.data?.message || e.message), 'error')
-    } finally {
-        saving.value = false
-    }
+        await $fetch('/api/admin/whatsapp', { method: 'POST', body: { action: 'test_cloud_api' } })
+        showToast('Test message sent!')
+    } catch (e: any) { showToast(e.statusMessage || 'Failed', 'error') }
+    finally { isLoading.value = false }
 }
 
-const sendTestCloud = async () => {
-    if (!testPhone.value) {
-        return showToast('Masukkan nomor HP penerima!', 'error')
-    }
-    testing.value = true
-    try {
-        const res = await $fetch<{ success: boolean; message: string }>('/api/admin/whatsapp', {
-            method: 'POST',
-            body: { 
-                action: 'test_cloud_api', 
-                phone: testPhone.value,
-                value: testMessage.value
-            }
-        })
-        showToast('✅ ' + res.message)
-        // Refresh logs
-        await fetchData()
-    } catch (e: any) {
-        showToast('❌ ' + (e.data?.message || e.message), 'error')
-    } finally {
-        testing.value = false
-    }
-}
-
-const formatStatusTime = (date: string | null) => {
-    if (!date) return 'Never'
-    return new Date(date).toLocaleString('id-ID')
-}
+onMounted(fetchStats)
 </script>
 
 <template>
-    <div class="min-h-screen bg-stone-50 text-stone-800 p-6 md:p-8 font-sans">
-        <div class="max-w-4xl mx-auto space-y-8">
-            
-            <!-- Toast Notification -->
-            <Transition name="toast">
-                <div v-if="toast.show" 
-                    class="fixed top-6 right-6 z-50 px-6 py-4 rounded-2xl shadow-xl font-medium max-w-md"
-                    :class="toast.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'">
-                    {{ toast.message }}
-                </div>
-            </Transition>
-            
-            <!-- Header -->
-            <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-3xl shadow-sm border border-stone-200">
-                <div>
-                    <h1 class="text-3xl font-serif font-bold text-stone-900 flex items-center gap-3">
-                        <i class="fab fa-whatsapp text-green-500"></i> WhatsApp CMS
-                    </h1>
-                    <p class="text-stone-500">Configure Business API & Monitor Logs</p>
-                </div>
-                <div class="flex gap-2">
-                    <NuxtLink to="/admin" class="px-4 py-2 border border-stone-200 rounded-xl text-sm font-bold hover:bg-stone-50 transition-colors">
-                        <i class="fas fa-arrow-left mr-2"></i> Back to Admin
-                    </NuxtLink>
-                    <button @click="fetchData" class="p-2.5 rounded-xl bg-stone-100 text-stone-600 hover:bg-stone-200" :disabled="loading">
-                        <i class="fas fa-sync-alt" :class="{ 'animate-spin': loading }"></i>
-                    </button>
-                </div>
-            </header>
+<div class="min-h-screen bg-white text-gray-900 text-sm">
+    <!-- Toast -->
+    <div v-if="toast.show" class="fixed top-4 right-4 z-50 px-4 py-2 rounded text-white text-xs font-medium shadow-lg"
+         :class="toast.type === 'success' ? 'bg-green-600' : 'bg-red-600'">{{ toast.message }}</div>
 
-            <div v-if="loading" class="flex justify-center py-20">
-                <i class="fas fa-spinner fa-spin text-4xl text-stone-300"></i>
-            </div>
-
-            <template v-else-if="stats">
-                <!-- Status & Metrics -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                        <div class="text-xs font-bold text-stone-400 uppercase mb-2">Local Bot Status</div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded-full" :class="stats.status.isOnline ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : 'bg-red-400'"></div>
-                            <span class="font-bold">{{ stats.status.isOnline ? 'ONLINE' : 'OFFLINE' }}</span>
-                        </div>
-                        <div class="text-[10px] text-stone-400 mt-1 italic">Last seen: {{ formatStatusTime(stats.status.lastSeen) }}</div>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                        <div class="text-xs font-bold text-stone-400 uppercase mb-2">Messages Total</div>
-                        <div class="text-2xl font-bold text-stone-900">{{ (stats.metrics.sent || 0) + (stats.metrics.failed || 0) }}</div>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                        <div class="text-xs font-bold text-stone-400 uppercase mb-2">Failed Delivery</div>
-                        <div class="text-2xl font-bold text-red-500">{{ stats.metrics.failed || 0 }}</div>
-                    </div>
-                </div>
-
-                <!-- Cloud API Configuration -->
-                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden">
-                    <div class="bg-stone-900 text-white p-6">
-                        <h2 class="text-xl font-bold">WhatsApp Cloud API</h2>
-                        <p class="text-stone-400 text-sm mt-1">Gunakan Meta WhatsApp Business API untuk pengiriman VVIP</p>
-                    </div>
-                    <div class="p-6 space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-stone-500 ml-1">Phone Number ID</label>
-                                <input v-model="settings.cloudPhoneId" type="text" placeholder="Contoh: 1007563632430707" 
-                                    class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all font-mono text-sm">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase text-stone-500 ml-1">WABA ID</label>
-                                <input v-model="settings.cloudWabaId" type="text" placeholder="WhatsApp Business Account ID" 
-                                    class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all font-mono text-sm">
-                            </div>
-                        </div>
-
-                        <!-- Token Section (Secure) -->
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase text-stone-500 ml-1">Cloud API Token</label>
-                            
-                            <!-- Show current token status -->
-                            <div v-if="!updateToken" class="flex items-center gap-4">
-                                <div class="flex-1 px-4 py-3 bg-stone-100 border border-stone-200 rounded-xl font-mono text-sm text-stone-500">
-                                    {{ stats.settings.hasToken ? stats.settings.cloudToken : '(No token configured)' }}
-                                </div>
-                                <button @click="updateToken = true" 
-                                    class="px-4 py-3 border border-amber-300 text-amber-700 rounded-xl text-sm font-bold hover:bg-amber-50 transition-colors">
-                                    <i class="fas fa-edit mr-2"></i> Update Token
-                                </button>
-                            </div>
-
-                            <!-- Token update form -->
-                            <div v-else class="space-y-2">
-                                <textarea v-model="newToken" rows="3" placeholder="Paste token baru di sini (EAABw...)" 
-                                    class="w-full px-4 py-3 bg-amber-50 border-2 border-amber-300 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none transition-all font-mono text-sm resize-none"></textarea>
-                                <div class="flex items-center gap-2 text-xs">
-                                    <i class="fas fa-exclamation-triangle text-amber-500"></i>
-                                    <span class="text-amber-700">Token akan tersimpan saat klik Save Settings</span>
-                                    <button @click="updateToken = false; newToken = ''" class="ml-auto text-stone-500 hover:text-stone-700">
-                                        Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase text-stone-500 ml-1">Target Phone (Admin)</label>
-                            <input v-model="settings.targetPhone" type="text" placeholder="6285xxxxxxxx" 
-                                class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none transition-all font-mono text-sm">
-                        </div>
-
-                        <div class="pt-4 flex justify-between items-center">
-                            <div class="text-xs text-stone-400">
-                                <i class="fas fa-shield-alt mr-1"></i> Token disimpan terenkripsi di database
-                            </div>
-                            <button @click="saveAllSettings" :disabled="saving" class="px-8 py-3 bg-green-600 text-white rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg shadow-green-600/20 disabled:opacity-50">
-                                <i class="fas" :class="saving ? 'fa-spinner fa-spin' : 'fa-save'"></i>
-                                {{ saving ? 'Saving...' : 'Save Settings' }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Test Connection -->
-                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden p-6">
-                    <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-paper-plane text-sky-500"></i> Test Cloud API
-                    </h3>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <div class="flex-1 space-y-2">
-                            <input v-model="testPhone" type="text" placeholder="Nomor HP (Contoh: 0857... atau 6285...)" 
-                                class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-sky-500 outline-none transition-all">
-                        </div>
-                        <div class="flex-[2] space-y-2">
-                            <input v-model="testMessage" type="text" placeholder="Pesan (Opsional)" 
-                                class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-sky-500 outline-none transition-all">
-                        </div>
-                        <button @click="sendTestCloud" :disabled="testing" class="px-6 bg-sky-500 text-white rounded-xl font-bold hover:bg-sky-600 transition-all disabled:opacity-50">
-                            {{ testing ? 'Sending...' : 'Test Now' }}
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Invitation Template -->
-                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden p-6">
-                    <h3 class="font-bold text-lg mb-2">Global Template</h3>
-                    <p class="text-stone-500 text-sm mb-4">Template pesan default untuk notifikasi undangan.</p>
-                    <textarea v-model="settings.template" rows="4" class="w-full p-4 bg-stone-50 border border-stone-200 rounded-xl focus:ring-2 focus:ring-stone-400 outline-none transition-all font-mono text-sm"></textarea>
-                    <div class="mt-4 flex justify-end">
-                        <button @click="saveSetting('wa_invitation_template', settings.template)" :disabled="saving" class="px-6 py-2 border border-stone-200 rounded-xl text-sm font-bold hover:bg-stone-50 transition-colors">
-                            Update Template
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Logs (Last 5) -->
-                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden">
-                    <div class="p-6 border-b border-stone-100 flex justify-between items-center">
-                        <h3 class="font-bold">Recent Logs</h3>
-                        <NuxtLink to="/admin/whatsapp/logs" class="text-xs font-bold text-amber-600 hover:underline">View All Logs</NuxtLink>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm">
-                            <thead class="bg-stone-50 text-stone-400 font-bold uppercase text-[10px]">
-                                <tr>
-                                    <th class="px-6 py-3">Time</th>
-                                    <th class="px-6 py-3">To</th>
-                                    <th class="px-6 py-3">Message</th>
-                                    <th class="px-6 py-3">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-stone-50">
-                                <tr v-if="!stats.logs?.length">
-                                    <td colspan="4" class="px-6 py-8 text-center text-stone-400">
-                                        <i class="fas fa-inbox text-2xl mb-2 block"></i>
-                                        No logs yet
-                                    </td>
-                                </tr>
-                                <tr v-for="log in stats.logs?.slice(0, 5)" :key="log.id" class="hover:bg-stone-50 transition-colors">
-                                    <td class="px-6 py-4 text-stone-400 whitespace-nowrap text-xs">{{ formatStatusTime(log.createdAt) }}</td>
-                                    <td class="px-6 py-4 font-mono">{{ log.phoneNumber }}</td>
-                                    <td class="px-6 py-4 max-w-[200px] truncate text-stone-500">{{ log.message }}</td>
-                                    <td class="px-6 py-4">
-                                        <span class="px-2 py-1 rounded text-[10px] font-bold uppercase"
-                                            :class="{
-                                                'bg-green-100 text-green-600': log.status === 'sent',
-                                                'bg-amber-100 text-amber-600': log.status === 'pending',
-                                                'bg-red-100 text-red-600': log.status === 'failed'
-                                            }">
-                                            {{ log.status }}
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </template>
-            
+    <!-- Header -->
+    <header class="border-b px-4 py-3 flex items-center justify-between sticky top-0 bg-white z-40">
+        <div class="flex items-center gap-3">
+            <NuxtLink to="/admin" class="text-gray-400 hover:text-gray-900"><i class="fas fa-arrow-left"></i></NuxtLink>
+            <span class="font-bold">WhatsApp</span>
+            <span v-if="isLoading" class="text-gray-400 text-xs"><i class="fas fa-spinner fa-spin"></i></span>
         </div>
-    </div>
-</template>
+        <NuxtLink to="/admin/whatsapp/logs" class="px-3 py-1.5 text-xs border rounded hover:bg-gray-50">View Logs</NuxtLink>
+    </header>
 
-<style scoped>
-.toast-enter-active,
-.toast-leave-active {
-    transition: all 0.3s ease;
-}
-.toast-enter-from,
-.toast-leave-to {
-    opacity: 0;
-    transform: translateX(100px);
-}
-</style>
+    <!-- Tabs -->
+    <nav class="border-b px-4 flex gap-1">
+        <button v-for="tab in ['status', 'settings', 'template']" :key="tab" @click="activeTab = tab as any"
+                class="px-4 py-2 text-xs font-medium border-b-2 capitalize"
+                :class="activeTab === tab ? 'border-gray-900 text-gray-900' : 'border-transparent text-gray-500'">{{ tab }}</button>
+    </nav>
+
+    <main class="p-4 max-w-2xl mx-auto">
+        <!-- STATUS TAB -->
+        <div v-if="activeTab === 'status' && stats" class="space-y-4">
+            <div class="border rounded p-4">
+                <div class="text-xs text-gray-500 uppercase mb-2">Cloud API</div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full" :class="stats.status.cloudApiOk ? 'bg-green-500' : 'bg-red-500'"></span>
+                        <span>{{ stats.status.cloudApiOk ? 'Connected' : 'Not configured' }}</span>
+                    </div>
+                    <button @click="testCloudApi" :disabled="isLoading" class="text-xs px-3 py-1 border rounded hover:bg-gray-50">Test</button>
+                </div>
+            </div>
+            <div class="border rounded p-4">
+                <div class="text-xs text-gray-500 uppercase mb-2">Local Bot</div>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full" :class="stats.status.botOnline ? 'bg-green-500' : 'bg-gray-300'"></span>
+                    <span>{{ stats.status.botOnline ? 'Online' : 'Offline' }}</span>
+                    <span v-if="stats.status.botLastSeen" class="text-xs text-gray-400 ml-2">{{ stats.status.botLastSeen }}</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="border rounded p-4 text-center">
+                    <div class="text-2xl font-bold text-yellow-600">{{ stats.metrics.pending }}</div>
+                    <div class="text-xs text-gray-500">Pending</div>
+                </div>
+                <div class="border rounded p-4 text-center">
+                    <div class="text-2xl font-bold text-green-600">{{ stats.metrics.sent }}</div>
+                    <div class="text-xs text-gray-500">Sent</div>
+                </div>
+                <div class="border rounded p-4 text-center">
+                    <div class="text-2xl font-bold text-red-600">{{ stats.metrics.failed }}</div>
+                    <div class="text-xs text-gray-500">Failed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SETTINGS TAB -->
+        <div v-if="activeTab === 'settings'" class="space-y-4">
+            <div class="space-y-3">
+                <div>
+                    <label class="text-xs text-gray-500 uppercase block mb-1">Cloud API Token</label>
+                    <div v-if="!updateToken" class="flex gap-2">
+                        <input type="text" :value="stats?.settings.hasToken ? '••••••••' : '(not set)'" readonly class="flex-1 px-3 py-2 border rounded bg-gray-50 text-gray-500" />
+                        <button @click="updateToken = true" class="px-3 py-2 border rounded text-xs hover:bg-gray-50">Change</button>
+                    </div>
+                    <div v-else class="flex gap-2">
+                        <input v-model="newToken" type="text" placeholder="Paste new token..." class="flex-1 px-3 py-2 border rounded" />
+                        <button @click="updateToken = false; newToken = ''" class="px-3 py-2 border rounded text-xs hover:bg-gray-50">Cancel</button>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs text-gray-500 uppercase block mb-1">Phone Number ID</label>
+                    <input v-model="phoneId" type="text" class="w-full px-3 py-2 border rounded" />
+                </div>
+                <div>
+                    <label class="text-xs text-gray-500 uppercase block mb-1">WABA ID</label>
+                    <input v-model="wabaId" type="text" class="w-full px-3 py-2 border rounded" />
+                </div>
+                <div>
+                    <label class="text-xs text-gray-500 uppercase block mb-1">Target Phone (Admin)</label>
+                    <input v-model="targetPhone" type="text" placeholder="628xxx" class="w-full px-3 py-2 border rounded" />
+                </div>
+            </div>
+            <button @click="saveSettings" :disabled="isSaving" class="w-full py-2 bg-gray-900 text-white rounded text-xs font-medium">
+                {{ isSaving ? 'Saving...' : 'Save Settings' }}
+            </button>
+        </div>
+
+        <!-- TEMPLATE TAB -->
+        <div v-if="activeTab === 'template'" class="space-y-4">
+            <div>
+                <label class="text-xs text-gray-500 uppercase block mb-1">Invitation Template</label>
+                <textarea v-model="template" rows="8" class="w-full px-3 py-2 border rounded font-mono text-xs" placeholder="Variables: {nama}, {link}, {slug}"></textarea>
+            </div>
+            <button @click="saveTemplate" :disabled="isSaving" class="w-full py-2 bg-gray-900 text-white rounded text-xs font-medium">
+                {{ isSaving ? 'Saving...' : 'Save Template' }}
+            </button>
+        </div>
+    </main>
+</div>
+</template>
