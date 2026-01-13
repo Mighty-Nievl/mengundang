@@ -194,6 +194,29 @@ useHead({
                  </svg>
             </div>
 
+const year = computed(() => {
+    // Try to get year from Hero date or Akad date
+    const d = props.content?.hero?.date || props.content?.events?.akad?.date
+    if (d) {
+        const parts = d.split(' ')
+        const y = parts.find(p => p.match(/^\d{4}$/))
+        return y || new Date().getFullYear().toString()
+    }
+    return new Date().getFullYear().toString()
+})
+
+const location = computed(() => {
+    const loc = props.content?.events?.akad?.location
+    if (loc) {
+        // Extract city (naive: last part after comma, or just the location)
+        const parts = loc.split(',')
+        return parts.length > 1 ? parts[parts.length - 1].trim() : 'Indonesia'
+    }
+    return 'Indonesia'
+})
+
+// ... inside template ...
+
             <!-- TOP: DATE & ISSUE NO -->
             <div class="w-full flex justify-between items-start border-b border-[#2C2C2C] pb-4 mb-auto">
                  <div class="flex flex-col">
@@ -202,28 +225,28 @@ useHead({
                  </div>
                  <div class="flex flex-col text-right">
                      <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em]">{{ content?.hero?.date }}</span>
-                     <span class="font-lora italic text-[#555] text-sm">Indonesia</span>
+                     <span class="font-lora italic text-[#555] text-sm">{{ location }}</span>
                  </div>
             </div>
 
             <!-- CENTER: GIANT TYPOGRAPHY -->
-            <div class="flex-1 flex flex-col justify-center relative z-10 py-10">
-                <h1 class="font-lexend text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-[#2C2C2C] mix-blend-darken text-center lg:text-left">
+            <div class="flex-1 flex flex-col justify-center relative z-10 py-10 w-full overflow-hidden">
+                <h1 class="font-lexend text-[10vw] md:text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-[#2C2C2C] mix-blend-darken text-center lg:text-left break-words w-full">
                     {{ firstNickname }}<span class="text-[#E0BFB8]">.</span>
                 </h1>
                 <div class="font-lora italic text-4xl md:text-6xl text-right lg:text-center text-[#555] -mt-2 lg:-mt-8 mr-4 lg:mr-0 z-0">
                     and
                 </div>
-                <h1 class="font-lexend text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-[#2C2C2C] mix-blend-darken text-right">
+                <h1 class="font-lexend text-[10vw] md:text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-[#2C2C2C] mix-blend-darken text-right break-words w-full">
                     {{ secondNickname }}
                 </h1>
             </div>
 
             <!-- BOTTOM: INVITATION TEXT -->
             <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-8 border-t border-[#2C2C2C] pt-6 mt-auto">
-                 <div class="hidden lg:block">
+                 <div class="hidden lg:block text-left">
                       <span class="font-lexend text-[10px] uppercase tracking-widest block mb-2">Established</span>
-                      <span class="font-lora text-lg">2025</span>
+                      <span class="font-lora text-lg">{{ year }}</span>
                  </div>
                  <div class="text-center">
                       <p class="font-lora text-sm md:text-base italic leading-relaxed max-w-sm mx-auto">
@@ -324,7 +347,7 @@ useHead({
             
             <div class="space-y-0">
                 <!-- Akad -->
-                <div class="group border-b border-[#2C2C2C] py-12 hover:bg-white transition-colors duration-500 -mx-6 md:-mx-20 px-6 md:px-20">
+                <div v-if="content?.events?.akad?.date" class="group border-b border-[#2C2C2C] py-12 hover:bg-white transition-colors duration-500 -mx-6 md:-mx-20 px-6 md:px-20">
                     <div class="grid md:grid-cols-12 gap-8 items-start">
                         <div class="md:col-span-3">
                             <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em] bg-[#2C2C2C] text-white px-3 py-1">Event 01</span>
@@ -347,7 +370,7 @@ useHead({
                 </div>
 
                 <!-- Resepsi -->
-                 <div class="group border-b border-[#2C2C2C] py-12 hover:bg-white transition-colors duration-500 -mx-6 md:-mx-20 px-6 md:px-20">
+                 <div v-if="content?.events?.reception?.date" class="group border-b border-[#2C2C2C] py-12 hover:bg-white transition-colors duration-500 -mx-6 md:-mx-20 px-6 md:px-20">
                     <div class="grid md:grid-cols-12 gap-8 items-start">
                         <div class="md:col-span-3">
                             <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em] bg-[#E0BFB8] text-[#2C2C2C] px-3 py-1">Event 02</span>
@@ -432,7 +455,7 @@ useHead({
             <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-6">
                  <div class="text-center md:text-left">
                      <h3 class="font-lexend font-bold uppercase tracking-widest text-lg">{{ firstNickname }} & {{ secondNickname }}</h3>
-                     <p class="font-lora text-xs italic opacity-50">Established 2025 • Indonesia</p>
+                     <p class="font-lora text-xs italic opacity-50">Established {{ year }} • {{ location }}</p>
                  </div>
                  <div class="text-center md:text-right">
                     <p class="font-lexend text-[10px] uppercase tracking-[0.2em] opacity-50">Designed by Mengundang</p>
