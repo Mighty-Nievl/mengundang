@@ -204,8 +204,6 @@ const location = computed(() => {
             </div>
 
 
-// ... inside template ...
-
             <!-- TOP: DATE & ISSUE NO -->
             <div class="w-full flex justify-between items-start border-b border-[#2C2C2C] pb-4 mb-auto">
                  <div class="flex flex-col">
