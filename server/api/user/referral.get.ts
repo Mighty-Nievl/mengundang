@@ -52,9 +52,9 @@ export default defineEventHandler(async (event) => {
         .orderBy(desc(orders.createdAt));
 
     // Mask names: "Richard Zalan" -> "Ri**** Za***"
-    const maskedActivity = invitedActivity.map(a => {
+    const maskedActivity = invitedActivity.map((a: { name: string; plan: string; status: string; amount: number; discount: number | null; createdAt: Date }) => {
         const parts = a.name.split(' ');
-        const maskedName = parts.map(p => {
+        const maskedName = parts.map((p: string) => {
             if (p.length <= 2) return p;
             return p.substring(0, 2) + '*'.repeat(p.length - 2);
         }).join(' ');

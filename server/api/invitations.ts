@@ -1,7 +1,10 @@
 import { db } from '../utils/db'
-import { invitations, users } from '../db/schema'
+import { invitations, users, guests } from '../db/schema'
 import { eq, or, and } from 'drizzle-orm'
 import { auth } from '../utils/auth'
+import { v4 as uuidv4 } from 'uuid'
+import { InvitationSchema, GuestSchema, PartnerSchema } from '../utils/schemas'
+import { z } from 'zod'
 
 const RESERVED_SLUGS = ['admin', 'dashboard', 'login', 'register', 'api', 'auth', 'public', 'assets', 'demo']
 
@@ -54,8 +57,12 @@ export default defineEventHandler(async (event) => {
 
         // ACTION: ADD PARTNER
         if (body.action === 'add_partner') {
-            const { slug, partnerEmail } = body
-            if (!partnerEmail) throw createError({ statusCode: 400, statusMessage: 'Partner email required' })
+            const result_zod = PartnerSchema.safeParse(body)
+            if (!result_zod.success) {
+                throw createError({ statusCode: 400, statusMessage: result_zod.error.issues[0]?.message })
+            }
+
+            const { slug, partnerEmail } = result_zod.data
 
             const [existing] = await db.select().from(invitations).where(eq(invitations.slug, slug))
             if (!existing) throw createError({ statusCode: 404, statusMessage: 'Invitation not found' })
@@ -63,14 +70,6 @@ export default defineEventHandler(async (event) => {
             if (existing.owner !== user.email) throw createError({ statusCode: 403, statusMessage: 'Only owner can invite partner' })
 
             await db.update(invitations).set({ partnerEmail }).where(eq(invitations.slug, slug))
-
-            // Send Premium Email
-            await sendPremiumEmail(partnerEmail, 'Undangan Kolaborasi Pernikahan', {
-                title: 'Anda Diundang Berkolaborasi! 💍',
-                message: `Pasangan Anda mengundang Anda untuk mengelola undangan pernikahan digital bersama-sama di platform Undangan. Silakan login untuk mulai mengedit.`,
-                ctaText: 'Terima Undangan',
-                ctaUrl: 'https://mengundang.site/login'
-            })
 
             return { success: true, message: 'Partner invited' }
         }
@@ -109,7 +108,7 @@ export default defineEventHandler(async (event) => {
             if (existingUserInvs.length >= maxInv) {
                 throw createError({
                     statusCode: 403,
-                    statusMessage: `Batas paket ${userDetails?.plan?.toUpperCase() || 'FREE'} tercapai (${maxInv}/${maxInv}). Silakan upgrade paket untuk membuat lebih banyak undangan.`
+                    statusMessage: `Batas paket ${userDetails?.plan?.toUpperCase() || 'FREE'} tercapai(${maxInv} / ${maxInv}).Silakan upgrade paket untuk membuat lebih banyak undangan.`
                 })
             }
         }
@@ -141,12 +140,18 @@ export default defineEventHandler(async (event) => {
 
     if (event.method === 'PUT') {
         const body = await readBody(event)
-        const oldSlug = body.oldSlug
-        const newSlug = body.newSlug
 
-        if (!oldSlug || !newSlug || !/^[a-z0-9-]+$/.test(newSlug)) {
-            throw createError({ statusCode: 400, statusMessage: 'Invalid Slug' })
+        // Validate Rename
+        const result_zod = InvitationSchema.pick({ slug: true }).safeParse(body)
+        if (!result_zod.success) {
+            throw createError({ statusCode: 400, statusMessage: result_zod.error.issues[0]?.message })
         }
+
+        const { slug: newSlug } = result_zod.data
+        const oldSlug = body.oldSlug
+
+        if (!oldSlug) throw createError({ statusCode: 400, statusMessage: 'Old slug required' })
+
         if (RESERVED_SLUGS.includes(newSlug)) {
             throw createError({ statusCode: 400, statusMessage: 'Link ini tidak boleh digunakan (Reserved)' })
         }
@@ -167,15 +172,32 @@ export default defineEventHandler(async (event) => {
     }
 
     if (event.method === 'DELETE') {
-        const body = await readBody(event)
-        const slug = body.slug
+        const query = getQuery(event)
+        let slug = query.slug as string
+
+        if (!slug) {
+            const body = await readBody(event).catch(() => ({}))
+            slug = body.slug
+        }
+
+        if (!slug) throw createError({ statusCode: 400, statusMessage: 'Slug is required' })
 
         const [existing] = await db.select().from(invitations).where(eq(invitations.slug, slug))
-        if (!existing) throw createError({ statusCode: 404, statusMessage: 'Not found' })
+        if (!existing) throw createError({ statusCode: 404, statusMessage: 'Undangan tidak ditemukan' })
 
         if (!isManagerOrOwner(existing)) throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
 
-        await db.delete(invitations).where(eq(invitations.slug, slug))
-        return { success: true }
+        try {
+            await db.delete(guests).where(eq(guests.invitationSlug, slug))
+            await db.delete(invitations).where(eq(invitations.slug, slug))
+            return { success: true }
+        } catch (e: any) {
+            console.error('[Invitations-DELETE] Failed:', e)
+            // Re-throw with descriptive message to help debug
+            throw createError({
+                statusCode: 500,
+                statusMessage: `Gagal menghapus: ${e.message || 'Database error'}`
+            })
+        }
     }
 })

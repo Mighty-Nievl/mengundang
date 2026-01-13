@@ -29,13 +29,13 @@ const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
 
 const fetchLogs = async () => {
     isLoading.value = true
-    try { logs.value = await $fetch('/api/admin/emails') } catch (e) { console.error(e) }
+    try { logs.value = await ($fetch as any)('/api/admin/emails') } catch (e) { console.error(e) }
     finally { isLoading.value = false }
 }
 
 const fetchSettings = async () => {
     try {
-        const s = await $fetch<Record<string, string>>('/api/admin/settings')
+        const s = await ($fetch as any)('/api/admin/settings') as Record<string, string>
         rsvpTemplate.value = s.email_rsvp_template || defaultTemplate
     } catch (e) { console.error(e) }
 }
@@ -43,7 +43,7 @@ const fetchSettings = async () => {
 const saveTemplate = async () => {
     isSaving.value = true
     try {
-        await $fetch('/api/admin/settings', { method: 'POST', body: { key: 'email_rsvp_template', value: rsvpTemplate.value } })
+        await ($fetch as any)('/api/admin/settings', { method: 'POST', body: { key: 'email_rsvp_template', value: rsvpTemplate.value } })
         showToast('Template saved')
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
     finally { isSaving.value = false }
@@ -112,7 +112,7 @@ onMounted(() => { fetchLogs(); fetchSettings() })
 
         <!-- TEMPLATE TAB -->
         <div v-if="activeTab === 'template'" class="space-y-4">
-            <div class="p-3 bg-blue-50 border border-blue-100 rounded text-xs text-blue-800">
+            <div v-pre class="p-3 bg-blue-50 border border-blue-100 rounded text-xs text-blue-800">
                 Variables: <code class="bg-white px-1 rounded">{{name}}</code>, <code class="bg-white px-1 rounded">{{status}}</code>, <code class="bg-white px-1 rounded">{{slug}}</code>, <code class="bg-white px-1 rounded">{{message}}</code>
             </div>
             <div class="grid md:grid-cols-2 gap-4">

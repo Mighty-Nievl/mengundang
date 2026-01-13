@@ -38,7 +38,7 @@ export const createFlipBill = async (orderId: string, amount: number, title: str
                 title: title,
                 amount: amount.toString(),
                 type: 'SINGLE',
-                expired_date: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().replace('T', ' ').split('.')[0].substring(0, 16), // 24h expiration
+                expired_date: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().replace('T', ' ').split('.')[0]!.substring(0, 16), // 24h expiration
                 is_address_required: '0',
                 is_phone_number_required: '0',
                 step: '3' // Directly show payment methods if possible

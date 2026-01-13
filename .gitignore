@@ -25,6 +25,7 @@ logs
 
 # Database
 sqlite.db
+database/backups/
 
 # WhatsApp & Worker Local
 whatsapp-auth/

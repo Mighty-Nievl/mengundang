@@ -1,11 +1,10 @@
-import { db } from '../../utils/db'
-import { orders, users } from '../../db/schema'
+import { orders, users, systemSettings } from '../../db/schema'
 import { eq } from 'drizzle-orm'
 import { auth } from '../../utils/auth'
 import { nanoid } from 'nanoid'
 import { sendTelegramMessage } from '../../utils/telegram'
 import { sendWhatsAppNotification } from '../../utils/whatsapp'
-import { systemSettings } from '../../db/schema'
+import { OrderSchema } from '../../utils/schemas'
 
 export default defineEventHandler(async (event) => {
     const session = await auth.api.getSession({
@@ -17,11 +16,12 @@ export default defineEventHandler(async (event) => {
     }
 
     const body = await readBody(event)
-    const { plan, amount, proofUrl } = body
-
-    if (!plan || !amount) {
-        throw createError({ statusCode: 400, statusMessage: 'Missing required fields' })
+    const result_zod = OrderSchema.safeParse(body)
+    if (!result_zod.success) {
+        throw createError({ statusCode: 400, statusMessage: result_zod.error.issues[0]?.message })
     }
+
+    const { plan, amount, proofUrl, referralCode: bodyReferralCode } = result_zod.data
 
     // 2. Handle Referral Discount
     const referralCode = body.referralCode || getCookie(event, 'referral_code')

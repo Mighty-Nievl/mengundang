@@ -2,6 +2,9 @@ import { db } from '../utils/db'
 import { invitations, users } from '../db/schema'
 import { eq } from 'drizzle-orm'
 import { auth } from '../utils/auth'
+import { PLAN_CONFIGS } from '../utils/plan'
+import { InvitationSchema } from '../utils/schemas'
+import { z } from 'zod'
 
 export default defineEventHandler(async (event) => {
     const session = await auth.api.getSession({ headers: event.headers })
@@ -10,10 +13,9 @@ export default defineEventHandler(async (event) => {
     const query = getQuery(event)
     const slug = query.slug as string
 
-    if (!slug) throw createError({ statusCode: 400, statusMessage: 'Slug is required' })
-
-    // Validate slug (security)
-    if (!/^[a-z0-9-]+$/.test(slug)) throw createError({ statusCode: 400, statusMessage: 'Invalid Slug' })
+    // Validate slug
+    const slugResult = z.string().regex(/^[a-z0-9-]+$/, 'Invalid Slug').safeParse(slug)
+    if (!slugResult.success) throw createError({ statusCode: 400, statusMessage: slugResult.error.issues[0]?.message })
 
     // Fetch invitation and owner details
     const [result] = await db.select({
@@ -54,7 +56,8 @@ export default defineEventHandler(async (event) => {
         response._auth = {
             isAuthorized,
             owner: isAuthorized ? invitation.owner : 'hidden',
-            partnerEmail: (isAuthorized && invitation.partnerEmail) ? invitation.partnerEmail : (invitation.partnerEmail ? 'hidden' : null)
+            partnerEmail: (isAuthorized && invitation.partnerEmail) ? invitation.partnerEmail : (invitation.partnerEmail ? 'hidden' : null),
+            plan: ownerDetails?.plan || 'free' // Expose plan for UI logic
         }
 
         return response
@@ -68,6 +71,24 @@ export default defineEventHandler(async (event) => {
         }
 
         const body = await readBody(event)
+
+        // Validate Content Body
+        const result_zod = InvitationSchema.pick({ content: true }).safeParse({ content: body })
+        if (!result_zod.success) {
+            throw createError({ statusCode: 400, statusMessage: 'Format konten tidak valid' })
+        }
+
+        // VALIDATE THEME ACCESS
+        const targetTheme = body.theme || 'original'
+        const userPlan = ownerDetails?.plan || 'free'
+        const allowedThemes = PLAN_CONFIGS[userPlan]?.allowedThemes || ['original']
+
+        if (!allowedThemes.includes(targetTheme)) {
+            throw createError({
+                statusCode: 403,
+                statusMessage: `Tema '${targetTheme}' tidak tersedia untuk paket ${PLAN_CONFIGS[userPlan]?.name}. Silakan upgrade paket Anda.`
+            })
+        }
 
         await db.update(invitations).set({
             content: body,

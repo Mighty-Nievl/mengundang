@@ -2,6 +2,7 @@ import { db } from '../../utils/db'
 import { systemSettings } from '../../db/schema'
 import { eq } from 'drizzle-orm'
 import { isValidSettingKey } from '../../utils/admin-helpers'
+import { SystemSettingSchema } from '../../utils/schemas'
 
 export default defineEventHandler(async (event) => {
     // Auth Check (Admin Only) - using consistent pattern
@@ -18,7 +19,7 @@ export default defineEventHandler(async (event) => {
     if (method === 'GET') {
         try {
             const settings = await db.select().from(systemSettings)
-            const settingsMap = settings.reduce((acc, curr) => {
+            const settingsMap = settings.reduce((acc: Record<string, string>, curr: { key: string; value: string }) => {
                 acc[curr.key] = curr.value
                 return acc
             }, {} as Record<string, string>)
@@ -31,11 +32,13 @@ export default defineEventHandler(async (event) => {
     // POST: Update a setting
     if (method === 'POST') {
         const body = await readBody(event)
-        const { key, value } = body
 
-        if (!key || value === undefined) {
-            throw createError({ statusCode: 400, statusMessage: 'Key and Value required' })
+        const result_zod = SystemSettingSchema.safeParse(body)
+        if (!result_zod.success) {
+            throw createError({ statusCode: 400, statusMessage: result_zod.error.issues[0]?.message })
         }
+
+        const { key, value } = result_zod.data
 
         // SECURITY: Whitelist validation
         if (!isValidSettingKey(key)) {

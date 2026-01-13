@@ -3,20 +3,25 @@ import { invitations, guests, systemSettings, users } from '../db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { sendEmail } from '../utils/email'
 import { sendWhatsAppNotification } from '../utils/whatsapp'
+import { PLAN_CONFIGS } from '../utils/plan'
+import { RsvpSchema } from '../utils/schemas'
+import { z } from 'zod'
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
-    const { slug, name, status, message, parentCommentId } = body
 
-    if (!slug) throw createError({ statusCode: 400, statusMessage: 'Slug is required' })
-
-    // Validation
-    if (!name || (!status && !parentCommentId)) {
-        throw createError({ statusCode: 400, statusMessage: 'Name and Status are required' })
+    // Zod Validation
+    const result_zod = RsvpSchema.safeParse(body)
+    if (!result_zod.success) {
+        const firstError = result_zod.error.issues[0]?.message || 'Input tidak valid'
+        throw createError({ statusCode: 400, statusMessage: firstError })
     }
 
-    if (name.length > 50 || (message && message.length > 500)) {
-        throw createError({ statusCode: 400, statusMessage: 'Input terlalu panjang' })
+    const { slug, name, status, message, parentCommentId } = result_zod.data
+
+    // Logic validation: status is required if not a reply
+    if (!status && !parentCommentId) {
+        throw createError({ statusCode: 400, statusMessage: 'Status kehadiran wajib diisi' })
     }
 
     // Auth Check for Replies (Mempelai/Admin replying)
@@ -24,6 +29,11 @@ export default defineEventHandler(async (event) => {
     if (parentCommentId) {
         const user = event.context.user
         if (!user) throw createError({ statusCode: 401, statusMessage: 'Hanya admin/pemilik yang bisa membalas' })
+
+        // Validate slug for safety before DB query
+        const slugResult = z.string().regex(/^[a-z0-9-]+$/, 'Invalid Slug').safeParse(slug)
+        if (!slugResult.success) throw createError({ statusCode: 400, statusMessage: slugResult.error.issues[0]?.message || 'Slug tidak valid' })
+
         // Fetch invitation to check ownership
         const [inv] = await db.select().from(invitations).where(eq(invitations.slug, slug))
         if (!inv) throw createError({ statusCode: 404, statusMessage: 'Undangan tidak ditemukan' })

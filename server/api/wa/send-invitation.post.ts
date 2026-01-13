@@ -1,7 +1,7 @@
-import { db } from '../../utils/db'
 import { waNotifications, invitations } from '../../db/schema'
 import { eq } from 'drizzle-orm'
 import { nanoid } from 'nanoid'
+import { BatchWaSchema } from '../../utils/schemas'
 
 export default defineEventHandler(async (event) => {
     // Auth check
@@ -11,11 +11,12 @@ export default defineEventHandler(async (event) => {
     }
 
     const body = await readBody(event)
-    const { phone, guestName, invitationSlug } = body
-
-    if (!phone || !guestName || !invitationSlug) {
-        throw createError({ statusCode: 400, statusMessage: 'Missing required fields: phone, guestName, invitationSlug' })
+    const result_zod = BatchWaSchema.safeParse(body)
+    if (!result_zod.success) {
+        throw createError({ statusCode: 400, statusMessage: result_zod.error.issues[0]?.message })
     }
+
+    const { phone, guestName, invitationSlug } = result_zod.data
 
     // Format phone number: 08xxx -> 628xxx
     let formattedPhone = phone.replace(/\D/g, '')

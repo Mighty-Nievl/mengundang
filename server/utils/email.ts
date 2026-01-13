@@ -55,7 +55,7 @@ export const sendEmail = async (options: SendEmailOptions) => {
                 status: 'failed',
                 error: JSON.stringify(data),
                 createdAt: new Date()
-            }).catch(err => console.error('[Email-Log] Failed to log failure:', err));
+            }).catch((err: Error) => console.error('[Email-Log] Failed to log failure:', err));
 
             return { success: false, error: data };
         }
@@ -70,7 +70,7 @@ export const sendEmail = async (options: SendEmailOptions) => {
             content: options.html,
             status: 'sent',
             createdAt: new Date()
-        }).catch(err => console.error('[Email-Log] Failed to log success:', err));
+        }).catch((err: Error) => console.error('[Email-Log] Failed to log success:', err));
 
         return { success: true, id: data.id };
     } catch (e: any) {

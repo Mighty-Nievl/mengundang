@@ -167,8 +167,8 @@ const startCanvasAnimation = () => {
         const cy = canvas.height / 2
 
         pulses.forEach((p, i) => {
-            pulses[i] += 0.003
-            if (pulses[i] > 1) pulses[i] = 0
+            pulses[i] = p + 0.003
+            if (pulses[i]! > 1) pulses[i] = 0
             ctx.beginPath()
             ctx.arc(cx, cy, 30 + pulses[i] * 35, 0, Math.PI * 2)
             ctx.strokeStyle = `rgba(212, 175, 55, ${(1 - pulses[i]) * 0.5})`

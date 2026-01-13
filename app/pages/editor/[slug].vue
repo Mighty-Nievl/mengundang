@@ -68,10 +68,10 @@ const getNestedValue = (obj: any, path: string) => {
   const parts = path.split('.')
   let current = obj
   for (const part of parts) {
-    if (current === null || typeof current !== 'object' || !current.hasOwnProperty(part)) {
+    if (!part || current === null || typeof current !== 'object' || !current.hasOwnProperty(part)) {
       return undefined
     }
-    current = current[part]
+    current = (current as any)[part]
   }
   return current
 }
@@ -82,16 +82,17 @@ const setNestedValue = (obj: any, path: string, value: any) => {
   let current = obj
   for (let i = 0; i < parts.length - 1; i++) {
     const part = parts[i]
-    if (current === null || typeof current !== 'object') {
+    if (!part || current === null || typeof current !== 'object') {
       return // Cannot set value if path is invalid
     }
-    if (!current.hasOwnProperty(part) || typeof current[part] !== 'object' || current[part] === null) {
-      current[part] = {}
+    if (!current.hasOwnProperty(part) || typeof (current as any)[part] !== 'object' || (current as any)[part] === null) {
+      (current as any)[part] = {}
     }
-    current = current[part]
+    current = (current as any)[part]
   }
-  if (current !== null && typeof current === 'object') {
-    current[parts[parts.length - 1]] = value
+  const lastPart = parts[parts.length - 1]
+  if (lastPart && current !== null && typeof current === 'object') {
+    (current as any)[lastPart] = value
   }
 }
 
@@ -226,28 +227,32 @@ const handleFileUpload = async (event: Event, path: string, index?: number) => {
     const input = event.target as HTMLInputElement
     if (!input.files || input.files.length === 0) return
 
-    const file = input.files[0]
-    saveStatus.value = 'Mengompres...'
-    const compressed = await compressImage(file)
-    const formData = new FormData()
-    formData.append('file', compressed, 'upload.jpg')
-
+    const file = input.files?.[0]
+    if (!file) return
+    
     isLoading.value = true
     saveStatus.value = 'Mengupload...'
     try {
-        const res = await $fetch<{ url: string }>('/api/upload', {
+        saveStatus.value = 'Mengompres...'
+        const compressed = await compressImage(file)
+        const formData = new FormData()
+        formData.append('file', compressed, 'upload.jpg')
+        
+        const res = await $fetch<any>('/api/upload', {
             method: 'POST',
             body: formData
         })
 
-        if (index !== undefined) {
-             form.value.gallery[index] = res.url
-        } else {
-            const parts = path.split('.')
-            if (parts.length === 2) {
-                form.value[parts[0]][parts[1]] = res.url
+        if (res.url) {
+            if (index !== undefined) {
+                 form.value.gallery[index] = res.url
             } else {
-                form.value[parts[0]] = res.url
+                const parts = path.split('.')
+                if (parts.length === 2 && parts[0] && parts[1]) {
+                    form.value[parts[0]!][parts[1]!] = res.url
+                } else if (parts[0]) {
+                    form.value[parts[0]!] = res.url
+                }
             }
         }
         await saveData(true)
@@ -297,6 +302,8 @@ const fetchData = async () => {
     const data: any = await $fetch(`/api/v2-content?slug=${slug}&v=${Date.now()}`)
     
     // Authorization Check
+    console.log('DEBUG: Auth Data from API:', data._auth) 
+
     if (!data._auth?.isAuthorized) {
         router.push('/unauthorized')
         return
@@ -396,9 +403,11 @@ const handlePaste = async (event: ClipboardEvent, path: string, index: number | 
 // UI State for Tabs
 const activeTab = ref(route.query.tab as string || 'hero')
 const sidebarExpanded = ref(false)
-const tabs = [
-    { id: 'hero', label: 'Hero Section', icon: 'fas fa-star' },
+const isMobileNavOpen = ref(false)
 
+const tabs = [
+    { id: 'theme', label: 'Tema Desain', icon: 'fas fa-palette' },
+    { id: 'hero', label: 'Hero Section', icon: 'fas fa-star' },
     { id: 'cover', label: 'Halaman Cover', icon: 'fas fa-book-open' },
     { id: 'quote', label: 'Ayat Suci / Quotes', icon: 'fas fa-quran' },
     { id: 'story', label: 'Love Story', icon: 'fas fa-heart' },
@@ -410,6 +419,75 @@ const tabs = [
     { id: 'musik', label: 'Musik Latar', icon: 'fas fa-music' },
     { id: 'settings', label: 'Pengatur & SEO', icon: 'fas fa-cog' },
 ]
+
+const availableThemes = [
+    {
+        id: 'original',
+        name: 'Original',
+        description: 'Elegan, Bersih, dan Minimalis. Cocok untuk semua jenis acara.',
+        previewColor: 'bg-stone-100', // Placeholder for thumbnail
+        isPremium: false
+    },
+    {
+        id: 'kunikaa',
+        name: 'Kunikaa',
+        description: 'Mewah, Artsy, dan Penuh Warna. Nuansa floral yang cantik.',
+        previewColor: 'bg-[#F3F1FA]', // Placeholder for thumbnail
+        isPremium: true
+    },
+    {
+        id: 'blue-midnight',
+        name: 'Blue Midnight',
+        description: 'Elegan dengan nuansa malam yang syahdu dan premium.',
+        previewColor: 'bg-slate-900', // Placeholder for thumbnail
+        isPremium: true,
+        comingSoon: true
+    },
+    {
+        id: 'java-heritage',
+        name: 'Java Heritage',
+        description: 'Sentuhan tradisional Jawa dengan balutan modern.',
+        previewColor: 'bg-amber-800', // Placeholder for thumbnail
+        isPremium: true,
+        comingSoon: true
+    }
+]
+
+const activeTabItem = computed(() => tabs.find(t => t.id === activeTab.value) || tabs[0])
+
+const switchTheme = async (themeId: string, isPremium: boolean) => {
+    // Check Plan Restriction
+    const currentPlan = form.value._auth?.plan || 'free'
+    const allowedPlans = ['regular', 'vip', 'vvip']
+    
+    if (isPremium && !allowedPlans.includes(currentPlan)) {
+        return showAlert({
+            title: 'Tema Premium',
+            message: 'Tema ini hanya tersedia untuk paket Regular ke atas. Upgrade sekarang untuk menggunakan tema ini!',
+            type: 'info'
+        })
+    }
+
+    if (form.value.theme === themeId) return
+
+    form.value.theme = themeId
+    await saveData()
+    
+    // Force reload iframe preview with new theme query
+    // Since we save `theme` to DB, existing preview update might catch it if `content.theme` updates.
+    // But preview URL usually needs query param update or reload.
+    // Actually, [slug].vue logic: `(route.query.theme) || content.theme`. 
+    // Since we updated content.theme in DB, a refresh of iframe should work.
+    if (previewIframe.value) {
+        // Reload iframe to ensure theme component switches
+        previewIframe.value.src = previewIframe.value.src.split('?')[0] + `?preview=true&t=${Date.now()}`
+    }
+}
+
+const selectTab = (id: string) => {
+    activeTab.value = id
+    isMobileNavOpen.value = false
+}
 
 // Guest List Logic
 const guestNameInput = ref('')
@@ -687,29 +765,110 @@ onUnmounted(() => {
           </div>
 
 
-          <!-- Mobile Tab Navigation (Horizontal Scroll) -->
-          <div class="lg:hidden flex-shrink-0 bg-white border-b border-stone-200 z-30">
-               <div class="flex overflow-x-auto no-scrollbar py-3 px-4 gap-2">
-                   <button 
-                       v-for="tab in tabs" 
-                       :key="tab.id"
-                       @click="activeTab = tab.id"
-                       class="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all border"
-                       :class="activeTab === tab.id 
-                           ? 'bg-stone-900 text-white border-stone-900 shadow-lg shadow-stone-900/20' 
-                           : 'bg-stone-50 text-stone-500 border-stone-100 hover:bg-stone-100'"
-                   >
-                       <i :class="tab.icon"></i>
-                       {{ tab.label }}
-                   </button>
-               </div>
+          <!-- Mobile Tab Navigation (Dropdown Menu) -->
+          <div class="lg:hidden flex-shrink-0 bg-stone-50 border-b border-stone-200 z-30 relative px-4 py-3">
+               <button 
+                   @click="isMobileNavOpen = !isMobileNavOpen"
+                   class="w-full flex items-center justify-between px-5 py-3.5 bg-white text-stone-800 rounded-2xl font-bold text-sm shadow-sm border border-stone-200 active:scale-[0.98] transition-all"
+               >
+                   <div class="flex items-center gap-3">
+                       <div class="w-8 h-8 rounded-lg bg-gold-50 flex items-center justify-center text-gold-600">
+                           <i :class="activeTabItem?.icon"></i>
+                       </div>
+                       <span>{{ activeTabItem?.label }}</span>
+                   </div>
+                   <i class="fas fa-chevron-down text-[10px] text-stone-400 transition-transform duration-300" :class="{ 'rotate-180': isMobileNavOpen }"></i>
+               </button>
+
+               <!-- Dropdown Overlay & List -->
+               <Transition name="fade">
+                   <div v-if="isMobileNavOpen" class="absolute top-[calc(100%+1px)] inset-x-0 z-50 p-4">
+                       <div class="absolute inset-0 bg-stone-950/20 backdrop-blur-sm" @click="isMobileNavOpen = false"></div>
+                       <div class="bg-white rounded-3xl shadow-2xl border border-stone-100 overflow-hidden relative animate-slide-up max-h-[70vh] overflow-y-auto no-scrollbar">
+                           <div class="p-2 grid grid-cols-1 gap-1">
+                               <button 
+                                   v-for="tab in tabs" 
+                                   :key="tab.id"
+                                   @click="selectTab(tab.id)"
+                                   class="flex items-center gap-4 px-5 py-4 rounded-2xl transition-all group"
+                                   :class="activeTab === tab.id ? 'bg-stone-50 text-stone-900' : 'hover:bg-stone-50 text-stone-500'"
+                               >
+                                   <div class="w-10 h-10 flex items-center justify-center rounded-xl transition-all"
+                                        :class="activeTab === tab.id ? 'bg-stone-900 text-gold-500 shadow-lg' : 'bg-stone-100 text-stone-400 group-hover:bg-white group-hover:text-stone-600'">
+                                       <i :class="tab.icon"></i>
+                                   </div>
+                                   <span class="font-bold text-sm">{{ tab.label }}</span>
+                                   <i v-if="activeTab === tab.id" class="fas fa-check-circle ml-auto text-emerald-500"></i>
+                               </button>
+                           </div>
+                       </div>
+                   </div>
+               </Transition>
           </div>
 
           <!-- Form Scroll Area -->
            <div class="flex-1 overflow-y-auto p-6 scroll-smooth bg-stone-50/50">
-             <form @submit.prevent="saveData" class="space-y-8 pb-20">
+             <form @submit.prevent="saveData(false)" class="space-y-8 pb-20">
 
             
+            <!-- Tab: Theme Selection -->
+            <div v-if="activeTab === 'theme'" class="animate-fade-in space-y-6">
+                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <h3 class="font-serif text-xl font-bold text-stone-900 mb-2">Pilih Tema Undangan</h3>
+                    <p class="text-sm text-stone-500 mb-6">Pilih tampilan yang paling sesuai dengan karakter pernikahanmu.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div 
+                            v-for="theme in availableThemes" 
+                            :key="theme.id"
+                            @click="!(theme as any).comingSoon && switchTheme(theme.id, theme.isPremium)"
+                            class="group relative border-2 rounded-xl overflow-hidden cursor-pointer transition-all hover:shadow-lg"
+                            :class="[
+                                form.theme === theme.id ? 'border-gold-500 ring-2 ring-gold-500/20' : 'border-stone-200 hover:border-gold-300',
+                                (theme as any).comingSoon ? 'opacity-70 grayscale cursor-not-allowed' : ''
+                            ]"
+                        >
+                            <!-- Preview Box -->
+                            <div class="h-40 w-full flex items-center justify-center relative overflow-hidden" :class="theme.previewColor">
+                                <div class="text-stone-400 font-serif italic">{{ theme.name }} Preview</div>
+                                
+                                <!-- Active Indicator -->
+                                <div v-if="form.theme === theme.id" class="absolute top-3 right-3 bg-gold-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">
+                                    <i class="fas fa-check mr-1"></i> Dipakai
+                                </div>
+                                
+                                <!-- Coming Soon Overlay -->
+                                <div v-if="(theme as any).comingSoon" class="absolute inset-0 bg-stone-900/40 backdrop-blur-[2px] flex items-center justify-center z-20">
+                                    <div class="bg-stone-800 text-stone-200 text-xs font-bold px-4 py-2 rounded-full shadow-xl border border-stone-600 uppercase tracking-widest">
+                                        Coming Soon
+                                    </div>
+                                </div>
+                                
+                                <!-- Lock Indicator (Verify not coming soon first) -->
+                                <div v-else-if="theme.isPremium && !(['regular', 'vip', 'vvip'].includes(form._auth?.plan || 'free'))" class="absolute inset-0 bg-stone-900/60 backdrop-blur-[2px] flex flex-col items-center justify-center text-white z-10 transition-opacity group-hover:bg-stone-900/50">
+                                    <div class="w-12 h-12 bg-stone-800 rounded-full flex items-center justify-center mb-2 shadow-xl ring-2 ring-white/20">
+                                        <i class="fas fa-lock text-gold-500 text-lg"></i>
+                                    </div>
+                                    <span class="font-bold text-sm tracking-wide">Premium</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Info -->
+                            <div class="p-4 bg-white relative z-0">
+                                <div class="flex justify-between items-center mb-1">
+                                    <h4 class="font-bold text-stone-800">{{ theme.name }}</h4>
+                                    <span v-if="(theme as any).comingSoon" class="px-2 py-0.5 bg-stone-100 text-stone-400 text-[10px] uppercase font-bold rounded">SOON</span>
+                                    <span v-else-if="theme.isPremium" class="px-2 py-0.5 bg-purple-100 text-purple-700 text-[10px] uppercase font-bold rounded">PRO</span>
+                                    <span v-else class="px-2 py-0.5 bg-stone-100 text-stone-600 text-[10px] uppercase font-bold rounded">FREE</span>
+                                </div>
+                                <p class="text-xs text-stone-500 leading-relaxed line-clamp-2">{{ theme.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tab: Hero -->
             <div v-show="activeTab === 'hero'" class="bg-white rounded-xl shadow-sm border border-stone-200 animate-fade-in overflow-hidden">
                 <div class="p-6 bg-stone-50 border-b border-stone-100">
@@ -867,6 +1026,30 @@ onUnmounted(() => {
                         <i class="fas fa-heart text-gold-500"></i> Data Mempelai
                     </h2>
                 </div>
+
+                <!-- Display Order Selection -->
+                <div class="px-6 py-5 bg-white border-b border-stone-100">
+                    <label class="text-[10px] uppercase tracking-widest font-bold text-stone-400 mb-3 block">Urutan Tampilan (Siapa duluan?)</label>
+                    <div class="flex gap-3">
+                        <button 
+                            type="button"
+                            @click="form.meta.displayOrder = 'groom_first'; saveData(true)"
+                            class="flex-1 py-3 px-4 rounded-xl border-2 transition-all font-bold text-sm h-12 flex items-center justify-center gap-2"
+                            :class="(form.meta?.displayOrder === 'groom_first' || !form.meta?.displayOrder) ? 'bg-gold-500 text-white border-gold-500 shadow-lg shadow-gold-500/20' : 'bg-stone-50 text-stone-500 border-stone-100 hover:border-stone-200'"
+                        >
+                            <i class="fas fa-mars text-blue-400"></i> Pria & Wanita
+                        </button>
+                        <button 
+                            type="button"
+                            @click="form.meta.displayOrder = 'bride_first'; saveData(true)"
+                            class="flex-1 py-3 px-4 rounded-xl border-2 transition-all font-bold text-sm h-12 flex items-center justify-center gap-2"
+                            :class="form.meta?.displayOrder === 'bride_first' ? 'bg-gold-500 text-white border-gold-500 shadow-lg shadow-gold-500/20' : 'bg-stone-50 text-stone-500 border-stone-100 hover:border-stone-200'"
+                        >
+                            <i class="fas fa-venus text-pink-400"></i> Wanita & Pria
+                        </button>
+                    </div>
+                </div>
+
                 <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-4">
                         <div class="flex items-center gap-2 border-b border-stone-100 pb-2 mb-2">
@@ -1065,7 +1248,7 @@ onUnmounted(() => {
 
                              <!-- Index Badge -->
                              <div class="absolute top-2 left-2 w-6 h-6 flex items-center justify-center bg-black/50 backdrop-blur text-white text-[10px] font-bold rounded-lg pointer-events-none">
-                                 {{ idx + 1 }}
+                                 {{ Number(idx) + 1 }}
                              </div>
                          </div>
                          
@@ -1210,24 +1393,9 @@ onUnmounted(() => {
                     </h2>
                 </div>
                 <div class="p-6 space-y-6">
-    const musicPresets = [
-        { title: 'Payung Teduh - Akad', url: 'https://kamiundang.site/music/akad.mp3' },
-        { title: 'Tulus - Teman Hidup', url: 'https://kamiundang.site/music/teman-hidup.mp3' },
-        { title: 'Yura Yunita - Cinta dan Rahasia', url: 'https://kamiundang.site/music/cinta-rahasia.mp3' },
-        { title: 'Instrumental - Canon in D', url: 'https://kamiundang.site/music/canon-in-d.mp3' },
-        { title: 'Shane Filan - Beautiful In White', url: 'https://kamiundang.site/music/beautiful-in-white.mp3' },
-    ]
-    const isMusicModalOpen = ref(false)
-    
-    // ... inside the music tab ...
                     <div>
-                        <label class="label-input">URL Lagu (.mp3)</label>
-                        <div class="flex gap-2">
-                            <input v-model="form.music.url" placeholder="https://example.com/song.mp3" @blur="saveData(true)" class="input-field" />
-                            <button type="button" @click="isMusicModalOpen = true" class="px-4 py-2 bg-stone-900 text-white rounded-lg font-bold text-xs hover:bg-gold-600 transition-colors shadow-sm flex items-center gap-2 whitespace-nowrap">
-                                <i class="fas fa-list-music"></i> Pilih Lagu
-                            </button>
-                        </div>
+                        <label class="label-input">URL Lagu</label>
+                        <input v-model="form.music.url" placeholder="https://youtube.com/watch?v=... atau .mp3" @blur="saveData(true)" class="input-field" />
                         
                         <!-- Music Helper -->
                         <div class="mt-3 p-3 bg-blue-50 border border-blue-100 rounded-lg flex gap-3">
@@ -1237,50 +1405,15 @@ onUnmounted(() => {
                              <div class="text-xs text-stone-600 space-y-1">
                                  <p class="font-bold">Tips Musik:</p>
                                  <ul class="list-disc pl-4 opacity-80 space-y-0.5">
-                                     <li>Gunakan link yang berakhiran <strong>.mp3</strong>.</li>
-                                     <li>Link Youtube / Spotify <strong>TIDAK BISA</strong> digunakan.</li>
-                                     <li>Rekomendasi: Gunakan tombol <strong>"Pilih Lagu"</strong> untuk lagu populer siap pakai.</li>
+                                     <li>Link <strong>YouTube</strong> didukung (youtube.com atau youtu.be).</li>
+                                     <li>Link <strong>.mp3</strong> langsung juga bisa digunakan.</li>
+                                     <li>Spotify <strong>TIDAK BISA</strong> digunakan.</li>
                                  </ul>
                              </div>
                         </div>
                     </div>
-
-                    <!-- Music Library Modal -->
-                    <Transition name="fade">
-                        <div v-if="isMusicModalOpen" class="fixed inset-0 z-[60] flex items-center justify-center p-4">
-                            <div class="absolute inset-0 bg-stone-900/50 backdrop-blur-sm" @click="isMusicModalOpen = false"></div>
-                            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md relative z-10 overflow-hidden flex flex-col max-h-[80vh]">
-                                <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
-                                    <h3 class="font-bold text-lg text-stone-800"><i class="fas fa-music text-gold-500 mr-2"></i> Pustaka Musik</h3>
-                                    <button @click="isMusicModalOpen = false" class="w-8 h-8 rounded-full bg-white text-stone-400 hover:text-red-500 hover:bg-red-50 flex items-center justify-center transition-colors">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                                <div class="overflow-y-auto p-2">
-                                    <button 
-                                        v-for="(song, idx) in musicPresets" 
-                                        :key="idx" 
-                                        @click="form.music.url = song.url; isMusicModalOpen = false; saveData(true)"
-                                        class="w-full text-left p-4 hover:bg-stone-50 rounded-xl transition-all group border-b border-stone-50 last:border-0 flex items-center justify-between"
-                                    >
-                                        <div class="flex items-center gap-4">
-                                            <div class="w-10 h-10 rounded-full bg-gold-50 text-gold-600 flex items-center justify-center group-hover:bg-gold-500 group-hover:text-white transition-colors font-bold text-xs">
-                                                {{ idx + 1 }}
-                                            </div>
-                                            <div>
-                                                <p class="font-bold text-sm text-stone-800">{{ song.title.split(' - ')[1] || song.title }}</p>
-                                                <p class="text-[11px] text-stone-400 uppercase tracking-wider">{{ song.title.split(' - ')[0] || 'Unknown Artist' }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="w-8 h-8 rounded-full border border-stone-200 text-stone-300 flex items-center justify-center group-hover:border-gold-500 group-hover:text-gold-500">
-                                            <i class="fas fa-check"></i>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </Transition>
                 
+
                     <div class="bg-stone-50 p-4 rounded-xl border border-stone-100 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                         <div>
                             <label class="label-input">Mulai Dari (MM:SS)</label>

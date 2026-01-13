@@ -25,7 +25,10 @@ export default defineNuxtConfig({
       { name: 'Playfair Display', provider: 'google' },
       { name: 'Lato', provider: 'google' },
       { name: 'Alex Brush', provider: 'google' },
-      { name: 'Roboto', provider: 'google' }
+      { name: 'Roboto', provider: 'google' },
+      { name: 'Lora', provider: 'google' },
+      { name: 'Quicksand', provider: 'google' },
+      { name: 'Lexend', provider: 'google' }
     ]
   },
 

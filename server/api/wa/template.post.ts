@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 404, statusMessage: 'Invitation not found' })
     }
 
-    if (invitation.owner !== user.id && invitation.partnerEmail !== user.email) {
+    if (invitation.owner !== user.email && invitation.partnerEmail !== user.email) {
         throw createError({ statusCode: 403, statusMessage: 'Access denied' })
     }
 

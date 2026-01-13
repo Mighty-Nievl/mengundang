@@ -303,7 +303,7 @@ const handleKeydown = (e: KeyboardEvent) => {
                         mode="out-in"
                      >
                         <img 
-                            :key="selectedImage"
+                            :key="selectedImage || 'primary'"
                             :src="selectedImage || ''" 
                             class="max-w-full max-h-full object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)]" 
                             referrerpolicy="no-referrer"

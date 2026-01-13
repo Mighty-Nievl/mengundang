@@ -32,8 +32,19 @@ const isOwnerOrPartner = computed(() => {
     return user?.isAuthorized || false
 })
 
+const isBrideFirst = computed(() => props.content?.meta?.displayOrder === 'bride_first')
+
+const firstProfile = computed(() => isBrideFirst.value ? props.content?.bride : props.content?.groom)
+const secondProfile = computed(() => isBrideFirst.value ? props.content?.groom : props.content?.bride)
+
+const firstTitle = computed(() => isBrideFirst.value ? 'The Bride' : 'The Groom')
+const secondTitle = computed(() => isBrideFirst.value ? 'The Groom' : 'The Bride')
+
+const firstNickname = computed(() => isBrideFirst.value ? props.content?.hero?.brideNickname : props.content?.hero?.groomNickname)
+const secondNickname = computed(() => isBrideFirst.value ? props.content?.hero?.groomNickname : props.content?.hero?.brideNickname)
+
 const isOpened = ref(route.query.preview === 'true')
-const activeSection = ref(0)
+const activeSectionId = ref('header')
 const scrollContainer = ref<HTMLElement | null>(null)
 const audioPlayer = ref<any>(null)
 
@@ -83,18 +94,12 @@ const smoothScrollTo = (element: HTMLElement, target: number, duration: number) 
     requestAnimationFrame(animateScroll)
 }
 
-// Scroll to specific section index
-const scrollToSection = (index: number) => {
-    const sectionIds = ['header', 'countdown', 'groom', 'bride', 'events', 'gallery', 'gift', 'rsvp']
-    const id = sectionIds[index]
-    
-    if (id) {
-        const el = document.getElementById(id)
-        if (el && scrollContainer.value) {
-           const top = el.offsetTop
-           smoothScrollTo(scrollContainer.value, top, 1200) 
-           activeSection.value = index
-        }
+// Scroll to specific section by ID
+const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId)
+    if (el) {
+       el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+       activeSectionId.value = sectionId
     }
 }
 
@@ -102,16 +107,15 @@ const handleScroll = () => {
     if (!scrollContainer.value) return
     
     const scrollPosition = scrollContainer.value.scrollTop + (window.innerHeight / 2)
-    const sectionIds = ['header', 'countdown', 'groom', 'bride', 'events', 'gallery', 'gift', 'rsvp']
+    // Only track sections that have nav items
+    const navSectionIds = ['header', 'mempelai', 'events', 'gallery', 'rsvp']
     
-    for (let i = 0; i < sectionIds.length; i++) {
-        const el = document.getElementById(sectionIds[i]!)
-        if (el) {
-            const { offsetTop, offsetHeight } = el
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                activeSection.value = i
-                break
-            }
+    // Find which section we're currently in
+    for (let i = navSectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(navSectionIds[i]!)
+        if (el && scrollPosition >= el.offsetTop) {
+            activeSectionId.value = navSectionIds[i]!
+            break
         }
     }
 }
@@ -200,15 +204,15 @@ useHead({
             <div class="text-center space-y-6 relative z-10" :class="{'text-white': content?.hero?.backgroundImage}">
                 <h3 class="font-serif italic text-xl transition-colors opacity-90" :class="content?.hero?.backgroundImage ? 'text-gold-200' : 'text-gold-600'">The Wedding of</h3>
                 <h2 class="font-serif text-6xl md:text-7xl leading-tight transition-colors" :class="content?.hero?.backgroundImage ? 'text-white' : 'text-stone-900'">
-                {{ content?.hero?.groomNickname }} <br> 
+                {{ firstNickname }} <br> 
                 <span class="text-4xl" :class="content?.hero?.backgroundImage ? 'text-stone-300' : 'text-stone-300'">&amp;</span> <br> 
-                {{ content?.hero?.brideNickname }}
+                {{ secondNickname }}
                 </h2>
                 <div class="w-12 h-0.5 bg-gold-500 mx-auto opacity-70"></div>
                 <p class="font-bold uppercase tracking-[0.2em] text-xs transition-colors" :class="content?.hero?.backgroundImage ? 'text-stone-200' : 'text-stone-500'">{{ content?.hero?.date }}</p>
             </div>
             
-            <button @click="scrollToSection(1)" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 animate-bounce cursor-pointer group">
+            <button @click="scrollToSection('countdown')" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 animate-bounce cursor-pointer group">
                 <span class="text-[9px] uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">Scroll</span>
                 <i class="fas fa-chevron-down text-white/70 group-hover:text-white text-lg"></i>
             </button>
@@ -231,14 +235,14 @@ useHead({
             <LoveStorySection :stories="content?.story"></LoveStorySection>
         </section>
 
-        <!-- 3. Groom Profile -->
-        <section id="groom" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
-            <SingleProfile :profile="content?.groom || {}" title="The Groom"></SingleProfile>
+        <!-- 3. First Profile -->
+        <section id="mempelai" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4">
+            <SingleProfile :profile="firstProfile || {}" :title="firstTitle"></SingleProfile>
         </section>
 
-        <!-- 4. Bride Profile -->
-        <section id="bride" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-50 px-4">
-            <SingleProfile :profile="content?.bride || {}" title="The Bride"></SingleProfile>
+        <!-- 4. Second Profile -->
+        <section id="mempelai-2" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-stone-50 px-4">
+            <SingleProfile :profile="secondProfile || {}" :title="secondTitle"></SingleProfile>
         </section>
 
         <!-- 5. Event Details -->
@@ -268,7 +272,7 @@ useHead({
         <!-- 9. Footer -->
         <section class="min-h-[50vh] w-full flex flex-col items-center justify-end pb-10 snap-start snap-always reveal-on-scroll">
             <div class="text-center text-xs text-stone-400">
-                <p>© 2025 {{ content?.hero?.groomNickname }} &amp; {{ content?.hero?.brideNickname }}. All Rights Reserved.</p>
+                <p>© 2025 {{ firstNickname }} &amp; {{ secondNickname }}. All Rights Reserved.</p>
                 <p>Created with Love by Undangan</p>
             </div>
         </section>
@@ -279,8 +283,8 @@ useHead({
         <!-- COVER SECTION -->
         <CoverSection 
         @open="handleOpen" 
-        :groom-name="content?.hero?.groomNickname || ''" 
-        :bride-name="content?.hero?.brideNickname || ''" 
+        :groom-name="firstNickname || ''" 
+        :bride-name="secondNickname || ''" 
         :date="content?.hero?.date || ''"
         :background-image="content?.cover?.backgroundImage || ''"
         :guest-name="(route.query.to as string)"
@@ -295,7 +299,7 @@ useHead({
             :fade="content?.music?.fade || false"
             ></FloatingMusic>
             
-            <FloatingNav v-if="isOpened" :current="activeSection" @navigate="scrollToSection" />
+            <FloatingNav v-if="isOpened" :current-section-id="activeSectionId" @navigate="scrollToSection" />
         </ClientOnly>
     </template>
   </div>

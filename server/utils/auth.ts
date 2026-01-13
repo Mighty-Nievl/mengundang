@@ -17,7 +17,7 @@ export const auth = new Proxy({} as any, {
             // Try to get secrets from Nitro config or direct event context (Cloudflare bindings)
             const getEnv = (key: string) => {
                 // 1. Try runtimeConfig (pre-mapped NUXT_* vars)
-                const configKey = key.toLowerCase().replace(/_([a-z])/g, (g) => g[1].toUpperCase()).replace(/^nuxt/, '');
+                const configKey = key.toLowerCase().replace(/_([a-z])/g, (g) => g.charAt(1).toUpperCase()).replace(/^nuxt/, '');
                 // Handle case where it might be e.g. googleClientId
                 const camelKey = configKey.charAt(0).toLowerCase() + configKey.slice(1);
                 if (config[camelKey]) return config[camelKey];

@@ -39,22 +39,22 @@ const formatCurrency = (val: number) => new Intl.NumberFormat('id-ID', { style: 
 
 // Fetch Data
 const fetchOrders = async () => {
-    try { orders.value = await $fetch('/api/admin/orders') } catch (e) { console.error(e) }
+    try { orders.value = await ($fetch as any)('/api/admin/orders') } catch (e) { console.error(e) }
 }
 const fetchUsers = async () => {
-    try { users.value = await $fetch('/api/users') as User[] } catch (e) { console.error(e) }
+    try { users.value = await ($fetch as any)('/api/users') as User[] } catch (e) { console.error(e) }
 }
 const fetchPayouts = async () => {
-    try { payouts.value = await $fetch('/api/admin/payouts') } catch (e) { console.error(e) }
+    try { payouts.value = await ($fetch as any)('/api/admin/payouts') } catch (e) { console.error(e) }
 }
 const fetchSettings = async () => {
     try {
-        const s = await $fetch<Record<string, string>>('/api/admin/settings')
+        const s = await ($fetch as any)('/api/admin/settings') as Record<string, string>
         upgradeEnabled.value = s.upgrade_enabled !== 'false'
     } catch (e) { console.error(e) }
 }
 const fetchStats = async () => {
-    try { stats.value = await $fetch('/api/admin/stats') } catch (e) { console.error(e) }
+    try { stats.value = await ($fetch as any)('/api/admin/stats') } catch (e) { console.error(e) }
 }
 
 const loadTab = async () => {
@@ -74,7 +74,7 @@ const approveOrder = async (id: string) => {
     confirmAction.value = null
     isLoading.value = true
     try {
-        await $fetch(`/api/admin/orders/${id}/approve`, { method: 'POST' })
+        await ($fetch as any)(`/api/admin/orders/${id}/approve`, { method: 'POST' })
         showToast('Order approved')
         await fetchOrders()
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
@@ -84,7 +84,7 @@ const rejectOrder = async (id: string) => {
     confirmAction.value = null
     isLoading.value = true
     try {
-        await $fetch(`/api/admin/orders/${id}/reject`, { method: 'POST' })
+        await ($fetch as any)(`/api/admin/orders/${id}/reject`, { method: 'POST' })
         showToast('Order rejected')
         await fetchOrders()
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
@@ -95,7 +95,7 @@ const rejectOrder = async (id: string) => {
 const updateUserPlan = async (user: User, newPlan: string) => {
     isLoading.value = true
     try {
-        await $fetch('/api/users', { method: 'POST', body: { action: 'edit', email: user.email, plan: newPlan } })
+        await ($fetch as any)('/api/users', { method: 'POST', body: { action: 'edit', email: user.email, plan: newPlan } })
         showToast('Plan updated')
         await fetchUsers()
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
@@ -105,7 +105,7 @@ const deleteUser = async (email: string) => {
     confirmAction.value = null
     isLoading.value = true
     try {
-        await $fetch('/api/users', { method: 'POST', body: { action: 'delete', email } })
+        await ($fetch as any)('/api/users', { method: 'POST', body: { action: 'delete', email } })
         showToast('User deleted')
         await fetchUsers()
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
@@ -117,7 +117,7 @@ const processPayout = async (user: PayoutUser) => {
     confirmAction.value = null
     isLoading.value = true
     try {
-        await $fetch('/api/admin/payouts/process', { method: 'POST', body: { userId: user.id, amount: user.referralBalance } })
+        await ($fetch as any)('/api/admin/payouts/process', { method: 'POST', body: { userId: user.id, amount: user.referralBalance } })
         showToast('Payout processed')
         await fetchPayouts()
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }
@@ -128,7 +128,7 @@ const processPayout = async (user: PayoutUser) => {
 const toggleUpgrade = async () => {
     isLoading.value = true
     try {
-        await $fetch('/api/admin/settings', { method: 'POST', body: { key: 'upgrade_enabled', value: String(!upgradeEnabled.value) } })
+        await ($fetch as any)('/api/admin/settings', { method: 'POST', body: { key: 'upgrade_enabled', value: String(!upgradeEnabled.value) } })
         upgradeEnabled.value = !upgradeEnabled.value
         showToast(`Upgrade ${upgradeEnabled.value ? 'enabled' : 'disabled'}`)
     } catch (e: any) { showToast(e.statusMessage || 'Error', 'error') }

@@ -60,9 +60,11 @@ export async function verifyPassword(data: { password: string; hash: string }): 
     const { password, hash } = data;
 
     try {
-        const [iterStr, saltHex, expectedHashHex] = hash.split(':');
-        const iterations = parseInt(iterStr, 10);
-        const salt = new Uint8Array(hexToArrayBuffer(saltHex));
+        const parts = hash.split(':');
+        if (parts.length !== 3) return false;
+        const [iterStr, saltHex, expectedHashHex] = parts;
+        const iterations = parseInt(iterStr!, 10);
+        const salt = new Uint8Array(hexToArrayBuffer(saltHex!));
 
         const encoder = new TextEncoder();
         const passwordData = encoder.encode(password);
@@ -89,10 +91,10 @@ export async function verifyPassword(data: { password: string; hash: string }): 
         const derivedHashHex = arrayBufferToHex(derivedBits);
 
         // Constant-time comparison
-        if (derivedHashHex.length !== expectedHashHex.length) return false;
+        if (derivedHashHex.length !== expectedHashHex!.length) return false;
         let diff = 0;
         for (let i = 0; i < derivedHashHex.length; i++) {
-            diff |= derivedHashHex.charCodeAt(i) ^ expectedHashHex.charCodeAt(i);
+            diff |= derivedHashHex.charCodeAt(i) ^ expectedHashHex!.charCodeAt(i);
         }
         return diff === 0;
     } catch (e) {

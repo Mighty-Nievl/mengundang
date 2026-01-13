@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
             .all()
 
         // Convert array to object for easier frontend consumption
-        const settingsMap = settings.reduce((acc: Record<string, string>, curr) => {
+        const settingsMap = settings.reduce((acc: Record<string, string>, curr: { key: string; value: string }) => {
             acc[curr.key] = curr.value
             return acc
         }, {} as Record<string, string>)

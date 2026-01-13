@@ -7,6 +7,7 @@ export interface PlanConfig {
     maxInvitations: number
     monthsActive: number | null // null for eternal
     maxGuests: number
+    allowedThemes: string[]
 }
 
 export const PLAN_CONFIGS: Record<string, PlanConfig> = {
@@ -14,40 +15,56 @@ export const PLAN_CONFIGS: Record<string, PlanConfig> = {
         name: 'Free',
         maxInvitations: 1,
         monthsActive: 1,
-        maxGuests: 25
+        maxGuests: 25,
+        allowedThemes: ['original']
     },
     regular: {
         name: 'Regular',
         maxInvitations: 5,
         monthsActive: 3,
-        maxGuests: 50
+        maxGuests: 50,
+        allowedThemes: ['original', 'kunikaa']
     },
     vip: {
         name: 'VIP',
         maxInvitations: 20,
         monthsActive: 6,
-        maxGuests: 10000 // Effectively unlimited
+        maxGuests: 10000, // Effectively unlimited
+        allowedThemes: ['original', 'kunikaa']
     },
     vvip: {
         name: 'VVIP',
         maxInvitations: 9999, // Effectively unlimited
         monthsActive: null,
-        maxGuests: 10000 // Effectively unlimited
+        maxGuests: 10000, // Effectively unlimited
+        allowedThemes: ['original', 'kunikaa']
     }
 }
 
-export async function applyPlanToUser(userId: string, planId: string) {
+export async function applyPlanToUser(userId: string, planId: string, tx: any = db) {
     const config = PLAN_CONFIGS[planId]
     if (!config) throw new Error(`Invalid plan ID: ${planId}`)
 
+    // Get current user to check existing expiration
+    const [user] = await tx.select({
+        planExpiresAt: users.planExpiresAt
+    }).from(users).where(eq(users.id, userId))
+
     let expiresAt: Date | null = new Date()
+
+    // Cumulative logic: if user has a valid future expiration, add to it.
+    // Otherwise, start from now.
+    if (user?.planExpiresAt && new Date(user.planExpiresAt) > new Date()) {
+        expiresAt = new Date(user.planExpiresAt)
+    }
+
     if (config.monthsActive === null) {
         expiresAt = null
     } else {
         expiresAt.setMonth(expiresAt.getMonth() + config.monthsActive)
     }
 
-    await db.update(users).set({
+    await tx.update(users).set({
         plan: planId,
         planExpiresAt: expiresAt,
         maxInvitations: config.maxInvitations,

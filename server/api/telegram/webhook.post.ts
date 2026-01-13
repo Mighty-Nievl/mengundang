@@ -288,7 +288,7 @@ export default defineEventHandler(async (event) => {
         else if (data.startsWith('action:approve_order:')) {
             const orderId = data.split(':')[2]
             try {
-                await db.transaction(async (tx) => {
+                await db.transaction(async (tx: typeof db) => {
                     const order = await tx.select().from(orders).where(eq(orders.id, orderId)).get()
                     if (!order || order.status === 'paid') throw new Error('Order not found or already paid')
 
@@ -363,7 +363,7 @@ export default defineEventHandler(async (event) => {
             const amount = Number(parts[2])
 
             try {
-                await db.transaction(async (tx) => {
+                await db.transaction(async (tx: typeof db) => {
                     const targetUser = await tx.select().from(users).where(eq(users.id, userId)).get()
                     if (!targetUser || (targetUser.referralBalance || 0) < amount) throw new Error('Saldo kurang')
 

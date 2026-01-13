@@ -1,0 +1,9 @@
+
+import Database from 'better-sqlite3';
+import { join } from 'path';
+
+const dbPath = join(process.cwd(), 'sqlite.db');
+const db = new Database(dbPath);
+
+const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+console.log('Tables in DB:', tables);

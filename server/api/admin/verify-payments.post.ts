@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
             throw new Error("Scraper did not return valid JSON block.");
         }
 
-        const transactions = JSON.parse(jsonMatch[1]);
+        const transactions = JSON.parse(jsonMatch[1]!);
         console.log(`[VerifyPayment] Found ${transactions.length} transactions.`);
 
         // 4. Match with Database Orders

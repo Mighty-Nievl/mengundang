@@ -4,6 +4,10 @@ import { eq } from 'drizzle-orm'
 import { auth } from '../utils/auth'
 
 // ... imports
+import { PLAN_CONFIGS } from '../utils/plan'
+import { InvitationSchema } from '../utils/schemas'
+import { z } from 'zod'
+
 export default defineEventHandler(async (event) => {
     try {
         const user = event.context.user
@@ -62,7 +66,8 @@ export default defineEventHandler(async (event) => {
             response._auth = {
                 isAuthorized,
                 owner: isAuthorized ? invitation.owner : 'hidden',
-                partnerEmail: (isAuthorized && invitation.partnerEmail) ? invitation.partnerEmail : (invitation.partnerEmail ? 'hidden' : null)
+                partnerEmail: (isAuthorized && invitation.partnerEmail) ? invitation.partnerEmail : (invitation.partnerEmail ? 'hidden' : null),
+                plan: ownerDetails?.plan || 'free' // FIX: Expose plan for UI logic
             }
 
             return response
@@ -76,6 +81,24 @@ export default defineEventHandler(async (event) => {
             }
 
             const body = await readBody(event)
+
+            // Validate Content Body
+            const result_zod = InvitationSchema.pick({ content: true }).safeParse({ content: body })
+            if (!result_zod.success) {
+                throw createError({ statusCode: 400, statusMessage: 'Format konten tidak valid' })
+            }
+
+            // VALIDATE THEME ACCESS
+            const targetTheme = body.theme || 'original'
+            const userPlan = ownerDetails?.plan || 'free'
+            const allowedThemes = PLAN_CONFIGS[userPlan]?.allowedThemes || ['original']
+
+            if (!allowedThemes.includes(targetTheme)) {
+                throw createError({
+                    statusCode: 403,
+                    statusMessage: `Tema '${targetTheme}' tidak tersedia untuk paket ${PLAN_CONFIGS[userPlan]?.name}. Silakan upgrade paket Anda.`
+                })
+            }
 
             await db.update(invitations).set({
                 content: body,

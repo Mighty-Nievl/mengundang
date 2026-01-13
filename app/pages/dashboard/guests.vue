@@ -268,7 +268,7 @@ const shareWA = async (guest: any) => {
                                     <input 
                                         v-model="guest.name"
                                         @blur="saveGuestInline(guest)"
-                                        @keyup.enter="$event.target.blur()"
+                                        @keyup.enter="($event.target as HTMLInputElement).blur()"
                                         placeholder="Ketik Nama..."
                                         class="w-full px-6 py-4 bg-transparent outline-none focus:bg-white focus:ring-2 ring-gold-500/20 text-sm font-bold text-stone-900 placeholder-stone-200 transition-all"
                                     />
@@ -281,7 +281,7 @@ const shareWA = async (guest: any) => {
                                     <input 
                                         v-model="guest.phoneNumber"
                                         @blur="saveGuestInline(guest)"
-                                        @keyup.enter="$event.target.blur()"
+                                        @keyup.enter="($event.target as HTMLInputElement).blur()"
                                         placeholder="08123..."
                                         class="w-full px-6 py-4 bg-transparent outline-none focus:bg-white focus:ring-2 ring-gold-500/20 text-sm font-medium text-stone-600 placeholder-stone-200 transition-all"
                                     />
@@ -291,7 +291,7 @@ const shareWA = async (guest: any) => {
                                     <input 
                                         v-model="guest.note"
                                         @blur="saveGuestInline(guest)"
-                                        @keyup.enter="$event.target.blur()"
+                                        @keyup.enter="($event.target as HTMLInputElement).blur()"
                                         placeholder="Misal: Keluarga / Kantor"
                                         class="w-full px-6 py-4 bg-transparent outline-none focus:bg-white focus:ring-2 ring-gold-500/20 text-sm text-stone-500 placeholder-stone-100 transition-all"
                                     />

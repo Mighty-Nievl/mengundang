@@ -29,8 +29,8 @@ export const users = sqliteTable('user', {
 
 export const referralTransactions = sqliteTable('referral_transaction', {
     id: text('id').primaryKey(),
-    referrerId: text('referrerId').notNull().references(() => users.id),
-    refereeId: text('refereeId').notNull().references(() => users.id), // The user who made the purchase
+    referrerId: text('referrerId').notNull().references(() => users.id, { onDelete: 'cascade' }),
+    refereeId: text('refereeId').notNull().references(() => users.id, { onDelete: 'cascade' }), // The user who made the purchase
     amount: integer('amount').notNull(),
     type: text('type').notNull(), // 'bonus', 'withdrawal'
     createdAt: integer('createdAt', { mode: 'timestamp' }).notNull()
@@ -38,7 +38,7 @@ export const referralTransactions = sqliteTable('referral_transaction', {
 
 export const sessions = sqliteTable('session', {
     id: text('id').primaryKey(),
-    userId: text('userId').notNull().references(() => users.id),
+    userId: text('userId').notNull().references(() => users.id, { onDelete: 'cascade' }),
     token: text('token').notNull().unique(),
     expiresAt: integer('expiresAt', { mode: 'timestamp' }).notNull(),
     ipAddress: text('ipAddress'),
@@ -49,7 +49,7 @@ export const sessions = sqliteTable('session', {
 
 export const accounts = sqliteTable('account', {
     id: text('id').primaryKey(),
-    userId: text('userId').notNull().references(() => users.id),
+    userId: text('userId').notNull().references(() => users.id, { onDelete: 'cascade' }),
     accountId: text('accountId').notNull(),
     providerId: text('providerId').notNull(),
     accessToken: text('accessToken'),
@@ -99,7 +99,7 @@ export const orders = sqliteTable('order', {
 });
 export const guests = sqliteTable('guest', {
     id: text('id').primaryKey(),
-    invitationSlug: text('invitationSlug').notNull().references(() => invitations.slug),
+    invitationSlug: text('invitationSlug').notNull().references(() => invitations.slug, { onDelete: 'cascade' }),
     name: text('name').notNull(),
     phoneNumber: text('phoneNumber'),
     note: text('note'),

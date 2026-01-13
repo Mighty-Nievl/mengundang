@@ -1,0 +1,26 @@
+[nuxt:tailwindcss] ℹ Using Tailwind CSS from ~/assets/css/tailwind.css
+
+[@nuxtjs/og-image]  WARN  Rendering JPEGs requires sharp which does not work with cloudflare-pages. Images will be rendered as PNG at runtime.
+
+
+[@nuxt/robots]  WARN  You have disallowed robots accessing /api/**, this may prevent your site from being indexed correctly.
+
+ℹ Nuxt Icon server bundle mode is set to remote
+app/pages/admin/users.vue(39,29): error TS2321: Excessive stack depth comparing types 'Exclude<R extends "/api/admin/emails" ? { key: "/api/admin/emails"; exact: true; score: []; catchAll: false; } : { key: "/api/admin/emails"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuery extends ""...' and '{ score: MaxTuple<((R extends "/api/admin/emails" ? { key: "/api/admin/emails"; exact: true; score: []; catchAll: false; } : { key: "/api/admin/emails"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuer...'.
+app/pages/admin/users.vue(39,29): error TS2321: Excessive stack depth comparing types 'Exclude<{ key: "/__nuxt_error"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuery extends "" ? `${RouteRest}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegW...' and '{ score: MaxTuple<((R extends "/api/admin/emails" ? { key: "/api/admin/emails"; exact: true; score: []; catchAll: false; } : { key: "/api/admin/emails"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuer...'.
+app/pages/admin/users.vue(39,29): error TS2321: Excessive stack depth comparing types 'Exclude<{ key: "/robots.txt"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuery extends "" ? `${RouteRest}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWit...' and '{ score: MaxTuple<((R extends "/api/admin/emails" ? { key: "/api/admin/emails"; exact: true; score: []; catchAll: false; } : { key: "/api/admin/emails"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuer...'.
+app/pages/admin/users.vue(39,29): error TS2321: Excessive stack depth comparing types 'Exclude<{ key: "/sitemap.xml"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuery extends "" ? `${RouteRest}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWi...' and '{ score: MaxTuple<((R extends "/api/admin/emails" ? { key: "/api/admin/emails"; exact: true; score: []; catchAll: false; } : { key: "/api/admin/emails"; exact: false; score: `${R}/` extends `${infer RouteSeg}/${infer RouteRest}` ? `${RouteSeg}?` extends `${infer RouteSegWithoutQuery}?${string}` ? RouteSegWithoutQuer...'.
+
+ ERROR  Process exited with non-zero status (2)
+
+    at G._waitForOutput (node_modules/tinyexec/dist/main.js:574:92)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Object.run (node_modules/@nuxt/cli/dist/typecheck-DNhVOVc6.mjs:66:3)
+    at async runCommand (node_modules/citty/dist/index.mjs:316:16)
+    at async runCommand (node_modules/citty/dist/index.mjs:307:11)
+    at async runMain (node_modules/citty/dist/index.mjs:445:7) 
+
+
+
+ ERROR  Process exited with non-zero status (2)
+

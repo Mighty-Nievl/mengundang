@@ -107,7 +107,8 @@ const handleModalConfirm = async () => {
     
     try {
         if (modalType.value === 'delete') {
-            await $fetch('/api/invitations', { method: 'DELETE', body: { slug } })
+            await $fetch(`/api/invitations?slug=${slug}`, { method: 'DELETE' })
+            showToast('Satu undangan berhasil dihapus 🗑️', 'info')
         } else if (modalType.value === 'rename') {
             const newSlug = modalInputValue.value
             if (!newSlug || newSlug === slug) return
@@ -116,6 +117,7 @@ const handleModalConfirm = async () => {
                 return
             }
             await $fetch('/api/invitations', { method: 'PUT', body: { oldSlug: slug, newSlug } })
+            showToast('Link berhasil diganti! 🔗', 'success')
         } else if (modalType.value === 'invite') {
             const partnerEmail = modalInputValue.value
             if (!partnerEmail) return
@@ -123,6 +125,7 @@ const handleModalConfirm = async () => {
                 method: 'POST',
                 body: { action: 'add_partner', slug, partnerEmail }
             })
+            showToast('Partner berhasil ditambahkan! 👥', 'success')
         }
         
         fetchInvitations()

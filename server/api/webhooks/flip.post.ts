@@ -49,14 +49,14 @@ export default defineEventHandler(async (event) => {
 
     // Process Payment
     try {
-        await db.transaction(async (tx) => {
+        await db.transaction(async (tx: typeof db) => {
             // 1. Update Order Status
             await tx.update(orders)
                 .set({ status: 'approved', updatedAt: new Date() })
                 .where(eq(orders.id, order.id))
 
             // 2. Activate Plan
-            await applyPlanToUser(order.userId, order.plan)
+            await applyPlanToUser(order.userId, order.plan, tx)
 
             // 3. Handle Referral Bonus (if any)
             if (order.referrerId) {
