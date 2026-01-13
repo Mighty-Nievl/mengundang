@@ -141,6 +141,27 @@ onMounted(() => {
 useHead({
     title: computed(() => `The Wedding of ${props.content?.hero?.groomNickname || 'Groom'} & ${props.content?.hero?.brideNickname || 'Bride'}`)
 })
+
+const year = computed(() => {
+    // Try to get year from Hero date or Akad date
+    const d = props.content?.hero?.date || props.content?.events?.akad?.date
+    if (d) {
+        const parts = d.split(' ')
+        const y = parts.find(p => p.match(/^\d{4}$/))
+        return y || new Date().getFullYear().toString()
+    }
+    return new Date().getFullYear().toString()
+})
+
+const location = computed(() => {
+    const loc = props.content?.events?.akad?.location
+    if (loc) {
+        // Extract city (naive: last part after comma, or just the location)
+        const parts = loc.split(',')
+        return parts.length > 1 ? parts[parts.length - 1].trim() : 'Indonesia'
+    }
+    return 'Indonesia'
+})
 </script>
 
 <template>
@@ -182,26 +203,6 @@ useHead({
                  </svg>
             </div>
 
-const year = computed(() => {
-    // Try to get year from Hero date or Akad date
-    const d = props.content?.hero?.date || props.content?.events?.akad?.date
-    if (d) {
-        const parts = d.split(' ')
-        const y = parts.find(p => p.match(/^\d{4}$/))
-        return y || new Date().getFullYear().toString()
-    }
-    return new Date().getFullYear().toString()
-})
-
-const location = computed(() => {
-    const loc = props.content?.events?.akad?.location
-    if (loc) {
-        // Extract city (naive: last part after comma, or just the location)
-        const parts = loc.split(',')
-        return parts.length > 1 ? parts[parts.length - 1].trim() : 'Indonesia'
-    }
-    return 'Indonesia'
-})
 
 // ... inside template ...
 
@@ -383,7 +384,7 @@ const location = computed(() => {
         </section>
         
         <!-- 6. GALLERY: BENTO GRID / MOSAIC -->
-        <section id="gallery" class="min-h-screen w-full flex flex-col snap-start snap-always reveal-on-scroll bg-[#2C2C2C] text-[#F9F8F6] py-24 px-4 md:px-12">
+        <section id="gallery" v-if="content?.gallery?.length" class="min-h-screen w-full flex flex-col snap-start snap-always reveal-on-scroll bg-[#2C2C2C] text-[#F9F8F6] py-24 px-4 md:px-12">
              <div class="text-center mb-16">
                  <h2 class="font-lexend text-4xl md:text-6xl uppercase tracking-tighter font-black">Visual<br>Journal</h2>
             </div>
@@ -427,7 +428,7 @@ const location = computed(() => {
                 <h2 class="font-lexend text-[15vw] md:text-9xl font-black text-[#2C2C2C]/10 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-0 leading-none pointer-events-none">RSVP</h2>
                 
                 <div class="relative z-10 bg-white border border-[#2C2C2C] p-8 md:p-12 shadow-[20px_20px_0px_0px_rgba(44,44,44,1)]">
-                    <h2 class="font-lexend text-4xl font-bold uppercase mb-8 text-[#2C2C2C]">Attendace</h2>
+                    <h2 class="font-lexend text-4xl font-bold uppercase mb-8 text-[#2C2C2C]">Attendance</h2>
                     <RSVPSection 
                         :rsvp="content?.rsvp || {}" 
                         :couple-name="`${content?.hero?.groomNickname} & ${content?.hero?.brideNickname}`"
