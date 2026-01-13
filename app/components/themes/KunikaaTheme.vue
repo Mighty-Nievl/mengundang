@@ -150,32 +150,20 @@ useHead({
     <div class="pointer-events-none fixed inset-0 z-0 opacity-40 mix-blend-multiply" style="background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');"></div>
     <div class="pointer-events-none fixed inset-0 z-0 opacity-5" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
 
-    <!-- 0. INCOMPLETE DATA WARNING (FULL PAGE) -->
-    <div v-if="!isDataComplete" class="fixed inset-0 z-[100] bg-[#F9F8F6] flex items-center justify-center p-6 text-center relative z-50">
-         <div class="max-w-md space-y-6 relative">
-            <div class="w-16 h-16 border-2 border-[#2C2C2C] rounded-full flex items-center justify-center mx-auto text-2xl mb-6">
-                <i class="fas fa-pen-nib animate-pulse"></i>
-            </div>
-            <div v-if="isOwnerOrPartner">
-               <h2 class="text-4xl font-lexend uppercase font-bold text-[#2C2C2C] tracking-tighter mb-2">Editor Mode</h2>
-               <p class="text-[#555] text-sm leading-relaxed font-lora italic">You need to complete your invitation data.</p>
-                <div class="pt-8 mt-6 border-t border-[#2C2C2C]/10">
-                    <NuxtLink to="/dashboard" class="inline-flex items-center gap-3 bg-[#2C2C2C] text-white px-8 py-3 rounded-none font-bold hover:bg-black transition-all text-xs uppercase tracking-[0.2em] font-lexend">
-                        Edit Data
-                    </NuxtLink>
-                </div>
-            </div>
-        </div>
+    <!-- 0. EDITOR MODE INDICATOR (FLOATING) -->
+    <div v-if="!isDataComplete && isOwnerOrPartner" class="fixed top-4 right-4 z-[50]">
+        <NuxtLink to="/dashboard" class="bg-red-500 text-white px-4 py-2 rounded shadow-lg text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-colors">
+            <i class="fas fa-exclamation-circle mr-2"></i> Incomplete Data
+        </NuxtLink>
     </div>
 
-
     <!-- MAIN CONTENT -->
-    <template v-else>
-        <div 
+    <div 
         @scroll="handleScroll"
         ref="scrollContainer"
         class="h-full w-full overflow-y-auto scroll-smooth md:px-0 relative no-scrollbar z-10"
-        >
+    >
+        <!-- ... content ... -->
         
         <!-- 1. HERO: VOGUE COVER STYLE -->
         <section 
@@ -488,7 +476,6 @@ const location = computed(() => {
             
             <FloatingNav v-if="isOpened" :current-section-id="activeSectionId" @navigate="scrollToSection" />
         </ClientOnly>
-    </template>
   </div>
 </template>
 
