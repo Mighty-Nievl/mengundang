@@ -1,0 +1,1097 @@
+{
+    "manifest_version": "1.0.17",
+    "title": "Temy & Kifty",
+    "page_builder": "elementor",
+    "kit_version": "1.0.1",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/kitpro.site",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Metform",
+            "screenshot": "screenshots\/metform.jpg",
+            "source": "templates\/metform.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/metform\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-other",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.png",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/footer\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/header\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "404",
+            "screenshot": "screenshots\/404.jpg",
+            "source": "templates\/404.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/404\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact Us 2",
+            "screenshot": "screenshots\/contact-us-2.jpg",
+            "source": "templates\/contact-us-2.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/contact-us-2\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact Us 1",
+            "screenshot": "screenshots\/contact-us-1.jpg",
+            "source": "templates\/contact-us-1.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/contact-us-1\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Blog 2",
+            "screenshot": "screenshots\/blog-2.jpg",
+            "source": "templates\/blog-2.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/blog-2\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Blog 1",
+            "screenshot": "screenshots\/blog-1.jpg",
+            "source": "templates\/blog-1.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/blog-1\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Masonry Gallery",
+            "screenshot": "screenshots\/masonry-gallery.jpg",
+            "source": "templates\/masonry-gallery.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/masonry-gallery\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Justified Gallery",
+            "screenshot": "screenshots\/justified-gallery.jpg",
+            "source": "templates\/justified-gallery.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/justified-gallery\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Our Story",
+            "screenshot": "screenshots\/our-story.jpg",
+            "source": "templates\/our-story.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/our-story\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Bridesmaids and Groomsmen",
+            "screenshot": "screenshots\/bridesmaids-and-groomsmen.jpg",
+            "source": "templates\/bridesmaids-and-groomsmen.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/bridesmaids-and-groomsmen\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 2",
+            "screenshot": "screenshots\/home-2.jpg",
+            "source": "templates\/home-2.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/home-2\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home",
+            "screenshot": "screenshots\/home.jpg",
+            "source": "templates\/home.json",
+            "preview_url": "https:\/\/kitpro.site\/temy-and-kifty\/template-kit\/home\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor",
+            "version": "3.0.13",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "ElementsKit Lite",
+            "version": "2.0.9.1",
+            "file": "elementskit-lite\/elementskit-lite.php",
+            "author": "Wpmet"
+        },
+        {
+            "name": "MetForm",
+            "version": "1.3.9",
+            "file": "metform\/metform.php",
+            "author": "Wpmet"
+        },
+        {
+            "name": "JetWidgets For Elementor",
+            "version": "1.0.7",
+            "file": "jetwidgets-for-elementor\/jetwidgets-for-elementor.php",
+            "author": "Crocoblock"
+        }
+    ],
+    "images": [
+        {
+            "filename": "elegant-wedding-YQ7PJRX-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/elegant-wedding-YQ7PJRX-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/404.json",
+                    "name": "404"
+                }
+            ],
+            "filesize": 168939,
+            "dimensions": [
+                1512,
+                1008
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/elegant-wedding-YQ7PJRX"
+        },
+        {
+            "filename": "bridesmaids-with-bouquets-FNCBJXH-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bridesmaids-with-bouquets-FNCBJXH-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact-us-2.json",
+                    "name": "Contact Us 2"
+                },
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 147490,
+            "dimensions": [
+                1061,
+                650
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bridesmaids-with-bouquets-FNCBJXH"
+        },
+        {
+            "filename": "ornamen.png",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/ornamen.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us-2.json",
+                    "name": "Contact Us 2"
+                },
+                {
+                    "source": "templates\/blog-2.json",
+                    "name": "Blog 2"
+                },
+                {
+                    "source": "templates\/blog-1.json",
+                    "name": "Blog 1"
+                },
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 1151,
+            "dimensions": [
+                245,
+                37
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "cgcu.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/cgcu.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact-us-1.json",
+                    "name": "Contact Us 1"
+                }
+            ],
+            "filesize": 66050,
+            "dimensions": [
+                2000,
+                1150
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "blog-ornament.png",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/blog-ornament.png",
+            "templates": [
+                {
+                    "source": "templates\/blog-2.json",
+                    "name": "Blog 2"
+                },
+                {
+                    "source": "templates\/blog-1.json",
+                    "name": "Blog 1"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 60820,
+            "dimensions": [
+                0,
+                0
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "bride-with-groom-MVG8EYH-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-MVG8EYH-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/blog-1.json",
+                    "name": "Blog 1"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 140034,
+            "dimensions": [
+                1512,
+                1008
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-groom-MVG8EYH"
+        },
+        {
+            "filename": "wedding-couple-89TNEAC-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-89TNEAC-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                }
+            ],
+            "filesize": 176321,
+            "dimensions": [
+                1487,
+                992
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-89TNEAC"
+        },
+        {
+            "filename": "wedding-couple-WY5TFN9-low-res-portrait-1-2.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-WY5TFN9-low-res-portrait-1-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                }
+            ],
+            "filesize": 112760,
+            "dimensions": [
+                540,
+                809
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-WY5TFN9"
+        },
+        {
+            "filename": "wedding-engagement-time-ZKA5UZL-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-engagement-time-ZKA5UZL-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                }
+            ],
+            "filesize": 62240,
+            "dimensions": [
+                721,
+                479
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-engagement-time-ZKA5UZL"
+        },
+        {
+            "filename": "bride-with-groom-8BP7RV5-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-8BP7RV5-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                },
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 127376,
+            "dimensions": [
+                920,
+                1381
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-groom-8BP7RV5"
+        },
+        {
+            "filename": "bride-with-groom-9K7TA6Y-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-9K7TA6Y-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                },
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 139884,
+            "dimensions": [
+                1512,
+                1008
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-groom-9K7TA6Y"
+        },
+        {
+            "filename": "bride-with-groom-RTYPECN-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-RTYPECN-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                }
+            ],
+            "filesize": 150831,
+            "dimensions": [
+                1008,
+                1512
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-groom-RTYPECN"
+        },
+        {
+            "filename": "wedding-couple-5Y2K3PR-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-5Y2K3PR-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/masonry-gallery.json",
+                    "name": "Masonry Gallery"
+                }
+            ],
+            "filesize": 162691,
+            "dimensions": [
+                1492,
+                995
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-5Y2K3PR"
+        },
+        {
+            "filename": "wedding-couple-WY5TFN9-low-res-portrait.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-WY5TFN9-low-res-portrait.jpg",
+            "templates": [
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 83692,
+            "dimensions": [
+                540,
+                840
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-WY5TFN9"
+        },
+        {
+            "filename": "wedding-couple-4RJUVNA-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-4RJUVNA-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 160759,
+            "dimensions": [
+                1260,
+                840
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-4RJUVNA"
+        },
+        {
+            "filename": "bride-with-groom-P9EJTAS-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-P9EJTAS-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 152832,
+            "dimensions": [
+                1512,
+                1008
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-groom-P9EJTAS"
+        },
+        {
+            "filename": "wedding-couple-VJYAB49-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-VJYAB49-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/justified-gallery.json",
+                    "name": "Justified Gallery"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 172946,
+            "dimensions": [
+                1260,
+                840
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-VJYAB49"
+        },
+        {
+            "filename": "wedding-couple-9PHFX4B-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-9PHFX4B-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 166166,
+            "dimensions": [
+                1260,
+                840
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-9PHFX4B"
+        },
+        {
+            "filename": "wedding-couple-YZRBT8U-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-YZRBT8U-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 185597,
+            "dimensions": [
+                1512,
+                1008
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-YZRBT8U"
+        },
+        {
+            "filename": "wedding-couple-JYL2Q7V-theboy.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-JYL2Q7V-theboy.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 75550,
+            "dimensions": [
+                450,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-JYL2Q7V"
+        },
+        {
+            "filename": "wedding-couple-JYL2Q7V-thegirl.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-JYL2Q7V-thegirl.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 75196,
+            "dimensions": [
+                450,
+                630
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-JYL2Q7V"
+        },
+        {
+            "filename": "testibg.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/testibg.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 54300,
+            "dimensions": [
+                2000,
+                1041
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "wedding-couple-67PNUFH-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/wedding-couple-67PNUFH-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 136680,
+            "dimensions": [
+                1260,
+                840
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-67PNUFH"
+        },
+        {
+            "filename": "brunette-bride-in-fashion-white-wedding-dress-with-PL7WRSC-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/brunette-bride-in-fashion-white-wedding-dress-with-PL7WRSC-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 69376,
+            "dimensions": [
+                601,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/brunette-bride-in-fashion-white-wedding-dress-PL7WRSC"
+        },
+        {
+            "filename": "brunette-bride-in-fashion-white-wedding-dress-with-P8GUQ68-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/brunette-bride-in-fashion-white-wedding-dress-with-P8GUQ68-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 87804,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/brunette-bride-in-fashion-white-wedding-dress-with-P8GUQ68"
+        },
+        {
+            "filename": "brunette-bride-in-fashion-white-wedding-dress-with-PXAZKFT-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/brunette-bride-in-fashion-white-wedding-dress-with-PXAZKFT-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 88738,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/brunette-bride-in-fashion-white-wedding-dress-with-PXAZKFT"
+        },
+        {
+            "filename": "the-wedding-rings-close-up-P6DNNDT-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/the-wedding-rings-close-up-P6DNNDT-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 69663,
+            "dimensions": [
+                841,
+                561
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/the-wedding-rings-close-up-P6DNNDT"
+        },
+        {
+            "filename": "quotes.png",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/quotes.png",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 3886,
+            "dimensions": [
+                362,
+                295
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "quotes-2.png",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/quotes-2.png",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 3264,
+            "dimensions": [
+                340,
+                239
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "groom-getting-ready-in-morning-holding-red-tie-5KXGJRR-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/groom-getting-ready-in-morning-holding-red-tie-5KXGJRR-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 96317,
+            "dimensions": [
+                640,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/groom-getting-ready-in-morning-holding-red-tie-5KXGJRR"
+        },
+        {
+            "filename": "groomsman-at-a-wedding-gray-suit-detail-of-tie-flo-XBKCP78-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/groomsman-at-a-wedding-gray-suit-detail-of-tie-flo-XBKCP78-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 80832,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/groomsman-at-a-wedding-gray-suit-detail-of-tie-flo-XBKCP78"
+        },
+        {
+            "filename": "morning-preparations-before-wedding-day-HH3SE4W-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/morning-preparations-before-wedding-day-HH3SE4W-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-and-groomsmen.json",
+                    "name": "Bridesmaids and Groomsmen"
+                }
+            ],
+            "filesize": 57385,
+            "dimensions": [
+                640,
+                640
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/morning-preparations-before-wedding-day-HH3SE4W"
+        },
+        {
+            "filename": "bride-with-groom-XMKW72U-low-res.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bride-with-groom-XMKW72U-low-res.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 171692,
+            "dimensions": [
+                1512,
+                1008
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-groom-XMKW72U"
+        },
+        {
+            "filename": "bali-villa-bedroom-2LQ269V-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/bali-villa-bedroom-2LQ269V-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 131301,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/bali-villa-bedroom-2LQ269V"
+        },
+        {
+            "filename": "living-room-in-modern-villa-with-and-deck-outside-E27YWZ8-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/living-room-in-modern-villa-with-and-deck-outside-E27YWZ8-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 82211,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/living-room-in-modern-villa-with-and-deck-outside-E27YWZ8"
+        },
+        {
+            "filename": "multifunctional-bedroom-in-villa-PELVAGZ-low-res-square.jpg",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/multifunctional-bedroom-in-villa-PELVAGZ-low-res-square.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 96551,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/multifunctional-bedroom-in-villa-PELVAGZ"
+        },
+        {
+            "filename": "formbg.png",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/formbg.png",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 22195,
+            "dimensions": [
+                2000,
+                1149
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "Picture1.png",
+            "thumbnail_url": "https:\/\/kitpro.site\/temy-and-kifty\/wp-content\/uploads\/sites\/2\/2020\/11\/Picture1.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 24449,
+            "dimensions": [
+                996,
+                414
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        }
+    ]
+}

@@ -1,0 +1,1757 @@
+{
+    "manifest_version": "1.0.15",
+    "title": "Swansa - Wedding Organizer Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Gallery",
+            "screenshot": "screenshots\/gallery.jpg",
+            "source": "templates\/gallery.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/gallery\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/?elementor_library=footer",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "News",
+            "screenshot": "screenshots\/news.jpg",
+            "source": "templates\/news.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/?elementor_library=news",
+            "type": "archive",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-blog",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "archive",
+                "elementor_pro_conditions": [
+                    "include\/archive"
+                ],
+                "additional_template_information": [
+                    "This is a \"Archive\" template for Elementor Pro.",
+                    "This template will display on: All Archives."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home",
+            "screenshot": "screenshots\/home.jpg",
+            "source": "templates\/home.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/home\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "About",
+            "screenshot": "screenshots\/about.jpg",
+            "source": "templates\/about.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/about\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Services",
+            "screenshot": "screenshots\/services.jpg",
+            "source": "templates\/services.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/services\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Contact",
+            "screenshot": "screenshots\/contact.jpg",
+            "source": "templates\/contact.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/faq\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home 3",
+            "screenshot": "screenshots\/home-3.jpg",
+            "source": "templates\/home-3.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/home-3\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Testimonial",
+            "screenshot": "screenshots\/testimonial.jpg",
+            "source": "templates\/testimonial.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/testimonial\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "404 Page",
+            "screenshot": "screenshots\/404-page.jpg",
+            "source": "templates\/404-page.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/404-page\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-404",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Single Service",
+            "screenshot": "screenshots\/single-service.jpg",
+            "source": "templates\/single-service.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/single-service\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Pricing",
+            "screenshot": "screenshots\/pricing.jpg",
+            "source": "templates\/pricing.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/pricing\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home 2",
+            "screenshot": "screenshots\/home-2.jpg",
+            "source": "templates\/home-2.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/template-kit\/home-2\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/swansa.mjbletters.com\/?elementor_library=header",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "3.0.3",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.0.7",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "wedding-ceremony-area-2-e1604587479877.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/wedding-ceremony-area-2-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 263473,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-CMC9RPC"
+        },
+        {
+            "filename": "nane22.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/nane22-600x600.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 177137,
+            "dimensions": [
+                1400,
+                1400
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/floral-vector-line-art-PQLZPDJ"
+        },
+        {
+            "filename": "elderly-senior-couple-romance-love-concept-e1604588838579.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/elderly-senior-couple-romance-love-concept-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 308968,
+            "dimensions": [
+                1920,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P6XHP9B"
+        },
+        {
+            "filename": "couple-shaking-hands-with-counselor-thankful-for-help-in-office-e1604588662803.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/couple-shaking-hands-with-counselor-thankful-for-help-in-office-600x402.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 285572,
+            "dimensions": [
+                1920,
+                1286
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-C6PUA56"
+        },
+        {
+            "filename": "loving-young-couple-photo-shooting-and-relaxing-in-a-park--e1604588640651.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/loving-young-couple-photo-shooting-and-relaxing-in-a-park--600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 396542,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-GXEJPK3"
+        },
+        {
+            "filename": "bride-holding-wedding-bouquet-of-flowers-e1604589199248.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/bride-holding-wedding-bouquet-of-flowers-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 145760,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-XSLXFDB"
+        },
+        {
+            "filename": "bride-and-groom-cutting-stylish-wedding-cake-at-wedding-reception-e1604589184179.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/bride-and-groom-cutting-stylish-wedding-cake-at-wedding-reception-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 230898,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-DF76K7T"
+        },
+        {
+            "filename": "bride-in-beautiful-dress-sitting-resting-on-sofa-indoors-e1604588680397.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/bride-in-beautiful-dress-sitting-resting-on-sofa-indoors-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 258103,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-MPC5KT9"
+        },
+        {
+            "filename": "wedding-couple-e1604588651865.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/wedding-couple-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 264442,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-9PHFX4B"
+        },
+        {
+            "filename": "a-bride-and-groom-a-young-woman-laughing-and-draping-her-veil-over-her-husband-s-head--e1604588496811.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/a-bride-and-groom-a-young-woman-laughing-and-draping-her-veil-over-her-husband-s-head--600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/404-page.json",
+                    "name": "404 Page"
+                }
+            ],
+            "filesize": 257313,
+            "dimensions": [
+                1280,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-V2F4G2A"
+        },
+        {
+            "filename": "marrieds-august-2017-e1604588097983.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/marrieds-august-2017-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 427581,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-NLHTFVQ"
+        },
+        {
+            "filename": "wedding-couple-indoors-is-hugging-each-other-e1604587133761.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/wedding-couple-indoors-is-hugging-each-other-600x899.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 233922,
+            "dimensions": [
+                1282,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P9XRSWP"
+        },
+        {
+            "filename": "wedding-arch-reception-with-sea-view-in-montenegro-e1604589211335.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/wedding-arch-reception-with-sea-view-in-montenegro-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 307721,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-DF3A2FT"
+        },
+        {
+            "filename": "wedding-arch-e1604589077541.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/wedding-arch-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 294439,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-NGMEHJQ"
+        },
+        {
+            "filename": "spring-e1604588627276.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/spring-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 363990,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-EVDWTVT"
+        },
+        {
+            "filename": "wedding-makeup-artist-making-a-make-up-for-bride-e1604589172730.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/wedding-makeup-artist-making-a-make-up-for-bride-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 251305,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PXEHUUH"
+        },
+        {
+            "filename": "beautiful-girl-with-braids-hairstyle-e1604587338174.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/beautiful-girl-with-braids-hairstyle-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 256067,
+            "dimensions": [
+                1280,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-E2BL5GV"
+        },
+        {
+            "filename": "1-01-1.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/1-01-1-600x179.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 98189,
+            "dimensions": [
+                1547,
+                462
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "none16.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/none16-600x663.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 181913,
+            "dimensions": [
+                1400,
+                1547
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/floral-vector-line-art-PQLZPDJ"
+        },
+        {
+            "filename": "dummy-logo-1b.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/dummy-logo-1b.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 8551,
+            "dimensions": [
+                300,
+                150
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "dummy-logo-2b.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/dummy-logo-2b.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 8136,
+            "dimensions": [
+                300,
+                150
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "dummy-logo-3b.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/dummy-logo-3b.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 9054,
+            "dimensions": [
+                300,
+                150
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "dummy-logo-4b.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/dummy-logo-4b.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 10134,
+            "dimensions": [
+                300,
+                150
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "dummy-logo-5b.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/dummy-logo-5b.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 8953,
+            "dimensions": [
+                300,
+                150
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "dummy-logo-6b.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/dummy-logo-6b.png",
+            "templates": [
+                {
+                    "source": "templates\/gallery.json",
+                    "name": "Gallery"
+                },
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 10119,
+            "dimensions": [
+                300,
+                150
+            ],
+            "image_source": "cc0",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "wedding-couple-smiling-at-each-other-e1604588518357.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/wedding-couple-smiling-at-each-other-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                }
+            ],
+            "filesize": 255733,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-Z3A375H"
+        },
+        {
+            "filename": "celebrating-wedding-anniversary-e1604588532425.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/celebrating-wedding-anniversary-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                }
+            ],
+            "filesize": 260498,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-JM236HW"
+        },
+        {
+            "filename": "young-man-makes-a-wedding-proposal-to-his-woman-e1604588247679.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/young-man-makes-a-wedding-proposal-to-his-woman-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                },
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 243367,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-HRFCQA8"
+        },
+        {
+            "filename": "sensual-couple-rooftop-romance-e1604588112728.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/sensual-couple-rooftop-romance-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "footer"
+                }
+            ],
+            "filesize": 202819,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3Z8CQDF"
+        },
+        {
+            "filename": "wedding-details-e1604588231703.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/wedding-details-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/news.json",
+                    "name": "News"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 407954,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PCQTSRE"
+        },
+        {
+            "filename": "bride-and-groom-kissing-on-their-wedding-day-outdoors-e1604586578111.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/bride-and-groom-kissing-on-their-wedding-day-outdoors-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                }
+            ],
+            "filesize": 199245,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PDBPTSR"
+        },
+        {
+            "filename": "wedding-flowers-woman-holding-colorful-bouquet-with-her-hands-on-wedding-day-e1604587861315.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/wedding-flowers-woman-holding-colorful-bouquet-with-her-hands-on-wedding-day-600x864.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 148851,
+            "dimensions": [
+                1333,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PCE2LQH"
+        },
+        {
+            "filename": "decorated-wedding-cake-on-table-e1604588203773.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/decorated-wedding-cake-on-table-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 234729,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-A8W2GFS"
+        },
+        {
+            "filename": "wedding-bouquet-e1604586591544.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/wedding-bouquet-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 293696,
+            "dimensions": [
+                1920,
+                1370
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P598S6A"
+        },
+        {
+            "filename": "floral-background-lot-of-artificial-flowers-in-colorful-composition-e1604588279630.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/floral-background-lot-of-artificial-flowers-in-colorful-composition-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/testimonial.json",
+                    "name": "Testimonial"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                }
+            ],
+            "filesize": 288469,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PW3GCVM"
+        },
+        {
+            "filename": "wedding-e1604588123137.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/wedding-600x398.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 194979,
+            "dimensions": [
+                1920,
+                1275
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-4DMPS2U"
+        },
+        {
+            "filename": "team-1.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/team-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 42852,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-K8SU9UU"
+        },
+        {
+            "filename": "team-2.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/team-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 39279,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-K9BS2R7"
+        },
+        {
+            "filename": "team-3.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/10\/team-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 35056,
+            "dimensions": [
+                600,
+                600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-ZLSXRU8"
+        },
+        {
+            "filename": "bride-holding-wedding-bouquet-in-fine-art-style-e1604586612993.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/bride-holding-wedding-bouquet-in-fine-art-style-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 258810,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-T59S4J8"
+        },
+        {
+            "filename": "wedding-decor-e1604587003845.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/wedding-decor-600x899.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 274470,
+            "dimensions": [
+                1282,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-TW8YDPA"
+        },
+        {
+            "filename": "close-up-female-hand-holding-wedding-rings-box-e1604588410767.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/close-up-female-hand-holding-wedding-rings-box-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 190043,
+            "dimensions": [
+                1920,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-AYHHU4D"
+        },
+        {
+            "filename": "wedding-arch-decoration-with-beautiful-view-e1604588161302.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/wedding-arch-decoration-with-beautiful-view-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 400296,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-E7ZQ2L4"
+        },
+        {
+            "filename": "woman-with-engagement-ring-and-peony-bouquet-e1604587587566.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/woman-with-engagement-ring-and-peony-bouquet-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 236686,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-K4W7N4M"
+        },
+        {
+            "filename": "wedding-rings-e1604587146123.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/wedding-rings-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 343064,
+            "dimensions": [
+                1920,
+                1282
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-89BXZYT"
+        },
+        {
+            "filename": "young-wedding-couple-e1604586695470.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/young-wedding-couple-600x374.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                },
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 300793,
+            "dimensions": [
+                1920,
+                1197
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PC485WY"
+        },
+        {
+            "filename": "happy-groom-seen-through-bride-s-veil-e1604588422415.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/happy-groom-seen-through-bride-s-veil-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 327141,
+            "dimensions": [
+                1920,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-ATTCKYJ"
+        },
+        {
+            "filename": "young-woman-wearing-white-clothes-holding-bouquet-square-crop-e1604588397315.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/young-woman-wearing-white-clothes-holding-bouquet-square-crop-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 344605,
+            "dimensions": [
+                1920,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PH6SRC8"
+        },
+        {
+            "filename": "elegant-wedding-arch-in-olive-trees-park-e1604588854188.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/elegant-wedding-arch-in-olive-trees-park-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-3.json",
+                    "name": "Home 3"
+                }
+            ],
+            "filesize": 662974,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-9DJVD84"
+        },
+        {
+            "filename": "banquet-hall-for-weddings-with-decorative-elements-e1604587537731.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/08\/banquet-hall-for-weddings-with-decorative-elements-600x899.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-service.json",
+                    "name": "Single Service"
+                }
+            ],
+            "filesize": 325638,
+            "dimensions": [
+                1282,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-5T9AF9E"
+        },
+        {
+            "filename": "male-putting-engagement-ring-on-woman-hand-outdoors-in-a-golden-e1604587217267.jpg",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/07\/male-putting-engagement-ring-on-woman-hand-outdoors-in-a-golden-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-2.json",
+                    "name": "Home 2"
+                }
+            ],
+            "filesize": 182208,
+            "dimensions": [
+                1281,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-R3CAYKS"
+        },
+        {
+            "filename": "logo-swansa.png",
+            "thumbnail_url": "https:\/\/swansa.mjbletters.com\/wp-content\/uploads\/2020\/09\/logo-swansa.png",
+            "templates": [
+                {
+                    "source": "templates\/header.json",
+                    "name": "header"
+                }
+            ],
+            "filesize": 10829,
+            "dimensions": [
+                186,
+                158
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        }
+    ]
+}

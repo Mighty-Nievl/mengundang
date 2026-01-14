@@ -1,0 +1,408 @@
+{
+    "version": "0.4",
+    "title": "Global Kit Styles",
+    "type": "section",
+    "metadata": {
+        "template_type": "global-styles",
+        "include_in_zip": "1",
+        "elementor_pro_required": null,
+        "additional_template_information": [
+            "These are the global theme styles configured through the Elementor Theme Styles area."
+        ],
+        "wp_page_template": "default"
+    },
+    "content": [],
+    "page_settings": {
+        "system_colors": [
+            {
+                "_id": "primary",
+                "title": "Primary",
+                "color": "#734023"
+            },
+            {
+                "_id": "secondary",
+                "title": "Secondary",
+                "color": "#CD8359"
+            },
+            {
+                "_id": "text",
+                "title": "Text",
+                "color": "#868686"
+            },
+            {
+                "_id": "accent",
+                "title": "Text 2",
+                "color": "#494949"
+            }
+        ],
+        "custom_colors": [
+            {
+                "_id": "c5e329c",
+                "title": "Heading",
+                "color": "#242424"
+            },
+            {
+                "_id": "2eaa660",
+                "title": "Sub Heading",
+                "color": "#494949"
+            },
+            {
+                "_id": "e3f5b88",
+                "title": "Button Text Hover",
+                "color": "#FFFFFF"
+            },
+            {
+                "_id": "6906203",
+                "title": "Colored Bg Color",
+                "color": "#FFFFFF"
+            },
+            {
+                "_id": "5238240",
+                "title": "Scheme 1",
+                "color": "#FCB588"
+            },
+            {
+                "_id": "775112a",
+                "title": "Scheme 2",
+                "color": "#CDC0BA"
+            }
+        ],
+        "system_typography": [
+            {
+                "_id": "primary",
+                "title": "Hero Heading",
+                "typography_typography": "custom",
+                "typography_font_family": "Parisienne",
+                "typography_font_weight": "100",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 5,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 4,
+                    "sizes": []
+                },
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 3,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "secondary",
+                "title": "Hero Sub Heading",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_weight": "100",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1.5,
+                    "sizes": []
+                },
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_letter_spacing": {
+                    "unit": "px",
+                    "size": 2,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 1.25,
+                    "sizes": []
+                },
+                "typography_line_height_mobile": {
+                    "unit": "em",
+                    "size": 1.6,
+                    "sizes": []
+                },
+                "typography_letter_spacing_tablet": {
+                    "unit": "px",
+                    "size": 1,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "text",
+                "title": "Header",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_weight": "400",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 3,
+                    "sizes": []
+                },
+                "typography_line_height": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 2,
+                    "sizes": []
+                },
+                "typography_line_height_tablet": {
+                    "unit": "em",
+                    "size": 1.3,
+                    "sizes": []
+                },
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 2,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "accent",
+                "title": "Subheader",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_weight": "500",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1.5,
+                    "sizes": []
+                },
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 1.5,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 1.5,
+                    "sizes": []
+                },
+                "typography_line_height_tablet": {
+                    "unit": "em",
+                    "size": 1.6,
+                    "sizes": []
+                }
+            }
+        ],
+        "custom_typography": [
+            {
+                "_id": "5e9d143",
+                "title": "Text",
+                "typography_typography": "custom",
+                "typography_font_family": "Work Sans",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_line_height": {
+                    "unit": "em",
+                    "size": 1.6,
+                    "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 0.875,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 0.875,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "d464553",
+                "title": "Nav Text",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_font_weight": "700"
+            },
+            {
+                "_id": "33f0857",
+                "title": "Button Text",
+                "typography_typography": "custom",
+                "typography_font_family": "Work Sans",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 0.875,
+                    "sizes": []
+                },
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 0.875,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "15fe61e",
+                "title": "Quote Text Playfair",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_font_style": "italic",
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 0.875,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "0716003",
+                "title": "Quote Text Playfair 2",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1.5,
+                    "sizes": []
+                },
+                "typography_font_weight": "100",
+                "typography_font_style": "italic",
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "3d20e66",
+                "title": "Decoration Font",
+                "typography_typography": "custom",
+                "typography_font_family": "Parisienne",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 2.5,
+                    "sizes": []
+                },
+                "typography_font_weight": "100",
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 2,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "488c6c5",
+                "title": "Hero Heading 2",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 4,
+                    "sizes": []
+                },
+                "typography_font_weight": "100",
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 2.5,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "0ad8011",
+                "title": "Quote Text Work Sans",
+                "typography_typography": "custom",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1,
+                    "sizes": []
+                },
+                "typography_font_weight": "400",
+                "typography_font_style": "italic",
+                "typography_line_height": {
+                    "unit": "em",
+                    "size": 2,
+                    "sizes": []
+                },
+                "typography_font_family": "Work Sans",
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 0.875,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": "",
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "25e036f",
+                "title": "Logo Font",
+                "typography_typography": "custom",
+                "typography_font_family": "Parisienne",
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 1.5,
+                    "sizes": []
+                },
+                "typography_font_weight": "100",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 2,
+                    "sizes": []
+                }
+            },
+            {
+                "_id": "1e3840f",
+                "title": "Ekits Blog Title",
+                "typography_typography": "custom",
+                "typography_font_family": "Playfair Display",
+                "typography_font_size": {
+                    "unit": "em",
+                    "size": 1.25,
+                    "sizes": []
+                },
+                "typography_font_size_tablet": {
+                    "unit": "em",
+                    "size": 1.25,
+                    "sizes": []
+                },
+                "typography_font_size_mobile": {
+                    "unit": "em",
+                    "size": 1.25,
+                    "sizes": []
+                }
+            }
+        ],
+        "default_generic_fonts": "Sans-serif",
+        "site_name": "Temy & Kifty",
+        "site_description": "Wedding Template Kit",
+        "page_title_selector": "h1.entry-title",
+        "activeItemIndex": 1,
+        "button_text_color": "#734023",
+        "button_background_color": "#FFFFFF",
+        "__globals__": {
+            "button_typography_typography": "globals\/typography?id=33f0857",
+            "button_text_color": "globals\/colors?id=primary",
+            "button_background_color": "globals\/colors?id=e3f5b88",
+            "form_label_color": "globals\/colors?id=accent",
+            "form_label_typography_typography": "globals\/typography?id=33f0857",
+            "form_field_typography_typography": "globals\/typography?id=5e9d143",
+            "form_field_text_color": "globals\/colors?id=text",
+            "form_field_background_color": "globals\/colors?id=6906203",
+            "form_field_focus_text_color": "globals\/colors?id=accent",
+            "form_field_focus_background_color": "globals\/colors?id=6906203"
+        }
+    }
+}

@@ -1,0 +1,203 @@
+{
+    "version": "0.4",
+    "title": "Error Page",
+    "type": "single",
+    "metadata": {
+        "template_type": "single-404",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "elementor_library_type": "single",
+        "elementor_pro_conditions": [
+            "include\/singular\/not_found404"
+        ],
+        "additional_template_information": [
+            "This is a \"Single\" template for Elementor Pro.",
+            "This template will display on: 404 Page."
+        ],
+        "wp_page_template": "default"
+    },
+    "content": [
+        {
+            "id": "30d85fcb",
+            "settings": {
+                "height": "full",
+                "background_background": "classic",
+                "background_image": {
+                    "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/alexandra-gorn-VbD6KaNCIdw-unsplash-1-1.jpg",
+                    "id": 153
+                },
+                "background_position": "center center",
+                "background_repeat": "no-repeat",
+                "background_size": "cover",
+                "background_overlay_background": "classic",
+                "background_overlay_color": "#FFFFFF",
+                "background_overlay_color_b": "#99BDDF",
+                "background_overlay_gradient_angle": {
+                    "unit": "deg",
+                    "size": 170,
+                    "sizes": []
+                },
+                "background_overlay_opacity": {
+                    "unit": "px",
+                    "size": 0.8000000000000000444089209850062616169452667236328125,
+                    "sizes": []
+                },
+                "padding": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": "0",
+                    "bottom": "0",
+                    "left": "0",
+                    "isLinked": false
+                },
+                "padding_mobile": {
+                    "unit": "px",
+                    "top": "60",
+                    "right": "0",
+                    "bottom": "60",
+                    "left": "0",
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "73355a6f",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null
+                    },
+                    "elements": [
+                        {
+                            "id": "1fa05ca1",
+                            "settings": {
+                                "__dynamic__": {
+                                    "image": "[elementor-tag id=\"\" name=\"site-logo\" settings=\"%7B%7D\"]",
+                                    "link": "[elementor-tag id=\"\" name=\"site-url\" settings=\"%7B%7D\"]"
+                                },
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "100",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "_margin_mobile": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "40",
+                                    "left": "0",
+                                    "isLinked": false
+                                }
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "theme-site-logo",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "18dd29b5",
+                            "settings": {
+                                "title": "Oooops...",
+                                "header_size": "p",
+                                "align": "center",
+                                "title_color": "#322F3D",
+                                "typography_typography": "custom",
+                                "typography_font_family": "Pinyon Script",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 34,
+                                    "sizes": []
+                                }
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "heading",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "4c26571b",
+                            "settings": {
+                                "title": "404",
+                                "align": "center",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "title_color": "#2F4F75",
+                                "header_size": "h1",
+                                "typography_typography": "custom",
+                                "typography_font_weight": "700",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 200,
+                                    "sizes": []
+                                },
+                                "typography_font_style": "italic",
+                                "typography_line_height": {
+                                    "unit": "px",
+                                    "size": 220,
+                                    "sizes": []
+                                },
+                                "typography_font_size_mobile": {
+                                    "unit": "px",
+                                    "size": 150,
+                                    "sizes": []
+                                }
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "heading",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "b46d3da",
+                            "settings": {
+                                "title": "Error Page",
+                                "align": "center",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "40",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "title_color": "#2F4F75",
+                                "typography_typography": "custom",
+                                "typography_font_weight": "400"
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "heading",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "16b727d1",
+                            "settings": {
+                                "text": "Home Page",
+                                "align": "center"
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "button",
+                            "elType": "widget"
+                        }
+                    ],
+                    "isInner": false,
+                    "elType": "column"
+                }
+            ],
+            "isInner": false,
+            "elType": "section"
+        }
+    ],
+    "page_settings": {
+        "page_template": "elementor_canvas"
+    }
+}

@@ -1,0 +1,1633 @@
+{
+    "manifest_version": "1.0.16",
+    "title": "Weedream - Wedding Elementor Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Decoration Detail",
+            "screenshot": "screenshots\/decoration-detail.jpg",
+            "source": "templates\/decoration-detail.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/decoration-detail\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Decoration",
+            "screenshot": "screenshots\/decoration.jpg",
+            "source": "templates\/decoration.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/decoration\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Menu List",
+            "screenshot": "screenshots\/menu-list.jpg",
+            "source": "templates\/menu-list.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/menu-list\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Cooming Soon",
+            "screenshot": "screenshots\/cooming-soon.jpg",
+            "source": "templates\/cooming-soon.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/cooming-soon\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Contact Us",
+            "screenshot": "screenshots\/contact-us.jpg",
+            "source": "templates\/contact-us.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/contact-us\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Meet The Team",
+            "screenshot": "screenshots\/meet-the-team.jpg",
+            "source": "templates\/meet-the-team.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/meet-the-team\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-team",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Services",
+            "screenshot": "screenshots\/services.jpg",
+            "source": "templates\/services.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/services\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-services",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Galleries",
+            "screenshot": "screenshots\/galleries.jpg",
+            "source": "templates\/galleries.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/galleries\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-gallery",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "About",
+            "screenshot": "screenshots\/about.jpg",
+            "source": "templates\/about.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/about\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-about",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Homepage",
+            "screenshot": "screenshots\/homepage.jpg",
+            "source": "templates\/homepage.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/template-kit\/homepage\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "OffCanvasMenu",
+            "screenshot": "screenshots\/offcanvasmenu.jpg",
+            "source": "templates\/offcanvasmenu.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/?elementor_library=offcanvasmenu",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Archive Blog",
+            "screenshot": "screenshots\/archive-blog.jpg",
+            "source": "templates\/archive-blog.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/?elementor_library=archive-blog",
+            "type": "archive",
+            "category": "page",
+            "metadata": {
+                "template_type": "archive-blog",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "archive",
+                "elementor_pro_conditions": [
+                    "include\/archive\/post_archive"
+                ],
+                "additional_template_information": [
+                    "This is a \"Archive\" template for Elementor Pro.",
+                    "This template will display on: Posts Archive."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/?elementor_library=footer",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/theme.fanasstudio.com\/weedream\/?elementor_library=header",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "3.0.5",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.0.11",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "ElementsKit Lite",
+            "version": "2.0.9.1",
+            "file": "elementskit-lite\/elementskit-lite.php",
+            "author": "Wpmet"
+        }
+    ],
+    "images": [
+        {
+            "filename": "close-up-wedding-ring-on-white-2-KLJRH37.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/close-up-wedding-ring-on-white-2-KLJRH37-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration-detail.json",
+                    "name": "Decoration Detail"
+                }
+            ],
+            "filesize": 234593,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-KLJRH37"
+        },
+        {
+            "filename": "wedding-couple-at-wedding-ceremony-back-view-W9B4A35.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-couple-at-wedding-ceremony-back-view-W9B4A35-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration-detail.json",
+                    "name": "Decoration Detail"
+                },
+                {
+                    "source": "templates\/decoration.json",
+                    "name": "Decoration"
+                }
+            ],
+            "filesize": 446132,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-W9B4A35"
+        },
+        {
+            "filename": "Group-103.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Group-103.png",
+            "templates": [
+                {
+                    "source": "templates\/decoration-detail.json",
+                    "name": "Decoration Detail"
+                }
+            ],
+            "filesize": 1645,
+            "dimensions": [
+                77,
+                77
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "Group-104.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Group-104.png",
+            "templates": [
+                {
+                    "source": "templates\/decoration-detail.json",
+                    "name": "Decoration Detail"
+                }
+            ],
+            "filesize": 2105,
+            "dimensions": [
+                77,
+                77
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "Group-106.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Group-106.png",
+            "templates": [
+                {
+                    "source": "templates\/decoration-detail.json",
+                    "name": "Decoration Detail"
+                }
+            ],
+            "filesize": 1425,
+            "dimensions": [
+                77,
+                77
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "flowers-composition-frame-made-of-pink-rose-on-gra-Y3Z2LHZ-scaled-e1602244622914.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/flowers-composition-frame-made-of-pink-rose-on-gra-Y3Z2LHZ-scaled-e1602051985638-600x343.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration-detail.json",
+                    "name": "Decoration Detail"
+                },
+                {
+                    "source": "templates\/decoration.json",
+                    "name": "Decoration"
+                },
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                },
+                {
+                    "source": "templates\/cooming-soon.json",
+                    "name": "Cooming Soon"
+                },
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                },
+                {
+                    "source": "templates\/archive-blog.json",
+                    "name": "Archive Blog"
+                }
+            ],
+            "filesize": 138575,
+            "dimensions": [
+                1920,
+                1098
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/flowers-composition-frame-made-of-pink-rose-on-gra-Y3Z2LHZ"
+        },
+        {
+            "filename": "young-woman-wearing-white-clothes-holding-flowers-PQTUQ2P-e1602234803431.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/young-woman-wearing-white-clothes-holding-flowers-PQTUQ2P-e1602234803431-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration.json",
+                    "name": "Decoration"
+                }
+            ],
+            "filesize": 431612,
+            "dimensions": [
+                1905,
+                1905
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PQTUQ2P"
+        },
+        {
+            "filename": "wedding-flower-decoration-EZKUV7Q.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-flower-decoration-EZKUV7Q-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration.json",
+                    "name": "Decoration"
+                }
+            ],
+            "filesize": 470940,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-EZKUV7Q"
+        },
+        {
+            "filename": "couple-in-love-with-traditional-folk-costumes-PUTXURP-e1602237137929.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/couple-in-love-with-traditional-folk-costumes-PUTXURP-e1602237137929-600x414.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration.json",
+                    "name": "Decoration"
+                }
+            ],
+            "filesize": 321554,
+            "dimensions": [
+                1905,
+                1315
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PUTXURP"
+        },
+        {
+            "filename": "mature-friends-fine-dining-outdoors-concept-P397W6U.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/mature-friends-fine-dining-outdoors-concept-P397W6U-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/decoration.json",
+                    "name": "Decoration"
+                }
+            ],
+            "filesize": 390724,
+            "dimensions": [
+                1920,
+                1281
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P397W6U"
+        },
+        {
+            "filename": "hot-dog-with-cucumber-carrot-tomato-and-lettuce-on-M7XJLFY-e1602214808477.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/hot-dog-with-cucumber-carrot-tomato-and-lettuce-on-M7XJLFY-e1602214808477-600x312.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 128696,
+            "dimensions": [
+                1920,
+                998
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-M7XJLFY"
+        },
+        {
+            "filename": "eating-sushi-rolls-at-japanese-food-restaurant-PJ2H4J4-e1602243742961.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/eating-sushi-rolls-at-japanese-food-restaurant-PJ2H4J4-e1602243742961-600x398.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                }
+            ],
+            "filesize": 288952,
+            "dimensions": [
+                1910,
+                1267
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PJ2H4J4"
+        },
+        {
+            "filename": "bowl-of-asian-food-with-konnyaku-Q4TWUVR-e1602244031384.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/bowl-of-asian-food-with-konnyaku-Q4TWUVR-e1602244031384-600x389.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                }
+            ],
+            "filesize": 271879,
+            "dimensions": [
+                1900,
+                1233
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-Q4TWUVR"
+        },
+        {
+            "filename": "simple-authentic-nasi-lemak-wrapped-in-banana-leaf-VDQ9J6A-e1602243932323.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/simple-authentic-nasi-lemak-wrapped-in-banana-leaf-VDQ9J6A-e1602243932323-600x397.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                }
+            ],
+            "filesize": 267016,
+            "dimensions": [
+                1900,
+                1257
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-VDQ9J6A"
+        },
+        {
+            "filename": "vegetarian-food-PVTSFVS-e1602243907466.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/vegetarian-food-PVTSFVS-e1602243907466-600x399.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                }
+            ],
+            "filesize": 259739,
+            "dimensions": [
+                1900,
+                1262
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PVTSFVS"
+        },
+        {
+            "filename": "lemonade-traditional-summer-drink-34URW8L-e1602243782224.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/lemonade-traditional-summer-drink-34URW8L-e1602243782224-600x399.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                }
+            ],
+            "filesize": 242804,
+            "dimensions": [
+                1900,
+                1262
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-34URW8L"
+        },
+        {
+            "filename": "modern-wedding-cake-at-wedding-reception-HL5ZKA6-e1602244198315.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/modern-wedding-cake-at-wedding-reception-HL5ZKA6-e1602244198315-600x393.jpg",
+            "templates": [
+                {
+                    "source": "templates\/menu-list.json",
+                    "name": "Menu List"
+                }
+            ],
+            "filesize": 288819,
+            "dimensions": [
+                1900,
+                1243
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-HL5ZKA6"
+        },
+        {
+            "filename": "wedding-couple-is-holding-hands-PDG2JNC.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-couple-is-holding-hands-PDG2JNC-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                }
+            ],
+            "filesize": 456093,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PDG2JNC"
+        },
+        {
+            "filename": "Rectangle-131-1.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Rectangle-131-1-600x122.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 118721,
+            "dimensions": [
+                1169,
+                238
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/seamless-sand-texture-PWFKRSQ"
+        },
+        {
+            "filename": "Group-100.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Group-100.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 6144,
+            "dimensions": [
+                170,
+                170
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "Group-101.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Group-101.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 5967,
+            "dimensions": [
+                170,
+                170
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "Group-102.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/Group-102.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-us.json",
+                    "name": "Contact Us"
+                },
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 5446,
+            "dimensions": [
+                170,
+                170
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "people-cling-wine-glasses-on-wedding-reception-wit-PR754B6-e1602244318535.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/people-cling-wine-glasses-on-wedding-reception-wit-PR754B6-600x342.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 352546,
+            "dimensions": [
+                1920,
+                1094
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PR754B6"
+        },
+        {
+            "filename": "flower-background-P5L8XE4.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/flower-background-P5L8XE4-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 191085,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P5L8XE4"
+        },
+        {
+            "filename": "laughing-young-businessman-P7RQ6U4.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/laughing-young-businessman-P7RQ6U4-600x682.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                },
+                {
+                    "source": "templates\/offcanvasmenu.json",
+                    "name": "OffCanvasMenu"
+                }
+            ],
+            "filesize": 467880,
+            "dimensions": [
+                1250,
+                1421
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P7RQ6U4"
+        },
+        {
+            "filename": "happy-woman-drinking-coffee-3JPXVUC-e1602201363486.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/happy-woman-drinking-coffee-3JPXVUC-e1602201363486-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 197357,
+            "dimensions": [
+                1250,
+                1250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-3JPXVUC"
+        },
+        {
+            "filename": "happy-woman-FEBTA7X-scaled-e1602201537855.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/happy-woman-FEBTA7X-scaled-e1602201537855-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 283650,
+            "dimensions": [
+                1708,
+                1708
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-woman-FEBTA7X"
+        },
+        {
+            "filename": "happy-woman-portrait-with-take-away-cup-6NWA9CK-e1602201428717.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/happy-woman-portrait-with-take-away-cup-6NWA9CK-e1602201428717-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 209975,
+            "dimensions": [
+                1250,
+                1250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-6NWA9CK"
+        },
+        {
+            "filename": "happy-woman-sitting-outside-looking-away-F92XACS-e1602201460484.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/happy-woman-sitting-outside-looking-away-F92XACS-e1602201460484-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 267572,
+            "dimensions": [
+                1250,
+                1250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-F92XACS"
+        },
+        {
+            "filename": "confident-businessman-QWVC4G6-e1602201396464.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/confident-businessman-QWVC4G6-e1602201396464-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 140333,
+            "dimensions": [
+                1250,
+                1250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-QWVC4G6"
+        },
+        {
+            "filename": "successful-businesswoman-or-entrepreneur-talking-o-X6QC4XG-e1602201493687.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/successful-businesswoman-or-entrepreneur-talking-o-X6QC4XG-e1602201493687-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/meet-the-team.json",
+                    "name": "Meet The Team"
+                }
+            ],
+            "filesize": 147633,
+            "dimensions": [
+                1250,
+                1250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-X6QC4XG"
+        },
+        {
+            "filename": "caucasian-romantic-young-bride-celebrating-his-mar-SURZ3B6-e1602149809237.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/caucasian-romantic-young-bride-celebrating-his-mar-SURZ3B6-e1602149809237-600x397.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 319286,
+            "dimensions": [
+                1905,
+                1262
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-SURZ3B6"
+        },
+        {
+            "filename": "antique-wedding-reception-setup-PSCYCAG-scaled-e1602244373540.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/antique-wedding-reception-setup-PSCYCAG-scaled-e1602167457288-600x390.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 266015,
+            "dimensions": [
+                1920,
+                1248
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/antique-wedding-reception-setup-PSCYCAG"
+        },
+        {
+            "filename": "wedding-preparation-setting-details-romantic-cerem-PDUA7C2-scaled-e1602244394658.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-preparation-setting-details-romantic-cerem-PDUA7C2-scaled-e1602167437487-600x405.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 407894,
+            "dimensions": [
+                1920,
+                1296
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-preparation-setting-details-romantic-cerem-PDUA7C2"
+        },
+        {
+            "filename": "wedding-chairs-with-flowers-decoration-GLF5NX2.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-chairs-with-flowers-decoration-GLF5NX2-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 412183,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-GLF5NX2"
+        },
+        {
+            "filename": "caucasian-romantic-young-couple-celebrating-their-KNFRTWY-scaled-e1602154681988.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/caucasian-romantic-young-couple-celebrating-their-KNFRTWY-scaled-e1602154681988-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 498492,
+            "dimensions": [
+                1689,
+                2534
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/caucasian-romantic-young-couple-celebrating-their--KNFRTWY"
+        },
+        {
+            "filename": "happy-wedding-couple-is-walking-by-the-amazing-gar-WVNJBZ2-e1602157093122.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/happy-wedding-couple-is-walking-by-the-amazing-gar-WVNJBZ2-e1602157093122-600x785.jpg",
+            "templates": [
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 300418,
+            "dimensions": [
+                979,
+                1281
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-WVNJBZ2"
+        },
+        {
+            "filename": "golden-gate-bridge-fort-point-san-francisco-bay-ca-PKHN5SF-e1602770871573.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/golden-gate-bridge-fort-point-san-francisco-bay-ca-PKHN5SF-e1602157554957-600x726.jpg",
+            "templates": [
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 468785,
+            "dimensions": [
+                1500,
+                1815
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PKHN5SF"
+        },
+        {
+            "filename": "wedding-couple-in-spring-nature-P53E53G-scaled-e1602244526152.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-couple-in-spring-nature-P53E53G-scaled-e1602163319298-600x744.jpg",
+            "templates": [
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 390274,
+            "dimensions": [
+                1920,
+                2381
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-couple-in-spring-nature-P53E53G"
+        },
+        {
+            "filename": "view-on-night-paris-PNVXZ6S-scaled-e1602244492971.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/view-on-night-paris-PNVXZ6S-600x744.jpg",
+            "templates": [
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 344183,
+            "dimensions": [
+                1920,
+                2383
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/view-on-night-paris-PNVXZ6S"
+        },
+        {
+            "filename": "just-married-couple-night-city-walk-D27Y5SE-scaled-e1602244470247.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/just-married-couple-night-city-walk-D27Y5SE-600x722.jpg",
+            "templates": [
+                {
+                    "source": "templates\/galleries.json",
+                    "name": "Galleries"
+                }
+            ],
+            "filesize": 448176,
+            "dimensions": [
+                1920,
+                2311
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/just-married-couple-night-city-walk-D27Y5SE"
+        },
+        {
+            "filename": "wedding-wish-book-decorated-with-flowers-and-lace-P3Q4EDW-e1602134093650.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-wish-book-decorated-with-flowers-and-lace-P3Q4EDW-e1602134093650-600x403.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 277515,
+            "dimensions": [
+                1920,
+                1291
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P3Q4EDW"
+        },
+        {
+            "filename": "caucasian-romantic-young-couple-celebrating-their-4KTZBGP.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/caucasian-romantic-young-couple-celebrating-their-4KTZBGP-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 362909,
+            "dimensions": [
+                1500,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-4KTZBGP"
+        },
+        {
+            "filename": "wedding-invitation-and-rings-are-on-a-red-envelope-E7DTLQM-e1602770897692.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-invitation-and-rings-are-on-a-red-envelope-E7DTLQM-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 266968,
+            "dimensions": [
+                1700,
+                1133
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-E7DTLQM"
+        },
+        {
+            "filename": "wedding-friends-W592H7U.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-friends-W592H7U-600x399.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 500406,
+            "dimensions": [
+                1190,
+                792
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-W592H7U"
+        },
+        {
+            "filename": "caucasian-romantic-young-couple-celebrating-their-6GDYTU7-e1601908795443.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/caucasian-romantic-young-couple-celebrating-their-6GDYTU7-e1601908795443-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 137828,
+            "dimensions": [
+                997,
+                997
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-6GDYTU7"
+        },
+        {
+            "filename": "two-wedding-rings-S76PS59.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/two-wedding-rings-S76PS59-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 451253,
+            "dimensions": [
+                1600,
+                1066
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-S76PS59"
+        },
+        {
+            "filename": "wedding-bouquet-P598S6A.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-bouquet-P598S6A-600x428.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 491770,
+            "dimensions": [
+                1500,
+                1070
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P598S6A"
+        },
+        {
+            "filename": "wedding-MUJ89L8.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-MUJ89L8-600x399.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 301896,
+            "dimensions": [
+                1500,
+                998
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-MUJ89L8"
+        },
+        {
+            "filename": "wedding-reception-venue-in-a-large-marquis-VK8P6JQ.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-reception-venue-in-a-large-marquis-VK8P6JQ-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 442927,
+            "dimensions": [
+                1250,
+                834
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-VK8P6JQ"
+        },
+        {
+            "filename": "outdoor-setup-for-wedding-reception-PFQ8BAS-1-e1602244860365.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/outdoor-setup-for-wedding-reception-PFQ8BAS-1-e1602244860365-600x456.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 482353,
+            "dimensions": [
+                1500,
+                1140
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PFQ8BAS"
+        },
+        {
+            "filename": "wedding-celebrations-party-PHMGXXL.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-celebrations-party-PHMGXXL-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 199418,
+            "dimensions": [
+                1250,
+                833
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PHMGXXL"
+        },
+        {
+            "filename": "caucasian-romantic-young-couple-celebrating-their-MZW6GJK.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/caucasian-romantic-young-couple-celebrating-their-MZW6GJK-600x454.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 347357,
+            "dimensions": [
+                1500,
+                1135
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-MZW6GJK"
+        },
+        {
+            "filename": "wedding-ceremony-PFSQVNE-e1602770930381.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-ceremony-PFSQVNE-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 219638,
+            "dimensions": [
+                1700,
+                1133
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PFSQVNE"
+        },
+        {
+            "filename": "caucasian-romantic-young-couple-celebrating-their-BYZGHQT.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/caucasian-romantic-young-couple-celebrating-their-BYZGHQT-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 334027,
+            "dimensions": [
+                1500,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-BYZGHQT"
+        },
+        {
+            "filename": "tasty-appetizer-plate-PU9BNW7-scaled.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/tasty-appetizer-plate-PU9BNW7-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 313350,
+            "dimensions": [
+                1707,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/tasty-appetizer-plate-PU9BNW7"
+        },
+        {
+            "filename": "wedding-arch-reception-with-sea-view-in-montenegro-3NURRB8.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-arch-reception-with-sea-view-in-montenegro-3NURRB8-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 503670,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-3NURRB8"
+        },
+        {
+            "filename": "beach-wedding-ceremony-arch-decoration-DNVAQQ7-e1602244813768.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/beach-wedding-ceremony-arch-decoration-DNVAQQ7-e1602244813768-600x390.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 328706,
+            "dimensions": [
+                1920,
+                1248
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-DNVAQQ7"
+        },
+        {
+            "filename": "beach-wedding-PVAWMQX-e1602244782168.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/beach-wedding-PVAWMQX-e1602244782168-600x390.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 438893,
+            "dimensions": [
+                1920,
+                1248
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PVAWMQX"
+        },
+        {
+            "filename": "spring-EVDWTVT-e1602244749637.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/spring-EVDWTVT-e1602244749637-600x390.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 413903,
+            "dimensions": [
+                1920,
+                1248
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-EVDWTVT"
+        },
+        {
+            "filename": "delicious-appetizers-canape-with-ham-and-cucumber-D855B2A.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/delicious-appetizers-canape-with-ham-and-cucumber-D855B2A-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 479349,
+            "dimensions": [
+                1500,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-D855B2A"
+        },
+        {
+            "filename": "luxury-catering-concept-delicious-candy-bar-U6XL232-e1602244704452.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/luxury-catering-concept-delicious-candy-bar-U6XL232-e1602244704452-600x390.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 458269,
+            "dimensions": [
+                1920,
+                1248
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-U6XL232"
+        },
+        {
+            "filename": "fruit-salad-P8WVF97.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/fruit-salad-P8WVF97-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 415244,
+            "dimensions": [
+                1600,
+                1066
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-P8WVF97"
+        },
+        {
+            "filename": "cold-raspberry-drink-with-mint-TSUJ88T-e1602244666357.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/cold-raspberry-drink-with-mint-TSUJ88T-e1602244666357-600x390.jpg",
+            "templates": [
+                {
+                    "source": "templates\/homepage.json",
+                    "name": "Homepage"
+                }
+            ],
+            "filesize": 385066,
+            "dimensions": [
+                1920,
+                1248
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-TSUJ88T"
+        },
+        {
+            "filename": "logo-white.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/logo-white.png",
+            "templates": [
+                {
+                    "source": "templates\/offcanvasmenu.json",
+                    "name": "OffCanvasMenu"
+                }
+            ],
+            "filesize": 4576,
+            "dimensions": [
+                264,
+                51
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        },
+        {
+            "filename": "wedding-couple-is-holding-hands-PM5PQBK.jpg",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/wedding-couple-is-holding-hands-PM5PQBK-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/archive-blog.json",
+                    "name": "Archive Blog"
+                }
+            ],
+            "filesize": 495401,
+            "dimensions": [
+                2100,
+                1400
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PM5PQBK"
+        },
+        {
+            "filename": "logo.png",
+            "thumbnail_url": "https:\/\/theme.fanasstudio.com\/weedream\/wp-content\/uploads\/sites\/5\/2020\/10\/logo.png",
+            "templates": [
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 4442,
+            "dimensions": [
+                264,
+                51
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": "#"
+        }
+    ]
+}

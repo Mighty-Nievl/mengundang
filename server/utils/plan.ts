@@ -23,21 +23,21 @@ export const PLAN_CONFIGS: Record<string, PlanConfig> = {
         maxInvitations: 5,
         monthsActive: 3,
         maxGuests: 50,
-        allowedThemes: ['original', 'kunikaa']
+        allowedThemes: ['original', 'kunikaa', 'gunungan']
     },
     vip: {
         name: 'VIP',
         maxInvitations: 20,
         monthsActive: 6,
         maxGuests: 10000, // Effectively unlimited
-        allowedThemes: ['original', 'kunikaa']
+        allowedThemes: ['original', 'kunikaa', 'gunungan']
     },
     vvip: {
         name: 'VVIP',
         maxInvitations: 9999, // Effectively unlimited
         monthsActive: null,
         maxGuests: 10000, // Effectively unlimited
-        allowedThemes: ['original', 'kunikaa']
+        allowedThemes: ['original', 'kunikaa', 'gunungan']
     }
 }
 

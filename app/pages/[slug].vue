@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import OriginalTheme from '~/components/themes/OriginalTheme.vue'
 import KunikaaTheme from '~/components/themes/KunikaaTheme.vue'
+import MidnightTheme from '~/components/themes/MidnightTheme.vue'
+import GununganTheme from '~/components/themes/GununganTheme.vue'
 
 const route = useRoute()
 const slug = route.params.slug as string
@@ -20,10 +22,15 @@ if (error.value) {
 
 // Dynamic Theme Resolution
 const themeComponent = computed(() => {
-    const theme = (route.query.theme as string) || content.value?.theme || 'original'
+    const rawTheme = (route.query.theme as string) || content.value?.theme || content.value?.meta?.theme || 'original'
+    const theme = rawTheme?.toLowerCase()
+    
     if (theme === 'kunikaa') return KunikaaTheme
+    if (theme === 'midnight') return MidnightTheme
+    if (theme === 'gunungan') return GununganTheme
     return OriginalTheme
 })
+
 
 // Keep SEO Meta here or move to themes?
 // If themes have vastly different SEO needs, move to theme. 

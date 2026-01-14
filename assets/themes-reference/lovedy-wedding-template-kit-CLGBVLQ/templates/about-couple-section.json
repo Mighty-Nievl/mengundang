@@ -1,0 +1,653 @@
+{
+    "version": "0.4",
+    "title": "About Couple Section",
+    "type": "section",
+    "metadata": {
+        "template_type": "section-about",
+        "include_in_zip": "1",
+        "elementor_pro_required": "1",
+        "wp_page_template": "elementor_canvas"
+    },
+    "content": [
+        {
+            "id": "691b6f46",
+            "settings": {
+                "margin": {
+                    "unit": "px",
+                    "top": "120",
+                    "right": 0,
+                    "bottom": "120",
+                    "left": 0,
+                    "isLinked": false
+                },
+                "margin_tablet": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "70",
+                    "left": 0,
+                    "isLinked": false
+                },
+                "margin_mobile": {
+                    "unit": "px",
+                    "top": "0",
+                    "right": 0,
+                    "bottom": "0",
+                    "left": 0,
+                    "isLinked": false
+                }
+            },
+            "elements": [
+                {
+                    "id": "45130ddd",
+                    "settings": {
+                        "_column_size": 100,
+                        "_inline_size": null,
+                        "margin_mobile": {
+                            "unit": "px",
+                            "top": "0",
+                            "right": "0",
+                            "bottom": "50",
+                            "left": "0",
+                            "isLinked": false
+                        }
+                    },
+                    "elements": [
+                        {
+                            "id": "275a8b3b",
+                            "settings": {
+                                "background_background": "classic",
+                                "background_image": {
+                                    "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-LTC6ZDQ-1.png",
+                                    "id": 110
+                                },
+                                "background_position": "top center",
+                                "background_repeat": "no-repeat",
+                                "margin": {
+                                    "unit": "px",
+                                    "top": "-986",
+                                    "right": 0,
+                                    "bottom": "0",
+                                    "left": 0,
+                                    "isLinked": false
+                                },
+                                "padding": {
+                                    "unit": "px",
+                                    "top": "480",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "background_position_mobile": "bottom right",
+                                "margin_mobile": {
+                                    "unit": "px",
+                                    "top": "-770",
+                                    "right": 0,
+                                    "bottom": "50",
+                                    "left": 0,
+                                    "isLinked": false
+                                },
+                                "margin_tablet": {
+                                    "unit": "px",
+                                    "top": "-866",
+                                    "right": 0,
+                                    "bottom": "0",
+                                    "left": 0,
+                                    "isLinked": false
+                                },
+                                "background_size_mobile": "cover",
+                                "padding_mobile": {
+                                    "unit": "px",
+                                    "top": "350",
+                                    "right": "0",
+                                    "bottom": "100",
+                                    "left": "0",
+                                    "isLinked": false
+                                }
+                            },
+                            "elements": [
+                                {
+                                    "id": "28a216e8",
+                                    "settings": {
+                                        "_column_size": 100,
+                                        "_inline_size": null,
+                                        "content_position": "bottom",
+                                        "background_background": "classic",
+                                        "background_position": "center center",
+                                        "background_repeat": "no-repeat",
+                                        "background_size": "contain"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "29ade639",
+                                            "settings": {
+                                                "title": "Wedding Day",
+                                                "header_size": "h3",
+                                                "align": "center",
+                                                "_z_index": 2,
+                                                "_animation": "bounceIn",
+                                                "animation_duration": "slow"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "heading",
+                                            "elType": "widget"
+                                        },
+                                        {
+                                            "id": "4fa568f9",
+                                            "settings": {
+                                                "title": "Harry & Kate",
+                                                "header_size": "h1",
+                                                "align": "center",
+                                                "_z_index": 2,
+                                                "typography_typography": "custom",
+                                                "typography_font_size_mobile": {
+                                                    "unit": "px",
+                                                    "size": 70,
+                                                    "sizes": []
+                                                },
+                                                "typography_line_height_mobile": {
+                                                    "unit": "px",
+                                                    "size": 80,
+                                                    "sizes": []
+                                                },
+                                                "_animation": "bounceIn",
+                                                "animation_duration": "slow"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "heading",
+                                            "elType": "widget"
+                                        },
+                                        {
+                                            "id": "7f26853e",
+                                            "settings": {
+                                                "text": "Our Story",
+                                                "align": "center",
+                                                "border_radius": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "0",
+                                                    "left": "0",
+                                                    "isLinked": true
+                                                },
+                                                "_z_index": 2,
+                                                "_animation": "bounceIn",
+                                                "animation_duration": "slow"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "button",
+                                            "elType": "widget"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "column"
+                                }
+                            ],
+                            "isInner": true,
+                            "elType": "section"
+                        },
+                        {
+                            "id": "53a1b448",
+                            "settings": {
+                                "title": "Couple",
+                                "header_size": "p",
+                                "align": "center",
+                                "title_color": "#2F4F75",
+                                "typography_typography": "custom",
+                                "typography_font_family": "Pinyon Script",
+                                "typography_font_size": {
+                                    "unit": "px",
+                                    "size": 34,
+                                    "sizes": []
+                                },
+                                "_animation": "fadeIn"
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "heading",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "18e9879d",
+                            "settings": {
+                                "title": "About Us",
+                                "align": "center",
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "30",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "_animation": "fadeIn"
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "heading",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "4e59eec5",
+                            "settings": {
+                                "structure": "20"
+                            },
+                            "elements": [
+                                {
+                                    "id": "21724d0c",
+                                    "settings": {
+                                        "_column_size": 50,
+                                        "_inline_size": null
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "13414b35",
+                                            "settings": {
+                                                "image": {
+                                                    "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/wedding-couple-on-the-ocean-with-a-priest-L2DTSXD-1.jpg",
+                                                    "id": 117
+                                                },
+                                                "image_size": "full",
+                                                "align": "center",
+                                                "_animation": "slideInLeft",
+                                                "animation_duration": "slow"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "image",
+                                            "elType": "widget"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "column"
+                                },
+                                {
+                                    "id": "4996d4ff",
+                                    "settings": {
+                                        "_column_size": 50,
+                                        "_inline_size": null,
+                                        "content_position": "center",
+                                        "animation": "slideInRight",
+                                        "animation_duration": "slow"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "75a9a3b8",
+                                            "settings": {
+                                                "title": "Harry Cavil",
+                                                "header_size": "h3",
+                                                "typography_typography": "custom",
+                                                "typography_font_style": "italic"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "heading",
+                                            "elType": "widget"
+                                        },
+                                        {
+                                            "id": "6038ed6",
+                                            "settings": {
+                                                "editor": "Aenean eget mi ullamcorper, vestibulum enim in, fermentum massa. Aenean sit amet velit ligula. Curabitur at scelerisque elit. Maecenas vel tincidunt neque.",
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                }
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "text-editor",
+                                            "elType": "widget"
+                                        },
+                                        {
+                                            "id": "e6019d5",
+                                            "settings": {
+                                                "social_icon_list": [
+                                                    {
+                                                        "social_icon": {
+                                                            "value": "fab fa-instagram",
+                                                            "library": "fa-brands"
+                                                        },
+                                                        "link": {
+                                                            "url": "#",
+                                                            "is_external": "true",
+                                                            "nofollow": "",
+                                                            "custom_attributes": ""
+                                                        },
+                                                        "item_icon_color": "custom",
+                                                        "item_icon_primary_color": "#FFFFFF",
+                                                        "item_icon_secondary_color": "#9A9CC2",
+                                                        "_id": "c8c25db"
+                                                    },
+                                                    {
+                                                        "social_icon": {
+                                                            "value": "fab fa-twitter",
+                                                            "library": "fa-brands"
+                                                        },
+                                                        "link": {
+                                                            "url": "#",
+                                                            "is_external": "true",
+                                                            "nofollow": "",
+                                                            "custom_attributes": ""
+                                                        },
+                                                        "item_icon_color": "custom",
+                                                        "item_icon_primary_color": "#FFFFFF",
+                                                        "item_icon_secondary_color": "#9A9CC2",
+                                                        "_id": "af1a742"
+                                                    },
+                                                    {
+                                                        "social_icon": {
+                                                            "value": "fab fa-facebook-f",
+                                                            "library": "fa-brands"
+                                                        },
+                                                        "_id": "163d38d",
+                                                        "link": {
+                                                            "url": "#",
+                                                            "is_external": "true",
+                                                            "nofollow": "",
+                                                            "custom_attributes": ""
+                                                        },
+                                                        "item_icon_color": "custom",
+                                                        "item_icon_primary_color": "#FFFFFF",
+                                                        "item_icon_secondary_color": "#9A9CC2"
+                                                    }
+                                                ],
+                                                "shape": "circle",
+                                                "align": "left",
+                                                "icon_size": {
+                                                    "unit": "px",
+                                                    "size": 20,
+                                                    "sizes": []
+                                                },
+                                                "icon_spacing": {
+                                                    "unit": "px",
+                                                    "size": 15,
+                                                    "sizes": []
+                                                },
+                                                "image_border_border": "solid",
+                                                "image_border_width": {
+                                                    "unit": "px",
+                                                    "top": "1",
+                                                    "right": "1",
+                                                    "bottom": "1",
+                                                    "left": "1",
+                                                    "isLinked": true
+                                                },
+                                                "image_border_color": "#9A9CC2",
+                                                "hover_animation": "pulse-grow",
+                                                "align_mobile": "left"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "social-icons",
+                                            "elType": "widget"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "column"
+                                }
+                            ],
+                            "isInner": true,
+                            "elType": "section"
+                        },
+                        {
+                            "id": "12c9e7b4",
+                            "settings": {
+                                "image_size": "medium_large",
+                                "align": "center",
+                                "image": {
+                                    "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/same-couple-with-a-bride-in-a-blue-dress-walk-RBBL2G9-1.jpg",
+                                    "id": 115
+                                },
+                                "image_border_border": "solid",
+                                "image_border_width": {
+                                    "unit": "px",
+                                    "top": "20",
+                                    "right": "20",
+                                    "bottom": "20",
+                                    "left": "20",
+                                    "isLinked": true
+                                },
+                                "image_border_color": "#FFFFFF",
+                                "image_box_shadow_box_shadow_type": "yes",
+                                "image_box_shadow_box_shadow": {
+                                    "horizontal": 0,
+                                    "vertical": 0,
+                                    "blur": 40,
+                                    "spread": 0,
+                                    "color": "rgba(154, 156, 194, 0.34)"
+                                },
+                                "_margin": {
+                                    "unit": "px",
+                                    "top": "-120",
+                                    "right": "0",
+                                    "bottom": "-120",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "_z_index": 2,
+                                "image_border_width_mobile": {
+                                    "unit": "px",
+                                    "top": "10",
+                                    "right": "10",
+                                    "bottom": "10",
+                                    "left": "10",
+                                    "isLinked": true
+                                },
+                                "_margin_tablet": {
+                                    "unit": "px",
+                                    "top": "-50",
+                                    "right": "0",
+                                    "bottom": "-50",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "_margin_mobile": {
+                                    "unit": "px",
+                                    "top": "0",
+                                    "right": "0",
+                                    "bottom": "0",
+                                    "left": "0",
+                                    "isLinked": false
+                                },
+                                "_animation": "zoomIn",
+                                "animation_duration": "slow"
+                            },
+                            "elements": [],
+                            "isInner": false,
+                            "widgetType": "image",
+                            "elType": "widget"
+                        },
+                        {
+                            "id": "1c89c158",
+                            "settings": {
+                                "structure": "20",
+                                "reverse_order_mobile": "reverse-mobile"
+                            },
+                            "elements": [
+                                {
+                                    "id": "1c816002",
+                                    "settings": {
+                                        "_column_size": 50,
+                                        "_inline_size": null,
+                                        "content_position": "center",
+                                        "animation": "slideInLeft",
+                                        "animation_duration": "slow"
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "5804a84d",
+                                            "settings": {
+                                                "title": "Kate Salmon",
+                                                "header_size": "h3",
+                                                "typography_typography": "custom",
+                                                "typography_font_style": "italic",
+                                                "align": "right",
+                                                "align_mobile": "left"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "heading",
+                                            "elType": "widget"
+                                        },
+                                        {
+                                            "id": "14433f63",
+                                            "settings": {
+                                                "editor": "Etiam venenatis luctus laoreet. Donec et interdum neque. Suspendisse potenti. Quisque vel odio elit.",
+                                                "align": "right",
+                                                "column_gap": {
+                                                    "unit": "px",
+                                                    "size": 0,
+                                                    "sizes": []
+                                                },
+                                                "_margin": {
+                                                    "unit": "px",
+                                                    "top": "0",
+                                                    "right": "0",
+                                                    "bottom": "20",
+                                                    "left": "0",
+                                                    "isLinked": false
+                                                },
+                                                "align_mobile": "left"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "text-editor",
+                                            "elType": "widget"
+                                        },
+                                        {
+                                            "id": "63848edd",
+                                            "settings": {
+                                                "social_icon_list": [
+                                                    {
+                                                        "social_icon": {
+                                                            "value": "fab fa-instagram",
+                                                            "library": "fa-brands"
+                                                        },
+                                                        "link": {
+                                                            "url": "#",
+                                                            "is_external": "true",
+                                                            "nofollow": "",
+                                                            "custom_attributes": ""
+                                                        },
+                                                        "item_icon_color": "custom",
+                                                        "item_icon_primary_color": "#FFFFFF",
+                                                        "item_icon_secondary_color": "#9A9CC2",
+                                                        "_id": "c8c25db"
+                                                    },
+                                                    {
+                                                        "social_icon": {
+                                                            "value": "fab fa-twitter",
+                                                            "library": "fa-brands"
+                                                        },
+                                                        "link": {
+                                                            "url": "#",
+                                                            "is_external": "true",
+                                                            "nofollow": "",
+                                                            "custom_attributes": ""
+                                                        },
+                                                        "item_icon_color": "custom",
+                                                        "item_icon_primary_color": "#FFFFFF",
+                                                        "item_icon_secondary_color": "#9A9CC2",
+                                                        "_id": "af1a742"
+                                                    },
+                                                    {
+                                                        "social_icon": {
+                                                            "value": "fab fa-facebook-f",
+                                                            "library": "fa-brands"
+                                                        },
+                                                        "_id": "163d38d",
+                                                        "link": {
+                                                            "url": "#",
+                                                            "is_external": "true",
+                                                            "nofollow": "",
+                                                            "custom_attributes": ""
+                                                        },
+                                                        "item_icon_color": "custom",
+                                                        "item_icon_primary_color": "#FFFFFF",
+                                                        "item_icon_secondary_color": "#9A9CC2"
+                                                    }
+                                                ],
+                                                "shape": "circle",
+                                                "align": "right",
+                                                "icon_size": {
+                                                    "unit": "px",
+                                                    "size": 20,
+                                                    "sizes": []
+                                                },
+                                                "icon_spacing": {
+                                                    "unit": "px",
+                                                    "size": 15,
+                                                    "sizes": []
+                                                },
+                                                "image_border_border": "solid",
+                                                "image_border_width": {
+                                                    "unit": "px",
+                                                    "top": "1",
+                                                    "right": "1",
+                                                    "bottom": "1",
+                                                    "left": "1",
+                                                    "isLinked": true
+                                                },
+                                                "image_border_color": "#9A9CC2",
+                                                "hover_animation": "pulse-grow",
+                                                "align_mobile": "left"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "social-icons",
+                                            "elType": "widget"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "column"
+                                },
+                                {
+                                    "id": "68472836",
+                                    "settings": {
+                                        "_column_size": 50,
+                                        "_inline_size": null
+                                    },
+                                    "elements": [
+                                        {
+                                            "id": "727c76e2",
+                                            "settings": {
+                                                "image": {
+                                                    "url": "https:\/\/lovedy.elipso.site\/wp-content\/uploads\/sites\/9\/2020\/08\/bride-in-a-blue-light-dress-walking-along-the-ocea-3NA4FCW-1.jpg",
+                                                    "id": 116
+                                                },
+                                                "image_size": "full",
+                                                "align": "center",
+                                                "_animation": "slideInRight",
+                                                "animation_duration": "slow"
+                                            },
+                                            "elements": [],
+                                            "isInner": false,
+                                            "widgetType": "image",
+                                            "elType": "widget"
+                                        }
+                                    ],
+                                    "isInner": true,
+                                    "elType": "column"
+                                }
+                            ],
+                            "isInner": true,
+                            "elType": "section"
+                        }
+                    ],
+                    "isInner": false,
+                    "elType": "column"
+                }
+            ],
+            "isInner": false,
+            "elType": "section"
+        }
+    ]
+}

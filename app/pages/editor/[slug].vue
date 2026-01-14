@@ -436,18 +436,18 @@ const availableThemes = [
         isPremium: true
     },
     {
+        id: 'gunungan',
+        name: 'Jawa Pride',
+        description: 'Sentuhan tradisional Jawa dengan Gunungan, Batik Parang, dan nuansa Royal Gold.',
+        previewColor: 'bg-stone-950', // Fallback color
+        previewImage: '/images/themes/preview-jawa-pride.png',
+        isPremium: true
+    },
+    {
         id: 'blue-midnight',
         name: 'Blue Midnight',
         description: 'Elegan dengan nuansa malam yang syahdu dan premium.',
         previewColor: 'bg-slate-900', // Placeholder for thumbnail
-        isPremium: true,
-        comingSoon: true
-    },
-    {
-        id: 'java-heritage',
-        name: 'Java Heritage',
-        description: 'Sentuhan tradisional Jawa dengan balutan modern.',
-        previewColor: 'bg-amber-800', // Placeholder for thumbnail
         isPremium: true,
         comingSoon: true
     }
@@ -831,7 +831,8 @@ onUnmounted(() => {
                         >
                             <!-- Preview Box -->
                             <div class="h-40 w-full flex items-center justify-center relative overflow-hidden" :class="theme.previewColor">
-                                <div class="text-stone-400 font-serif italic">{{ theme.name }} Preview</div>
+                                <img v-if="(theme as any).previewImage" :src="(theme as any).previewImage" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Theme Preview" />
+                                <div v-else class="text-stone-400 font-serif italic">{{ theme.name }} Preview</div>
                                 
                                 <!-- Active Indicator -->
                                 <div v-if="form.theme === theme.id" class="absolute top-3 right-3 bg-gold-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg">

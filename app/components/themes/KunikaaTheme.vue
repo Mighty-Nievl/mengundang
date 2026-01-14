@@ -1,14 +1,9 @@
 <script setup lang="ts">
 import FloatingMusic from '~/components/FloatingMusic.vue'
 import CoverSection from '~/components/CoverSection.vue'
-import SingleProfile from '~/components/SingleProfile.vue'
-import EventDetails from '~/components/EventDetails.vue'
-import GallerySection from '~/components/GallerySection.vue'
 import GiftSection from '~/components/GiftSection.vue'
 import RSVPSection from '~/components/RSVPSection.vue'
 import CountdownSection from '~/components/CountdownSection.vue'
-import QuoteSection from '~/components/QuoteSection.vue'
-import LoveStorySection from '~/components/LoveStorySection.vue'
 import FloatingNav from '~/components/FloatingNav.vue'
 
 const props = defineProps<{
@@ -37,8 +32,34 @@ const isBrideFirst = computed(() => props.content?.meta?.displayOrder === 'bride
 const firstNickname = computed(() => isBrideFirst.value ? props.content?.hero?.brideNickname : props.content?.hero?.groomNickname)
 const secondNickname = computed(() => isBrideFirst.value ? props.content?.hero?.groomNickname : props.content?.hero?.brideNickname)
 
-const firstProfile = computed(() => isBrideFirst.value ? props.content?.bride : props.content?.groom)
-const secondProfile = computed(() => isBrideFirst.value ? props.content?.groom : props.content?.bride)
+// Normalize profile data (backward compatible with old structure)
+const normalizeProfile = (profile: any, isBride: boolean) => {
+    if (!profile) return null
+    return {
+        ...profile,
+        nickname: profile.nickname || profile.fullName?.split(' ')[0] || '',
+        fatherName: profile.fatherName || (profile.parents?.split(' & ')[0] || ''),
+        motherName: profile.motherName || (profile.parents?.split(' & ')[1] || ''),
+        isBride,
+    }
+}
+
+const firstProfile = computed(() => normalizeProfile(
+    isBrideFirst.value ? props.content?.bride : props.content?.groom, 
+    isBrideFirst.value
+))
+const secondProfile = computed(() => normalizeProfile(
+    isBrideFirst.value ? props.content?.groom : props.content?.bride, 
+    !isBrideFirst.value
+))
+
+// Normalize event data (support both 'reception' and 'resepsi' keys)
+const receptionEvent = computed(() => props.content?.events?.reception || props.content?.events?.resepsi)
+
+// Get hero background - use gallery first image or background image
+const heroBackground = computed(() => {
+    return props.content?.gallery?.[0] || props.content?.hero?.backgroundImage || props.content?.cover?.backgroundImage || ''
+})
 
 const isOpened = ref(route.query.preview === 'true')
 const activeSectionId = ref('header')
@@ -64,38 +85,11 @@ const handleOpen = () => {
     })
 }
 
-// Custom Smooth Scroll
-const smoothScrollTo = (element: HTMLElement, target: number, duration: number) => {
-    const start = element.scrollTop
-    const change = target - start
-    const startTime = performance.now()
-
-    const animateScroll = (currentTime: number) => {
-        const timeElapsed = currentTime - startTime
-        
-        if (timeElapsed < duration) {
-            let val = timeElapsed / (duration / 2)
-            if (val < 1) {
-                element.scrollTop = start + (change / 2) * val * val
-            } else {
-                val--
-                element.scrollTop = start - (change / 2) * (val * (val - 2) - 1)
-            }
-            requestAnimationFrame(animateScroll)
-        } else {
-            element.scrollTop = target
-        }
-    }
-
-    requestAnimationFrame(animateScroll)
-}
-
 // Scroll to specific section by ID
 const scrollToSection = (sectionId: string) => {
     const el = document.getElementById(sectionId)
     if (el && scrollContainer.value) {
-       const top = el.offsetTop
-       smoothScrollTo(scrollContainer.value, top, 1200) 
+       el.scrollIntoView({ behavior: 'smooth' })
        activeSectionId.value = sectionId
     }
 }
@@ -142,357 +136,682 @@ useHead({
     title: computed(() => `The Wedding of ${props.content?.hero?.groomNickname || 'Groom'} & ${props.content?.hero?.brideNickname || 'Bride'}`)
 })
 
-const year = computed(() => {
-    // Try to get year from Hero date or Akad date
-    const d = props.content?.hero?.date || props.content?.events?.akad?.date
-    if (d) {
-        const parts = d.split(' ')
-        const y = parts.find(p => p.match(/^\d{4}$/))
-        return y || new Date().getFullYear().toString()
+// Centralized Texts - Kunikaa Original Style
+const texts = computed(() => {
+    const t = props.content?.texts || {}
+    return {
+        weddingOf: t.weddingOf || 'The Wedding of',
+        saveTheDate: t.saveTheDate || 'Save The Date',
+        weddingDay: t.weddingDay || 'We Are Getting Married',
+        brideLabel: t.brideLabel || 'The Bride',
+        groomLabel: t.groomLabel || 'The Groom',
+        daughterOf: t.daughterOf || 'Putri dari Bapak',
+        sonOf: t.sonOf || 'Putra dari Bapak',
+        andMrs: t.andMrs || 'dan Ibu',
+        whenWhere: t.whenWhere || 'When & Where',
+        ourEvents: t.ourEvents || 'Our Events',
+        theCeremony: t.theCeremony || 'The Ceremony',
+        theReception: t.theReception || 'The Reception',
+        viewMap: t.viewMap || 'View on Maps',
+        ourGallery: t.ourGallery || 'Our Gallery',
+        weddingGift: t.weddingGift || 'Wedding Gift',
+        giftText: t.giftText || 'Doa restu Anda adalah hadiah terindah bagi kami. Namun jika Anda ingin memberikan tanda kasih:',
+        rsvpTitle: t.rsvpTitle || "We Can't Wait to See You",
+        rsvpSubtitle: t.rsvpSubtitle || 'Please let us know if you\'ll be able to make it',
+        quoteDefault: t.quoteDefault || 'And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts.',
+        quoteSourceDefault: t.quoteSourceDefault || 'QS. Ar-Rum: 21',
+        thankYou: t.thankYou || 'Thank You',
     }
-    return new Date().getFullYear().toString()
-})
-
-const location = computed(() => {
-    const loc = props.content?.events?.akad?.location
-    if (loc) {
-        // Extract city (naive: last part after comma, or just the location)
-        const parts = loc.split(',')
-        return parts.length > 1 ? parts[parts.length - 1].trim() : 'Indonesia'
-    }
-    return 'Indonesia'
 })
 </script>
 
 <template>
-  <div class="h-screen w-full relative bg-[#F9F8F6] text-[#2C2C2C] font-lora overflow-hidden selection:bg-[#2C2C2C] selection:text-white" data-theme="kunikaa">
+  <div class="kunikaa-theme h-screen w-full relative bg-cream text-dark overflow-hidden" data-theme="kunikaa">
     
-    <!-- GLOBAL APAR TEXTURE + NOISE -->
-    <div class="pointer-events-none fixed inset-0 z-0 opacity-40 mix-blend-multiply" style="background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');"></div>
-    <div class="pointer-events-none fixed inset-0 z-0 opacity-5" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');"></div>
+    <!-- WATERCOLOR FLORAL CORNER - TOP LEFT -->
+    <div class="floral-corner floral-tl">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Large watercolor roses cluster -->
+        <defs>
+          <radialGradient id="rose1" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E8D4E8"/>
+            <stop offset="50%" stop-color="#C9A4C9"/>
+            <stop offset="100%" stop-color="#9B7B9B"/>
+          </radialGradient>
+          <radialGradient id="rose2" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#F0E0F0"/>
+            <stop offset="60%" stop-color="#D4B4D4"/>
+            <stop offset="100%" stop-color="#A890A8"/>
+          </radialGradient>
+          <radialGradient id="leaf1" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#C8D4B8"/>
+            <stop offset="100%" stop-color="#8BAF70"/>
+          </radialGradient>
+        </defs>
+        
+        <!-- Large leaves -->
+        <ellipse cx="40" cy="200" rx="25" ry="60" fill="url(#leaf1)" opacity="0.7" transform="rotate(-50 40 200)"/>
+        <ellipse cx="80" cy="240" rx="20" ry="50" fill="url(#leaf1)" opacity="0.6" transform="rotate(-30 80 240)"/>
+        <ellipse cx="200" cy="40" rx="25" ry="60" fill="url(#leaf1)" opacity="0.7" transform="rotate(40 200 40)"/>
+        <ellipse cx="240" cy="80" rx="20" ry="50" fill="url(#leaf1)" opacity="0.6" transform="rotate(60 240 80)"/>
+        
+        <!-- Main rose cluster -->
+        <circle cx="100" cy="100" r="55" fill="url(#rose1)" opacity="0.9"/>
+        <circle cx="100" cy="100" r="42" fill="url(#rose2)" opacity="0.85"/>
+        <circle cx="100" cy="100" r="30" fill="#E8D4E8" opacity="0.8"/>
+        <circle cx="100" cy="100" r="18" fill="#F4E8F4" opacity="0.9"/>
+        
+        <!-- Secondary roses -->
+        <circle cx="50" cy="60" r="35" fill="url(#rose2)" opacity="0.8"/>
+        <circle cx="50" cy="60" r="25" fill="#E0CCE0"/>
+        <circle cx="50" cy="60" r="15" fill="#F0E4F0"/>
+        
+        <circle cx="160" cy="50" r="30" fill="url(#rose1)" opacity="0.75"/>
+        <circle cx="160" cy="50" r="20" fill="#D8C4D8"/>
+        <circle cx="160" cy="50" r="12" fill="#EEE0EE"/>
+        
+        <circle cx="60" cy="160" r="28" fill="url(#rose2)" opacity="0.7"/>
+        <circle cx="60" cy="160" r="18" fill="#E4D4E4"/>
+        
+        <!-- Small accent buds -->
+        <circle cx="20" cy="100" r="12" fill="#9B8AB8" opacity="0.6"/>
+        <circle cx="100" cy="20" r="12" fill="#9B8AB8" opacity="0.6"/>
+        <circle cx="140" cy="120" r="10" fill="#C9A4C9" opacity="0.5"/>
+        <circle cx="120" cy="180" r="8" fill="#B494B4" opacity="0.5"/>
+      </svg>
+    </div>
+    
+    <!-- WATERCOLOR FLORAL CORNER - TOP RIGHT -->
+    <div class="floral-corner floral-tr">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rose3" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E8D4E8"/>
+            <stop offset="50%" stop-color="#C9A4C9"/>
+            <stop offset="100%" stop-color="#9B7B9B"/>
+          </radialGradient>
+          <radialGradient id="leaf2" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#C8D4B8"/>
+            <stop offset="100%" stop-color="#8BAF70"/>
+          </radialGradient>
+        </defs>
+        
+        <!-- Leaves -->
+        <ellipse cx="260" cy="200" rx="25" ry="60" fill="url(#leaf2)" opacity="0.7" transform="rotate(50 260 200)"/>
+        <ellipse cx="220" cy="240" rx="20" ry="50" fill="url(#leaf2)" opacity="0.6" transform="rotate(30 220 240)"/>
+        <ellipse cx="100" cy="40" rx="25" ry="60" fill="url(#leaf2)" opacity="0.7" transform="rotate(-40 100 40)"/>
+        
+        <!-- Roses -->
+        <circle cx="200" cy="100" r="55" fill="url(#rose3)" opacity="0.9"/>
+        <circle cx="200" cy="100" r="42" fill="#DCC8DC" opacity="0.85"/>
+        <circle cx="200" cy="100" r="30" fill="#E8D8E8" opacity="0.8"/>
+        <circle cx="200" cy="100" r="18" fill="#F4ECF4"/>
+        
+        <circle cx="250" cy="60" r="32" fill="url(#rose3)" opacity="0.8"/>
+        <circle cx="250" cy="60" r="22" fill="#E0D0E0"/>
+        
+        <circle cx="140" cy="50" r="28" fill="url(#rose3)" opacity="0.75"/>
+        <circle cx="140" cy="50" r="18" fill="#E4D8E4"/>
+        
+        <circle cx="240" cy="160" r="25" fill="url(#rose3)" opacity="0.7"/>
+        <circle cx="240" cy="160" r="16" fill="#ECDCEC"/>
+        
+        <!-- Buds -->
+        <circle cx="280" cy="100" r="12" fill="#9B8AB8" opacity="0.6"/>
+        <circle cx="200" cy="20" r="10" fill="#B494B4" opacity="0.5"/>
+      </svg>
+    </div>
+    
+    <!-- WATERCOLOR FLORAL CORNER - BOTTOM LEFT -->
+    <div class="floral-corner floral-bl">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rose4" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E8D4E8"/>
+            <stop offset="50%" stop-color="#C9A4C9"/>
+            <stop offset="100%" stop-color="#9B7B9B"/>
+          </radialGradient>
+          <radialGradient id="leaf3" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#C8D4B8"/>
+            <stop offset="100%" stop-color="#8BAF70"/>
+          </radialGradient>
+        </defs>
+        
+        <ellipse cx="40" cy="100" rx="25" ry="60" fill="url(#leaf3)" opacity="0.7" transform="rotate(-50 40 100)"/>
+        <ellipse cx="80" cy="60" rx="20" ry="50" fill="url(#leaf3)" opacity="0.6" transform="rotate(-30 80 60)"/>
+        <ellipse cx="200" cy="260" rx="25" ry="60" fill="url(#leaf3)" opacity="0.7" transform="rotate(40 200 260)"/>
+        
+        <circle cx="100" cy="200" r="55" fill="url(#rose4)" opacity="0.9"/>
+        <circle cx="100" cy="200" r="42" fill="#DCC8DC" opacity="0.85"/>
+        <circle cx="100" cy="200" r="30" fill="#E8D8E8" opacity="0.8"/>
+        <circle cx="100" cy="200" r="18" fill="#F4ECF4"/>
+        
+        <circle cx="50" cy="240" r="32" fill="url(#rose4)" opacity="0.8"/>
+        <circle cx="50" cy="240" r="22" fill="#E0D0E0"/>
+        
+        <circle cx="160" cy="250" r="28" fill="url(#rose4)" opacity="0.75"/>
+        <circle cx="160" cy="250" r="18" fill="#E4D8E4"/>
+        
+        <circle cx="60" cy="140" r="25" fill="url(#rose4)" opacity="0.7"/>
+        
+        <circle cx="20" cy="200" r="12" fill="#9B8AB8" opacity="0.6"/>
+        <circle cx="100" cy="280" r="10" fill="#B494B4" opacity="0.5"/>
+      </svg>
+    </div>
+    
+    <!-- WATERCOLOR FLORAL CORNER - BOTTOM RIGHT -->
+    <div class="floral-corner floral-br">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="rose5" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E8D4E8"/>
+            <stop offset="50%" stop-color="#C9A4C9"/>
+            <stop offset="100%" stop-color="#9B7B9B"/>
+          </radialGradient>
+          <radialGradient id="leaf4" cx="30%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#C8D4B8"/>
+            <stop offset="100%" stop-color="#8BAF70"/>
+          </radialGradient>
+        </defs>
+        
+        <ellipse cx="260" cy="100" rx="25" ry="60" fill="url(#leaf4)" opacity="0.7" transform="rotate(50 260 100)"/>
+        <ellipse cx="220" cy="60" rx="20" ry="50" fill="url(#leaf4)" opacity="0.6" transform="rotate(30 220 60)"/>
+        <ellipse cx="100" cy="260" rx="25" ry="60" fill="url(#leaf4)" opacity="0.7" transform="rotate(-40 100 260)"/>
+        
+        <circle cx="200" cy="200" r="55" fill="url(#rose5)" opacity="0.9"/>
+        <circle cx="200" cy="200" r="42" fill="#DCC8DC" opacity="0.85"/>
+        <circle cx="200" cy="200" r="30" fill="#E8D8E8" opacity="0.8"/>
+        <circle cx="200" cy="200" r="18" fill="#F4ECF4"/>
+        
+        <circle cx="250" cy="240" r="32" fill="url(#rose5)" opacity="0.8"/>
+        <circle cx="250" cy="240" r="22" fill="#E0D0E0"/>
+        
+        <circle cx="140" cy="250" r="28" fill="url(#rose5)" opacity="0.75"/>
+        <circle cx="140" cy="250" r="18" fill="#E4D8E4"/>
+        
+        <circle cx="240" cy="140" r="25" fill="url(#rose5)" opacity="0.7"/>
+        
+        <circle cx="280" cy="200" r="12" fill="#9B8AB8" opacity="0.6"/>
+        <circle cx="200" cy="280" r="10" fill="#B494B4" opacity="0.5"/>
+      </svg>
+    </div>
 
-    <!-- 0. EDITOR MODE INDICATOR (FLOATING) -->
-    <div v-if="!isDataComplete && isOwnerOrPartner" class="fixed top-4 right-4 z-[50]">
-        <NuxtLink to="/dashboard" class="bg-red-500 text-white px-4 py-2 rounded shadow-lg text-xs font-bold uppercase tracking-widest hover:bg-red-600 transition-colors">
-            <i class="fas fa-exclamation-circle mr-2"></i> Incomplete Data
+    <!-- EDITOR MODE INDICATOR -->
+    <div v-if="!isDataComplete && isOwnerOrPartner" class="fixed top-4 right-4 z-[60]">
+        <NuxtLink to="/dashboard" class="bg-lavender text-white px-4 py-2 rounded-full shadow-lg text-xs font-medium hover:opacity-90 transition-opacity">
+            <i class="fas fa-exclamation-circle mr-2"></i>Data Belum Lengkap
         </NuxtLink>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN SCROLLABLE CONTENT -->
     <div 
         @scroll="handleScroll"
         ref="scrollContainer"
-        class="h-full w-full overflow-y-auto scroll-smooth md:px-0 relative no-scrollbar z-10"
+        class="h-full w-full overflow-y-auto scroll-smooth relative no-scrollbar z-10"
     >
-        <!-- ... content ... -->
         
-        <!-- 1. HERO: VOGUE COVER STYLE -->
+        <!-- 1. HERO SECTION - Full Width with Background -->
         <section 
             id="header"
-            class="min-h-screen w-full flex flex-col justify-between snap-start snap-always reveal-on-scroll relative overflow-hidden pt-24 pb-12 px-6 lg:px-20"
+            class="hero-section min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll relative"
         >
-            <!-- REVOLVING MONOGRAM BG -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03] pointer-events-none animate-[spin_60s_linear_infinite]">
-                 <svg viewBox="0 0 200 200" fill="currentColor" class="text-[#2C2C2C] w-full h-full">
-                     <path id="curve" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" fill="transparent"/>
-                     <text width="500">
-                         <textPath xlink:href="#curve" class="font-lora text-[15px] uppercase tracking-[0.4em]">
-                             {{ firstNickname }} & {{ secondNickname }} • The Wedding Celebration • {{ content?.hero?.date }} •
-                         </textPath>
-                     </text>
-                 </svg>
-            </div>
-
-
-            <!-- TOP: DATE & ISSUE NO -->
-            <div class="w-full flex justify-between items-start border-b border-[#2C2C2C] pb-4 mb-auto">
-                 <div class="flex flex-col">
-                     <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em]">The Wedding</span>
-                     <span class="font-lora italic text-[#555] text-sm">Vol. 01</span>
-                 </div>
-                 <div class="flex flex-col text-right">
-                     <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em]">{{ content?.hero?.date }}</span>
-                     <span class="font-lora italic text-[#555] text-sm">{{ location }}</span>
-                 </div>
-            </div>
-
-            <!-- CENTER: GIANT TYPOGRAPHY -->
-            <div class="flex-1 flex flex-col justify-center relative z-10 py-10 w-full overflow-hidden">
-                <h1 class="font-lexend text-[10vw] md:text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-[#2C2C2C] mix-blend-darken text-center lg:text-left break-words w-full">
-                    {{ firstNickname }}<span class="text-[#E0BFB8]">.</span>
-                </h1>
-                <div class="font-lora italic text-4xl md:text-6xl text-right lg:text-center text-[#555] -mt-2 lg:-mt-8 mr-4 lg:mr-0 z-0">
-                    and
-                </div>
-                <h1 class="font-lexend text-[10vw] md:text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-[#2C2C2C] mix-blend-darken text-right break-words w-full">
-                    {{ secondNickname }}
-                </h1>
-            </div>
-
-            <!-- BOTTOM: INVITATION TEXT -->
-            <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-8 border-t border-[#2C2C2C] pt-6 mt-auto">
-                 <div class="hidden lg:block text-left">
-                      <span class="font-lexend text-[10px] uppercase tracking-widest block mb-2">Established</span>
-                      <span class="font-lora text-lg">{{ year }}</span>
-                 </div>
-                 <div class="text-center">
-                      <p class="font-lora text-sm md:text-base italic leading-relaxed max-w-sm mx-auto">
-                          "We invite you to witness the beginning of our forever."
-                      </p>
-                 </div>
-                 <div class="text-center lg:text-right">
-                      <button @click="scrollToSection('countdown')" class="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] hover:text-[#E0BFB8] transition-colors">
-                          Scroll Down <i class="fas fa-arrow-down transform group-hover:translate-y-1 transition-transform"></i>
-                      </button>
-                 </div>
-            </div>
-        </section>
-
-        <!-- 2. COUNTDOWN: MINIMALIST STRIP -->
-        <section id="countdown" class="w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll border-y border-[#2C2C2C]">
-            <div class="w-full bg-[#E0BFB8] py-2 overflow-hidden whitespace-nowrap">
-                 <div class="animate-marquee inline-block">
-                     <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">Save The Date</span>
-                     <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">•</span>
-                     <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">Counting Down</span>
-                     <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">•</span>
-                     <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">Save The Date</span>
-                      <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">•</span>
-                     <span class="text-[#2C2C2C] font-lexend text-xs font-bold uppercase tracking-[0.3em] mx-8">Counting Down</span>
-                 </div>
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img v-if="heroBackground" :src="heroBackground" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                <div class="absolute inset-0 bg-gradient-to-b from-white/70 via-white/50 to-white/80"></div>
             </div>
             
-            <div class="py-24 text-center">
-                 <div class="font-lexend text-[#2C2C2C] scale-150">
-                    <CountdownSection :target-date="content?.events?.akad?.isoDate || '2025-01-01T00:00:00Z'" class="!font-lexend [&_.text-xs]:!hidden [&_.text-3xl]:!text-5xl [&_.text-3xl]:!font-thin [&_.gap-4]:!gap-8 [&_.bg-white]:!bg-transparent [&_.shadow-sm]:!shadow-none [&_.rounded-lg]:!rounded-none"></CountdownSection>
-                </div>
-            </div>
-        </section>
-
-         <!-- 3. QUOTE: BIG & BOLD -->
-        <section id="quote" v-if="content?.quote?.content" class="min-h-[50vh] w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-8 py-20 bg-[#2C2C2C] text-[#F9F8F6]">
-             <div class="max-w-3xl text-center">
-                <i class="fas fa-quote-left text-3xl mb-8 opacity-50"></i>
-                <p class="font-lora text-3xl md:text-5xl leading-tight font-light mb-8">
-                    {{ content?.quote?.content }}
-                </p>
-                <div class="inline-block border border-[#F9F8F6] px-6 py-2 rounded-full">
-                    <p class="font-lexend text-xs uppercase tracking-[0.2em]">{{ content?.quote?.source }}</p>
-                </div>
-             </div>
-        </section>
-        
-        <!-- 4. PROFILE: EDITORIAL SPLIT -->
-        <section id="mempelai" class="w-full flex flex-col snap-start snap-always reveal-on-scroll bg-[#F9F8F6]">
-            <!-- Bride/Groom 1 -->
-            <div class="grid md:grid-cols-2 min-h-[80vh] border-b border-[#2C2C2C]">
-                 <div class="relative border-r border-[#2C2C2C] group overflow-hidden bg-[#E5E5E5]">
-                      <img v-if="firstProfile?.image" :src="firstProfile.image" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000" />
-                      <div class="absolute bottom-0 left-0 bg-white px-6 py-4 border-t border-r border-[#2C2C2C]">
-                          <span class="font-lexend text-xs font-bold uppercase tracking-widest">01 / {{ isBrideFirst ? 'The Bride' : 'The Groom' }}</span>
-                      </div>
-                 </div>
-                 <div class="flex flex-col justify-center p-12 lg:p-24 relative">
-                     <h2 class="font-lexend text-6xl md:text-8xl font-black uppercase text-[#2C2C2C]/5 absolute top-10 right-10 leading-none pointer-events-none">One</h2>
-                     <h3 class="font-lora italic text-5xl md:text-6xl text-[#2C2C2C] mb-6">{{ firstProfile?.nickname }}</h3>
-                     <p class="font-lexend text-lg font-bold uppercase tracking-widest mb-2">{{ firstProfile?.fullName }}</p>
-                     <div class="w-12 h-1 bg-[#2C2C2C] mb-6"></div>
-                     <p class="font-lora text-[#555] leading-relaxed">
-                         Son/Daughter of <br>
-                         <span class="font-bold text-[#2C2C2C]">{{ firstProfile?.fatherName }}</span> <br>& <br><span class="font-bold text-[#2C2C2C]">{{ firstProfile?.motherName }}</span>
-                     </p>
-                 </div>
-            </div>
-
-             <!-- Bride/Groom 2 -->
-             <div class="grid md:grid-cols-2 min-h-[80vh]">
-                 <div class="flex flex-col justify-center p-12 lg:p-24 relative order-2 md:order-1 border-r border-[#2C2C2C]">
-                     <h2 class="font-lexend text-6xl md:text-8xl font-black uppercase text-[#2C2C2C]/5 absolute top-10 left-10 leading-none pointer-events-none">Two</h2>
-                     <h3 class="font-lora italic text-5xl md:text-6xl text-[#2C2C2C] mb-6 text-right md:text-left">{{ secondProfile?.nickname }}</h3>
-                     <p class="font-lexend text-lg font-bold uppercase tracking-widest mb-2 text-right md:text-left">{{ secondProfile?.fullName }}</p>
-                     <div class="w-12 h-1 bg-[#2C2C2C] mb-6 ml-auto md:ml-0"></div>
-                     <p class="font-lora text-[#555] leading-relaxed text-right md:text-left">
-                         Son/Daughter of <br>
-                         <span class="font-bold text-[#2C2C2C]">{{ secondProfile?.fatherName }}</span> <br>& <br><span class="font-bold text-[#2C2C2C]">{{ secondProfile?.motherName }}</span>
-                     </p>
-                 </div>
-                 <div class="relative group overflow-hidden bg-[#E5E5E5] order-1 md:order-2">
-                      <img v-if="secondProfile?.image" :src="secondProfile.image" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000" />
-                      <div class="absolute bottom-0 right-0 bg-white px-6 py-4 border-t border-l border-[#2C2C2C]">
-                          <span class="font-lexend text-xs font-bold uppercase tracking-widest">02 / {{ isBrideFirst ? 'The Groom' : 'The Bride' }}</span>
-                      </div>
-                 </div>
-            </div>
-        </section>
-
-        <!-- 5. EVENTS: MAGAZINE SPREAD (CLEAN LINES) -->
-        <section id="events" class="min-h-screen w-full flex flex-col snap-start snap-always reveal-on-scroll bg-[#F9F8F6] pt-24 pb-24 px-6 md:px-20 relative">
-             <div class="mb-16 border-b border-[#2C2C2C] pb-4 flex justify-between items-end">
-                <h2 class="font-lexend text-5xl md:text-7xl font-black uppercase tracking-tighter text-[#2C2C2C]">The<br>Schedule</h2>
-                <span class="font-lora italic text-xl hidden md:block">Mark your calendar</span>
-            </div>
-            
-            <div class="space-y-0">
-                <!-- Akad -->
-                <div v-if="content?.events?.akad?.date" class="group border-b border-[#2C2C2C] py-12 hover:bg-white transition-colors duration-500 -mx-6 md:-mx-20 px-6 md:px-20">
-                    <div class="grid md:grid-cols-12 gap-8 items-start">
-                        <div class="md:col-span-3">
-                            <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em] bg-[#2C2C2C] text-white px-3 py-1">Event 01</span>
-                        </div>
-                        <div class="md:col-span-5">
-                            <h3 class="font-lora text-4xl md:text-5xl italic mb-4">Akad Nikah</h3>
-                            <p class="font-lexend text-sm uppercase tracking-wider text-[#555]">{{ content?.events?.akad?.date?.split(',')[0] }}</p>
-                            <p class="font-lexend text-2xl font-bold uppercase tracking-tighter mt-1">{{ content?.events?.akad?.date?.split(',')[1] || content?.events?.akad?.date }}</p>
-                        </div>
-                        <div class="md:col-span-4 flex flex-col justify-between h-full">
-                            <div>
-                                <p class="font-lexend font-bold text-lg mb-2">{{ content?.events?.akad?.time }}</p>
-                                <p class="font-lora text-sm leading-relaxed text-[#555] max-w-xs">{{ content?.events?.akad?.location }}</p>
-                            </div>
-                            <a :href="content?.events?.akad?.mapsUrl" target="_blank" class="mt-8 inline-flex items-center gap-2 font-lexend text-xs uppercase font-bold tracking-widest hover:underline">
-                                Get Directions <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Resepsi -->
-                 <div v-if="content?.events?.reception?.date" class="group border-b border-[#2C2C2C] py-12 hover:bg-white transition-colors duration-500 -mx-6 md:-mx-20 px-6 md:px-20">
-                    <div class="grid md:grid-cols-12 gap-8 items-start">
-                        <div class="md:col-span-3">
-                            <span class="font-lexend text-xs font-bold uppercase tracking-[0.2em] bg-[#E0BFB8] text-[#2C2C2C] px-3 py-1">Event 02</span>
-                        </div>
-                        <div class="md:col-span-5">
-                            <h3 class="font-lora text-4xl md:text-5xl italic mb-4">Resepsi</h3>
-                            <p class="font-lexend text-sm uppercase tracking-wider text-[#555]">{{ content?.events?.reception?.date?.split(',')[0] }}</p>
-                            <p class="font-lexend text-2xl font-bold uppercase tracking-tighter mt-1">{{ content?.events?.reception?.date?.split(',')[1] || content?.events?.reception?.date }}</p>
-                        </div>
-                        <div class="md:col-span-4 flex flex-col justify-between h-full">
-                            <div>
-                                <p class="font-lexend font-bold text-lg mb-2">{{ content?.events?.reception?.time }}</p>
-                                <p class="font-lora text-sm leading-relaxed text-[#555] max-w-xs">{{ content?.events?.reception?.location }}</p>
-                            </div>
-                           <a :href="content?.events?.reception?.mapsUrl" target="_blank" class="mt-8 inline-flex items-center gap-2 font-lexend text-xs uppercase font-bold tracking-widest hover:underline">
-                                Get Directions <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 6. GALLERY: BENTO GRID / MOSAIC -->
-        <section id="gallery" v-if="content?.gallery?.length" class="min-h-screen w-full flex flex-col snap-start snap-always reveal-on-scroll bg-[#2C2C2C] text-[#F9F8F6] py-24 px-4 md:px-12">
-             <div class="text-center mb-16">
-                 <h2 class="font-lexend text-4xl md:text-6xl uppercase tracking-tighter font-black">Visual<br>Journal</h2>
-            </div>
-            
-            <!-- MOSAIC GRID CSS -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[250px] w-full max-w-7xl mx-auto">
-                <div v-for="(img, idx) in content?.gallery" :key="idx" 
-                     :class="[
-                        'relative overflow-hidden group grayscale hover:grayscale-0 transition-all duration-700 bg-[#333]',
-                        idx % 3 === 0 ? 'col-span-2 row-span-2' : 'col-span-1 row-span-1'
-                     ]">
-                     <img :src="img" class="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000" />
-                     <div class="absolute inset-0 border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex justify-between items-end">
-                         <span class="font-lexend text-[10px] uppercase font-bold tracking-widest">No. {{idx + 1}}</span>
-                         <i class="fas fa-plus text-xs"></i>
-                     </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 7. GIFT-->
-        <section id="gift" class="min-h-[70vh] w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll bg-[#F9F8F6] px-6 py-20">
-             <div class="w-full max-w-4xl border border-[#2C2C2C] p-8 md:p-16 relative">
-                 <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F9F8F6] px-6">
-                     <span class="font-lexend text-2xl font-black uppercase tracking-widest bg-[#2C2C2C] text-white px-2 py-1">Gift</span>
-                 </div>
-
-                 <p class="font-lora text-center text-xl md:text-2xl text-[#2C2C2C] mb-12 italic max-w-lg mx-auto leading-relaxed">
-                     "Your love and prayers are the greatest gift we could ask for."
-                 </p>
-                 
-                 <div class="font-lexend">
-                    <GiftSection :gift="content?.gift || {}" class="!bg-transparent"></GiftSection>
-                 </div>
-             </div>
-        </section>
-        
-        <!-- 8. RSVP -->
-        <section id="rsvp" class="min-h-screen w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-4 bg-[#E0BFB8]">
-            <div class="relative w-full max-w-xl text-center">
-                <h2 class="font-lexend text-[15vw] md:text-9xl font-black text-[#2C2C2C]/10 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-0 leading-none pointer-events-none">RSVP</h2>
+            <!-- Content -->
+            <div class="relative z-10 text-center px-6 py-20">
+                <!-- Wedding Of Label -->
+                <p class="text-lavender uppercase tracking-[0.35em] text-xs md:text-sm mb-6 font-medium animate-fadeInUp">{{ texts.weddingOf }}</p>
                 
-                <div class="relative z-10 bg-white border border-[#2C2C2C] p-8 md:p-12 shadow-[20px_20px_0px_0px_rgba(44,44,44,1)]">
-                    <h2 class="font-lexend text-4xl font-bold uppercase mb-8 text-[#2C2C2C]">Attendance</h2>
+                <!-- Couple Names - Big & Elegant -->
+                <h1 class="font-script text-6xl md:text-8xl lg:text-9xl text-dark text-center leading-tight mb-6 animate-fadeInUp animation-delay-200">
+                    {{ firstNickname }} <span class="text-lavender">&</span> {{ secondNickname }}
+                </h1>
+                
+                <!-- Floral Divider -->
+                <div class="flex items-center justify-center gap-4 mb-6 animate-fadeInUp animation-delay-400">
+                    <div class="w-20 h-px bg-gradient-to-r from-transparent via-lavender/50 to-transparent"></div>
+                    <svg class="w-8 h-8 text-lavender" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+                    </svg>
+                    <div class="w-20 h-px bg-gradient-to-r from-transparent via-lavender/50 to-transparent"></div>
+                </div>
+                
+                <!-- Date - Prominent -->
+                <p class="text-dark/80 text-base md:text-lg tracking-[0.2em] uppercase font-light animate-fadeInUp animation-delay-600">{{ content?.hero?.date }}</p>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <button @click="scrollToSection('quote')" class="absolute bottom-8 animate-bounce text-lavender z-10">
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-xs uppercase tracking-widest text-dark/50">Scroll</span>
+                    <i class="fas fa-chevron-down text-xl"></i>
+                </div>
+            </button>
+        </section>
+
+        <!-- 2. QUOTE SECTION -->
+        <section id="quote" class="w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll px-8 py-24 bg-white">
+            <div class="max-w-3xl text-center">
+                <!-- Decorative Quote Mark -->
+                <div class="text-lavender/30 text-6xl font-serif mb-4">"</div>
+                <p class="font-serif text-xl md:text-2xl leading-relaxed text-dark/80 italic mb-6">
+                    {{ content?.quote?.content || texts.quoteDefault }}
+                </p>
+                <div class="flex items-center justify-center gap-3">
+                    <div class="w-12 h-px bg-lavender/40"></div>
+                    <p class="text-lavender text-sm font-medium tracking-wider">{{ content?.quote?.source || texts.quoteSourceDefault }}</p>
+                    <div class="w-12 h-px bg-lavender/40"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. COUNTDOWN SECTION - Premium Box Design -->
+        <section id="countdown" class="w-full flex flex-col items-center justify-center snap-start snap-always reveal-on-scroll py-20 px-6 bg-cream relative overflow-hidden">
+            <!-- Decorative background -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-lavender"></div>
+                <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-lavender"></div>
+            </div>
+            
+            <div class="relative z-10 text-center">
+                <!-- Small decorative element -->
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-lavender/40"></div>
+                    <div class="w-2 h-2 rounded-full bg-lavender/60"></div>
+                    <div class="w-8 h-px bg-lavender/40"></div>
+                </div>
+                
+                <p class="text-lavender uppercase tracking-[0.3em] text-xs mb-3 font-medium">{{ texts.saveTheDate }}</p>
+                <h2 class="font-script text-4xl md:text-5xl text-dark mb-10">{{ texts.weddingDay }}</h2>
+                
+                <!-- Premium Countdown Box -->
+                <div class="bg-white rounded-2xl shadow-2xl shadow-lavender/10 p-10 md:p-12 w-full max-w-lg mx-auto border border-lavender/10">
+                    <CountdownSection 
+                        :target-date="content?.events?.akad?.isoDate || '2025-01-01T00:00:00Z'" 
+                        class="kunikaa-countdown"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. COUPLE PROFILE SECTION -->
+        <section id="mempelai" class="w-full flex flex-col snap-start snap-always reveal-on-scroll py-20 px-6 bg-white">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-lavender/40"></div>
+                    <div class="w-2 h-2 rounded-full bg-lavender/60"></div>
+                    <div class="w-8 h-px bg-lavender/40"></div>
+                </div>
+                <p class="text-lavender uppercase tracking-[0.3em] text-xs mb-3 font-medium">Bride & Groom</p>
+                <h2 class="font-script text-4xl md:text-5xl text-dark">{{ firstNickname }} & {{ secondNickname }}</h2>
+            </div>
+            
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20">
+                <!-- First Profile -->
+                <div class="text-center group">
+                    <!-- Large Photo with Elegant Frame -->
+                    <div class="relative w-52 h-52 md:w-64 md:h-64 mx-auto mb-8">
+                        <div class="absolute inset-0 border-2 border-lavender/20 rounded-full transform group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="absolute inset-3 border border-lavender/10 rounded-full"></div>
+                        <div class="absolute inset-6 rounded-full overflow-hidden bg-gradient-to-br from-lavender/5 to-lavender/20 shadow-xl">
+                            <img v-if="firstProfile?.image" :src="firstProfile.image" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                            <div v-else class="w-full h-full flex items-center justify-center">
+                                <i class="fas fa-user text-4xl text-lavender/30"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Label -->
+                    <p class="text-lavender uppercase tracking-[0.2em] text-xs mb-2 font-medium">{{ firstProfile?.isBride ? texts.brideLabel : texts.groomLabel }}</p>
+                    
+                    <!-- Name -->
+                    <h3 class="font-script text-4xl md:text-5xl text-dark mb-3">{{ firstProfile?.nickname }}</h3>
+                    <p class="text-dark/60 text-sm mb-4 font-light">{{ firstProfile?.fullName }}</p>
+                    
+                    <!-- Parents -->
+                    <div class="text-dark/50 text-sm leading-relaxed">
+                        <p>{{ firstProfile?.isBride ? texts.daughterOf : texts.sonOf }} {{ firstProfile?.fatherName }}</p>
+                        <p>{{ texts.andMrs }} {{ firstProfile?.motherName }}</p>
+                    </div>
+                </div>
+
+                <!-- Second Profile -->
+                <div class="text-center group">
+                    <div class="relative w-52 h-52 md:w-64 md:h-64 mx-auto mb-8">
+                        <div class="absolute inset-0 border-2 border-lavender/20 rounded-full transform group-hover:scale-105 transition-transform duration-500"></div>
+                        <div class="absolute inset-3 border border-lavender/10 rounded-full"></div>
+                        <div class="absolute inset-6 rounded-full overflow-hidden bg-gradient-to-br from-lavender/5 to-lavender/20 shadow-xl">
+                            <img v-if="secondProfile?.image" :src="secondProfile.image" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                            <div v-else class="w-full h-full flex items-center justify-center">
+                                <i class="fas fa-user text-4xl text-lavender/30"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-lavender uppercase tracking-[0.2em] text-xs mb-2 font-medium">{{ secondProfile?.isBride ? texts.brideLabel : texts.groomLabel }}</p>
+                    <h3 class="font-script text-4xl md:text-5xl text-dark mb-3">{{ secondProfile?.nickname }}</h3>
+                    <p class="text-dark/60 text-sm mb-4 font-light">{{ secondProfile?.fullName }}</p>
+                    
+                    <div class="text-dark/50 text-sm leading-relaxed">
+                        <p>{{ secondProfile?.isBride ? texts.daughterOf : texts.sonOf }} {{ secondProfile?.fatherName }}</p>
+                        <p>{{ texts.andMrs }} {{ secondProfile?.motherName }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. EVENTS SECTION - With Banner -->
+        <section id="events" class="w-full flex flex-col snap-start snap-always reveal-on-scroll bg-cream">
+            <!-- Event Banner -->
+            <div class="relative h-64 md:h-80 w-full overflow-hidden">
+                <img v-if="content?.gallery?.[1] || heroBackground" :src="content?.gallery?.[1] || heroBackground" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark/70"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <p class="text-white/70 uppercase tracking-[0.3em] text-xs mb-3 font-medium">Planning</p>
+                    <h2 class="font-script text-5xl md:text-6xl text-white">{{ texts.whenWhere }}</h2>
+                    
+                    <!-- Floral Decoration under banner text -->
+                    <div class="mt-4">
+                        <svg class="w-32 h-12" viewBox="0 0 120 40" fill="none">
+                            <ellipse cx="20" cy="20" rx="8" ry="15" fill="#9CAF88" opacity="0.6" transform="rotate(-45 20 20)"/>
+                            <circle cx="40" cy="20" r="10" fill="#C9A4C9" opacity="0.8"/>
+                            <circle cx="40" cy="20" r="6" fill="#E0D0E0"/>
+                            <circle cx="60" cy="20" r="14" fill="#B494B4" opacity="0.9"/>
+                            <circle cx="60" cy="20" r="9" fill="#D4C4D4"/>
+                            <circle cx="60" cy="20" r="5" fill="#EEE0EE"/>
+                            <circle cx="80" cy="20" r="10" fill="#C9A4C9" opacity="0.8"/>
+                            <circle cx="80" cy="20" r="6" fill="#E0D0E0"/>
+                            <ellipse cx="100" cy="20" rx="8" ry="15" fill="#9CAF88" opacity="0.6" transform="rotate(45 100 20)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Cards -->
+            <div class="py-16 px-6">
+                <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+                    <!-- Akad Nikah / Ceremony -->
+                    <div v-if="content?.events?.akad?.date" class="bg-white rounded-2xl p-8 md:p-10 shadow-xl shadow-lavender/5 text-center border border-lavender/10 hover:shadow-2xl hover:shadow-lavender/10 transition-shadow duration-500">
+                        <div class="w-16 h-16 bg-lavender/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-ring text-lavender text-xl"></i>
+                        </div>
+                        <h3 class="font-script text-3xl text-dark mb-4">{{ texts.theCeremony }}</h3>
+                        <p class="text-lavender font-medium mb-2">{{ content?.events?.akad?.date }}</p>
+                        <p class="text-dark font-semibold text-lg mb-4">{{ content?.events?.akad?.time }} WIB</p>
+                        <p class="text-dark/60 text-sm mb-6 leading-relaxed">{{ content?.events?.akad?.location }}</p>
+                        <a v-if="content?.events?.akad?.mapsUrl" :href="content?.events?.akad?.mapsUrl" target="_blank" 
+                           class="inline-flex items-center gap-2 bg-lavender text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-lavender/90 transition-colors">
+                            <i class="fas fa-map-marker-alt"></i> {{ texts.viewMap }}
+                        </a>
+                    </div>
+
+                    <!-- Resepsi / Reception -->
+                    <div v-if="receptionEvent?.date" class="bg-white rounded-2xl p-8 md:p-10 shadow-xl shadow-lavender/5 text-center border border-lavender/10 hover:shadow-2xl hover:shadow-lavender/10 transition-shadow duration-500">
+                        <div class="w-16 h-16 bg-lavender/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-glass-cheers text-lavender text-xl"></i>
+                        </div>
+                        <h3 class="font-script text-3xl text-dark mb-4">{{ texts.theReception }}</h3>
+                        <p class="text-lavender font-medium mb-2">{{ receptionEvent?.date }}</p>
+                        <p class="text-dark font-semibold text-lg mb-4">{{ receptionEvent?.time }} WIB</p>
+                        <p class="text-dark/60 text-sm mb-6 leading-relaxed">{{ receptionEvent?.location }}</p>
+                        <a v-if="receptionEvent?.mapsUrl" :href="receptionEvent?.mapsUrl" target="_blank" 
+                           class="inline-flex items-center gap-2 bg-lavender text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-lavender/90 transition-colors">
+                            <i class="fas fa-map-marker-alt"></i> {{ texts.viewMap }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. GALLERY SECTION - With Banner -->
+        <section id="gallery" v-if="content?.gallery?.length" class="w-full flex flex-col snap-start snap-always reveal-on-scroll bg-white">
+            <!-- Gallery Banner -->
+            <div class="relative h-48 md:h-64 w-full overflow-hidden">
+                <img v-if="content?.gallery?.[2] || heroBackground" :src="content?.gallery?.[2] || heroBackground" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                <div class="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/80"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <h2 class="font-script text-5xl md:text-6xl text-dark">{{ texts.ourGallery }}</h2>
+                    <!-- Floral Decoration -->
+                    <div class="mt-3">
+                        <svg class="w-28 h-10" viewBox="0 0 100 36" fill="none">
+                            <ellipse cx="15" cy="18" rx="6" ry="12" fill="#9CAF88" opacity="0.6" transform="rotate(-45 15 18)"/>
+                            <circle cx="35" cy="18" r="8" fill="#C9A4C9" opacity="0.8"/>
+                            <circle cx="35" cy="18" r="5" fill="#E0D0E0"/>
+                            <circle cx="50" cy="18" r="10" fill="#B494B4" opacity="0.9"/>
+                            <circle cx="50" cy="18" r="6" fill="#D4C4D4"/>
+                            <circle cx="65" cy="18" r="8" fill="#C9A4C9" opacity="0.8"/>
+                            <circle cx="65" cy="18" r="5" fill="#E0D0E0"/>
+                            <ellipse cx="85" cy="18" rx="6" ry="12" fill="#9CAF88" opacity="0.6" transform="rotate(45 85 18)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Photo Grid -->
+            <div class="py-12 px-6">
+                <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div v-for="(img, idx) in content?.gallery?.slice(0, 6)" :key="idx" 
+                         class="aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500 group">
+                        <img :src="img" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" referrerpolicy="no-referrer" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. GIFT SECTION -->
+        <section id="gift" class="w-full flex flex-col items-center snap-start snap-always reveal-on-scroll py-20 px-6 bg-cream">
+            <div class="text-center mb-10">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-8 h-px bg-lavender/40"></div>
+                    <div class="w-2 h-2 rounded-full bg-lavender/60"></div>
+                    <div class="w-8 h-px bg-lavender/40"></div>
+                </div>
+                <h2 class="font-script text-4xl md:text-5xl text-dark mb-4">{{ texts.weddingGift }}</h2>
+                <p class="text-dark/60 text-sm max-w-md mx-auto">{{ texts.giftText }}</p>
+            </div>
+            
+            <div class="w-full max-w-md">
+                <GiftSection :gift="content?.gift || {}" class="kunikaa-gift" />
+            </div>
+        </section>
+
+        <!-- 8. RSVP SECTION - With Banner -->
+        <section id="rsvp" class="w-full flex flex-col items-center snap-start snap-always reveal-on-scroll bg-white">
+            <!-- RSVP Banner -->
+            <div class="relative h-48 md:h-56 w-full overflow-hidden">
+                <img v-if="content?.gallery?.[3] || heroBackground" :src="content?.gallery?.[3] || heroBackground" class="w-full h-full object-cover" referrerpolicy="no-referrer" />
+                <div class="absolute inset-0 bg-gradient-to-b from-dark/50 via-dark/30 to-dark/60"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <p class="text-white/70 uppercase tracking-[0.3em] text-xs mb-3 font-medium">You're Invited</p>
+                    <h2 class="font-script text-4xl md:text-5xl text-white">{{ texts.rsvpTitle }}</h2>
+                    <p class="text-white/70 text-sm mt-3">{{ texts.rsvpSubtitle }}</p>
+                </div>
+            </div>
+            
+            <!-- RSVP Form -->
+            <div class="py-12 px-6 w-full">
+                <div class="w-full max-w-xl mx-auto bg-white rounded-2xl p-8 md:p-10 shadow-2xl shadow-lavender/10 border border-lavender/10 -mt-16 relative z-10">
                     <RSVPSection 
                         :rsvp="content?.rsvp || {}" 
                         :couple-name="`${content?.hero?.groomNickname} & ${content?.hero?.brideNickname}`"
                         :is-authorized="(content as any)?._auth?.isAuthorized || false"
-                        class="!text-[#2C2C2C]"
-                    ></RSVPSection>
+                        class="kunikaa-rsvp"
+                    />
                 </div>
             </div>
         </section>
 
         <!-- FOOTER -->
-        <section class="w-full py-12 bg-[#2C2C2C] text-[#F9F8F6] px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-6">
-                 <div class="text-center md:text-left">
-                     <h3 class="font-lexend font-bold uppercase tracking-widest text-lg">{{ firstNickname }} & {{ secondNickname }}</h3>
-                     <p class="font-lora text-xs italic opacity-50">Established {{ year }} • {{ location }}</p>
-                 </div>
-                 <div class="text-center md:text-right">
-                    <p class="font-lexend text-[10px] uppercase tracking-[0.2em] opacity-50">Designed by Mengundang</p>
-                 </div>
+        <section class="w-full py-20 bg-gradient-to-b from-cream to-lavender/20 px-6">
+            <div class="text-center">
+                <!-- Floral Decoration -->
+                <svg class="w-32 h-12 mx-auto mb-6" viewBox="0 0 120 40" fill="none">
+                    <ellipse cx="20" cy="20" rx="8" ry="15" fill="#9CAF88" opacity="0.6" transform="rotate(-45 20 20)"/>
+                    <circle cx="40" cy="20" r="10" fill="#C9A4C9" opacity="0.8"/>
+                    <circle cx="40" cy="20" r="6" fill="#E0D0E0"/>
+                    <circle cx="60" cy="20" r="14" fill="#B494B4" opacity="0.9"/>
+                    <circle cx="60" cy="20" r="9" fill="#D4C4D4"/>
+                    <circle cx="60" cy="20" r="5" fill="#EEE0EE"/>
+                    <circle cx="80" cy="20" r="10" fill="#C9A4C9" opacity="0.8"/>
+                    <circle cx="80" cy="20" r="6" fill="#E0D0E0"/>
+                    <ellipse cx="100" cy="20" rx="8" ry="15" fill="#9CAF88" opacity="0.6" transform="rotate(45 100 20)"/>
+                </svg>
+                
+                <h3 class="font-script text-5xl text-dark mb-4">{{ texts.thankYou }}</h3>
+                <p class="text-lavender font-medium text-xl mb-2">{{ firstNickname }} & {{ secondNickname }}</p>
+                <p class="text-dark/50 text-sm italic mb-8">We are blessed to have you in our lives</p>
+                
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <div class="w-12 h-px bg-lavender/30"></div>
+                    <i class="fas fa-heart text-lavender"></i>
+                    <div class="w-12 h-px bg-lavender/30"></div>
+                </div>
+                
+                <p class="text-dark/40 text-xs">Powered by <span class="font-medium">Mengundang</span></p>
             </div>
         </section>
 
-        </div>
-        
-        <!-- COVER SECTION CUSTOM -->
-        <div class="font-lora">
-            <CoverSection 
-            @open="handleOpen" 
-            :groom-name="firstNickname || ''" 
-            :bride-name="secondNickname || ''" 
-            :date="content?.hero?.date || ''"
-            :background-image="content?.cover?.backgroundImage || ''"
-            :guest-name="(route.query.to as string)"
-            ></CoverSection>
-        </div>
+    </div>
+    
+    <!-- COVER SECTION -->
+    <CoverSection 
+        @open="handleOpen" 
+        :groom-name="firstNickname || ''" 
+        :bride-name="secondNickname || ''" 
+        :date="content?.hero?.date || ''"
+        :background-image="content?.cover?.backgroundImage || content?.hero?.backgroundImage || ''"
+        :guest-name="(route.query.to as string)"
+        class="kunikaa-cover"
+    />
 
-        <!-- FLOATING MUSIC -->
-        <ClientOnly>
-            <FloatingMusic 
+    <!-- FLOATING MUSIC -->
+    <ClientOnly>
+        <FloatingMusic 
             ref="audioPlayer" 
             :url="content?.music?.url || ''" 
             :start-time="content?.music?.startTime || 0"
             :fade="content?.music?.fade || false"
-            ></FloatingMusic>
-            
-            <FloatingNav v-if="isOpened" :current-section-id="activeSectionId" @navigate="scrollToSection" />
-        </ClientOnly>
+        />
+        
+        <FloatingNav v-if="isOpened" :current-section-id="activeSectionId" @navigate="scrollToSection" />
+    </ClientOnly>
   </div>
 </template>
 
 <style scoped>
-/* Google Font Imports should be in Nuxt Config, but defining classes here */
-/* Ideally we add Lexend to config too for the bold sans serif look */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700;900&display=swap');
+/* ============================================
+   KUNIKAA THEME - Premium Wedding Design
+   Colors: Lavender, Cream, White, Dark
+   ============================================ */
 
-.font-alex {
+/* Color Variables */
+.kunikaa-theme {
+    --lavender: #9B8AB8;
+    --cream: #FAF8F5;
+    --dark: #3D3D3D;
+    --white: #FFFFFF;
+}
+
+.bg-cream { background-color: var(--cream); }
+.bg-lavender { background-color: var(--lavender); }
+.text-lavender { color: var(--lavender); }
+.text-dark { color: var(--dark); }
+.border-lavender { border-color: var(--lavender); }
+
+/* Font Classes */
+.font-script {
     font-family: 'Alex Brush', cursive;
 }
-.font-lora {
-    font-family: 'Lora', serif;
-}
-.font-lexend {
-    font-family: 'Lexend', sans-serif;
+.font-serif {
+    font-family: 'Cormorant Garamond', 'Lora', serif;
 }
 
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.animation-delay-200 { animation-delay: 0.2s; opacity: 0; }
+.animation-delay-400 { animation-delay: 0.4s; opacity: 0; }
+.animation-delay-600 { animation-delay: 0.6s; opacity: 0; }
+
+/* Floral Corner Decorations - Large Watercolor Style */
+.floral-corner {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    pointer-events: none;
+    z-index: 40;
+}
+
+@media (min-width: 768px) {
+    .floral-corner {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+.floral-tl {
+    top: -40px;
+    left: -40px;
+    animation: floatTL 8s ease-in-out infinite;
+}
+
+.floral-tr {
+    top: -40px;
+    right: -40px;
+    animation: floatTR 9s ease-in-out infinite;
+}
+
+.floral-bl {
+    bottom: -40px;
+    left: -40px;
+    animation: floatBL 10s ease-in-out infinite;
+}
+
+.floral-br {
+    bottom: -40px;
+    right: -40px;
+    animation: floatBR 8.5s ease-in-out infinite;
+}
+
+@keyframes floatTL {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(8px, 8px) rotate(2deg); }
+}
+
+@keyframes floatTR {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-8px, 8px) rotate(-2deg); }
+}
+
+@keyframes floatBL {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(8px, -8px) rotate(-2deg); }
+}
+
+@keyframes floatBR {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-8px, -8px) rotate(2deg); }
+}
+
+/* Scrollbar Hidden */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -501,42 +820,156 @@ const location = computed(() => {
   scrollbar-width: none; 
 }
 
-/* Animations */
+/* Reveal Animations */
 .reveal-on-scroll {
     opacity: 0;
-    transition: opacity 1s ease-out;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 .reveal-on-scroll.is-visible {
     opacity: 1;
+    transform: translateY(0);
 }
 
-.animate-marquee {
-    animation: marquee 20s linear infinite;
+/* Override Shared Components */
+:deep(.kunikaa-countdown) {
+    background: transparent !important;
 }
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+:deep(.kunikaa-countdown .flex) {
+    gap: 1.5rem !important;
+}
+:deep(.kunikaa-countdown .text-2xl),
+:deep(.kunikaa-countdown .text-3xl) {
+    color: var(--dark) !important;
+    font-weight: 300 !important;
+    font-size: 2.5rem !important;
+}
+:deep(.kunikaa-countdown .text-xs),
+:deep(.kunikaa-countdown .text-\[10px\]) {
+    color: var(--lavender) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    font-size: 0.7rem !important;
+}
+:deep(.kunikaa-countdown .min-w-\[70px\]),
+:deep(.kunikaa-countdown .min-w-\[80px\]) {
+    min-width: 80px !important;
+    padding: 1rem !important;
+    background: var(--cream) !important;
+    border: 1px solid rgba(155, 138, 184, 0.2) !important;
+    border-radius: 12px !important;
 }
 
-/* DEEP OVERRIDES FOR SHARED COMPONENTS */
-:deep(.text-gold-500) {
-    color: #E0BFB8 !important; 
+/* Countdown Expired - Kunikaa Elegant Style */
+:deep(.kunikaa-countdown .bg-stone-50) {
+    background: linear-gradient(135deg, #F8F4FA 0%, #EDE4F3 100%) !important;
+    border: 1px solid rgba(155, 138, 184, 0.3) !important;
+    border-radius: 16px !important;
 }
-:deep(.bg-stone-900) {
-    background-color: #2C2C2C !important;
+:deep(.kunikaa-countdown .bg-stone-200) {
+    background: var(--lavender) !important;
 }
-:deep(.border-stone-200) {
-    border-color: #eee !important;
+:deep(.kunikaa-countdown .text-stone-500) {
+    color: white !important;
 }
-/* Force inputs to be sharp square */
-:deep(input), :deep(textarea), :deep(select) {
-    border-radius: 0px !important;
-    border: 1px solid #ddd !important;
-    background: #fff !important;
+:deep(.kunikaa-countdown .text-stone-800) {
+    color: var(--lavender) !important;
+    font-family: 'Alex Brush', cursive !important;
+    font-size: 1.75rem !important;
 }
-:deep(button) {
-    border-radius: 0px !important;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+:deep(.kunikaa-countdown p.text-xs.text-stone-500) {
+    color: var(--dark) !important;
+    font-style: italic !important;
+}
+
+/* Gift Section - Kunikaa Lavender Style */
+:deep(.kunikaa-gift) {
+    background: transparent !important;
+}
+:deep(.kunikaa-gift .bg-white),
+:deep(.kunikaa-gift .bg-stone-900),
+:deep(.kunikaa-gift [class*="bg-stone"]) {
+    background: linear-gradient(135deg, #F8F4FA 0%, #EDE4F3 100%) !important;
+    border: 1px solid rgba(155, 138, 184, 0.3) !important;
+    border-radius: 16px !important;
+    color: var(--dark) !important;
+}
+:deep(.kunikaa-gift .text-white) {
+    color: var(--dark) !important;
+}
+:deep(.kunikaa-gift .text-stone-400),
+:deep(.kunikaa-gift [class*="text-stone"]) {
+    color: var(--lavender) !important;
+}
+:deep(.kunikaa-gift button) {
+    background: var(--lavender) !important;
+    color: white !important;
+    border-radius: 8px !important;
+}
+:deep(.kunikaa-gift button:hover) {
+    opacity: 0.9 !important;
+}
+
+/* RSVP Section - Kunikaa Style */
+:deep(.kunikaa-rsvp) {
+    padding: 0 !important;
+}
+:deep(.kunikaa-rsvp .text-center.mb-10) {
+    display: none !important;
+}
+:deep(.kunikaa-rsvp input),
+:deep(.kunikaa-rsvp textarea),
+:deep(.kunikaa-rsvp select) {
+    border-radius: 12px !important;
+    border: 1px solid rgba(155, 138, 184, 0.3) !important;
+    background: var(--cream) !important;
+}
+:deep(.kunikaa-rsvp input:focus),
+:deep(.kunikaa-rsvp textarea:focus),
+:deep(.kunikaa-rsvp select:focus) {
+    border-color: var(--lavender) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(155, 138, 184, 0.1) !important;
+}
+:deep(.kunikaa-rsvp .grid.grid-cols-1 button) {
+    border-radius: 12px !important;
+    padding: 1rem !important;
+}
+:deep(.kunikaa-rsvp button[type="submit"]) {
+    background: var(--lavender) !important;
+    border-radius: 50px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.15em !important;
+    font-size: 0.8rem !important;
+    color: white !important;
+}
+:deep(.kunikaa-rsvp button[type="submit"]:hover) {
+    opacity: 0.9 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Cover Section */
+:deep(.kunikaa-cover) {
+    font-family: 'Alex Brush', cursive !important;
+}
+
+/* FloatingNav - Kunikaa Lavender Style */
+:deep(.floating-nav),
+.kunikaa-theme :deep(nav[class*="fixed bottom"]),
+.kunikaa-theme :deep(.fixed.bottom-6) {
+    background: linear-gradient(135deg, #F8F4FA 0%, #EDE4F3 100%) !important;
+    border: 1px solid rgba(155, 138, 184, 0.3) !important;
+    box-shadow: 0 10px 40px rgba(155, 138, 184, 0.2) !important;
+}
+:deep(.floating-nav button),
+.kunikaa-theme :deep(nav button) {
+    color: var(--lavender) !important;
+}
+:deep(.floating-nav button.active),
+:deep(.floating-nav button:hover),
+.kunikaa-theme :deep(nav button.active),
+.kunikaa-theme :deep(nav button:hover) {
+    background: var(--lavender) !important;
+    color: white !important;
 }
 </style>

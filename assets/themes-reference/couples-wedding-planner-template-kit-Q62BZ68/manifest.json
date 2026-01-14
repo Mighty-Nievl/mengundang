@@ -1,0 +1,1215 @@
+{
+    "manifest_version": "1.0.9",
+    "title": "Couples",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/default-kit.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/vectorclans.com",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Coming Soon",
+            "screenshot": "screenshots\/coming-soon.jpg",
+            "source": "templates\/coming-soon.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/coming-soon\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact 02",
+            "screenshot": "screenshots\/contact-02.jpg",
+            "source": "templates\/contact-02.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/contact-02\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Contact 01",
+            "screenshot": "screenshots\/contact-01.jpg",
+            "source": "templates\/contact-01.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/contact-01\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "RSVP",
+            "screenshot": "screenshots\/rsvp.jpg",
+            "source": "templates\/rsvp.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/rsvp\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Our Plans",
+            "screenshot": "screenshots\/our-plans.jpg",
+            "source": "templates\/our-plans.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/our-plans\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Vendors",
+            "screenshot": "screenshots\/vendors.jpg",
+            "source": "templates\/vendors.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/vendors\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Our Story",
+            "screenshot": "screenshots\/our-story.jpg",
+            "source": "templates\/our-story.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/our-story\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 04",
+            "screenshot": "screenshots\/home-04.jpg",
+            "source": "templates\/home-04.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/home-04\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 03",
+            "screenshot": "screenshots\/home-03.jpg",
+            "source": "templates\/home-03.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/home-03\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home 02",
+            "screenshot": "screenshots\/home-02.jpg",
+            "source": "templates\/home-02.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/home-02\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1"
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Home 01",
+            "screenshot": "screenshots\/home-01.jpg",
+            "source": "templates\/home-01.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/template-kit\/home-01\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Popup",
+            "screenshot": "screenshots\/popup.jpg",
+            "source": "templates\/popup.json",
+            "preview_url": "https:\/\/vectorclans.com\/couples\/?elementor_library=popup",
+            "type": "popup",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-popup",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "popup",
+                "additional_template_information": [
+                    "This is a \"Popup\" template for Elementor Pro."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor",
+            "version": "2.9.7",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor Pro",
+            "version": "2.8.5",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "heros2.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/heros2.png",
+            "templates": [
+                {
+                    "source": "templates\/coming-soon.json",
+                    "name": "Coming Soon"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 417824,
+            "dimensions": [
+                2000,
+                1250
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/floral-botanical-watercolor-set-V5W43ZJ"
+        },
+        {
+            "filename": "bg-flowers.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/bg-flowers.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-02.json",
+                    "name": "Contact 02"
+                },
+                {
+                    "source": "templates\/contact-01.json",
+                    "name": "Contact 01"
+                },
+                {
+                    "source": "templates\/our-plans.json",
+                    "name": "Our Plans"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                }
+            ],
+            "filesize": 93533,
+            "dimensions": [
+                2000,
+                800
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/watercolor-lilac-design-DZQR2R"
+        },
+        {
+            "filename": "1.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/1.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-02.json",
+                    "name": "Contact 02"
+                },
+                {
+                    "source": "templates\/contact-01.json",
+                    "name": "Contact 01"
+                },
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                },
+                {
+                    "source": "templates\/our-plans.json",
+                    "name": "Our Plans"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 4223,
+            "dimensions": [
+                80,
+                80
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/watercolor-lilac-design-DZQR2R"
+        },
+        {
+            "filename": "3-1.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/3-1.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-02.json",
+                    "name": "Contact 02"
+                },
+                {
+                    "source": "templates\/contact-01.json",
+                    "name": "Contact 01"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 329545,
+            "dimensions": [
+                1311,
+                1038
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/watercolor-lilac-design-DZQR2R"
+        },
+        {
+            "filename": "logo-black-02.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-black-02.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-01.json",
+                    "name": "Contact 01"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                }
+            ],
+            "filesize": 3973,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "logo-black-04.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-black-04.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-01.json",
+                    "name": "Contact 01"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                }
+            ],
+            "filesize": 3611,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "logo-black-06.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-black-06.png",
+            "templates": [
+                {
+                    "source": "templates\/contact-01.json",
+                    "name": "Contact 01"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                }
+            ],
+            "filesize": 2013,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "5.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/5.png",
+            "templates": [
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/popup.json",
+                    "name": "Popup"
+                }
+            ],
+            "filesize": 626508,
+            "dimensions": [
+                1458,
+                2114
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/floral-botanical-watercolor-set-V5W43ZJ"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-AB4FXRM-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-AB4FXRM-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/rsvp.json",
+                    "name": "RSVP"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 517304,
+            "dimensions": [
+                1886,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-AB4FXRM"
+        },
+        {
+            "filename": "bridesmaids_t20_1WyP2x-1.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/bridesmaids_t20_1WyP2x-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-plans.json",
+                    "name": "Our Plans"
+                }
+            ],
+            "filesize": 186462,
+            "dimensions": [
+                2048,
+                1362
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.twenty20.com\/photos\/31b3add8-dfe5-4697-920e-a4d42f42ae00?t20p=license-history"
+        },
+        {
+            "filename": "3-2.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/3-2.png",
+            "templates": [
+                {
+                    "source": "templates\/our-plans.json",
+                    "name": "Our Plans"
+                },
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 409395,
+            "dimensions": [
+                1664,
+                961
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/floral-botanical-watercolor-set-V5W43ZJ"
+        },
+        {
+            "filename": "love-100.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/04\/love-100.png",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 7687,
+            "dimensions": [
+                100,
+                100
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-lineal-color-icons-CG6PGDJ"
+        },
+        {
+            "filename": "dine-table-100.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/04\/dine-table-100.png",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                }
+            ],
+            "filesize": 6594,
+            "dimensions": [
+                100,
+                100
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-lineal-color-icons-CG6PGDJ"
+        },
+        {
+            "filename": "Flowers-Bouket-100.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/04\/Flowers-Bouket-100.png",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 6683,
+            "dimensions": [
+                100,
+                100
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-lineal-color-icons-CG6PGDJ"
+        },
+        {
+            "filename": "Drink-100.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/04\/Drink-100.png",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 6957,
+            "dimensions": [
+                100,
+                100
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-lineal-color-icons-CG6PGDJ"
+        },
+        {
+            "filename": "Certain-love-100_.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/04\/Certain-love-100_.png",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                }
+            ],
+            "filesize": 5785,
+            "dimensions": [
+                100,
+                100
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-lineal-color-icons-CG6PGDJ"
+        },
+        {
+            "filename": "Camera-150.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/04\/Camera-150.png",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 7518,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-lineal-color-icons-CG6PGDJ"
+        },
+        {
+            "filename": "white-roses-bride-bouquet-P9TH24C-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/white-roses-bride-bouquet-P9TH24C-1-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 314765,
+            "dimensions": [
+                1706,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/white-roses-bride-bouquet-P9TH24C"
+        },
+        {
+            "filename": "banquet-hall-for-weddings-with-decorative-elements-9HSVRC6-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/banquet-hall-for-weddings-with-decorative-elements-9HSVRC6-1-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 269475,
+            "dimensions": [
+                1709,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/banquet-hall-for-weddings-with-decorative-elements-9HSVRC6"
+        },
+        {
+            "filename": "banquet-hall-for-weddings-with-decorative-elements-2SVA7CR-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/banquet-hall-for-weddings-with-decorative-elements-2SVA7CR-1-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/vendors.json",
+                    "name": "Vendors"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 340346,
+            "dimensions": [
+                1709,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/banquet-hall-for-weddings-with-decorative-elements-2SVA7CR"
+        },
+        {
+            "filename": "logo-white-06.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-white-06.png",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 1833,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "logo-white-01.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-white-01.png",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 1880,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "logo-white-05.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-white-05.png",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 3503,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "logo-white-04.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/logo-white-04.png",
+            "templates": [
+                {
+                    "source": "templates\/our-story.json",
+                    "name": "Our Story"
+                },
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 3355,
+            "dimensions": [
+                150,
+                150
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/100-minimal-logos-9364LH"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-MPTK5HL-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-MPTK5HL-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                },
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                },
+                {
+                    "source": "templates\/popup.json",
+                    "name": "Popup"
+                }
+            ],
+            "filesize": 487895,
+            "dimensions": [
+                1812,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-MPTK5HL"
+        },
+        {
+            "filename": "wedding-day-7Z8GTX3-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/wedding-day-7Z8GTX3-1-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                }
+            ],
+            "filesize": 309872,
+            "dimensions": [
+                1710,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/wedding-day-7Z8GTX3"
+        },
+        {
+            "filename": "they-thought-i-was-crazy-when-i-asked-them-to-cover-their-faces-with-their-flowers-lol_t20_wagyV7-1.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/they-thought-i-was-crazy-when-i-asked-them-to-cover-their-faces-with-their-flowers-lol_t20_wagyV7-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-04.json",
+                    "name": "Home 04"
+                }
+            ],
+            "filesize": 388264,
+            "dimensions": [
+                2048,
+                1366
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/www.twenty20.com\/photos\/ee30f781-dbf6-4871-bc18-51a8d434e8be"
+        },
+        {
+            "filename": "beautiful-bride-in-wedding-dress-TR5NZXH-1.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/beautiful-bride-in-wedding-dress-TR5NZXH-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 105545,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-bride-in-wedding-dress-TR5NZXH"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-CPF57WM.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-CPF57WM.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 213837,
+            "dimensions": [
+                2000,
+                1314
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-CPF57WM"
+        },
+        {
+            "filename": "bride-holding-wedding-bouquet-PML4PZN-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/bride-holding-wedding-bouquet-PML4PZN-1-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 271478,
+            "dimensions": [
+                2560,
+                1707
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-holding-wedding-bouquet-PML4PZN"
+        },
+        {
+            "filename": "beautiful-young-bride-girl-ADF6SKN-1.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/beautiful-young-bride-girl-ADF6SKN-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-03.json",
+                    "name": "Home 03"
+                }
+            ],
+            "filesize": 55055,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-young-bride-girl-ADF6SKN"
+        },
+        {
+            "filename": "bg-flowers-black.png",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/bg-flowers-black.png",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                },
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 90333,
+            "dimensions": [
+                2000,
+                768
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/watercolor-lilac-design-DZQR2R"
+        },
+        {
+            "filename": "2.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 281449,
+            "dimensions": [
+                2000,
+                2064
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-bride-PHYV2A2"
+        },
+        {
+            "filename": "1.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 247522,
+            "dimensions": [
+                2000,
+                2023
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-bride-PWX96PH"
+        },
+        {
+            "filename": "beautiful-bride-PHYDHU9-1-scaled.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/beautiful-bride-PHYDHU9-1-scaled.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-02.json",
+                    "name": "Home 02"
+                }
+            ],
+            "filesize": 433396,
+            "dimensions": [
+                1890,
+                2560
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-bride-PHYDHU9"
+        },
+        {
+            "filename": "bride-with-bridesmaids-KDEZTGQ-1.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/bride-with-bridesmaids-KDEZTGQ-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 235669,
+            "dimensions": [
+                2000,
+                1333
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/bride-with-bridesmaids-KDEZTGQ"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-X2NU6MQ.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-X2NU6MQ.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 177110,
+            "dimensions": [
+                1999,
+                1334
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-X2NU6MQ"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-KDWNA85.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-KDWNA85.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 283675,
+            "dimensions": [
+                1999,
+                1334
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-KDWNA85"
+        },
+        {
+            "filename": "young-caucasian-couple-39-s-wedding-day-PHE7QW2.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-caucasian-couple-39-s-wedding-day-PHE7QW2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 322531,
+            "dimensions": [
+                2000,
+                1335
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-caucasian-couple-39-s-wedding-day-PHE7QW2"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-7BG3HT5.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-7BG3HT5.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 236510,
+            "dimensions": [
+                1999,
+                1336
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-7BG3HT5"
+        },
+        {
+            "filename": "young-couple-in-a-wedding-ceremony-at-the-beach-EX8T4BA.jpg",
+            "thumbnail_url": "https:\/\/vectorclans.com\/couples\/wp-content\/uploads\/sites\/2\/2020\/03\/young-couple-in-a-wedding-ceremony-at-the-beach-EX8T4BA.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-01.json",
+                    "name": "Home 01"
+                }
+            ],
+            "filesize": 219609,
+            "dimensions": [
+                1999,
+                1401
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/young-couple-in-a-wedding-ceremony-at-the-beach-EX8T4BA"
+        }
+    ]
+}

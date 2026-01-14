@@ -1,0 +1,1123 @@
+{
+    "manifest_version": "1.0.16",
+    "title": "Kunikaa - Elegant Wedding Invitation Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 1 - Kunikaa Kit",
+            "screenshot": "screenshots\/home-1-kunikaa-kit.jpg",
+            "source": "templates\/home-1-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/home-1-kunikaa-kit\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 2 - Kunikaa Kit",
+            "screenshot": "screenshots\/home-2-kunikaa-kit.jpg",
+            "source": "templates\/home-2-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/home-2-kunikaa-kit\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home 3 - Kunikaa Kit",
+            "screenshot": "screenshots\/home-3-kunikaa-kit.jpg",
+            "source": "templates\/home-3-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/home-3-kunikaa-kit\/",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-home",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Our Story 1 - Kunikaa Kit",
+            "screenshot": "screenshots\/our-story-1-kunikaa-kit.jpg",
+            "source": "templates\/our-story-1-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/our-story-1-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Our Story 2 - Kunikaa Kit",
+            "screenshot": "screenshots\/our-story-2-kunikaa-kit.jpg",
+            "source": "templates\/our-story-2-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/our-story-2-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Bridesmaids & Groomsmen - Kunikaa Kit",
+            "screenshot": "screenshots\/bridesmaids-groomsmen-kunikaa-kit.jpg",
+            "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/bridesmaids-groomsmen-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Gallery - Kunikaa Kit",
+            "screenshot": "screenshots\/gallery-kunikaa-kit.jpg",
+            "source": "templates\/gallery-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/gallery-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Events - Kunikaa Kit",
+            "screenshot": "screenshots\/events-kunikaa-kit.jpg",
+            "source": "templates\/events-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/events-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact - Kunikaa Kit",
+            "screenshot": "screenshots\/contact-kunikaa-kit.jpg",
+            "source": "templates\/contact-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/contact-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "RSVP - Kunikaa Kit",
+            "screenshot": "screenshots\/rsvp-kunikaa-kit.jpg",
+            "source": "templates\/rsvp-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/template-kit\/rsvp-kunikaa-kit\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Footer - Kunikaa Kit",
+            "screenshot": "screenshots\/footer-kunikaa-kit.jpg",
+            "source": "templates\/footer-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/?elementor_library=footer-kunikaa-kit",
+            "type": "footer",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "footer",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Footer\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        },
+        {
+            "name": "Header - Kunikaa Kit",
+            "screenshot": "screenshots\/header-kunikaa-kit.jpg",
+            "source": "templates\/header-kunikaa-kit.json",
+            "preview_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/?elementor_library=header-kunikaa-kit",
+            "type": "header",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": "1",
+                "elementor_library_type": "header",
+                "elementor_pro_conditions": [
+                    "include\/general"
+                ],
+                "additional_template_information": [
+                    "This is a \"Header\" template for Elementor Pro.",
+                    "This template will display on: Entire Site."
+                ]
+            },
+            "elementor_pro_required": true
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor Pro",
+            "version": "3.0.3",
+            "file": "elementor-pro\/elementor-pro.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "Elementor",
+            "version": "3.0.10",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        }
+    ],
+    "images": [
+        {
+            "filename": "bg-header-1-happy-newly-married-couple-with-boho-style-bouquet-N26JKP7.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bg-header-1-happy-newly-married-couple-with-boho-style-bouquet-N26JKP7-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/contact-kunikaa-kit.json",
+                    "name": "Contact - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/rsvp-kunikaa-kit.json",
+                    "name": "RSVP - Kunikaa Kit"
+                }
+            ],
+            "filesize": 74622,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-N26JKP7"
+        },
+        {
+            "filename": "bg-header-2-wedding-rings-PKSEZUT.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bg-header-2-wedding-rings-PKSEZUT-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/contact-kunikaa-kit.json",
+                    "name": "Contact - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/rsvp-kunikaa-kit.json",
+                    "name": "RSVP - Kunikaa Kit"
+                }
+            ],
+            "filesize": 58840,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PKSEZUT"
+        },
+        {
+            "filename": "bg-header-3-wedding-couple-at-destination-wedding-ceremony-BKX4KXJ.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bg-header-3-wedding-couple-at-destination-wedding-ceremony-BKX4KXJ-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/contact-kunikaa-kit.json",
+                    "name": "Contact - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/rsvp-kunikaa-kit.json",
+                    "name": "RSVP - Kunikaa Kit"
+                }
+            ],
+            "filesize": 98907,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-BKX4KXJ"
+        },
+        {
+            "filename": "wedding-flower-unity.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/wedding-flower-unity-600x204.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/contact-kunikaa-kit.json",
+                    "name": "Contact - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/rsvp-kunikaa-kit.json",
+                    "name": "RSVP - Kunikaa Kit"
+                }
+            ],
+            "filesize": 118264,
+            "dimensions": [
+                642,
+                218
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "divider.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/divider.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/contact-kunikaa-kit.json",
+                    "name": "Contact - Kunikaa Kit"
+                }
+            ],
+            "filesize": 2454,
+            "dimensions": [
+                208,
+                20
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "photo-man.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/photo-man-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 100549,
+            "dimensions": [
+                1000,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-newly-married-couple-5HFJJUM"
+        },
+        {
+            "filename": "photo-frame.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/photo-frame.png",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 98239,
+            "dimensions": [
+                569,
+                292
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "photo-woman.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/photo-woman-600x600.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home-1-kunikaa-kit.json",
+                    "name": "Home 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-2-kunikaa-kit.json",
+                    "name": "Home 2 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/home-3-kunikaa-kit.json",
+                    "name": "Home 3 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 167568,
+            "dimensions": [
+                1000,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-newly-married-couple-5HFJJUM"
+        },
+        {
+            "filename": "our-story-photo-1-happy-newly-married-couple-8RV6PMP.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story-photo-1-happy-newly-married-couple-8RV6PMP-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 210739,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-8RV6PMP"
+        },
+        {
+            "filename": "our-story-photo-2-happy-newly-married-couple-smiling-bride-brunette-XCG2QSC.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story-photo-2-happy-newly-married-couple-smiling-bride-brunette-XCG2QSC-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 180083,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-XCG2QSC"
+        },
+        {
+            "filename": "our-story-photo-3-happy-newly-married-couple-E3K77L8.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story-photo-3-happy-newly-married-couple-E3K77L8-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                },
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 230992,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-E3K77L8"
+        },
+        {
+            "filename": "our-story-photo-4-beauty-bride-in-bridal-gown-with-bouquet-and-lace-P5RC5RN.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story-photo-4-beauty-bride-in-bridal-gown-with-bouquet-and-lace-P5RC5RN-600x401.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-1-kunikaa-kit.json",
+                    "name": "Our Story 1 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 167263,
+            "dimensions": [
+                1600,
+                1068
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-P5RC5RN"
+        },
+        {
+            "filename": "our-story2-photo-1.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story2-photo-1.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 78661,
+            "dimensions": [
+                540,
+                657
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-newly-married-couple-8RV6PMP"
+        },
+        {
+            "filename": "our-story2-frame.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story2-frame.png",
+            "templates": [
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 1756,
+            "dimensions": [
+                440,
+                503
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "box-frame.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/box-frame.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 507,
+            "dimensions": [
+                143,
+                116
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "our-story2-photo-2.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story2-photo-2.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 59442,
+            "dimensions": [
+                540,
+                657
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-newly-married-couple-smiling-bride-brunette--XCG2QSC"
+        },
+        {
+            "filename": "our-story2-photo-3.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story2-photo-3.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 83531,
+            "dimensions": [
+                540,
+                657
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/happy-newly-married-couple-E3K77L8"
+        },
+        {
+            "filename": "our-story2-photo-4.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/our-story2-photo-4.jpg",
+            "templates": [
+                {
+                    "source": "templates\/our-story-2-kunikaa-kit.json",
+                    "name": "Our Story 2 - Kunikaa Kit"
+                }
+            ],
+            "filesize": 65703,
+            "dimensions": [
+                540,
+                657
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beauty-bride-in-bridal-gown-with-bouquet-and-lace--P5RC5RN"
+        },
+        {
+            "filename": "bridesmaid-photo-1-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bridesmaid-photo-1-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 30348,
+            "dimensions": [
+                365,
+                367
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beauty-bride-in-bridal-gown-with-bouquet-and-lace--P5C6QWQ"
+        },
+        {
+            "filename": "bridesmaids-groomsmen-frame.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bridesmaids-groomsmen-frame.png",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 1019,
+            "dimensions": [
+                312,
+                311
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "bridesmaid-photo-2-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bridesmaid-photo-2-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 28176,
+            "dimensions": [
+                365,
+                367
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/close-portrait-of-beautiful-smiling-bride-woman-wi-5RCPQXU"
+        },
+        {
+            "filename": "bridesmaid-photo-3-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/bridesmaid-photo-3-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 25922,
+            "dimensions": [
+                365,
+                367
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/portrait-of-beautiful-bride-wedding-decoration-and-PR6PNNJ"
+        },
+        {
+            "filename": "groomsmen-photo-1-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/groomsmen-photo-1-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 22507,
+            "dimensions": [
+                365,
+                367
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/handsome-groom-in-elegant-suit-with-wedding-bouque-B7QDRTW"
+        },
+        {
+            "filename": "groomsmen-photo-2-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/groomsmen-photo-2-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 27834,
+            "dimensions": [
+                365,
+                367
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/cheerful-happy-groom-Y9ENERX"
+        },
+        {
+            "filename": "groomsmen-photo-3-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/groomsmen-photo-3-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/bridesmaids-groomsmen-kunikaa-kit.json",
+                    "name": "Bridesmaids & Groomsmen - Kunikaa Kit"
+                }
+            ],
+            "filesize": 27126,
+            "dimensions": [
+                365,
+                367
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/groom-holds-bouquet-PDBQEDL"
+        },
+        {
+            "filename": "gallery-photo-1-happy-newly-married-couple-near-lake-S9CHVC8.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-1-happy-newly-married-couple-near-lake-S9CHVC8-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 147062,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-S9CHVC8"
+        },
+        {
+            "filename": "gallery-photo-2-happy-newly-married-couple-smiling-bride-brunette-WFWSTSH.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-2-happy-newly-married-couple-smiling-bride-brunette-WFWSTSH-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 324592,
+            "dimensions": [
+                1067,
+                1600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-WFWSTSH"
+        },
+        {
+            "filename": "gallery-photo-4-happy-newly-married-couple-smiling-bride-brunette-9XAT8AS.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-4-happy-newly-married-couple-smiling-bride-brunette-9XAT8AS-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 197247,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-9XAT8AS"
+        },
+        {
+            "filename": "gallery-photo-6-happy-newly-married-couple-FWHVTK8.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-6-happy-newly-married-couple-FWHVTK8-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 174109,
+            "dimensions": [
+                1067,
+                1600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-FWHVTK8"
+        },
+        {
+            "filename": "gallery-photo-7-happy-newly-married-kissing-couple-smiling-bride-b-ZC33727.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-7-happy-newly-married-kissing-couple-smiling-bride-b-ZC33727-600x400.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 246442,
+            "dimensions": [
+                1600,
+                1067
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-ZC33727"
+        },
+        {
+            "filename": "gallery-photo-8-happy-newly-married-couple-PBBW7ZV.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-8-happy-newly-married-couple-PBBW7ZV-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 294161,
+            "dimensions": [
+                1067,
+                1600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-PBBW7ZV"
+        },
+        {
+            "filename": "gallery-photo-10-happy-newly-married-couple-5HFJJUM.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-10-happy-newly-married-couple-5HFJJUM-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 302289,
+            "dimensions": [
+                1067,
+                1600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-5HFJJUM"
+        },
+        {
+            "filename": "gallery-photo-11-happy-newly-married-couple-near-lake-NP8VCJD.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/gallery-photo-11-happy-newly-married-couple-near-lake-NP8VCJD-600x900.jpg",
+            "templates": [
+                {
+                    "source": "templates\/gallery-kunikaa-kit.json",
+                    "name": "Gallery - Kunikaa Kit"
+                }
+            ],
+            "filesize": 161528,
+            "dimensions": [
+                1067,
+                1600
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/image-NP8VCJD"
+        },
+        {
+            "filename": "events-photo-1-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/events-photo-1-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                }
+            ],
+            "filesize": 23181,
+            "dimensions": [
+                398,
+                399
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "no",
+            "image_urls": "https:\/\/elements.envato.com\/image-PKSEZUT"
+        },
+        {
+            "filename": "events-frame.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/events-frame.png",
+            "templates": [
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                }
+            ],
+            "filesize": 1171,
+            "dimensions": [
+                340,
+                339
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        },
+        {
+            "filename": "events-photo-2-new.jpg",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/events-photo-2-new.jpg",
+            "templates": [
+                {
+                    "source": "templates\/events-kunikaa-kit.json",
+                    "name": "Events - Kunikaa Kit"
+                }
+            ],
+            "filesize": 29979,
+            "dimensions": [
+                398,
+                399
+            ],
+            "image_source": "envato_elements",
+            "person_or_place": "yes",
+            "image_urls": "https:\/\/elements.envato.com\/beautiful-wedding-tables-and-roses-BHARF8N"
+        },
+        {
+            "filename": "footer-flower-1.png",
+            "thumbnail_url": "https:\/\/templatekit.hellokuro.com\/kunikaa\/wp-content\/uploads\/2020\/10\/footer-flower-1-600x178.png",
+            "templates": [
+                {
+                    "source": "templates\/footer-kunikaa-kit.json",
+                    "name": "Footer - Kunikaa Kit"
+                }
+            ],
+            "filesize": 55231,
+            "dimensions": [
+                618,
+                183
+            ],
+            "image_source": "self_created",
+            "person_or_place": "no",
+            "image_urls": ""
+        }
+    ]
+}
