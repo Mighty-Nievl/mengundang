@@ -5,11 +5,32 @@ import MidnightTheme from '~/components/themes/MidnightTheme.vue'
 import GununganTheme from '~/components/themes/GununganTheme.vue'
 
 const route = useRoute()
+const config = useRuntimeConfig()
 const slug = route.params.slug as string
+
+// Type for SEO metadata
+interface SeoMetaData {
+    title: string
+    description: string
+    image: string
+    groomName?: string
+    brideName?: string
+    weddingDate?: string
+}
+
+// Fetch SEO metadata server-side for Open Graph tags
+// This runs on server for SSR, enabling social media crawlers to read OG tags
+const { data: seoMeta } = await useFetch<SeoMetaData>('/api/seo-meta', {
+    key: `seo-${slug}`,
+    params: { slug },
+    server: true // SSR: necessary for OG tags
+})
+
+// Fetch full content client-side (auth-aware, heavier)
 const { data: content, error, refresh: refreshNuxtData } = await useFetch('/api/v2-content', {
     key: `invitation-${slug}`,
     params: { slug },
-    server: false // Force Client-Side Fetch
+    server: false // Client-side: auth-aware
 })
 
 if (error.value) {
@@ -31,12 +52,25 @@ const themeComponent = computed(() => {
     return OriginalTheme
 })
 
+// Build full URL for OG image and URL
+const siteUrl = config.public?.siteUrl || 'https://mengundang.site'
+const pageUrl = `${siteUrl}/${slug}`
 
-// Keep SEO Meta here or move to themes?
-// If themes have vastly different SEO needs, move to theme. 
-// For now, basic title is common.
-useHead({
-    title: computed(() => `The Wedding of ${content.value?.hero?.groomNickname || 'Groom'} & ${content.value?.hero?.brideNickname || 'Bride'}`)
+// SEO Meta using server-fetched data
+// Note: og:image uses proxied URL from seo-meta API which handles watermarking
+useSeoMeta({
+    title: () => seoMeta.value?.title || `The Wedding of ${content.value?.hero?.groomNickname || 'Groom'} & ${content.value?.hero?.brideNickname || 'Bride'}`,
+    description: () => seoMeta.value?.description || 'Undangan pernikahan digital premium.',
+    ogType: 'website',
+    ogTitle: () => seoMeta.value?.title || `Pernikahan ${content.value?.hero?.groomNickname || 'Groom'} & ${content.value?.hero?.brideNickname || 'Bride'}`,
+    ogDescription: () => seoMeta.value?.description || 'Kami mengundang Anda untuk hadir di pernikahan kami.',
+    ogImage: () => seoMeta.value?.image || 'https://mengundang.site/cover.png',
+    ogUrl: pageUrl,
+    ogSiteName: 'Mengundang',
+    twitterCard: 'summary_large_image',
+    twitterTitle: () => seoMeta.value?.title || 'Undangan Pernikahan',
+    twitterDescription: () => seoMeta.value?.description || 'Undangan pernikahan digital premium.',
+    twitterImage: () => seoMeta.value?.image || 'https://mengundang.site/cover.png',
 })
 </script>
 

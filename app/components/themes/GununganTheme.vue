@@ -17,6 +17,7 @@ import FloatingMusic from '~/components/FloatingMusic.vue'
 import GiftSection from '~/components/GiftSection.vue'
 import RSVPSection from '~/components/RSVPSection.vue'
 import CountdownSection from '~/components/CountdownSection.vue'
+import LoveStoryGunungan from '~/components/LoveStoryGunungan.vue'
 
 const props = defineProps<{
     content: any
@@ -469,6 +470,11 @@ const texts = computed(() => {
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════════
+             LOVE STORY SECTION - Dark Javanese Style
+             ═══════════════════════════════════════════════════════════════════ -->
+        <LoveStoryGunungan v-if="content?.story?.length > 0" :stories="content.story" />
+
+        <!-- ═══════════════════════════════════════════════════════════════════
              COUPLE PROFILES - With Gold Filigree Frames
              ═══════════════════════════════════════════════════════════════════ -->
         
@@ -641,9 +647,9 @@ const texts = computed(() => {
                                 
                                 <!-- Buttons (No White Borders) -->
                                 <div class="flex flex-col gap-3">
-                                    <a v-if="content?.events?.akad?.mapsUrl" :href="content?.events?.akad?.mapsUrl" target="_blank" 
+                                    <a :href="content?.events?.akad?.mapsUrl || '#'" target="_blank" 
                                        class="w-full inline-flex justify-center items-center gap-2 bg-gold hover:bg-white text-black px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm shadow-lg">
-                                        <i class="fas fa-location-arrow"></i> {{ texts.visitLocation }}
+                                        <i class="fas fa-location-arrow"></i> GOOGLE MAPS
                                     </a>
                                     <a :href="createCalendarLink(content?.events?.akad, `The Wedding of ${firstNickname} & ${secondNickname} (${texts.theCeremony})`)" target="_blank"
                                        class="w-full inline-flex justify-center items-center gap-2 bg-white/5 hover:bg-white/10 text-gold px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm">
@@ -692,9 +698,9 @@ const texts = computed(() => {
                                 
                                 <!-- Buttons (No White Borders) -->
                                 <div class="flex flex-col gap-3">
-                                    <a v-if="receptionEvent.mapsUrl" :href="receptionEvent.mapsUrl" target="_blank" 
+                                    <a :href="receptionEvent.mapsUrl || '#'" target="_blank" 
                                        class="w-full inline-flex justify-center items-center gap-2 bg-gold hover:bg-white text-black px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm shadow-lg">
-                                        <i class="fas fa-location-arrow"></i> {{ texts.visitLocation }}
+                                        <i class="fas fa-location-arrow"></i> GOOGLE MAPS
                                     </a>
                                     <a :href="createCalendarLink(receptionEvent, `The Wedding of ${firstNickname} & ${secondNickname} (${texts.theReception})`)" target="_blank"
                                        class="w-full inline-flex justify-center items-center gap-2 bg-white/5 hover:bg-white/10 text-gold px-6 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm">
@@ -712,15 +718,14 @@ const texts = computed(() => {
         <!-- ═══════════════════════════════════════════════════════════════════
              GALLERY SECTION - With Gunungan Header
              ═══════════════════════════════════════════════════════════════════ -->
-        <section id="galeri" v-if="content?.gallery?.length" class="gallery-section w-full min-h-[100dvh] flex flex-col justify-center bg-[#111] relative overflow-hidden py-24">
+        <section id="galeri" v-if="content?.gallery?.length" class="gallery-section w-full min-h-[100dvh] flex flex-col justify-center bg-[#111] relative overflow-hidden pt-24 pb-40">
             
             <!-- Background Texture (Subtle Parang Fixed) -->
             <div class="absolute inset-0 opacity-5 pointer-events-none">
                 <div class="absolute inset-0 bg-[url('/images/themes/parang-batik.jpg')] bg-fixed bg-cover bg-center grayscale mix-blend-overlay"></div>
             </div>
 
-            <!-- Gradient Fade Bottom (Seamless Transition) -->
-            <div class="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-[#111]/80 to-transparent pointer-events-none z-20"></div>
+
 
             <!-- Title Header (Floating) -->
             <div class="absolute top-10 left-0 w-full text-center z-20 pointer-events-none mix-blend-difference text-white">
@@ -1098,11 +1103,6 @@ const texts = computed(() => {
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
-}
-
-/* === FLOATING NAV GLOW === */
-.floating-nav {
-    /* box-shadow moved to inner glass capsule */
 }
 
 /* === COMPONENT OVERRIDES === */

@@ -144,12 +144,22 @@ const checkAndConvertDriveLink = (path: string, index: number | null = null) => 
     if (path === 'gift.qrisUrl') val = form.value.gift.qrisUrl
     if (path === 'gallery' && index !== null) val = form.value.gallery[index]
     
-    if (val && (val.includes('drive.google') || val.includes('googleusercontent') || val.includes('/d/'))) {
+    const msgKey = index !== null ? `gallery.${index}` : path
+
+    // No value entered
+    if (!val) {
+        driveMsg.value[msgKey] = '⚠️ Masukkan URL gambar terlebih dahulu'
+        setTimeout(() => { delete driveMsg.value[msgKey] }, 3000)
+        return
+    }
+
+    // Check if it's a Google Drive link
+    if (val.includes('drive.google') || val.includes('googleusercontent') || val.includes('/d/')) {
         const newUrl = convertToDriveUrl(val)
-        const msgKey = index !== null ? `gallery.${index}` : path
 
         if (newUrl === 'BAD_LINK_TEMPORARY') {
              driveMsg.value[msgKey] = '❌ Gunakan Link "Share" (Bukan copy path)'
+             setTimeout(() => { delete driveMsg.value[msgKey] }, 4000)
              return
         }
 
@@ -163,10 +173,16 @@ const checkAndConvertDriveLink = (path: string, index: number | null = null) => 
             if (path === 'gallery' && index !== null) form.value.gallery[index] = newUrl
             
             driveMsg.value[msgKey] = '✅ Link Drive Berhasil Dikonversi!'
-            setTimeout(() => {
-                delete driveMsg.value[msgKey]
-            }, 4000)
+            setTimeout(() => { delete driveMsg.value[msgKey] }, 4000)
+        } else {
+            // Already in correct format
+            driveMsg.value[msgKey] = '✅ Link sudah dalam format yang benar'
+            setTimeout(() => { delete driveMsg.value[msgKey] }, 3000)
         }
+    } else {
+        // Not a Google Drive link
+        driveMsg.value[msgKey] = 'ℹ️ Bukan link Google Drive (URL langsung)'
+        setTimeout(() => { delete driveMsg.value[msgKey] }, 3000)
     }
 }
 
